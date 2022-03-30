@@ -17,7 +17,7 @@ export const getState = (): State => {
     throw new Error('"PATHS" state must be set.');
   }
 
-  if (!core.getState('targetFileName')) {
+  if (!core.getState('TARGET_FILE_NAME')) {
     throw new Error('"TARGET_FILE_NAME" state must be set.');
   }
 
