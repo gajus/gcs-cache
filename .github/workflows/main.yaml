@@ -17,8 +17,8 @@ jobs:
       - run: npm run lint
       - run: npm run test
       - run: npm run build
-      - run: git add -f action
       - run: |-
+          git add -f action
           git config user.email "gajus@gajus.com"
           git config user.name "Gajus"
           git commit -a -m 'chore: update ./action' && git push || true
