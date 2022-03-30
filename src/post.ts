@@ -104,5 +104,5 @@ const main = async () => {
 
 void main()
   .catch((error) => {
-    core.setFailed(error);
+    core.error(error.message);
   });
