@@ -23,9 +23,26 @@ jobs:
           git config user.email "gajus@gajus.com"
           git config user.name "Gajus"
           git commit -a -m 'chore: add ./action'
-      - run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: paulhatch/semantic-version@v4.0.2
+        id: semantic_version
+        with:
+          tag_prefix: "v"
+          major_pattern: "BREAKING CHANGE"
+          minor_pattern: "feat:"
+          format: "${major}.${minor}.${patch}"
+          change_path: "actions"
+          short_tags: false
+          bump_each_commit: false
+      - name: Tag Release (vX.Y.Z)
+        run: |
+          git tag ${{ steps.semantic_version.outputs.version_tag }}
+          git push origin ${{ steps.semantic_version.outputs.version_tag }}
+      - name: Tag Release (vX)
+        run: |
+          git tag -d v${{ steps.semantic_version.outputs.major }} 2> /dev/null || echo 'local ref does not exist'
+          git push origin :v${{ steps.semantic_version.outputs.major }} 2> /dev/null || echo 'remote ref does not exist'
+          git tag v${{ steps.semantic_version.outputs.major }}
+          git push origin v${{ steps.semantic_version.outputs.major }}
     timeout-minutes: 10
 name: Test, build and release
 on:
