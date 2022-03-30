@@ -19,6 +19,8 @@ jobs:
       - run: npm run build
       - run: git add -f action
       - run: |-
+          git config user.email "gajus@gajus.com"
+          git config user.name "Gajus"
           git commit -a -m 'chore: add ./action'
       - run: npx semantic-release
         env:
