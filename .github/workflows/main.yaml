@@ -22,7 +22,7 @@ jobs:
           git config user.email "gajus@gajus.com"
           git config user.name "Gajus"
           git commit -a -m 'chore: update ./action' && git push || true
-      - uses: paulhatch/semantic-version@v4.0.2
+      - uses: paulhatch/semantic-version@v4.0.3
         id: semantic_version
         with:
           tag_prefix: "v"
