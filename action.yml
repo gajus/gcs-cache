@@ -1,0 +1,24 @@
+name: 'Google Cloud Storage Cache'
+author: 'gajus'
+description: 'Cache workflow artifacts in a Google Cloud Storage bucket'
+inputs:
+  bucket:
+    description: The name of the Google Cloud Storage bucket to use.
+    required: true
+  paths:
+    description: Paths to store (one per line).
+    required: true
+  key:
+    description: Cache identifier.
+    required: true
+outputs:
+  cache-hit:
+    description: A boolean string (true or false) representing if the cache was successfully restored.
+runs:
+  using: 'node16'
+  main: 'action/main/index.js'
+  post: 'action/post/index.js'
+  post-if: 'success()'
+branding:
+  icon: 'hard-drive'
+  color: 'blue'

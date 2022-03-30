@@ -1,0 +1,74 @@
+{
+  "author": {
+    "email": "gajus@gajus.com",
+    "name": "Gajus Kuizinas",
+    "url": "http://gajus.com"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "test/gcs-cache/**/*"
+    ],
+    "ignoredByWatcher": [
+      "test/fixtures/**/*"
+    ],
+    "require": [
+      "ts-node/register/transpile-only"
+    ]
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^5.0.0",
+    "@actions/glob": "^0.2.1",
+    "@google-cloud/storage": "^5.18.3",
+    "semver": "^7.3.5",
+    "tmp-promise": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.22",
+    "@types/sinon": "^10.0.11",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-env": "^1.16.3",
+    "@vercel/ncc": "^0.33.3",
+    "ava": "^4.1.0",
+    "eslint": "^8.11.0",
+    "eslint-config-canonical": "^33.0.1",
+    "husky": "^7.0.2",
+    "semantic-release": "^17.4.7",
+    "sinon": "^13.0.1",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.4.3"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test && npm run build"
+    }
+  },
+  "keywords": [
+    "github",
+    "action",
+    "google",
+    "storage"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "./dist/src/index.js",
+  "name": "gcs-cache",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gajus/gcs-cache"
+  },
+  "scripts": {
+    "build": "tsc && ncc build dist/src/main.js -m -o action/main && ncc build dist/src/post.js -m -o action/post",
+    "lint": "eslint ./src ./test && tsc --noEmit",
+    "test": "ROARR_LOG=1 NODE_ENV=test ava --serial --verbose"
+  },
+  "typings": "./dist/src/index.d.ts",
+  "version": "1.0.0"
+}

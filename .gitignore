@@ -1,0 +1,15 @@
+action
+dist
+node_modules
+*.log
+.*
+!.babelrc
+!.editorconfig
+!.eslintignore
+!.eslintrc
+!.eslintrc.js
+!.github
+!.gitignore
+!.npmignore
+!.releaserc
+!.travis.yml
