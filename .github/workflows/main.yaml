@@ -29,7 +29,6 @@ jobs:
           major_pattern: "BREAKING CHANGE"
           minor_pattern: "feat:"
           format: "${major}.${minor}.${patch}"
-          change_path: "actions"
           short_tags: false
           bump_each_commit: false
       - name: Tag Release (vX.Y.Z)
