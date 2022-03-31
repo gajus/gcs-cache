@@ -18,7 +18,7 @@ export const getExactMatch = async (
   let exactFileExists: boolean;
 
   try {
-    exactFileExists = await exactFile.exists()?.[0];
+    exactFileExists = (await exactFile.exists())?.[0];
   } catch (error) {
     core.error('Failed to check if an exact match exists');
 
