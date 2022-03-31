@@ -4,7 +4,7 @@ import {
   Storage,
 } from '@google-cloud/storage';
 import {
-  file as withTemporaryFile,
+  withFile as withTemporaryFile,
 } from 'tmp-promise';
 import {
   extractTar,
