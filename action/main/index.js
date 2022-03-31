@@ -256,7 +256,7 @@ const main = async () => {
     }
     // eslint-disable-next-line node/no-process-env
     const workspace = (_b = process.env.GITHUB_WORKSPACE) !== null && _b !== void 0 ? _b : process.cwd();
-    await (0, tmp_promise_1.file)(async (temporaryFile) => {
+    await (0, tmp_promise_1.withFile)(async (temporaryFile) => {
         try {
             await core
                 .group('🌐 Downloading cache archive from bucket', async () => {
