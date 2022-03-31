@@ -77,6 +77,7 @@ Large parts of the codebase were adopted from [MansaGroup/gcs-cache-action](http
 However, compared to `MansaGroup/gcs-cache-action`, `gcs-cache`:
 
 * Includes thorough tests
+* Gracefully handles failures in [`post` stage](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#runspost) (uploading cache)
 * Does not support `zstd` version below v1.3.2
 * Does not support Windows
 * Does not support `restore-keys`
