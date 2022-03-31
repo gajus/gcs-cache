@@ -64,7 +64,7 @@
     "url": "https://github.com/gajus/gcs-cache"
   },
   "scripts": {
-    "build": "tsc && ncc build dist/src/main.js -m -o action/main && ncc build dist/src/post.js -m -o action/post",
+    "build": "tsc && ncc build --source-map dist/src/main.js --out action/main && ncc build --source-map dist/src/post.js --out action/post",
     "lint": "eslint ./src ./test && tsc --noEmit",
     "test": "ROARR_LOG=1 NODE_ENV=test ava --serial --verbose"
   },
