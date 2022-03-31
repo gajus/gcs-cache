@@ -1,6 +1,4 @@
-import * as path from 'node:path';
 import * as core from '@actions/core';
-import * as glob from '@actions/glob';
 import {
   Storage,
 } from '@google-cloud/storage';
@@ -10,6 +8,9 @@ import {
 import {
   createTar,
 } from './createTar';
+import {
+  getMatchingGlobPaths,
+} from './getMatchingGlobPaths';
 import {
   getState,
 } from './getState';
@@ -52,17 +53,7 @@ const main = async () => {
   // eslint-disable-next-line node/no-process-env
   const workspace = process.env.GITHUB_WORKSPACE ?? process.cwd();
 
-  const globber = await glob.create(state.paths.join('\n'), {
-    implicitDescendants: false,
-  });
-
-  const paths = await globber
-    .glob()
-    .then((files) => {
-      return files.map((file) => {
-        return path.relative(workspace, file);
-      });
-    });
+  const paths = await getMatchingGlobPaths(workspace, state.paths);
 
   core.debug(`Paths: ${JSON.stringify(paths)}.`);
 

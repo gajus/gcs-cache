@@ -8,7 +8,7 @@ import {
 
 export const createTar = async (
   archivePath: string,
-  paths: string[],
+  paths: readonly string[],
   cwd: string,
 ): Promise<CompressionMethod> => {
   const compressionMethod = await getTarCompressionMethod();
