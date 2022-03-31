@@ -79,6 +79,52 @@ exports.extractSemver = extractSemver;
 
 /***/ }),
 
+/***/ 1678:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getMatchingGlobPaths = void 0;
+const path = __importStar(__nccwpck_require__(9411));
+const glob = __importStar(__nccwpck_require__(8090));
+const getMatchingGlobPaths = async (workingDirectory, globPaths) => {
+    const globber = await glob.create(globPaths.join('\n'), {
+        implicitDescendants: false,
+    });
+    const paths = await globber.glob();
+    return paths.map((file) => {
+        return path.relative(workingDirectory, file);
+    });
+};
+exports.getMatchingGlobPaths = getMatchingGlobPaths;
+
+
+/***/ }),
+
 /***/ 920:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -272,12 +318,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const path = __importStar(__nccwpck_require__(9411));
 const core = __importStar(__nccwpck_require__(2186));
-const glob = __importStar(__nccwpck_require__(8090));
 const storage_1 = __nccwpck_require__(8174);
 const tmp_promise_1 = __nccwpck_require__(8065);
 const createTar_1 = __nccwpck_require__(956);
+const getMatchingGlobPaths_1 = __nccwpck_require__(1678);
 const getState_1 = __nccwpck_require__(920);
 const main = async () => {
     var _a;
@@ -302,16 +347,7 @@ const main = async () => {
     }
     // eslint-disable-next-line node/no-process-env
     const workspace = (_a = process.env.GITHUB_WORKSPACE) !== null && _a !== void 0 ? _a : process.cwd();
-    const globber = await glob.create(state.paths.join('\n'), {
-        implicitDescendants: false,
-    });
-    const paths = await globber
-        .glob()
-        .then((files) => {
-        return files.map((file) => {
-            return path.relative(workspace, file);
-        });
-    });
+    const paths = await (0, getMatchingGlobPaths_1.getMatchingGlobPaths)(workspace, state.paths);
     core.debug(`Paths: ${JSON.stringify(paths)}.`);
     await (0, tmp_promise_1.withFile)(async (temporaryFile) => {
         const compressionMethod = await core
