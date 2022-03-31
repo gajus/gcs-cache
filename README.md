@@ -72,7 +72,7 @@ Yes you can. When storing to the bucket, this action will use the following the 
 
 ### What is the difference from `MansaGroup/gcs-cache-action`?
 
-Large parts of the codebase were adopted from [MansaGroup/gcs-cache-action](https://github.com/MansaGroup/gcs-cache-action) (as is reflected in [LICENSE](./LICENSE)).
+Large parts of the codebase were adapted from [MansaGroup/gcs-cache-action](https://github.com/MansaGroup/gcs-cache-action) (as is reflected in [LICENSE](./LICENSE)).
 
 However, compared to `MansaGroup/gcs-cache-action`, `gcs-cache`:
 
