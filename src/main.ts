@@ -88,31 +88,35 @@ const main = async () => {
   const workspace = process.env.GITHUB_WORKSPACE ?? process.cwd();
 
   await withTemporaryFile(async (temporaryFile) => {
-    await core
-      .group('🌐 Downloading cache archive from bucket', async () => {
-        console.log(`🔹 Downloading file '${bestMatch.name}'...`);
+    try {
+      await core
+        .group('🌐 Downloading cache archive from bucket', async () => {
+          console.log(`🔹 Downloading file '${bestMatch.name}'...`);
 
-        return await bestMatch.download({
-          destination: temporaryFile.path,
+          await bestMatch.download({
+            destination: temporaryFile.path,
+          });
         });
-      })
-      .catch((error) => {
-        core.error('Failed to download the file');
-        throw error;
-      });
+    } catch (error) {
+      core.error('Failed to download the file');
 
-    await core
-      .group('🗜️ Extracting cache archive', () => {
-        core.info(
-          `🔹 Detected '${compressionMethod}' compression method from object metadata.`,
-        );
+      throw error;
+    }
 
-        return extractTar(temporaryFile.path, compressionMethod, workspace);
-      })
-      .catch((error) => {
-        core.error('Failed to extract the archive');
-        throw error;
-      });
+    try {
+      await core
+        .group('🗜️ Extracting cache archive', () => {
+          core.info(
+            `🔹 Detected '${compressionMethod}' compression method from object metadata.`,
+          );
+
+          return extractTar(temporaryFile.path, compressionMethod, workspace);
+        });
+    } catch (error) {
+      core.error('Failed to extract the archive');
+
+      throw error;
+    }
 
     saveState({
       bucket: inputs.bucket,
