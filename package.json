@@ -19,11 +19,11 @@
     ]
   },
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.8.0",
     "@actions/exec": "^1.1.1",
-    "@actions/github": "^5.0.0",
-    "@actions/glob": "^0.2.1",
-    "@google-cloud/storage": "^5.18.3",
+    "@actions/github": "^5.0.1",
+    "@actions/glob": "^0.3.0",
+    "@google-cloud/storage": "^5.19.4",
     "semver": "^7.3.5",
     "tmp-promise": "^3.0.3"
   },
