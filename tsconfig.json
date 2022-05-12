@@ -1,20 +1,23 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": [
-      "es2018"
-    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
+    "outDir": "dist",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2018",
+    "target": "esnext",
     "useUnknownInCatchVariables": false
   },
   "exclude": [
