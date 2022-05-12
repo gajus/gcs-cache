@@ -16,8 +16,8 @@ outputs:
     description: A boolean string (true or false) representing if the cache was successfully restored.
 runs:
   using: 'node16'
-  main: 'action/main/index.js'
-  post: 'action/post/index.js'
+  main: 'action/main.js'
+  post: 'action/post.js'
   post-if: 'success()'
 branding:
   icon: 'hard-drive'
