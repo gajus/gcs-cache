@@ -1295,6 +1295,300 @@ function requireOidcUtils () {
 	return oidcUtils;
 }
 
+var summary = {};
+
+var hasRequiredSummary;
+
+function requireSummary () {
+	if (hasRequiredSummary) return summary;
+	hasRequiredSummary = 1;
+	(function (exports) {
+		var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+		    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+		    return new (P || (P = Promise))(function (resolve, reject) {
+		        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+		        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+		        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+		        step((generator = generator.apply(thisArg, _arguments || [])).next());
+		    });
+		};
+		Object.defineProperty(exports, "__esModule", { value: true });
+		exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
+		const os_1 = require$$0__default["default"];
+		const fs_1 = require$$0__default$1["default"];
+		const { access, appendFile, writeFile } = fs_1.promises;
+		exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
+		exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
+		class Summary {
+		    constructor() {
+		        this._buffer = '';
+		    }
+		    /**
+		     * Finds the summary file path from the environment, rejects if env var is not found or file does not exist
+		     * Also checks r/w permissions.
+		     *
+		     * @returns step summary file path
+		     */
+		    filePath() {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            if (this._filePath) {
+		                return this._filePath;
+		            }
+		            const pathFromEnv = process.env[exports.SUMMARY_ENV_VAR];
+		            if (!pathFromEnv) {
+		                throw new Error(`Unable to find environment variable for $${exports.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
+		            }
+		            try {
+		                yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
+		            }
+		            catch (_a) {
+		                throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
+		            }
+		            this._filePath = pathFromEnv;
+		            return this._filePath;
+		        });
+		    }
+		    /**
+		     * Wraps content in an HTML tag, adding any HTML attributes
+		     *
+		     * @param {string} tag HTML tag to wrap
+		     * @param {string | null} content content within the tag
+		     * @param {[attribute: string]: string} attrs key-value list of HTML attributes to add
+		     *
+		     * @returns {string} content wrapped in HTML element
+		     */
+		    wrap(tag, content, attrs = {}) {
+		        const htmlAttrs = Object.entries(attrs)
+		            .map(([key, value]) => ` ${key}="${value}"`)
+		            .join('');
+		        if (!content) {
+		            return `<${tag}${htmlAttrs}>`;
+		        }
+		        return `<${tag}${htmlAttrs}>${content}</${tag}>`;
+		    }
+		    /**
+		     * Writes text in the buffer to the summary buffer file and empties buffer. Will append by default.
+		     *
+		     * @param {SummaryWriteOptions} [options] (optional) options for write operation
+		     *
+		     * @returns {Promise<Summary>} summary instance
+		     */
+		    write(options) {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
+		            const filePath = yield this.filePath();
+		            const writeFunc = overwrite ? writeFile : appendFile;
+		            yield writeFunc(filePath, this._buffer, { encoding: 'utf8' });
+		            return this.emptyBuffer();
+		        });
+		    }
+		    /**
+		     * Clears the summary buffer and wipes the summary file
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    clear() {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            return this.emptyBuffer().write({ overwrite: true });
+		        });
+		    }
+		    /**
+		     * Returns the current summary buffer as a string
+		     *
+		     * @returns {string} string of summary buffer
+		     */
+		    stringify() {
+		        return this._buffer;
+		    }
+		    /**
+		     * If the summary buffer is empty
+		     *
+		     * @returns {boolen} true if the buffer is empty
+		     */
+		    isEmptyBuffer() {
+		        return this._buffer.length === 0;
+		    }
+		    /**
+		     * Resets the summary buffer without writing to summary file
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    emptyBuffer() {
+		        this._buffer = '';
+		        return this;
+		    }
+		    /**
+		     * Adds raw text to the summary buffer
+		     *
+		     * @param {string} text content to add
+		     * @param {boolean} [addEOL=false] (optional) append an EOL to the raw text (default: false)
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addRaw(text, addEOL = false) {
+		        this._buffer += text;
+		        return addEOL ? this.addEOL() : this;
+		    }
+		    /**
+		     * Adds the operating system-specific end-of-line marker to the buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addEOL() {
+		        return this.addRaw(os_1.EOL);
+		    }
+		    /**
+		     * Adds an HTML codeblock to the summary buffer
+		     *
+		     * @param {string} code content to render within fenced code block
+		     * @param {string} lang (optional) language to syntax highlight code
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addCodeBlock(code, lang) {
+		        const attrs = Object.assign({}, (lang && { lang }));
+		        const element = this.wrap('pre', this.wrap('code', code), attrs);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML list to the summary buffer
+		     *
+		     * @param {string[]} items list of items to render
+		     * @param {boolean} [ordered=false] (optional) if the rendered list should be ordered or not (default: false)
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addList(items, ordered = false) {
+		        const tag = ordered ? 'ol' : 'ul';
+		        const listItems = items.map(item => this.wrap('li', item)).join('');
+		        const element = this.wrap(tag, listItems);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML table to the summary buffer
+		     *
+		     * @param {SummaryTableCell[]} rows table rows
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addTable(rows) {
+		        const tableBody = rows
+		            .map(row => {
+		            const cells = row
+		                .map(cell => {
+		                if (typeof cell === 'string') {
+		                    return this.wrap('td', cell);
+		                }
+		                const { header, data, colspan, rowspan } = cell;
+		                const tag = header ? 'th' : 'td';
+		                const attrs = Object.assign(Object.assign({}, (colspan && { colspan })), (rowspan && { rowspan }));
+		                return this.wrap(tag, data, attrs);
+		            })
+		                .join('');
+		            return this.wrap('tr', cells);
+		        })
+		            .join('');
+		        const element = this.wrap('table', tableBody);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds a collapsable HTML details element to the summary buffer
+		     *
+		     * @param {string} label text for the closed state
+		     * @param {string} content collapsable content
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addDetails(label, content) {
+		        const element = this.wrap('details', this.wrap('summary', label) + content);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML image tag to the summary buffer
+		     *
+		     * @param {string} src path to the image you to embed
+		     * @param {string} alt text description of the image
+		     * @param {SummaryImageOptions} options (optional) addition image attributes
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addImage(src, alt, options) {
+		        const { width, height } = options || {};
+		        const attrs = Object.assign(Object.assign({}, (width && { width })), (height && { height }));
+		        const element = this.wrap('img', null, Object.assign({ src, alt }, attrs));
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML section heading element
+		     *
+		     * @param {string} text heading text
+		     * @param {number | string} [level=1] (optional) the heading level, default: 1
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addHeading(text, level) {
+		        const tag = `h${level}`;
+		        const allowedTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tag)
+		            ? tag
+		            : 'h1';
+		        const element = this.wrap(allowedTag, text);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML thematic break (<hr>) to the summary buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addSeparator() {
+		        const element = this.wrap('hr', null);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML line break (<br>) to the summary buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addBreak() {
+		        const element = this.wrap('br', null);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML blockquote to the summary buffer
+		     *
+		     * @param {string} text quote text
+		     * @param {string} cite (optional) citation url
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addQuote(text, cite) {
+		        const attrs = Object.assign({}, (cite && { cite }));
+		        const element = this.wrap('blockquote', text, attrs);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML anchor tag to the summary buffer
+		     *
+		     * @param {string} text link text/content
+		     * @param {string} href hyperlink
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addLink(text, href) {
+		        const element = this.wrap('a', text, { href });
+		        return this.addRaw(element).addEOL();
+		    }
+		}
+		const _summary = new Summary();
+		/**
+		 * @deprecated use `core.summary`
+		 */
+		exports.markdownSummary = _summary;
+		exports.summary = _summary;
+		
+} (summary));
+	return summary;
+}
+
 var hasRequiredCore;
 
 function requireCore () {
@@ -1611,6 +1905,16 @@ function requireCore () {
 		    });
 		}
 		exports.getIDToken = getIDToken;
+		/**
+		 * Summary exports
+		 */
+		var summary_1 = requireSummary();
+		Object.defineProperty(exports, "summary", { enumerable: true, get: function () { return summary_1.summary; } });
+		/**
+		 * @deprecated use core.summary
+		 */
+		var summary_2 = requireSummary();
+		Object.defineProperty(exports, "markdownSummary", { enumerable: true, get: function () { return summary_2.markdownSummary; } });
 		
 } (core$3));
 	return core$3;
@@ -1618,11 +1922,11 @@ function requireCore () {
 
 var coreExports = requireCore();
 
-var src$c = {};
+var src$b = {};
 
 var bucket = {};
 
-var src$b = {};
+var nodejsCommon = {};
 
 var operation = {};
 
@@ -101208,13 +101512,10 @@ function requireAgent$1 () {
 	            if (statusCode === 200) {
 	                req.once('socket', resume);
 	                if (opts.secureEndpoint) {
-	                    const servername = opts.servername || opts.host;
-	                    if (!servername) {
-	                        throw new Error('Could not determine "servername"');
-	                    }
 	                    // The proxy is connecting to a TLS server, so upgrade
 	                    // this socket connection to a TLS connection.
 	                    debug('Upgrading socket connection to TLS');
+	                    const servername = opts.servername || opts.host;
 	                    return tls_1.default.connect(Object.assign(Object.assign({}, omit(opts, 'host', 'hostname', 'path', 'port')), { socket,
 	                        servername }));
 	                }
@@ -101231,7 +101532,7 @@ function requireAgent$1 () {
 	            //
 	            // See: https://hackerone.com/reports/541502
 	            socket.destroy();
-	            const fakeSocket = new net_1.default.Socket();
+	            const fakeSocket = new net_1.default.Socket({ writable: false });
 	            fakeSocket.readable = true;
 	            // Need to wait for the "socket" event to re-play the "data" events.
 	            req.once('socket', (s) => {
@@ -101316,7 +101617,7 @@ const node_fetch_1$1 = __importDefault$3(lib$4.exports);
 const querystring_1 = __importDefault$3(require$$0__default$8["default"]);
 const is_stream_1 = __importDefault$3(isStream_1);
 const url_1 = require$$2__default["default"];
-const common_1$3 = common$2;
+const common_1 = common$2;
 const retry_1 = retry$4;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const fetch = hasFetch() ? window.fetch : node_fetch_1$1.default;
@@ -101420,7 +101721,7 @@ class Gaxios {
                 translatedResponse = await this._defaultAdapter(opts);
             }
             if (!opts.validateStatus(translatedResponse.status)) {
-                throw new common_1$3.GaxiosError(`Request failed with status code ${translatedResponse.status}`, opts, translatedResponse);
+                throw new common_1.GaxiosError(`Request failed with status code ${translatedResponse.status}`, opts, translatedResponse);
             }
             return translatedResponse;
         }
@@ -101489,6 +101790,9 @@ class Gaxios {
         }
         opts.headers = opts.headers || {};
         if (opts.data) {
+            const isFormData = typeof FormData === 'undefined'
+                ? false
+                : (opts === null || opts === void 0 ? void 0 : opts.data) instanceof FormData;
             if (is_stream_1.default.readable(opts.data)) {
                 opts.body = opts.data;
             }
@@ -101502,15 +101806,18 @@ class Gaxios {
             else if (typeof opts.data === 'object') {
                 // If www-form-urlencoded content type has been set, but data is
                 // provided as an object, serialize the content using querystring:
-                if (getHeader(opts, 'content-type') ===
-                    'application/x-www-form-urlencoded') {
-                    opts.body = opts.paramsSerializer(opts.data);
-                }
-                else {
-                    if (!hasHeader(opts, 'Content-Type')) {
-                        opts.headers['Content-Type'] = 'application/json';
+                if (!isFormData) {
+                    if (getHeader(opts, 'content-type') ===
+                        'application/x-www-form-urlencoded') {
+                        opts.body = opts.paramsSerializer(opts.data);
                     }
-                    opts.body = JSON.stringify(opts.data);
+                    else {
+                        // } else if (!(opts.data instanceof FormData)) {
+                        if (!hasHeader(opts, 'Content-Type')) {
+                            opts.headers['Content-Type'] = 'application/json';
+                        }
+                        opts.body = JSON.stringify(opts.data);
+                    }
                 }
             }
             else {
@@ -136809,9 +137116,9 @@ const fs$a = require$$0__default$1["default"];
 const gaxios_1 = src$6;
 const jws$1 = jws$2;
 const path$c = require$$1__default$2["default"];
-const util_1$6 = require$$4__default["default"];
+const util_1$5 = require$$4__default["default"];
 const readFile$1 = fs$a.readFile
-    ? util_1$6.promisify(fs$a.readFile)
+    ? util_1$5.promisify(fs$a.readFile)
     : async () => {
         // if running in the web-browser, fs.readFile may not have been shimmed.
         throw new ErrorWithCode('use key rather than keyFile.', 'MISSING_CREDENTIALS');
@@ -139175,15 +139482,15 @@ var _a, _b, _c;
 Object.defineProperty(identitypoolclient, "__esModule", { value: true });
 identitypoolclient.IdentityPoolClient = void 0;
 const fs$9 = require$$0__default$1["default"];
-const util_1$5 = require$$4__default["default"];
+const util_1$4 = require$$4__default["default"];
 const baseexternalclient_1$3 = baseexternalclient;
 // fs.readfile is undefined in browser karma tests causing
 // `npm run browser-test` to fail as test.oauth2.ts imports this file via
 // src/index.ts.
 // Fallback to void function to avoid promisify throwing a TypeError.
-const readFile = util_1$5.promisify((_a = fs$9.readFile) !== null && _a !== void 0 ? _a : (() => { }));
-const realpath = util_1$5.promisify((_b = fs$9.realpath) !== null && _b !== void 0 ? _b : (() => { }));
-const lstat = util_1$5.promisify((_c = fs$9.lstat) !== null && _c !== void 0 ? _c : (() => { }));
+const readFile = util_1$4.promisify((_a = fs$9.readFile) !== null && _a !== void 0 ? _a : (() => { }));
+const realpath = util_1$4.promisify((_b = fs$9.realpath) !== null && _b !== void 0 ? _b : (() => { }));
+const lstat = util_1$4.promisify((_c = fs$9.lstat) !== null && _c !== void 0 ? _c : (() => { }));
 /**
  * Defines the Url-sourced and file-sourced external account clients mainly
  * used for K8s and Azure workloads.
@@ -142038,6 +142345,32 @@ function requireDist () {
 	const url_1 = require$$2__default["default"];
 	exports.pool = new Map();
 	/**
+	 * Determines if a proxy should be considered based on the environment.
+	 *
+	 * @param uri The request uri
+	 * @returns {boolean}
+	 */
+	function shouldUseProxyForURI(uri) {
+	    const noProxyEnv = process.env.NO_PROXY || process.env.no_proxy;
+	    if (!noProxyEnv) {
+	        return true;
+	    }
+	    const givenURI = new URL(uri);
+	    for (const noProxyRaw of noProxyEnv.split(',')) {
+	        const noProxy = noProxyRaw.trim();
+	        if (noProxy === givenURI.origin || noProxy === givenURI.hostname) {
+	            return false;
+	        }
+	        else if (noProxy.startsWith('*.') || noProxy.startsWith('.')) {
+	            const noProxyWildcard = noProxy.replace(/^\*\./, '.');
+	            if (givenURI.hostname.endsWith(noProxyWildcard)) {
+	                return false;
+	            }
+	        }
+	    }
+	    return true;
+	}
+	/**
 	 * Returns a custom request Agent if one is found, otherwise returns undefined
 	 * which will result in the global http(s) Agent being used.
 	 * @private
@@ -142053,7 +142386,9 @@ function requireDist () {
 	        process.env.HTTPS_PROXY ||
 	        process.env.https_proxy;
 	    const poolOptions = Object.assign({}, reqOpts.pool);
-	    if (proxy) {
+	    const manuallyProvidedProxy = !!reqOpts.proxy;
+	    const shouldUseProxy = manuallyProvidedProxy || shouldUseProxyForURI(uri);
+	    if (proxy && shouldUseProxy) {
 	        // tslint:disable-next-line variable-name
 	        const Agent = isHttp
 	            ? requireDist()
@@ -146174,20 +146509,23 @@ Duplexify$1.prototype.end = function(data, enc, cb) {
 
 var duplexify$1 = Duplexify$1;
 
-// Copyright 2014 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/*!
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 Object.defineProperty(util$9, "__esModule", { value: true });
+util$9.util = util$9.Util = util$9.PartialFailureError = util$9.ApiError = void 0;
 /*!
  * @module common/util
  */
@@ -146662,7 +147000,9 @@ class Util {
             options.retries = reqOpts.maxRetries;
         }
         if (!config.stream) {
-            return retryRequest(reqOpts, options, (err, response, body) => {
+            return retryRequest(reqOpts, options, 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (err, response, body) => {
                 util$3.handleResp(err, response, body, callback);
             });
         }
@@ -146785,28 +147125,28 @@ class ProgressStream extends stream_1$1.Transform {
 const util$3 = new Util();
 util$9.util = util$3;
 
-// Copyright 2015 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 Object.defineProperty(serviceObject, "__esModule", { value: true });
+serviceObject.ServiceObject = void 0;
 /*!
- * @module common/service-object
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 const promisify_1$3 = src$a;
 const arrify$2 = arrify_1;
 const events_1 = require$$0__default$3["default"];
 const extend$1 = extend$4;
-const util_1$4 = util$9;
+const util_1$3 = util$9;
 /**
  * ServiceObject is a base class, meant to be inherited from by a "service
  * object," like a BigQuery dataset or Storage bucket.
@@ -146892,6 +147232,9 @@ class ServiceObject extends events_1.EventEmitter {
             const [err, instance] = args;
             if (!err) {
                 self.metadata = instance.metadata;
+                if (self.id && instance.metadata) {
+                    self.id = instance.metadata.id;
+                }
                 args[1] = self; // replace the created `instance` with this one.
             }
             callback(...args);
@@ -146901,7 +147244,7 @@ class ServiceObject extends events_1.EventEmitter {
         this.createMethod.apply(null, args);
     }
     delete(optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const ignoreNotFound = options.ignoreNotFound;
         delete options.ignoreNotFound;
         const methodConfig = (typeof this.methods.delete === 'object' && this.methods.delete) || {};
@@ -146919,11 +147262,12 @@ class ServiceObject extends events_1.EventEmitter {
                     err = null;
                 }
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             callback(err, ...args);
         });
     }
     exists(optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         this.get(options, err => {
             if (err) {
                 if (err.code === 404) {
@@ -146940,7 +147284,7 @@ class ServiceObject extends events_1.EventEmitter {
     get(optionsOrCallback, cb) {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const self = this;
-        const [opts, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [opts, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const options = Object.assign({}, opts);
         const autoCreate = options.autoCreate && typeof this.create === 'function';
         delete options.autoCreate;
@@ -146973,7 +147317,7 @@ class ServiceObject extends events_1.EventEmitter {
         });
     }
     getMetadata(optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const methodConfig = (typeof this.methods.getMetadata === 'object' &&
             this.methods.getMetadata) ||
             {};
@@ -147000,7 +147344,7 @@ class ServiceObject extends events_1.EventEmitter {
         return this.parent.getRequestInterceptors().concat(localInterceptors);
     }
     setMetadata(metadata, optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const methodConfig = (typeof this.methods.setMetadata === 'object' &&
             this.methods.setMetadata) ||
             {};
@@ -147060,27 +147404,27 @@ class ServiceObject extends events_1.EventEmitter {
 serviceObject.ServiceObject = ServiceObject;
 promisify_1$3.promisifyAll(ServiceObject, { exclude: ['getRequestInterceptors'] });
 
-// Copyright 2016 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 Object.defineProperty(operation, "__esModule", { value: true });
+operation.Operation = void 0;
 /*!
- * @module common/operation
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-const service_object_1$1 = serviceObject;
-const util_1$3 = require$$4__default["default"];
+const service_object_1 = serviceObject;
+const util_1$2 = require$$4__default["default"];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-class Operation extends service_object_1$1.ServiceObject {
+class Operation extends service_object_1.ServiceObject {
     /**
      * An Operation object allows you to interact with APIs that take longer to
      * process things.
@@ -147191,7 +147535,7 @@ class Operation extends service_object_1$1.ServiceObject {
             return;
         }
         try {
-            const metadata = await util_1$3.promisify(this.poll_.bind(this))();
+            const metadata = await util_1$2.promisify(this.poll_.bind(this))();
             if (!metadata) {
                 setTimeout(this.startPolling_.bind(this), this.pollIntervalMs || 500);
                 return;
@@ -147207,26 +147551,26 @@ operation.Operation = Operation;
 
 var service = {};
 
-// Copyright 2015 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 Object.defineProperty(service, "__esModule", { value: true });
+service.Service = void 0;
 /*!
- * @module common/service
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 const arrify$1 = arrify_1;
 const extend = extend$4;
-const util_1$2 = util$9;
+const util_1$1 = util$9;
 const PROJECT_ID_TOKEN = '{{projectId}}';
 class Service {
     /**
@@ -147264,7 +147608,7 @@ class Service {
             token: options.token,
         });
         this.makeAuthenticatedRequest =
-            util_1$2.util.makeAuthenticatedRequestFactory(reqCfg);
+            util_1$1.util.makeAuthenticatedRequestFactory(reqCfg);
         this.authClient = this.makeAuthenticatedRequest.authClient;
         this.getCredentials = this.makeAuthenticatedRequest.getCredentials;
         const isCloudFunctionEnv = !!process.env.FUNCTION_NAME;
@@ -147340,7 +147684,7 @@ class Service {
         });
         delete reqOpts.interceptors_;
         const pkg = this.packageJson;
-        let userAgent = util_1$2.util.getUserAgentFromPackageJson(pkg);
+        let userAgent = util_1$1.util.getUserAgentFromPackageJson(pkg);
         if (this.providedUserAgent) {
             userAgent = `${this.providedUserAgent} ${userAgent}`;
         }
@@ -147378,45 +147722,19 @@ class Service {
 }
 service.Service = Service;
 
-// Copyright 2016 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-Object.defineProperty(src$b, "__esModule", { value: true });
-/**
- * @type {module:common/operation}
- * @private
- */
-var operation_1 = operation;
-src$b.Operation = operation_1.Operation;
-/**
- * @type {module:common/service}
- * @private
- */
-var service_1 = service;
-src$b.Service = service_1.Service;
-/**
- * @type {module:common/serviceObject}
- * @private
- */
-var service_object_1 = serviceObject;
-src$b.ServiceObject = service_object_1.ServiceObject;
-/**
- * @type {module:common/util}
- * @private
- */
-var util_1$1 = util$9;
-src$b.ApiError = util_1$1.ApiError;
-src$b.util = util_1$1.util;
+(function (exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var operation_1 = operation;
+	Object.defineProperty(exports, "Operation", { enumerable: true, get: function () { return operation_1.Operation; } });
+	var service_1 = service;
+	Object.defineProperty(exports, "Service", { enumerable: true, get: function () { return service_1.Service; } });
+	var service_object_1 = serviceObject;
+	Object.defineProperty(exports, "ServiceObject", { enumerable: true, get: function () { return service_object_1.ServiceObject; } });
+	var util_1 = util$9;
+	Object.defineProperty(exports, "ApiError", { enumerable: true, get: function () { return util_1.ApiError; } });
+	Object.defineProperty(exports, "util", { enumerable: true, get: function () { return util_1.util; } });
+	
+} (nodejsCommon));
 
 var src = {};
 
@@ -166247,11 +166565,12 @@ var configstore = Configstore;
 	     * @return {bool} is the request good?
 	     */
 	    onResponse(resp) {
-	        if (this.retryOptions.retryableErrorFn({
-	            code: resp.status,
-	            message: resp.statusText,
-	            name: resp.statusText,
-	        })) {
+	        if (resp.status !== 200 &&
+	            this.retryOptions.retryableErrorFn({
+	                code: resp.status,
+	                message: resp.statusText,
+	                name: resp.statusText,
+	            })) {
 	            this.attemptDelayedRetry(resp);
 	            return false;
 	        }
@@ -166360,7 +166679,7 @@ var channel = {};
 // limitations under the License.
 Object.defineProperty(channel, "__esModule", { value: true });
 channel.Channel = void 0;
-const common_1$2 = src$b;
+const nodejs_common_1$2 = nodejsCommon;
 const promisify_1$1 = src$a;
 /**
  * Create a channel object to interact with a Cloud Storage channel.
@@ -166379,7 +166698,7 @@ const promisify_1$1 = src$a;
  * const channel = storage.channel('id', 'resource-id');
  * ```
  */
-class Channel extends common_1$2.ServiceObject {
+class Channel extends nodejs_common_1$2.ServiceObject {
     constructor(storage, id, resourceId) {
         const config = {
             parent: storage,
@@ -166434,7 +166753,7 @@ class Channel extends common_1$2.ServiceObject {
      * ```
      */
     stop(callback) {
-        callback = callback || common_1$2.util.noop;
+        callback = callback || nodejs_common_1$2.util.noop;
         this.request({
             method: 'POST',
             uri: '/stop',
@@ -166564,7 +166883,7 @@ var hmacKey = {};
 // limitations under the License.
 Object.defineProperty(hmacKey, "__esModule", { value: true });
 hmacKey.HmacKey = void 0;
-const common_1$1 = src$b;
+const nodejs_common_1$1 = nodejsCommon;
 /**
  * The API-formatted resource description of the HMAC key.
  *
@@ -166583,7 +166902,7 @@ const common_1$1 = src$b;
  *
  * @class
  */
-class HmacKey extends common_1$1.ServiceObject {
+class HmacKey extends nodejs_common_1$1.ServiceObject {
     /**
      * @typedef {object} HmacKeyOptions
      * @property {string} [projectId] The project ID of the project that owns
@@ -166858,7 +167177,7 @@ hmacKey.HmacKey = HmacKey;
 
 var name = "@google-cloud/storage";
 var description = "Cloud Storage Client Library for Node.js";
-var version = "5.18.3";
+var version = "5.19.4";
 var license = "Apache-2.0";
 var author = "Google Inc.";
 var engines = {
@@ -166907,8 +167226,8 @@ var scripts = {
 	precompile: "gts clean"
 };
 var dependencies = {
-	"@google-cloud/common": "^3.8.1",
 	"@google-cloud/paginator": "^3.0.7",
+	"@google-cloud/projectify": "^2.0.0",
 	"@google-cloud/promisify": "^2.0.0",
 	"abort-controller": "^3.0.0",
 	arrify: "^2.0.0",
@@ -166917,17 +167236,20 @@ var dependencies = {
 	configstore: "^5.0.0",
 	"date-and-time": "^2.0.0",
 	duplexify: "^4.0.0",
+	ent: "^2.2.0",
 	extend: "^3.0.2",
 	gaxios: "^4.0.0",
 	"get-stream": "^6.0.0",
-	"google-auth-library": "^7.0.0",
+	"google-auth-library": "^7.14.1",
 	"hash-stream-validation": "^0.2.2",
 	mime: "^3.0.0",
 	"mime-types": "^2.0.8",
 	"p-limit": "^3.0.1",
 	pumpify: "^2.0.0",
+	"retry-request": "^4.2.2",
 	snakeize: "^0.1.0",
 	"stream-events": "^1.0.4",
+	"teeny-request": "^7.1.3",
 	"xdg-basedir": "^4.0.0"
 };
 var devDependencies = {
@@ -166936,9 +167258,9 @@ var devDependencies = {
 	"@grpc/proto-loader": "^0.6.0",
 	"@types/async-retry": "^1.4.3",
 	"@types/compressible": "^2.0.0",
-	"@types/concat-stream": "^2.0.0",
 	"@types/configstore": "^5.0.0",
 	"@types/date-and-time": "^0.13.0",
+	"@types/ent": "^2.2.1",
 	"@types/extend": "^3.0.0",
 	"@types/mime": "^2.0.0",
 	"@types/mime-types": "^2.1.0",
@@ -166948,6 +167270,7 @@ var devDependencies = {
 	"@types/node-fetch": "^2.1.3",
 	"@types/proxyquire": "^1.3.28",
 	"@types/pumpify": "^1.4.1",
+	"@types/request": "^2.48.4",
 	"@types/sinon": "^10.0.0",
 	"@types/tmp": "0.2.3",
 	"@types/uuid": "^8.0.0",
@@ -166962,7 +167285,7 @@ var devDependencies = {
 	mocha: "^8.4.0",
 	mockery: "^2.1.0",
 	nock: "~13.2.0",
-	"node-fetch": "^2.2.0",
+	"node-fetch": "^2.6.7",
 	proxyquire: "^2.1.3",
 	sinon: "^13.0.0",
 	tmp: "^0.2.0",
@@ -167008,7 +167331,7 @@ function requireStorage () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.Storage = exports.RETRYABLE_ERR_FN_DEFAULT = exports.MAX_RETRY_DELAY_DEFAULT = exports.TOTAL_TIMEOUT_DEFAULT = exports.RETRY_DELAY_MULTIPLIER_DEFAULT = exports.MAX_RETRY_DEFAULT = exports.AUTO_RETRY_DEFAULT = exports.PROTOCOL_REGEX = exports.StorageExceptionMessages = exports.ExceptionMessages = exports.IdempotencyStrategy = void 0;
-		const common_1 = src$b;
+		const nodejs_common_1 = nodejsCommon;
 		const paginator_1 = src;
 		const promisify_1 = src$a;
 		const arrify = arrify_1;
@@ -167242,7 +167565,7 @@ function requireStorage () {
 		 *
 		 * @class
 		 */
-		class Storage extends common_1.Service {
+		class Storage extends nodejs_common_1.Service {
 		    /**
 		     * @typedef {object} StorageOptions
 		     * @property {string} [projectId] The project ID from the Google Developer's
@@ -167349,7 +167672,7 @@ function requireStorage () {
 		        let autoRetryValue = exports.AUTO_RETRY_DEFAULT;
 		        if (options.autoRetry !== undefined &&
 		            ((_a = options.retryOptions) === null || _a === void 0 ? void 0 : _a.autoRetry) !== undefined) {
-		            throw new common_1.ApiError(StorageExceptionMessages.AUTO_RETRY_DEPRECATED);
+		            throw new nodejs_common_1.ApiError(StorageExceptionMessages.AUTO_RETRY_DEPRECATED);
 		        }
 		        else if (options.autoRetry !== undefined) {
 		            autoRetryValue = options.autoRetry;
@@ -167359,7 +167682,7 @@ function requireStorage () {
 		        }
 		        let maxRetryValue = exports.MAX_RETRY_DEFAULT;
 		        if (options.maxRetries && ((_c = options.retryOptions) === null || _c === void 0 ? void 0 : _c.maxRetries)) {
-		            throw new common_1.ApiError(StorageExceptionMessages.MAX_RETRIES_DEPRECATED);
+		            throw new nodejs_common_1.ApiError(StorageExceptionMessages.MAX_RETRIES_DEPRECATED);
 		        }
 		        else if (options.maxRetries) {
 		            maxRetryValue = options.maxRetries;
@@ -167481,7 +167804,9 @@ function requireStorage () {
 		     * @property {Cors[]} [cors=[]] Specify the CORS configuration to use.
 		     * @property {boolean} [dra=false] Specify the storage class as Durable Reduced
 		     *     Availability.
-		     * @property {string} [location] Specify the location / region in which to create the bucket.
+		     * @property {string} [location] Specify the bucket's location(s). If specifying
+		     *     a dual-region, can be specified as a string `"US-CENTRAL1+US-WEST1"`.
+		     *     For more information, see {@link https://cloud.google.com/storage/docs/locations| Bucket Locations}.
 		     * @property {boolean} [multiRegional=false] Specify the storage class as
 		     *     Multi-Regional.
 		     * @property {boolean} [nearline=false] Specify the storage class as Nearline.
@@ -167489,7 +167814,7 @@ function requireStorage () {
 		     * @property {boolean} [requesterPays=false] **Early Access Testers Only**
 		     *     Force the use of the User Project metadata field to assign operational
 		     *     costs when an operation is made on a Bucket and its objects.
-		     * @property {string} [rpo] For dual region buckets, controls whether turbo
+		     * @property {string} [rpo] For dual-region buckets, controls whether turbo
 		     *      replication is enabled (`ASYNC_TURBO`) or disabled (`DEFAULT`).
 		     * @property {boolean} [standard=true] Specify the storage class as Standard.
 		     * @property {string} [storageClass] The new storage class. (`standard`,
@@ -168342,7 +168667,7 @@ function requireFile () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.File = exports.FileExceptionMessages = exports.STORAGE_POST_POLICY_BASE_URL = exports.ActionToHTTPMethod = void 0;
-		const common_1 = src$b;
+		const nodejs_common_1 = nodejsCommon;
 		const promisify_1 = src$a;
 		const compressible = compressible_1;
 		const getStream = getStream$1.exports;
@@ -168419,7 +168744,7 @@ function requireFile () {
 		 *
 		 * @class
 		 */
-		class File extends common_1.ServiceObject {
+		class File extends nodejs_common_1.ServiceObject {
 		    /**
 		     * Cloud Storage uses access control lists (ACLs) to manage object and
 		     * bucket access. ACLs are the mechanism you use to share objects with other
@@ -168848,6 +169173,7 @@ function requireFile () {
 		     * A helper method for determining if a request should be retried based on preconditions.
 		     * This should only be used for methods where the idempotency is determined by
 		     * `ifGenerationMatch`
+		     * @private
 		     *
 		     * A request should not be retried under the following conditions:
 		     * - if precondition option `ifGenerationMatch` is not set OR
@@ -169007,7 +169333,7 @@ function requireFile () {
 		            options = optionsOrCallback;
 		        }
 		        options = extend(true, {}, options);
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        let destBucket;
 		        let destName;
 		        let newFile;
@@ -169261,7 +169587,7 @@ function requireFile () {
 		                .on('response', res => {
 		                throughStream.emit('response', res);
 		                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-		                common_1.util.handleResp(null, res, null, onResponse);
+		                nodejs_common_1.util.handleResp(null, res, null, onResponse);
 		            })
 		                .resume();
 		            // We listen to the response event from the request stream so that we
@@ -169399,6 +169725,7 @@ function requireFile () {
 		     * @property {string} [configPath] A full JSON file path to use with
 		     *     `gcs-resumable-upload`. This maps to the {@link https://github.com/yeoman/configstore/tree/0df1ec950d952b1f0dfb39ce22af8e505dffc71a#configpath| configstore option by the same name}.
 		     * @property {object} [metadata] Metadata to set on the file.
+		     * @property {number} [offset] The starting byte of the upload stream for resuming an interrupted upload.
 		     * @property {string} [origin] Origin header to set for the upload.
 		     * @property {string} [predefinedAcl] Apply a predefined set of access
 		     * controls to this object.
@@ -169563,7 +169890,9 @@ function requireFile () {
 		     *     CRC32c checksum. You may use MD5 if preferred, but that hash is not
 		     *     supported for composite objects. An error will be raised if MD5 is
 		     *     specified but is not available. You may also choose to skip validation
-		     *     completely, however this is **not recommended**.
+		     *     completely, however this is **not recommended**. In addition to specifying
+		     *     validation type, providing `metadata.crc32c` or `metadata.md5Hash` will
+		     *     cause the server to perform validation in addition to client validation.
 		     *     NOTE: Validation is automatically skipped for objects that were
 		     *     uploaded using the `gzip` option and have already compressed content.
 		     */
@@ -169667,7 +169996,7 @@ function requireFile () {
 		     */
 		    // eslint-disable-next-line @typescript-eslint/no-explicit-any
 		    createWriteStream(options = {}) {
-		        options = Object.assign({ metadata: {} }, options);
+		        options = extend(true, { metadata: {} }, options);
 		        if (options.contentType) {
 		            options.metadata.contentType = options.contentType;
 		        }
@@ -170788,7 +171117,7 @@ function requireFile () {
 		            Object.assign(acc, currentHeaders.headers);
 		            return acc;
 		        }, {});
-		        common_1.util.makeRequest({
+		        nodejs_common_1.util.makeRequest({
 		            method: 'HEAD',
 		            uri: `${this.storage.apiEndpoint}/${this.bucket.name}/${encodeURIComponent(this.name)}`,
 		            headers,
@@ -170921,7 +171250,7 @@ function requireFile () {
 		     * Another example:
 		     */
 		    makePublic(callback) {
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.acl.add({
 		            entity: 'allUsers',
 		            role: 'READER',
@@ -171083,7 +171412,7 @@ function requireFile () {
 		        const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : {};
 		        callback =
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.copy(destination, options, (err, destinationFile, copyApiResponse) => {
 		            if (err) {
 		                err.message = 'file#copy failed with an error - ' + err.message;
@@ -171194,7 +171523,7 @@ function requireFile () {
 		        const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : {};
 		        callback =
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.move(destinationFile, options, callback);
 		    }
 		    /**
@@ -171457,7 +171786,7 @@ function requireFile () {
 		     * @private
 		     */
 		    startResumableUpload_(dup, options) {
-		        options = Object.assign({
+		        options = extend(true, {
 		            metadata: {},
 		        }, options);
 		        const retryOptions = this.storage.retryOptions;
@@ -171510,7 +171839,7 @@ function requireFile () {
 		     * @private
 		     */
 		    startSimpleUpload_(dup, options) {
-		        options = Object.assign({
+		        options = extend(true, {
 		            metadata: {},
 		        }, options);
 		        const apiEndpoint = this.storage.apiEndpoint;
@@ -171544,7 +171873,7 @@ function requireFile () {
 		            reqOpts.qs.predefinedAcl = 'publicRead';
 		        }
 		        Object.assign(reqOpts.qs, this.instancePreconditionOpts, options.preconditionOpts);
-		        common_1.util.makeWritableStream(dup, {
+		        nodejs_common_1.util.makeWritableStream(dup, {
 		            makeAuthenticatedRequest: (reqOpts) => {
 		                this.request(reqOpts, (err, body, resp) => {
 		                    if (err) {
@@ -171915,7 +172244,7 @@ var notification = {};
 // limitations under the License.
 Object.defineProperty(notification, "__esModule", { value: true });
 notification.Notification = void 0;
-const common_1 = src$b;
+const nodejs_common_1 = nodejsCommon;
 const promisify_1 = src$a;
 /**
  * The API-formatted resource description of the notification.
@@ -171948,7 +172277,7 @@ const promisify_1 = src$a;
  * const notification = myBucket.notification('1');
  * ```
  */
-class Notification extends common_1.ServiceObject {
+class Notification extends nodejs_common_1.ServiceObject {
     constructor(bucket, id) {
         const methods = {
             /**
@@ -172081,7 +172410,7 @@ class Notification extends common_1.ServiceObject {
             method: 'DELETE',
             uri: '',
             qs: options,
-        }, callback || common_1.util.noop);
+        }, callback || nodejs_common_1.util.noop);
     }
     /**
      * Get a notification and its metadata if it exists.
@@ -172231,7 +172560,7 @@ function requireBucket () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.Bucket = exports.BucketExceptionMessages = exports.AvailableServiceObjectMethods = exports.BucketActionToHTTPMethod = void 0;
-		const common_1 = src$b;
+		const nodejs_common_1 = nodejsCommon;
 		const paginator_1 = src;
 		const promisify_1 = src$a;
 		const arrify = arrify_1;
@@ -172493,7 +172822,7 @@ function requireBucket () {
 		 * const bucket = storage.bucket('albums');
 		 * ```
 		 */
-		class Bucket extends common_1.ServiceObject {
+		class Bucket extends nodejs_common_1.ServiceObject {
 		    constructor(storage, name, options) {
 		        var _a, _b, _c, _d;
 		        options = options || {};
@@ -172902,7 +173231,7 @@ function requireBucket () {
 		     *     **Note**: For configuring a raw-formatted rule object to be passed as `action`
 		     *               please refer to the [examples]{@link https://cloud.google.com/storage/docs/managing-lifecycles#configexamples}.
 		     * @property {object} condition Condition a bucket must meet before the
-		     *     action occurson the bucket. Refer to followitn supported [conditions]{@link https://cloud.google.com/storage/docs/lifecycle#conditions}.
+		     *     action occurs on the bucket. Refer to following supported [conditions]{@link https://cloud.google.com/storage/docs/lifecycle#conditions}.
 		     * @property {string} [storageClass] When using the `setStorageClass`
 		     *     action, provide this option to dictate which storage class the object
 		     *     should update to. Please see
@@ -173202,7 +173531,7 @@ function requireBucket () {
 		        // eslint-disable-next-line @typescript-eslint/no-explicit-any
 		        sources = sources.map(convertToFile);
 		        const destinationFile = convertToFile(destination);
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        if (!destinationFile.metadata.contentType) {
 		            const destinationContentType = mime.contentType(destinationFile.name);
 		            if (destinationContentType) {
@@ -173488,7 +173817,7 @@ function requireBucket () {
 		            options = optionsOrCallback;
 		        }
 		        const topicIsObject = topic !== null && typeof topic === 'object';
-		        if (topicIsObject && common_1.util.isCustomType(topic, 'pubsub/topic')) {
+		        if (topicIsObject && nodejs_common_1.util.isCustomType(topic, 'pubsub/topic')) {
 		            // eslint-disable-next-line @typescript-eslint/no-explicit-any
 		            topic = topic.name;
 		        }
@@ -173758,7 +174087,7 @@ function requireBucket () {
 		            billing: {
 		                requesterPays: false,
 		            },
-		        }, callback || common_1.util.noop);
+		        }, callback || nodejs_common_1.util.noop);
 		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
 		    }
 		    /**
@@ -173907,7 +174236,7 @@ function requireBucket () {
 		            billing: {
 		                requesterPays: true,
 		            },
-		        }, callback || common_1.util.noop);
+		        }, callback || nodejs_common_1.util.noop);
 		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
 		    }
 		    /**
@@ -174873,7 +175202,7 @@ function requireBucket () {
 		        const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : {};
 		        callback =
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        this.setMetadata({ labels }, options, callback);
 		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
@@ -175586,9 +175915,10 @@ function requireBucket () {
 	var notification_1 = notification;
 	Object.defineProperty(exports, "Notification", { enumerable: true, get: function () { return notification_1.Notification; } });
 	var storage_1 = requireStorage();
+	Object.defineProperty(exports, "IdempotencyStrategy", { enumerable: true, get: function () { return storage_1.IdempotencyStrategy; } });
 	Object.defineProperty(exports, "Storage", { enumerable: true, get: function () { return storage_1.Storage; } });
 	
-} (src$c));
+} (src$b));
 
 var tmpPromise = {exports: {}};
 
@@ -184412,10 +184742,11 @@ const fs = __importStar(require$$0__default$1["default"]);
 const stream = __importStar(require$$0__default$4["default"]);
 const util = __importStar(require$$4__default["default"]);
 const path = __importStar(require$$1__default$2["default"]);
-function hashFiles$1(globber) {
+function hashFiles$1(globber, verbose = false) {
     var e_1, _a;
     var _b;
     return __awaiter$1(this, void 0, void 0, function* () {
+        const writeDelegate = verbose ? core.info : core.debug;
         let hasMatch = false;
         const githubWorkspace = (_b = process.env['GITHUB_WORKSPACE']) !== null && _b !== void 0 ? _b : process.cwd();
         const result = crypto$1.createHash('sha256');
@@ -184423,13 +184754,13 @@ function hashFiles$1(globber) {
         try {
             for (var _c = __asyncValues(globber.globGenerator()), _d; _d = yield _c.next(), !_d.done;) {
                 const file = _d.value;
-                core.debug(file);
+                writeDelegate(file);
                 if (!file.startsWith(`${githubWorkspace}${path.sep}`)) {
-                    core.debug(`Ignore '${file}' since it is not under GITHUB_WORKSPACE.`);
+                    writeDelegate(`Ignore '${file}' since it is not under GITHUB_WORKSPACE.`);
                     continue;
                 }
                 if (fs.statSync(file).isDirectory()) {
-                    core.debug(`Skip directory '${file}'.`);
+                    writeDelegate(`Skip directory '${file}'.`);
                     continue;
                 }
                 const hash = crypto$1.createHash('sha256');
@@ -184451,11 +184782,11 @@ function hashFiles$1(globber) {
         }
         result.end();
         if (hasMatch) {
-            core.debug(`Found ${count} files to hash.`);
+            writeDelegate(`Found ${count} files to hash.`);
             return result.digest('hex');
         }
         else {
-            core.debug(`No matches found for glob`);
+            writeDelegate(`No matches found for glob`);
             return '';
         }
     });
@@ -184493,14 +184824,14 @@ var create_1 = glob.create = create;
  * @param patterns  Patterns separated by newlines
  * @param options   Glob options
  */
-function hashFiles(patterns, options) {
+function hashFiles(patterns, options, verbose = false) {
     return __awaiter(this, void 0, void 0, function* () {
         let followSymbolicLinks = true;
         if (options && typeof options.followSymbolicLinks === 'boolean') {
             followSymbolicLinks = options.followSymbolicLinks;
         }
         const globber = yield create(patterns, { followSymbolicLinks });
-        return internal_hash_files_1.hashFiles(globber);
+        return internal_hash_files_1.hashFiles(globber, verbose);
     });
 }
 glob.hashFiles = hashFiles;
@@ -184544,7 +184875,7 @@ const main = async () => {
         console.log('🌀 Skipping uploading cache as the cache was hit by exact match.');
         return;
     }
-    const bucket = new src$c.Storage().bucket(state.bucket);
+    const bucket = new src$b.Storage().bucket(state.bucket);
     const targetFileName = state.targetFileName;
     const [targetFileExists,] = await bucket
         .file(targetFileName)

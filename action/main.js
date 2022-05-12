@@ -1,47 +1,47 @@
 'use strict';
 
-var require$$1$4 = require('os');
-var require$$0$4 = require('fs');
-var require$$1$8 = require('path');
-var require$$0$5 = require('http');
-var require$$1$6 = require('https');
-var require$$0$9 = require('net');
-var require$$1$5 = require('tls');
-var require$$0$6 = require('events');
-var require$$0$a = require('assert');
-var require$$1$7 = require('util');
-var require$$0$8 = require('stream');
+var require$$0$4 = require('os');
+var require$$0$5 = require('fs');
+var require$$1$7 = require('path');
+var require$$0$6 = require('http');
+var require$$1$5 = require('https');
+var require$$0$a = require('net');
+var require$$1$4 = require('tls');
+var require$$0$7 = require('events');
+var require$$0$b = require('assert');
+var require$$1$6 = require('util');
+var require$$0$9 = require('stream');
 var require$$2$3 = require('url');
 var require$$5$1 = require('zlib');
-var require$$0$7 = require('buffer');
-var require$$0$d = require('child_process');
-var require$$0$b = require('querystring');
-var require$$1$9 = require('tty');
-var require$$0$c = require('crypto');
-var require$$0$e = require('constants');
+var require$$0$8 = require('buffer');
+var require$$0$e = require('child_process');
+var require$$0$c = require('querystring');
+var require$$1$8 = require('tty');
+var require$$0$d = require('crypto');
+var require$$0$f = require('constants');
 var require$$6$1 = require('timers');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var require$$1__default = /*#__PURE__*/_interopDefaultLegacy(require$$1$4);
 var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0$4);
-var require$$1__default$4 = /*#__PURE__*/_interopDefaultLegacy(require$$1$8);
 var require$$0__default$1 = /*#__PURE__*/_interopDefaultLegacy(require$$0$5);
+var require$$1__default$3 = /*#__PURE__*/_interopDefaultLegacy(require$$1$7);
+var require$$0__default$2 = /*#__PURE__*/_interopDefaultLegacy(require$$0$6);
+var require$$1__default$1 = /*#__PURE__*/_interopDefaultLegacy(require$$1$5);
+var require$$0__default$6 = /*#__PURE__*/_interopDefaultLegacy(require$$0$a);
+var require$$1__default = /*#__PURE__*/_interopDefaultLegacy(require$$1$4);
+var require$$0__default$3 = /*#__PURE__*/_interopDefaultLegacy(require$$0$7);
+var require$$0__default$7 = /*#__PURE__*/_interopDefaultLegacy(require$$0$b);
 var require$$1__default$2 = /*#__PURE__*/_interopDefaultLegacy(require$$1$6);
 var require$$0__default$5 = /*#__PURE__*/_interopDefaultLegacy(require$$0$9);
-var require$$1__default$1 = /*#__PURE__*/_interopDefaultLegacy(require$$1$5);
-var require$$0__default$2 = /*#__PURE__*/_interopDefaultLegacy(require$$0$6);
-var require$$0__default$6 = /*#__PURE__*/_interopDefaultLegacy(require$$0$a);
-var require$$1__default$3 = /*#__PURE__*/_interopDefaultLegacy(require$$1$7);
-var require$$0__default$4 = /*#__PURE__*/_interopDefaultLegacy(require$$0$8);
 var require$$2__default = /*#__PURE__*/_interopDefaultLegacy(require$$2$3);
 var require$$5__default = /*#__PURE__*/_interopDefaultLegacy(require$$5$1);
-var require$$0__default$3 = /*#__PURE__*/_interopDefaultLegacy(require$$0$7);
-var require$$0__default$9 = /*#__PURE__*/_interopDefaultLegacy(require$$0$d);
-var require$$0__default$7 = /*#__PURE__*/_interopDefaultLegacy(require$$0$b);
-var require$$1__default$5 = /*#__PURE__*/_interopDefaultLegacy(require$$1$9);
-var require$$0__default$8 = /*#__PURE__*/_interopDefaultLegacy(require$$0$c);
+var require$$0__default$4 = /*#__PURE__*/_interopDefaultLegacy(require$$0$8);
 var require$$0__default$a = /*#__PURE__*/_interopDefaultLegacy(require$$0$e);
+var require$$0__default$8 = /*#__PURE__*/_interopDefaultLegacy(require$$0$c);
+var require$$1__default$4 = /*#__PURE__*/_interopDefaultLegacy(require$$1$8);
+var require$$0__default$9 = /*#__PURE__*/_interopDefaultLegacy(require$$0$d);
+var require$$0__default$b = /*#__PURE__*/_interopDefaultLegacy(require$$0$f);
 var require$$6__default = /*#__PURE__*/_interopDefaultLegacy(require$$6$1);
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -137,7 +137,7 @@ var __importStar$7 = (commonjsGlobal && commonjsGlobal.__importStar) || function
 };
 Object.defineProperty(command, "__esModule", { value: true });
 command.issue = command.issueCommand = void 0;
-const os$4 = __importStar$7(require$$1__default["default"]);
+const os$4 = __importStar$7(require$$0__default["default"]);
 const utils_1$2 = utils$3;
 /**
  * Commands
@@ -233,8 +233,8 @@ Object.defineProperty(fileCommand, "__esModule", { value: true });
 fileCommand.issueCommand = void 0;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fs$9 = __importStar$6(require$$0__default["default"]);
-const os$3 = __importStar$6(require$$1__default["default"]);
+const fs$9 = __importStar$6(require$$0__default$1["default"]);
+const os$3 = __importStar$6(require$$0__default["default"]);
 const utils_1$1 = utils$3;
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
@@ -322,11 +322,11 @@ var hasRequiredTunnel$1;
 function requireTunnel$1 () {
 	if (hasRequiredTunnel$1) return tunnel;
 	hasRequiredTunnel$1 = 1;
-	var tls = require$$1__default$1["default"];
-	var http = require$$0__default$1["default"];
-	var https = require$$1__default$2["default"];
-	var events = require$$0__default$2["default"];
-	var util = require$$1__default$3["default"];
+	var tls = require$$1__default["default"];
+	var http = require$$0__default$2["default"];
+	var https = require$$1__default$1["default"];
+	var events = require$$0__default$3["default"];
+	var util = require$$1__default$2["default"];
 
 
 	tunnel.httpOverHttp = httpOverHttp;
@@ -598,8 +598,8 @@ function requireTunnel () {
 
 (function (exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
-	const http = require$$0__default$1["default"];
-	const https = require$$1__default$2["default"];
+	const http = require$$0__default$2["default"];
+	const https = require$$1__default$1["default"];
 	const pm = proxy;
 	let tunnel;
 	var HttpCodes;
@@ -1279,6 +1279,300 @@ function requireOidcUtils () {
 	return oidcUtils;
 }
 
+var summary = {};
+
+var hasRequiredSummary;
+
+function requireSummary () {
+	if (hasRequiredSummary) return summary;
+	hasRequiredSummary = 1;
+	(function (exports) {
+		var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+		    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+		    return new (P || (P = Promise))(function (resolve, reject) {
+		        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+		        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+		        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+		        step((generator = generator.apply(thisArg, _arguments || [])).next());
+		    });
+		};
+		Object.defineProperty(exports, "__esModule", { value: true });
+		exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
+		const os_1 = require$$0__default["default"];
+		const fs_1 = require$$0__default$1["default"];
+		const { access, appendFile, writeFile } = fs_1.promises;
+		exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
+		exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
+		class Summary {
+		    constructor() {
+		        this._buffer = '';
+		    }
+		    /**
+		     * Finds the summary file path from the environment, rejects if env var is not found or file does not exist
+		     * Also checks r/w permissions.
+		     *
+		     * @returns step summary file path
+		     */
+		    filePath() {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            if (this._filePath) {
+		                return this._filePath;
+		            }
+		            const pathFromEnv = process.env[exports.SUMMARY_ENV_VAR];
+		            if (!pathFromEnv) {
+		                throw new Error(`Unable to find environment variable for $${exports.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
+		            }
+		            try {
+		                yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
+		            }
+		            catch (_a) {
+		                throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
+		            }
+		            this._filePath = pathFromEnv;
+		            return this._filePath;
+		        });
+		    }
+		    /**
+		     * Wraps content in an HTML tag, adding any HTML attributes
+		     *
+		     * @param {string} tag HTML tag to wrap
+		     * @param {string | null} content content within the tag
+		     * @param {[attribute: string]: string} attrs key-value list of HTML attributes to add
+		     *
+		     * @returns {string} content wrapped in HTML element
+		     */
+		    wrap(tag, content, attrs = {}) {
+		        const htmlAttrs = Object.entries(attrs)
+		            .map(([key, value]) => ` ${key}="${value}"`)
+		            .join('');
+		        if (!content) {
+		            return `<${tag}${htmlAttrs}>`;
+		        }
+		        return `<${tag}${htmlAttrs}>${content}</${tag}>`;
+		    }
+		    /**
+		     * Writes text in the buffer to the summary buffer file and empties buffer. Will append by default.
+		     *
+		     * @param {SummaryWriteOptions} [options] (optional) options for write operation
+		     *
+		     * @returns {Promise<Summary>} summary instance
+		     */
+		    write(options) {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
+		            const filePath = yield this.filePath();
+		            const writeFunc = overwrite ? writeFile : appendFile;
+		            yield writeFunc(filePath, this._buffer, { encoding: 'utf8' });
+		            return this.emptyBuffer();
+		        });
+		    }
+		    /**
+		     * Clears the summary buffer and wipes the summary file
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    clear() {
+		        return __awaiter(this, void 0, void 0, function* () {
+		            return this.emptyBuffer().write({ overwrite: true });
+		        });
+		    }
+		    /**
+		     * Returns the current summary buffer as a string
+		     *
+		     * @returns {string} string of summary buffer
+		     */
+		    stringify() {
+		        return this._buffer;
+		    }
+		    /**
+		     * If the summary buffer is empty
+		     *
+		     * @returns {boolen} true if the buffer is empty
+		     */
+		    isEmptyBuffer() {
+		        return this._buffer.length === 0;
+		    }
+		    /**
+		     * Resets the summary buffer without writing to summary file
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    emptyBuffer() {
+		        this._buffer = '';
+		        return this;
+		    }
+		    /**
+		     * Adds raw text to the summary buffer
+		     *
+		     * @param {string} text content to add
+		     * @param {boolean} [addEOL=false] (optional) append an EOL to the raw text (default: false)
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addRaw(text, addEOL = false) {
+		        this._buffer += text;
+		        return addEOL ? this.addEOL() : this;
+		    }
+		    /**
+		     * Adds the operating system-specific end-of-line marker to the buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addEOL() {
+		        return this.addRaw(os_1.EOL);
+		    }
+		    /**
+		     * Adds an HTML codeblock to the summary buffer
+		     *
+		     * @param {string} code content to render within fenced code block
+		     * @param {string} lang (optional) language to syntax highlight code
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addCodeBlock(code, lang) {
+		        const attrs = Object.assign({}, (lang && { lang }));
+		        const element = this.wrap('pre', this.wrap('code', code), attrs);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML list to the summary buffer
+		     *
+		     * @param {string[]} items list of items to render
+		     * @param {boolean} [ordered=false] (optional) if the rendered list should be ordered or not (default: false)
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addList(items, ordered = false) {
+		        const tag = ordered ? 'ol' : 'ul';
+		        const listItems = items.map(item => this.wrap('li', item)).join('');
+		        const element = this.wrap(tag, listItems);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML table to the summary buffer
+		     *
+		     * @param {SummaryTableCell[]} rows table rows
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addTable(rows) {
+		        const tableBody = rows
+		            .map(row => {
+		            const cells = row
+		                .map(cell => {
+		                if (typeof cell === 'string') {
+		                    return this.wrap('td', cell);
+		                }
+		                const { header, data, colspan, rowspan } = cell;
+		                const tag = header ? 'th' : 'td';
+		                const attrs = Object.assign(Object.assign({}, (colspan && { colspan })), (rowspan && { rowspan }));
+		                return this.wrap(tag, data, attrs);
+		            })
+		                .join('');
+		            return this.wrap('tr', cells);
+		        })
+		            .join('');
+		        const element = this.wrap('table', tableBody);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds a collapsable HTML details element to the summary buffer
+		     *
+		     * @param {string} label text for the closed state
+		     * @param {string} content collapsable content
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addDetails(label, content) {
+		        const element = this.wrap('details', this.wrap('summary', label) + content);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML image tag to the summary buffer
+		     *
+		     * @param {string} src path to the image you to embed
+		     * @param {string} alt text description of the image
+		     * @param {SummaryImageOptions} options (optional) addition image attributes
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addImage(src, alt, options) {
+		        const { width, height } = options || {};
+		        const attrs = Object.assign(Object.assign({}, (width && { width })), (height && { height }));
+		        const element = this.wrap('img', null, Object.assign({ src, alt }, attrs));
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML section heading element
+		     *
+		     * @param {string} text heading text
+		     * @param {number | string} [level=1] (optional) the heading level, default: 1
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addHeading(text, level) {
+		        const tag = `h${level}`;
+		        const allowedTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tag)
+		            ? tag
+		            : 'h1';
+		        const element = this.wrap(allowedTag, text);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML thematic break (<hr>) to the summary buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addSeparator() {
+		        const element = this.wrap('hr', null);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML line break (<br>) to the summary buffer
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addBreak() {
+		        const element = this.wrap('br', null);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML blockquote to the summary buffer
+		     *
+		     * @param {string} text quote text
+		     * @param {string} cite (optional) citation url
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addQuote(text, cite) {
+		        const attrs = Object.assign({}, (cite && { cite }));
+		        const element = this.wrap('blockquote', text, attrs);
+		        return this.addRaw(element).addEOL();
+		    }
+		    /**
+		     * Adds an HTML anchor tag to the summary buffer
+		     *
+		     * @param {string} text link text/content
+		     * @param {string} href hyperlink
+		     *
+		     * @returns {Summary} summary instance
+		     */
+		    addLink(text, href) {
+		        const element = this.wrap('a', text, { href });
+		        return this.addRaw(element).addEOL();
+		    }
+		}
+		const _summary = new Summary();
+		/**
+		 * @deprecated use `core.summary`
+		 */
+		exports.markdownSummary = _summary;
+		exports.summary = _summary;
+		
+} (summary));
+	return summary;
+}
+
 var hasRequiredCore;
 
 function requireCore () {
@@ -1318,8 +1612,8 @@ function requireCore () {
 		const command_1 = command;
 		const file_command_1 = fileCommand;
 		const utils_1 = utils$3;
-		const os = __importStar(require$$1__default["default"]);
-		const path = __importStar(require$$1__default$4["default"]);
+		const os = __importStar(require$$0__default["default"]);
+		const path = __importStar(require$$1__default$3["default"]);
 		const oidc_utils_1 = requireOidcUtils();
 		/**
 		 * The code to exit an action
@@ -1595,6 +1889,16 @@ function requireCore () {
 		    });
 		}
 		exports.getIDToken = getIDToken;
+		/**
+		 * Summary exports
+		 */
+		var summary_1 = requireSummary();
+		Object.defineProperty(exports, "summary", { enumerable: true, get: function () { return summary_1.summary; } });
+		/**
+		 * @deprecated use core.summary
+		 */
+		var summary_2 = requireSummary();
+		Object.defineProperty(exports, "markdownSummary", { enumerable: true, get: function () { return summary_2.markdownSummary; } });
 		
 } (core));
 	return core;
@@ -1608,8 +1912,8 @@ var context$1 = {};
 
 Object.defineProperty(context$1, "__esModule", { value: true });
 context$1.Context = void 0;
-const fs_1 = require$$0__default["default"];
-const os_1 = require$$1__default["default"];
+const fs_1 = require$$0__default$1["default"];
+const os_1 = require$$0__default["default"];
 class Context$2 {
     /**
      * Hydrate the context from the environment
@@ -82501,7 +82805,7 @@ function requireSafer () {
 	if (hasRequiredSafer) return safer_1;
 	hasRequiredSafer = 1;
 
-	var buffer = require$$0__default$3["default"];
+	var buffer = require$$0__default$4["default"];
 	var Buffer = buffer.Buffer;
 
 	var safer = {};
@@ -82647,7 +82951,7 @@ var safeBuffer$1 = {exports: {}};
 
 (function (module, exports) {
 	/* eslint-disable node/no-deprecated-api */
-	var buffer = require$$0__default$3["default"];
+	var buffer = require$$0__default$4["default"];
 	var Buffer = buffer.Buffer;
 
 	// alternative to using Object.keys for old browsers
@@ -94251,11 +94555,11 @@ function requireEncoding () {
 
 	function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-	var Stream = _interopDefault(require$$0__default$4["default"]);
-	var http = _interopDefault(require$$0__default$1["default"]);
+	var Stream = _interopDefault(require$$0__default$5["default"]);
+	var http = _interopDefault(require$$0__default$2["default"]);
 	var Url = _interopDefault(require$$2__default["default"]);
 	var whatwgUrl = _interopDefault(publicApi);
-	var https = _interopDefault(require$$1__default$2["default"]);
+	var https = _interopDefault(require$$1__default$1["default"]);
 	var zlib = _interopDefault(require$$5__default["default"]);
 
 	// Based on https://github.com/tmpvar/jsdom/blob/aa85b2abf07766ff7bf5c1f6daafb3726f2f2db5/lib/jsdom/living/blob.js
@@ -98503,11 +98807,11 @@ function getOctokit(token, options) {
 }
 github.getOctokit = getOctokit;
 
-var src$c = {};
+var src$b = {};
 
 var bucket = {};
 
-var src$b = {};
+var nodejsCommon = {};
 
 var operation = {};
 
@@ -98808,7 +99112,7 @@ var util$8 = {};
 var src$9 = {};
 
 Object.defineProperty(src$9, "__esModule", { value: true });
-const stream_1$3 = require$$0__default$4["default"];
+const stream_1$3 = require$$0__default$5["default"];
 // Copyright 2014 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -103568,8 +103872,8 @@ var hasRequiredSupportsColor;
 function requireSupportsColor () {
 	if (hasRequiredSupportsColor) return supportsColor_1;
 	hasRequiredSupportsColor = 1;
-	const os = require$$1__default["default"];
-	const tty = require$$1__default$5["default"];
+	const os = require$$0__default["default"];
+	const tty = require$$1__default$4["default"];
 	const hasFlag = requireHasFlag();
 
 	const {env} = process;
@@ -103715,8 +104019,8 @@ function requireNode$1 () {
 	if (hasRequiredNode$1) return node$1.exports;
 	hasRequiredNode$1 = 1;
 	(function (module, exports) {
-		const tty = require$$1__default$5["default"];
-		const util = require$$1__default$3["default"];
+		const tty = require$$1__default$4["default"];
+		const util = require$$1__default$2["default"];
 
 		/**
 		 * This is the Node.js implementation of `debug()`.
@@ -104027,7 +104331,7 @@ function requireSrc$1 () {
 	var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
-	const events_1 = require$$0__default$2["default"];
+	const events_1 = require$$0__default$3["default"];
 	const debug_1 = __importDefault(src$5.exports);
 	const promisify_1 = __importDefault(requirePromisify());
 	const debug = debug_1.default('agent-base');
@@ -104322,10 +104626,10 @@ function requireAgent$1 () {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(agent$1, "__esModule", { value: true });
-	const net_1 = __importDefault(require$$0__default$5["default"]);
-	const tls_1 = __importDefault(require$$1__default$1["default"]);
+	const net_1 = __importDefault(require$$0__default$6["default"]);
+	const tls_1 = __importDefault(require$$1__default["default"]);
 	const url_1 = __importDefault(require$$2__default["default"]);
-	const assert_1 = __importDefault(require$$0__default$6["default"]);
+	const assert_1 = __importDefault(require$$0__default$7["default"]);
 	const debug_1 = __importDefault(src$5.exports);
 	const agent_base_1 = requireSrc$1();
 	const parse_proxy_response_1 = __importDefault(requireParseProxyResponse());
@@ -104428,13 +104732,10 @@ function requireAgent$1 () {
 	            if (statusCode === 200) {
 	                req.once('socket', resume);
 	                if (opts.secureEndpoint) {
-	                    const servername = opts.servername || opts.host;
-	                    if (!servername) {
-	                        throw new Error('Could not determine "servername"');
-	                    }
 	                    // The proxy is connecting to a TLS server, so upgrade
 	                    // this socket connection to a TLS connection.
 	                    debug('Upgrading socket connection to TLS');
+	                    const servername = opts.servername || opts.host;
 	                    return tls_1.default.connect(Object.assign(Object.assign({}, omit(opts, 'host', 'hostname', 'path', 'port')), { socket,
 	                        servername }));
 	                }
@@ -104451,7 +104752,7 @@ function requireAgent$1 () {
 	            //
 	            // See: https://hackerone.com/reports/541502
 	            socket.destroy();
-	            const fakeSocket = new net_1.default.Socket();
+	            const fakeSocket = new net_1.default.Socket({ writable: false });
 	            fakeSocket.readable = true;
 	            // Need to wait for the "socket" event to re-play the "data" events.
 	            req.once('socket', (s) => {
@@ -104531,12 +104832,12 @@ var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || func
 Object.defineProperty(gaxios, "__esModule", { value: true });
 gaxios.Gaxios = void 0;
 const extend_1 = __importDefault(extend$4);
-const https_1 = require$$1__default$2["default"];
+const https_1 = require$$1__default$1["default"];
 const node_fetch_1$1 = __importDefault(lib$4.exports);
-const querystring_1 = __importDefault(require$$0__default$7["default"]);
+const querystring_1 = __importDefault(require$$0__default$8["default"]);
 const is_stream_1 = __importDefault(isStream_1);
 const url_1 = require$$2__default["default"];
-const common_1$3 = common$2;
+const common_1 = common$2;
 const retry_1 = retry$4;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const fetch = hasFetch() ? window.fetch : node_fetch_1$1.default;
@@ -104640,7 +104941,7 @@ class Gaxios {
                 translatedResponse = await this._defaultAdapter(opts);
             }
             if (!opts.validateStatus(translatedResponse.status)) {
-                throw new common_1$3.GaxiosError(`Request failed with status code ${translatedResponse.status}`, opts, translatedResponse);
+                throw new common_1.GaxiosError(`Request failed with status code ${translatedResponse.status}`, opts, translatedResponse);
             }
             return translatedResponse;
         }
@@ -104709,6 +105010,9 @@ class Gaxios {
         }
         opts.headers = opts.headers || {};
         if (opts.data) {
+            const isFormData = typeof FormData === 'undefined'
+                ? false
+                : (opts === null || opts === void 0 ? void 0 : opts.data) instanceof FormData;
             if (is_stream_1.default.readable(opts.data)) {
                 opts.body = opts.data;
             }
@@ -104722,15 +105026,18 @@ class Gaxios {
             else if (typeof opts.data === 'object') {
                 // If www-form-urlencoded content type has been set, but data is
                 // provided as an object, serialize the content using querystring:
-                if (getHeader(opts, 'content-type') ===
-                    'application/x-www-form-urlencoded') {
-                    opts.body = opts.paramsSerializer(opts.data);
-                }
-                else {
-                    if (!hasHeader(opts, 'Content-Type')) {
-                        opts.headers['Content-Type'] = 'application/json';
+                if (!isFormData) {
+                    if (getHeader(opts, 'content-type') ===
+                        'application/x-www-form-urlencoded') {
+                        opts.body = opts.paramsSerializer(opts.data);
                     }
-                    opts.body = JSON.stringify(opts.data);
+                    else {
+                        // } else if (!(opts.data instanceof FormData)) {
+                        if (!hasHeader(opts, 'Content-Type')) {
+                            opts.headers['Content-Type'] = 'application/json';
+                        }
+                        opts.body = JSON.stringify(opts.data);
+                    }
                 }
             }
             else {
@@ -109179,7 +109486,7 @@ var crypto$5 = {};
 // limitations under the License.
 Object.defineProperty(crypto$5, "__esModule", { value: true });
 crypto$5.NodeCrypto = void 0;
-const crypto$4 = require$$0__default$8["default"];
+const crypto$4 = require$$0__default$9["default"];
 class NodeCrypto {
     async sha256DigestBase64(str) {
         return crypto$4.createHash('sha256').update(str).digest('base64');
@@ -109577,7 +109884,7 @@ var safeBuffer = {exports: {}};
 /* eslint-disable node/no-deprecated-api */
 
 (function (module, exports) {
-	var buffer = require$$0__default$3["default"];
+	var buffer = require$$0__default$4["default"];
 	var Buffer = buffer.Buffer;
 
 	// alternative to using Object.keys for old browsers
@@ -109865,7 +110172,7 @@ var authclient = {};
 // limitations under the License.
 Object.defineProperty(authclient, "__esModule", { value: true });
 authclient.AuthClient = void 0;
-const events_1$1 = require$$0__default$2["default"];
+const events_1$1 = require$$0__default$3["default"];
 const transporters_1$2 = transporters;
 class AuthClient extends events_1$1.EventEmitter {
     constructor() {
@@ -109977,8 +110284,8 @@ loginticket.LoginTicket = LoginTicket;
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.OAuth2Client = exports.CertificateFormat = exports.CodeChallengeMethod = void 0;
-	const querystring = require$$0__default$7["default"];
-	const stream = require$$0__default$4["default"];
+	const querystring = require$$0__default$8["default"];
+	const stream = require$$0__default$5["default"];
 	const formatEcdsa = ecdsaSigFormatter;
 	const crypto_1 = requireCrypto();
 	const authclient_1 = authclient;
@@ -110974,8 +111281,8 @@ var jws$2 = {};
 /*global module, process*/
 
 var Buffer$6 = safeBuffer.exports.Buffer;
-var Stream$3 = require$$0__default$4["default"];
-var util$7 = require$$1__default$3["default"];
+var Stream$3 = require$$0__default$5["default"];
+var util$7 = require$$1__default$2["default"];
 
 function DataStream$2(data) {
   this.buffer = null;
@@ -111029,8 +111336,8 @@ DataStream$2.prototype.end = function end(data) {
 var dataStream = DataStream$2;
 
 /*jshint node:true */
-var Buffer$5 = require$$0__default$3["default"].Buffer; // browserify
-var SlowBuffer = require$$0__default$3["default"].SlowBuffer;
+var Buffer$5 = require$$0__default$4["default"].Buffer; // browserify
+var SlowBuffer = require$$0__default$4["default"].SlowBuffer;
 
 var bufferEqualConstantTime = bufferEq;
 
@@ -111071,9 +111378,9 @@ bufferEq.restore = function() {
 
 var bufferEqual = bufferEqualConstantTime;
 var Buffer$4 = safeBuffer.exports.Buffer;
-var crypto$3 = require$$0__default$8["default"];
+var crypto$3 = require$$0__default$9["default"];
 var formatEcdsa = ecdsaSigFormatter;
-var util$6 = require$$1__default$3["default"];
+var util$6 = require$$1__default$2["default"];
 
 var MSG_INVALID_ALGORITHM = '"%s" is not a valid algorithm.\n  Supported algorithms are:\n  "HS256", "HS384", "HS512", "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "ES512" and "none".';
 var MSG_INVALID_SECRET = 'secret must be a string or buffer';
@@ -111322,7 +111629,7 @@ var jwa$2 = function jwa(algorithm) {
 
 /*global module*/
 
-var Buffer$3 = require$$0__default$3["default"].Buffer;
+var Buffer$3 = require$$0__default$4["default"].Buffer;
 
 var tostring = function toString(obj) {
   if (typeof obj === 'string')
@@ -111337,9 +111644,9 @@ var tostring = function toString(obj) {
 var Buffer$2 = safeBuffer.exports.Buffer;
 var DataStream$1 = dataStream;
 var jwa$1 = jwa$2;
-var Stream$2 = require$$0__default$4["default"];
+var Stream$2 = require$$0__default$5["default"];
 var toString$2 = tostring;
-var util$5 = require$$1__default$3["default"];
+var util$5 = require$$1__default$2["default"];
 
 function base64url(string, encoding) {
   return Buffer$2
@@ -111417,9 +111724,9 @@ var signStream = SignStream$1;
 var Buffer$1 = safeBuffer.exports.Buffer;
 var DataStream = dataStream;
 var jwa = jwa$2;
-var Stream$1 = require$$0__default$4["default"];
+var Stream$1 = require$$0__default$5["default"];
 var toString$1 = tostring;
-var util$4 = require$$1__default$3["default"];
+var util$4 = require$$1__default$2["default"];
 var JWS_REGEX = /^[a-zA-Z0-9\-_]+?\.[a-zA-Z0-9\-_]+?\.([a-zA-Z0-9\-_]+)?$/;
 
 function isObject$1(thing) {
@@ -119689,7 +119996,7 @@ function requirePbkdf2 () {
 
 	var crypto;
 	if(forge.util.isNodejs && !forge.options.usePureJavaScript) {
-	  crypto = require$$0__default$8["default"];
+	  crypto = require$$0__default$9["default"];
 	}
 
 	/**
@@ -120250,7 +120557,7 @@ function requirePrng () {
 	var _crypto = null;
 	if(forge.util.isNodejs && !forge.options.usePureJavaScript &&
 	  !process.versions['node-webkit']) {
-	  _crypto = require$$0__default$8["default"];
+	  _crypto = require$$0__default$9["default"];
 	}
 
 	/* PRNG API */
@@ -123544,7 +123851,7 @@ function requireRsa () {
 	  var BigInteger = forge.jsbn.BigInteger;
 	}
 
-	var _crypto = forge.util.isNodejs ? require$$0__default$8["default"] : null;
+	var _crypto = forge.util.isNodejs ? require$$0__default$9["default"] : null;
 
 	// shortcut for asn.1 API
 	var asn1 = forge.asn1;
@@ -139974,9 +140281,9 @@ function requireSrc () {
 	 */
 	Object.defineProperty(src$2, "__esModule", { value: true });
 	src$2.getPem = void 0;
-	const fs = require$$0__default["default"];
+	const fs = require$$0__default$1["default"];
 	const forge = requireLib();
-	const util_1 = require$$1__default$3["default"];
+	const util_1 = require$$1__default$2["default"];
 	const readFile = util_1.promisify(fs.readFile);
 	function getPem(filename, callback) {
 	    if (callback) {
@@ -140025,13 +140332,13 @@ function requireSrc () {
  */
 Object.defineProperty(src$3, "__esModule", { value: true });
 src$3.GoogleToken = void 0;
-const fs$8 = require$$0__default["default"];
+const fs$8 = require$$0__default$1["default"];
 const gaxios_1 = src$6;
 const jws$1 = jws$2;
-const path$7 = require$$1__default$4["default"];
-const util_1$6 = require$$1__default$3["default"];
+const path$7 = require$$1__default$3["default"];
+const util_1$5 = require$$1__default$2["default"];
 const readFile$1 = fs$8.readFile
-    ? util_1$6.promisify(fs$8.readFile)
+    ? util_1$5.promisify(fs$8.readFile)
     : async () => {
         // if running in the web-browser, fs.readFile may not have been shimmed.
         throw new ErrorWithCode('use key rather than keyFile.', 'MISSING_CREDENTIALS');
@@ -141654,7 +141961,7 @@ var oauth2common = {};
 // limitations under the License.
 Object.defineProperty(oauth2common, "__esModule", { value: true });
 oauth2common.getErrorFromOAuthErrorResponse = oauth2common.OAuthClientAuthHandler = void 0;
-const querystring$2 = require$$0__default$7["default"];
+const querystring$2 = require$$0__default$8["default"];
 const crypto_1$2 = requireCrypto();
 /** List of HTTP methods that accept request bodies. */
 const METHODS_SUPPORTING_REQUEST_BODY = ['PUT', 'POST', 'PATCH'];
@@ -141829,7 +142136,7 @@ oauth2common.getErrorFromOAuthErrorResponse = getErrorFromOAuthErrorResponse;
 // limitations under the License.
 Object.defineProperty(stscredentials, "__esModule", { value: true });
 stscredentials.StsCredentials = void 0;
-const querystring$1 = require$$0__default$7["default"];
+const querystring$1 = require$$0__default$8["default"];
 const transporters_1$1 = transporters;
 const oauth2common_1 = oauth2common;
 /**
@@ -141937,7 +142244,7 @@ stscredentials.StsCredentials = StsCredentials;
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.BaseExternalAccountClient = exports.CLOUD_RESOURCE_MANAGER = exports.EXTERNAL_ACCOUNT_TYPE = exports.EXPIRATION_TIME_OFFSET = void 0;
-	const stream = require$$0__default$4["default"];
+	const stream = require$$0__default$5["default"];
 	const authclient_1 = authclient;
 	const sts = stscredentials;
 	/**
@@ -142394,16 +142701,16 @@ var identitypoolclient = {};
 var _a, _b, _c;
 Object.defineProperty(identitypoolclient, "__esModule", { value: true });
 identitypoolclient.IdentityPoolClient = void 0;
-const fs$7 = require$$0__default["default"];
-const util_1$5 = require$$1__default$3["default"];
+const fs$7 = require$$0__default$1["default"];
+const util_1$4 = require$$1__default$2["default"];
 const baseexternalclient_1$3 = baseexternalclient;
 // fs.readfile is undefined in browser karma tests causing
 // `npm run browser-test` to fail as test.oauth2.ts imports this file via
 // src/index.ts.
 // Fallback to void function to avoid promisify throwing a TypeError.
-const readFile = util_1$5.promisify((_a = fs$7.readFile) !== null && _a !== void 0 ? _a : (() => { }));
-const realpath = util_1$5.promisify((_b = fs$7.realpath) !== null && _b !== void 0 ? _b : (() => { }));
-const lstat = util_1$5.promisify((_c = fs$7.lstat) !== null && _c !== void 0 ? _c : (() => { }));
+const readFile = util_1$4.promisify((_a = fs$7.readFile) !== null && _a !== void 0 ? _a : (() => { }));
+const realpath = util_1$4.promisify((_b = fs$7.realpath) !== null && _b !== void 0 ? _b : (() => { }));
+const lstat = util_1$4.promisify((_c = fs$7.lstat) !== null && _c !== void 0 ? _c : (() => { }));
 /**
  * Defines the Url-sourced and file-sourced external account clients mainly
  * used for K8s and Azure workloads.
@@ -143050,11 +143357,11 @@ externalclient.ExternalAccountClient = ExternalAccountClient;
 // limitations under the License.
 Object.defineProperty(googleauth, "__esModule", { value: true });
 googleauth.GoogleAuth = googleauth.CLOUD_SDK_CLIENT_ID = void 0;
-const child_process_1 = require$$0__default$9["default"];
-const fs$6 = require$$0__default["default"];
+const child_process_1 = require$$0__default$a["default"];
+const fs$6 = require$$0__default$1["default"];
 const gcpMetadata = src$7;
-const os$2 = require$$1__default["default"];
-const path$6 = require$$1__default$4["default"];
+const os$2 = require$$0__default["default"];
+const path$6 = require$$1__default$3["default"];
 const crypto_1 = requireCrypto();
 const transporters_1 = transporters;
 const computeclient_1 = computeclient;
@@ -143883,7 +144190,7 @@ var downscopedclient = {};
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.DownscopedClient = exports.EXPIRATION_TIME_OFFSET = exports.MAX_ACCESS_BOUNDARY_RULES_COUNT = void 0;
-	const stream = require$$0__default$4["default"];
+	const stream = require$$0__default$5["default"];
 	const authclient_1 = authclient;
 	const sts = stscredentials;
 	/**
@@ -144207,7 +144514,7 @@ var downscopedclient = {};
 
 var retryRequest$2 = {exports: {}};
 
-var { PassThrough: PassThrough$1 } = require$$0__default$4["default"];
+var { PassThrough: PassThrough$1 } = require$$0__default$5["default"];
 var debug$1 = src$5.exports('retry-request');
 var extend$3 = extend$4;
 
@@ -144474,7 +144781,7 @@ Object.defineProperty(rng$1, "__esModule", {
 });
 rng$1.default = rng;
 
-var _crypto$2 = _interopRequireDefault$b(require$$0__default$8["default"]);
+var _crypto$2 = _interopRequireDefault$b(require$$0__default$9["default"]);
 
 function _interopRequireDefault$b(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -144799,7 +145106,7 @@ Object.defineProperty(md5$1, "__esModule", {
 });
 md5$1.default = void 0;
 
-var _crypto$1 = _interopRequireDefault$5(require$$0__default$8["default"]);
+var _crypto$1 = _interopRequireDefault$5(require$$0__default$9["default"]);
 
 function _interopRequireDefault$5(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -144878,7 +145185,7 @@ Object.defineProperty(sha1$1, "__esModule", {
 });
 sha1$1.default = void 0;
 
-var _crypto = _interopRequireDefault$2(require$$0__default$8["default"]);
+var _crypto = _interopRequireDefault$2(require$$0__default$9["default"]);
 
 function _interopRequireDefault$2(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -145077,8 +145384,8 @@ function requireAgent () {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(agent, "__esModule", { value: true });
-	const net_1 = __importDefault(require$$0__default$5["default"]);
-	const tls_1 = __importDefault(require$$1__default$1["default"]);
+	const net_1 = __importDefault(require$$0__default$6["default"]);
+	const tls_1 = __importDefault(require$$1__default["default"]);
 	const url_1 = __importDefault(require$$2__default["default"]);
 	const debug_1 = __importDefault(src$5.exports);
 	const once_1 = __importDefault(requireDist$1());
@@ -145252,11 +145559,37 @@ function requireDist () {
 	 */
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getAgent = exports.pool = void 0;
-	const http_1 = require$$0__default$1["default"];
-	const https_1 = require$$1__default$2["default"];
+	const http_1 = require$$0__default$2["default"];
+	const https_1 = require$$1__default$1["default"];
 	// eslint-disable-next-line node/no-deprecated-api
 	const url_1 = require$$2__default["default"];
 	exports.pool = new Map();
+	/**
+	 * Determines if a proxy should be considered based on the environment.
+	 *
+	 * @param uri The request uri
+	 * @returns {boolean}
+	 */
+	function shouldUseProxyForURI(uri) {
+	    const noProxyEnv = process.env.NO_PROXY || process.env.no_proxy;
+	    if (!noProxyEnv) {
+	        return true;
+	    }
+	    const givenURI = new URL(uri);
+	    for (const noProxyRaw of noProxyEnv.split(',')) {
+	        const noProxy = noProxyRaw.trim();
+	        if (noProxy === givenURI.origin || noProxy === givenURI.hostname) {
+	            return false;
+	        }
+	        else if (noProxy.startsWith('*.') || noProxy.startsWith('.')) {
+	            const noProxyWildcard = noProxy.replace(/^\*\./, '.');
+	            if (givenURI.hostname.endsWith(noProxyWildcard)) {
+	                return false;
+	            }
+	        }
+	    }
+	    return true;
+	}
 	/**
 	 * Returns a custom request Agent if one is found, otherwise returns undefined
 	 * which will result in the global http(s) Agent being used.
@@ -145273,7 +145606,9 @@ function requireDist () {
 	        process.env.HTTPS_PROXY ||
 	        process.env.https_proxy;
 	    const poolOptions = Object.assign({}, reqOpts.pool);
-	    if (proxy) {
+	    const manuallyProvidedProxy = !!reqOpts.proxy;
+	    const shouldUseProxy = manuallyProvidedProxy || shouldUseProxyForURI(uri);
+	    if (proxy && shouldUseProxy) {
 	        // tslint:disable-next-line variable-name
 	        const Agent = isHttp
 	            ? requireDist()
@@ -145535,7 +145870,7 @@ var streamEvents$1 = StreamEvents;
 Object.defineProperty(src$1, "__esModule", { value: true });
 src$1.teenyRequest = src$1.RequestError = void 0;
 const node_fetch_1 = lib$4.exports;
-const stream_1$2 = require$$0__default$4["default"];
+const stream_1$2 = require$$0__default$5["default"];
 const uuid = dist$2;
 const agents_1 = agents;
 const TeenyStatistics_1 = TeenyStatistics$1;
@@ -145582,7 +145917,7 @@ function requestToFetchOptions(reqOpts) {
     }
     if (reqOpts.useQuerystring === true || typeof reqOpts.qs === 'object') {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const qs = require$$0__default$7["default"];
+        const qs = require$$0__default$8["default"];
         const params = qs.stringify(reqOpts.qs);
         uri = uri + '?' + params;
     }
@@ -145778,7 +146113,7 @@ function requireStream () {
 	if (hasRequiredStream) return stream$2.exports;
 	hasRequiredStream = 1;
 	(function (module) {
-		module.exports = require$$0__default$4["default"];
+		module.exports = require$$0__default$5["default"];
 } (stream$2));
 	return stream$2.exports;
 }
@@ -145802,10 +146137,10 @@ function requireBuffer_list () {
 
 	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-	var _require = require$$0__default$3["default"],
+	var _require = require$$0__default$4["default"],
 	    Buffer = _require.Buffer;
 
-	var _require2 = require$$1__default$3["default"],
+	var _require2 = require$$1__default$2["default"],
 	    inspect = _require2.inspect;
 
 	var custom = inspect && inspect.custom || 'inspect';
@@ -146342,7 +146677,7 @@ function requireNode () {
 	 * For Node.js, simply re-export the core `util.deprecate` function.
 	 */
 
-	node = require$$1__default$3["default"].deprecate;
+	node = require$$1__default$2["default"].deprecate;
 	return node;
 }
 
@@ -146389,7 +146724,7 @@ function require_stream_writable () {
 	/*</replacement>*/
 
 
-	var Buffer = require$$0__default$3["default"].Buffer;
+	var Buffer = require$$0__default$4["default"].Buffer;
 
 	var OurUint8Array = commonjsGlobal.Uint8Array || function () {};
 
@@ -147556,7 +147891,7 @@ function require_stream_readable () {
 	Readable.ReadableState = ReadableState;
 	/*<replacement>*/
 
-	require$$0__default$2["default"].EventEmitter;
+	require$$0__default$3["default"].EventEmitter;
 
 	var EElistenerCount = function EElistenerCount(emitter, type) {
 	  return emitter.listeners(type).length;
@@ -147570,7 +147905,7 @@ function require_stream_readable () {
 	/*</replacement>*/
 
 
-	var Buffer = require$$0__default$3["default"].Buffer;
+	var Buffer = require$$0__default$4["default"].Buffer;
 
 	var OurUint8Array = commonjsGlobal.Uint8Array || function () {};
 
@@ -147584,7 +147919,7 @@ function require_stream_readable () {
 	/*<replacement>*/
 
 
-	var debugUtil = require$$1__default$3["default"];
+	var debugUtil = require$$1__default$2["default"];
 
 	var debug;
 
@@ -148927,7 +149262,7 @@ function requirePipeline () {
 }
 
 (function (module, exports) {
-	var Stream = require$$0__default$4["default"];
+	var Stream = require$$0__default$5["default"];
 	if (process.env.READABLE_STREAM === 'disable' && Stream) {
 	  module.exports = Stream.Readable;
 	  Object.assign(module.exports, Stream);
@@ -149300,20 +149635,23 @@ Duplexify$1.prototype.end = function(data, enc, cb) {
 
 var duplexify$1 = Duplexify$1;
 
-// Copyright 2014 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/*!
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 Object.defineProperty(util$8, "__esModule", { value: true });
+util$8.util = util$8.Util = util$8.PartialFailureError = util$8.ApiError = void 0;
 /*!
  * @module common/util
  */
@@ -149322,7 +149660,7 @@ const ent = ent$1;
 const extend$2 = extend$4;
 const google_auth_library_1 = src$8;
 const retryRequest = retryRequest$2.exports;
-const stream_1$1 = require$$0__default$4["default"];
+const stream_1$1 = require$$0__default$5["default"];
 const teeny_request_1 = src$1;
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const duplexify = duplexify$1;
@@ -149788,7 +150126,9 @@ class Util {
             options.retries = reqOpts.maxRetries;
         }
         if (!config.stream) {
-            return retryRequest(reqOpts, options, (err, response, body) => {
+            return retryRequest(reqOpts, options, 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (err, response, body) => {
                 util$2.handleResp(err, response, body, callback);
             });
         }
@@ -149911,28 +150251,28 @@ class ProgressStream extends stream_1$1.Transform {
 const util$2 = new Util();
 util$8.util = util$2;
 
-// Copyright 2015 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 Object.defineProperty(serviceObject, "__esModule", { value: true });
+serviceObject.ServiceObject = void 0;
 /*!
- * @module common/service-object
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 const promisify_1$3 = src$a;
 const arrify$2 = arrify_1;
-const events_1 = require$$0__default$2["default"];
+const events_1 = require$$0__default$3["default"];
 const extend$1 = extend$4;
-const util_1$4 = util$8;
+const util_1$3 = util$8;
 /**
  * ServiceObject is a base class, meant to be inherited from by a "service
  * object," like a BigQuery dataset or Storage bucket.
@@ -150018,6 +150358,9 @@ class ServiceObject extends events_1.EventEmitter {
             const [err, instance] = args;
             if (!err) {
                 self.metadata = instance.metadata;
+                if (self.id && instance.metadata) {
+                    self.id = instance.metadata.id;
+                }
                 args[1] = self; // replace the created `instance` with this one.
             }
             callback(...args);
@@ -150027,7 +150370,7 @@ class ServiceObject extends events_1.EventEmitter {
         this.createMethod.apply(null, args);
     }
     delete(optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const ignoreNotFound = options.ignoreNotFound;
         delete options.ignoreNotFound;
         const methodConfig = (typeof this.methods.delete === 'object' && this.methods.delete) || {};
@@ -150045,11 +150388,12 @@ class ServiceObject extends events_1.EventEmitter {
                     err = null;
                 }
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             callback(err, ...args);
         });
     }
     exists(optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         this.get(options, err => {
             if (err) {
                 if (err.code === 404) {
@@ -150066,7 +150410,7 @@ class ServiceObject extends events_1.EventEmitter {
     get(optionsOrCallback, cb) {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const self = this;
-        const [opts, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [opts, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const options = Object.assign({}, opts);
         const autoCreate = options.autoCreate && typeof this.create === 'function';
         delete options.autoCreate;
@@ -150099,7 +150443,7 @@ class ServiceObject extends events_1.EventEmitter {
         });
     }
     getMetadata(optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const methodConfig = (typeof this.methods.getMetadata === 'object' &&
             this.methods.getMetadata) ||
             {};
@@ -150126,7 +150470,7 @@ class ServiceObject extends events_1.EventEmitter {
         return this.parent.getRequestInterceptors().concat(localInterceptors);
     }
     setMetadata(metadata, optionsOrCallback, cb) {
-        const [options, callback] = util_1$4.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const methodConfig = (typeof this.methods.setMetadata === 'object' &&
             this.methods.setMetadata) ||
             {};
@@ -150186,27 +150530,27 @@ class ServiceObject extends events_1.EventEmitter {
 serviceObject.ServiceObject = ServiceObject;
 promisify_1$3.promisifyAll(ServiceObject, { exclude: ['getRequestInterceptors'] });
 
-// Copyright 2016 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 Object.defineProperty(operation, "__esModule", { value: true });
+operation.Operation = void 0;
 /*!
- * @module common/operation
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-const service_object_1$1 = serviceObject;
-const util_1$3 = require$$1__default$3["default"];
+const service_object_1 = serviceObject;
+const util_1$2 = require$$1__default$2["default"];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-class Operation extends service_object_1$1.ServiceObject {
+class Operation extends service_object_1.ServiceObject {
     /**
      * An Operation object allows you to interact with APIs that take longer to
      * process things.
@@ -150317,7 +150661,7 @@ class Operation extends service_object_1$1.ServiceObject {
             return;
         }
         try {
-            const metadata = await util_1$3.promisify(this.poll_.bind(this))();
+            const metadata = await util_1$2.promisify(this.poll_.bind(this))();
             if (!metadata) {
                 setTimeout(this.startPolling_.bind(this), this.pollIntervalMs || 500);
                 return;
@@ -150333,26 +150677,26 @@ operation.Operation = Operation;
 
 var service = {};
 
-// Copyright 2015 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 Object.defineProperty(service, "__esModule", { value: true });
+service.Service = void 0;
 /*!
- * @module common/service
+ * Copyright 2022 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 const arrify$1 = arrify_1;
 const extend = extend$4;
-const util_1$2 = util$8;
+const util_1$1 = util$8;
 const PROJECT_ID_TOKEN = '{{projectId}}';
 class Service {
     /**
@@ -150390,7 +150734,7 @@ class Service {
             token: options.token,
         });
         this.makeAuthenticatedRequest =
-            util_1$2.util.makeAuthenticatedRequestFactory(reqCfg);
+            util_1$1.util.makeAuthenticatedRequestFactory(reqCfg);
         this.authClient = this.makeAuthenticatedRequest.authClient;
         this.getCredentials = this.makeAuthenticatedRequest.getCredentials;
         const isCloudFunctionEnv = !!process.env.FUNCTION_NAME;
@@ -150466,7 +150810,7 @@ class Service {
         });
         delete reqOpts.interceptors_;
         const pkg = this.packageJson;
-        let userAgent = util_1$2.util.getUserAgentFromPackageJson(pkg);
+        let userAgent = util_1$1.util.getUserAgentFromPackageJson(pkg);
         if (this.providedUserAgent) {
             userAgent = `${this.providedUserAgent} ${userAgent}`;
         }
@@ -150504,45 +150848,19 @@ class Service {
 }
 service.Service = Service;
 
-// Copyright 2016 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-Object.defineProperty(src$b, "__esModule", { value: true });
-/**
- * @type {module:common/operation}
- * @private
- */
-var operation_1 = operation;
-src$b.Operation = operation_1.Operation;
-/**
- * @type {module:common/service}
- * @private
- */
-var service_1 = service;
-src$b.Service = service_1.Service;
-/**
- * @type {module:common/serviceObject}
- * @private
- */
-var service_object_1 = serviceObject;
-src$b.ServiceObject = service_object_1.ServiceObject;
-/**
- * @type {module:common/util}
- * @private
- */
-var util_1$1 = util$8;
-src$b.ApiError = util_1$1.ApiError;
-src$b.util = util_1$1.util;
+(function (exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var operation_1 = operation;
+	Object.defineProperty(exports, "Operation", { enumerable: true, get: function () { return operation_1.Operation; } });
+	var service_1 = service;
+	Object.defineProperty(exports, "Service", { enumerable: true, get: function () { return service_1.Service; } });
+	var service_object_1 = serviceObject;
+	Object.defineProperty(exports, "ServiceObject", { enumerable: true, get: function () { return service_object_1.ServiceObject; } });
+	var util_1 = util$8;
+	Object.defineProperty(exports, "ApiError", { enumerable: true, get: function () { return util_1.ApiError; } });
+	Object.defineProperty(exports, "util", { enumerable: true, get: function () { return util_1.util; } });
+	
+} (nodejsCommon));
 
 var src = {};
 
@@ -150565,7 +150883,7 @@ var resourceStream = {};
  */
 Object.defineProperty(resourceStream, "__esModule", { value: true });
 resourceStream.ResourceStream = void 0;
-const stream_1 = require$$0__default$4["default"];
+const stream_1 = require$$0__default$5["default"];
 class ResourceStream extends stream_1.Transform {
     constructor(args, requestFn) {
         const options = Object.assign({ objectMode: true }, args.streamOptions);
@@ -161572,7 +161890,7 @@ var require$$0$1 = {
 	 */
 
 	var db = mimeDb.exports;
-	var extname = require$$1__default$4["default"].extname;
+	var extname = require$$1__default$3["default"].extname;
 
 	/**
 	 * Module variables.
@@ -163025,7 +163343,7 @@ function compressible (type) {
 
 var getStream$1 = {exports: {}};
 
-const {PassThrough: PassThroughStream} = require$$0__default$4["default"];
+const {PassThrough: PassThroughStream} = require$$0__default$5["default"];
 
 var bufferStream$1 = options => {
 	options = {...options};
@@ -163077,9 +163395,9 @@ var bufferStream$1 = options => {
 	return stream;
 };
 
-const {constants: BufferConstants} = require$$0__default$3["default"];
-const stream = require$$0__default$4["default"];
-const {promisify: promisify$2} = require$$1__default$3["default"];
+const {constants: BufferConstants} = require$$0__default$4["default"];
+const stream = require$$0__default$5["default"];
+const {promisify: promisify$2} = require$$1__default$2["default"];
 const bufferStream = bufferStream$1;
 
 const streamPipelinePromisified = promisify$2(stream.pipeline);
@@ -163724,8 +164042,8 @@ try {
   crc = requireCrc32c();
 }
 
-var crypto$2 = require$$0__default$8["default"];
-var { PassThrough } = require$$0__default$4["default"];
+var crypto$2 = require$$0__default$9["default"];
+var { PassThrough } = require$$0__default$5["default"];
 
 var hashStreamValidation = function (cfg) {
   cfg = cfg || {};
@@ -163869,7 +164187,7 @@ var pumpify = {exports: {}};
 
 var once = requireOnce();
 var eos = endOfStream;
-var fs$5 = require$$0__default["default"]; // we only need fs to get the ReadStream and WriteStream prototypes
+var fs$5 = require$$0__default$1["default"]; // we only need fs to get the ReadStream and WriteStream prototypes
 
 var noop$1 = function () {};
 var ancient = /^v?\.0/.test(process.version);
@@ -164995,7 +165313,7 @@ var abortController = /*#__PURE__*/Object.freeze({
 
 var require$$0 = /*@__PURE__*/getAugmentedNamespace(abortController);
 
-var constants = require$$0__default$a["default"];
+var constants = require$$0__default$b["default"];
 
 var origCwd = process.cwd;
 var cwd = null;
@@ -165344,7 +165662,7 @@ function patch$1 (fs) {
   }
 }
 
-var Stream = require$$0__default$4["default"].Stream;
+var Stream = require$$0__default$5["default"].Stream;
 
 var legacyStreams = legacy$1;
 
@@ -165485,12 +165803,12 @@ function clone$1 (obj) {
   return copy
 }
 
-var fs$4 = require$$0__default["default"];
+var fs$4 = require$$0__default$1["default"];
 var polyfills = polyfills$1;
 var legacy = legacyStreams;
 var clone = clone_1;
 
-var util$1 = require$$1__default$3["default"];
+var util$1 = require$$1__default$2["default"];
 
 /* istanbul ignore next - node 0.x polyfill */
 var gracefulQueue;
@@ -165571,7 +165889,7 @@ if (!fs$4[gracefulQueue]) {
   if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || '')) {
     process.on('exit', function() {
       debug(fs$4[gracefulQueue]);
-      require$$0__default$6["default"].equal(fs$4[gracefulQueue].length, 0);
+      require$$0__default$7["default"].equal(fs$4[gracefulQueue].length, 0);
     });
   }
 }
@@ -167518,9 +167836,9 @@ var semver$1 = {exports: {}};
 	}
 } (semver$1, semver$1.exports));
 
-const fs$3 = require$$0__default["default"];
-const path$5 = require$$1__default$4["default"];
-const {promisify: promisify$1} = require$$1__default$3["default"];
+const fs$3 = require$$0__default$1["default"];
+const path$5 = require$$1__default$3["default"];
+const {promisify: promisify$1} = require$$1__default$2["default"];
 const semver = semver$1.exports;
 
 const useNativeRecursiveOption = semver.satisfies(process.version, '>=10.12.0');
@@ -167677,8 +167995,8 @@ makeDir$2.exports.sync = (input, options) => {
 var xdgBasedir$1 = {};
 
 (function (exports) {
-	const os = require$$1__default["default"];
-	const path = require$$1__default$4["default"];
+	const os = require$$0__default["default"];
+	const path = require$$1__default$3["default"];
 
 	const homeDirectory = os.homedir();
 	const {env} = process;
@@ -167941,11 +168259,11 @@ if (!processOk(process$1)) {
     return function () {}
   };
 } else {
-  var assert$1 = require$$0__default$6["default"];
+  var assert$1 = require$$0__default$7["default"];
   var signals = requireSignals();
   var isWin = /^win/i.test(process$1.platform);
 
-  var EE = require$$0__default$2["default"];
+  var EE = require$$0__default$3["default"];
   /* istanbul ignore if */
   if (typeof EE !== 'function') {
     EE = EE.EventEmitter;
@@ -168192,13 +168510,13 @@ writeFileAtomic$1.exports.sync = writeFileSync;
 writeFileAtomic$1.exports._getTmpname = getTmpname; // for testing
 writeFileAtomic$1.exports._cleanupOnExit = cleanupOnExit;
 
-const fs$2 = require$$0__default["default"];
+const fs$2 = require$$0__default$1["default"];
 const MurmurHash3 = imurmurhash.exports;
 const onExit = signalExit.exports;
-const path$4 = require$$1__default$4["default"];
+const path$4 = require$$1__default$3["default"];
 const isTypedArray = isTypedarray;
 const typedArrayToBuffer = typedarrayToBuffer;
-const { promisify } = require$$1__default$3["default"];
+const { promisify } = require$$1__default$2["default"];
 const activeFiles = {};
 
 // if we run inside of a worker_thread, `process.pid` is not unique
@@ -168593,7 +168911,7 @@ var dotProp$1 = {
 	}
 };
 
-const crypto$1 = require$$0__default$8["default"];
+const crypto$1 = require$$0__default$9["default"];
 
 var cryptoRandomString$1 = length => {
 	if (!Number.isFinite(length)) {
@@ -168607,8 +168925,8 @@ const cryptoRandomString = cryptoRandomString$1;
 
 var uniqueString$1 = () => cryptoRandomString(32);
 
-const path$3 = require$$1__default$4["default"];
-const os$1 = require$$1__default["default"];
+const path$3 = require$$1__default$3["default"];
+const os$1 = require$$0__default["default"];
 const fs$1 = gracefulFs;
 const makeDir = makeDir$2.exports;
 const xdgBasedir = xdgBasedir$1;
@@ -168734,12 +169052,12 @@ var configstore = Configstore;
 	exports.createURI = exports.upload = exports.Upload = exports.PROTOCOL_REGEX = void 0;
 	const abort_controller_1 = require$$0;
 	const ConfigStore = configstore;
-	const crypto_1 = require$$0__default$8["default"];
+	const crypto_1 = require$$0__default$9["default"];
 	const extend = extend$4;
 	const gaxios = src$6;
 	const google_auth_library_1 = src$8;
 	const Pumpify = pumpify.exports;
-	const stream_1 = require$$0__default$4["default"];
+	const stream_1 = require$$0__default$5["default"];
 	const streamEvents = streamEvents$1;
 	const retry = lib;
 	const NOT_FOUND_STATUS_CODE = 404;
@@ -169373,11 +169691,12 @@ var configstore = Configstore;
 	     * @return {bool} is the request good?
 	     */
 	    onResponse(resp) {
-	        if (this.retryOptions.retryableErrorFn({
-	            code: resp.status,
-	            message: resp.statusText,
-	            name: resp.statusText,
-	        })) {
+	        if (resp.status !== 200 &&
+	            this.retryOptions.retryableErrorFn({
+	                code: resp.status,
+	                message: resp.statusText,
+	                name: resp.statusText,
+	            })) {
 	            this.attemptDelayedRetry(resp);
 	            return false;
 	        }
@@ -169486,7 +169805,7 @@ var channel = {};
 // limitations under the License.
 Object.defineProperty(channel, "__esModule", { value: true });
 channel.Channel = void 0;
-const common_1$2 = src$b;
+const nodejs_common_1$2 = nodejsCommon;
 const promisify_1$1 = src$a;
 /**
  * Create a channel object to interact with a Cloud Storage channel.
@@ -169505,7 +169824,7 @@ const promisify_1$1 = src$a;
  * const channel = storage.channel('id', 'resource-id');
  * ```
  */
-class Channel extends common_1$2.ServiceObject {
+class Channel extends nodejs_common_1$2.ServiceObject {
     constructor(storage, id, resourceId) {
         const config = {
             parent: storage,
@@ -169560,7 +169879,7 @@ class Channel extends common_1$2.ServiceObject {
      * ```
      */
     stop(callback) {
-        callback = callback || common_1$2.util.noop;
+        callback = callback || nodejs_common_1$2.util.noop;
         this.request({
             method: 'POST',
             uri: '/stop',
@@ -169595,7 +169914,7 @@ var util = {};
 // limitations under the License.
 Object.defineProperty(util, "__esModule", { value: true });
 util.unicodeJSONStringify = util.objectKeyToLowercase = util.qsStringify = util.encodeURI = util.fixedEncodeURIComponent = util.objectEntries = util.normalize = void 0;
-const querystring = require$$0__default$7["default"];
+const querystring = require$$0__default$8["default"];
 function normalize(optionsOrCallback, cb) {
     const options = (typeof optionsOrCallback === 'object' ? optionsOrCallback : {});
     const callback = (typeof optionsOrCallback === 'function' ? optionsOrCallback : cb);
@@ -169690,7 +170009,7 @@ var hmacKey = {};
 // limitations under the License.
 Object.defineProperty(hmacKey, "__esModule", { value: true });
 hmacKey.HmacKey = void 0;
-const common_1$1 = src$b;
+const nodejs_common_1$1 = nodejsCommon;
 /**
  * The API-formatted resource description of the HMAC key.
  *
@@ -169709,7 +170028,7 @@ const common_1$1 = src$b;
  *
  * @class
  */
-class HmacKey extends common_1$1.ServiceObject {
+class HmacKey extends nodejs_common_1$1.ServiceObject {
     /**
      * @typedef {object} HmacKeyOptions
      * @property {string} [projectId] The project ID of the project that owns
@@ -169984,7 +170303,7 @@ hmacKey.HmacKey = HmacKey;
 
 var name = "@google-cloud/storage";
 var description = "Cloud Storage Client Library for Node.js";
-var version = "5.18.3";
+var version = "5.19.4";
 var license = "Apache-2.0";
 var author = "Google Inc.";
 var engines = {
@@ -170033,8 +170352,8 @@ var scripts = {
 	precompile: "gts clean"
 };
 var dependencies = {
-	"@google-cloud/common": "^3.8.1",
 	"@google-cloud/paginator": "^3.0.7",
+	"@google-cloud/projectify": "^2.0.0",
 	"@google-cloud/promisify": "^2.0.0",
 	"abort-controller": "^3.0.0",
 	arrify: "^2.0.0",
@@ -170043,17 +170362,20 @@ var dependencies = {
 	configstore: "^5.0.0",
 	"date-and-time": "^2.0.0",
 	duplexify: "^4.0.0",
+	ent: "^2.2.0",
 	extend: "^3.0.2",
 	gaxios: "^4.0.0",
 	"get-stream": "^6.0.0",
-	"google-auth-library": "^7.0.0",
+	"google-auth-library": "^7.14.1",
 	"hash-stream-validation": "^0.2.2",
 	mime: "^3.0.0",
 	"mime-types": "^2.0.8",
 	"p-limit": "^3.0.1",
 	pumpify: "^2.0.0",
+	"retry-request": "^4.2.2",
 	snakeize: "^0.1.0",
 	"stream-events": "^1.0.4",
+	"teeny-request": "^7.1.3",
 	"xdg-basedir": "^4.0.0"
 };
 var devDependencies = {
@@ -170062,9 +170384,9 @@ var devDependencies = {
 	"@grpc/proto-loader": "^0.6.0",
 	"@types/async-retry": "^1.4.3",
 	"@types/compressible": "^2.0.0",
-	"@types/concat-stream": "^2.0.0",
 	"@types/configstore": "^5.0.0",
 	"@types/date-and-time": "^0.13.0",
+	"@types/ent": "^2.2.1",
 	"@types/extend": "^3.0.0",
 	"@types/mime": "^2.0.0",
 	"@types/mime-types": "^2.1.0",
@@ -170074,6 +170396,7 @@ var devDependencies = {
 	"@types/node-fetch": "^2.1.3",
 	"@types/proxyquire": "^1.3.28",
 	"@types/pumpify": "^1.4.1",
+	"@types/request": "^2.48.4",
 	"@types/sinon": "^10.0.0",
 	"@types/tmp": "0.2.3",
 	"@types/uuid": "^8.0.0",
@@ -170088,7 +170411,7 @@ var devDependencies = {
 	mocha: "^8.4.0",
 	mockery: "^2.1.0",
 	nock: "~13.2.0",
-	"node-fetch": "^2.2.0",
+	"node-fetch": "^2.6.7",
 	proxyquire: "^2.1.3",
 	sinon: "^13.0.0",
 	tmp: "^0.2.0",
@@ -170134,11 +170457,11 @@ function requireStorage () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.Storage = exports.RETRYABLE_ERR_FN_DEFAULT = exports.MAX_RETRY_DELAY_DEFAULT = exports.TOTAL_TIMEOUT_DEFAULT = exports.RETRY_DELAY_MULTIPLIER_DEFAULT = exports.MAX_RETRY_DEFAULT = exports.AUTO_RETRY_DEFAULT = exports.PROTOCOL_REGEX = exports.StorageExceptionMessages = exports.ExceptionMessages = exports.IdempotencyStrategy = void 0;
-		const common_1 = src$b;
+		const nodejs_common_1 = nodejsCommon;
 		const paginator_1 = src;
 		const promisify_1 = src$a;
 		const arrify = arrify_1;
-		const stream_1 = require$$0__default$4["default"];
+		const stream_1 = require$$0__default$5["default"];
 		const bucket_1 = requireBucket();
 		const channel_1 = channel;
 		const file_1 = requireFile();
@@ -170368,7 +170691,7 @@ function requireStorage () {
 		 *
 		 * @class
 		 */
-		class Storage extends common_1.Service {
+		class Storage extends nodejs_common_1.Service {
 		    /**
 		     * @typedef {object} StorageOptions
 		     * @property {string} [projectId] The project ID from the Google Developer's
@@ -170475,7 +170798,7 @@ function requireStorage () {
 		        let autoRetryValue = exports.AUTO_RETRY_DEFAULT;
 		        if (options.autoRetry !== undefined &&
 		            ((_a = options.retryOptions) === null || _a === void 0 ? void 0 : _a.autoRetry) !== undefined) {
-		            throw new common_1.ApiError(StorageExceptionMessages.AUTO_RETRY_DEPRECATED);
+		            throw new nodejs_common_1.ApiError(StorageExceptionMessages.AUTO_RETRY_DEPRECATED);
 		        }
 		        else if (options.autoRetry !== undefined) {
 		            autoRetryValue = options.autoRetry;
@@ -170485,7 +170808,7 @@ function requireStorage () {
 		        }
 		        let maxRetryValue = exports.MAX_RETRY_DEFAULT;
 		        if (options.maxRetries && ((_c = options.retryOptions) === null || _c === void 0 ? void 0 : _c.maxRetries)) {
-		            throw new common_1.ApiError(StorageExceptionMessages.MAX_RETRIES_DEPRECATED);
+		            throw new nodejs_common_1.ApiError(StorageExceptionMessages.MAX_RETRIES_DEPRECATED);
 		        }
 		        else if (options.maxRetries) {
 		            maxRetryValue = options.maxRetries;
@@ -170607,7 +170930,9 @@ function requireStorage () {
 		     * @property {Cors[]} [cors=[]] Specify the CORS configuration to use.
 		     * @property {boolean} [dra=false] Specify the storage class as Durable Reduced
 		     *     Availability.
-		     * @property {string} [location] Specify the location / region in which to create the bucket.
+		     * @property {string} [location] Specify the bucket's location(s). If specifying
+		     *     a dual-region, can be specified as a string `"US-CENTRAL1+US-WEST1"`.
+		     *     For more information, see {@link https://cloud.google.com/storage/docs/locations| Bucket Locations}.
 		     * @property {boolean} [multiRegional=false] Specify the storage class as
 		     *     Multi-Regional.
 		     * @property {boolean} [nearline=false] Specify the storage class as Nearline.
@@ -170615,7 +170940,7 @@ function requireStorage () {
 		     * @property {boolean} [requesterPays=false] **Early Access Testers Only**
 		     *     Force the use of the User Project metadata field to assign operational
 		     *     costs when an operation is made on a Bucket and its objects.
-		     * @property {string} [rpo] For dual region buckets, controls whether turbo
+		     * @property {string} [rpo] For dual-region buckets, controls whether turbo
 		     *      replication is enabled (`ASYNC_TURBO`) or disabled (`DEFAULT`).
 		     * @property {boolean} [standard=true] Specify the storage class as Standard.
 		     * @property {string} [storageClass] The new storage class. (`standard`,
@@ -171170,7 +171495,7 @@ function requireSigner () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.SigningError = exports.URLSigner = exports.PATH_STYLED_HOST = exports.SignerExceptionMessages = void 0;
-		const crypto = require$$0__default$8["default"];
+		const crypto = require$$0__default$9["default"];
 		const dateFormat = dateAndTime.exports;
 		const url = require$$2__default["default"];
 		const storage_1 = requireStorage();
@@ -171468,22 +171793,22 @@ function requireFile () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.File = exports.FileExceptionMessages = exports.STORAGE_POST_POLICY_BASE_URL = exports.ActionToHTTPMethod = void 0;
-		const common_1 = src$b;
+		const nodejs_common_1 = nodejsCommon;
 		const promisify_1 = src$a;
 		const compressible = compressible_1;
 		const getStream = getStream$1.exports;
-		const crypto = require$$0__default$8["default"];
+		const crypto = require$$0__default$9["default"];
 		const dateFormat = dateAndTime.exports;
 		const extend = extend$4;
-		const fs = require$$0__default["default"];
+		const fs = require$$0__default$1["default"];
 		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		const hashStreamValidation$1 = hashStreamValidation;
 		const mime$1 = mime;
-		const os = require$$1__default["default"];
+		const os = require$$0__default["default"];
 		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		const pumpify$1 = pumpify.exports;
 		const resumableUpload = gcsResumableUpload;
-		const stream_1 = require$$0__default$4["default"];
+		const stream_1 = require$$0__default$5["default"];
 		const streamEvents = streamEvents$1;
 		const xdgBasedir = xdgBasedir$1;
 		const zlib = require$$5__default["default"];
@@ -171545,7 +171870,7 @@ function requireFile () {
 		 *
 		 * @class
 		 */
-		class File extends common_1.ServiceObject {
+		class File extends nodejs_common_1.ServiceObject {
 		    /**
 		     * Cloud Storage uses access control lists (ACLs) to manage object and
 		     * bucket access. ACLs are the mechanism you use to share objects with other
@@ -171974,6 +172299,7 @@ function requireFile () {
 		     * A helper method for determining if a request should be retried based on preconditions.
 		     * This should only be used for methods where the idempotency is determined by
 		     * `ifGenerationMatch`
+		     * @private
 		     *
 		     * A request should not be retried under the following conditions:
 		     * - if precondition option `ifGenerationMatch` is not set OR
@@ -172133,7 +172459,7 @@ function requireFile () {
 		            options = optionsOrCallback;
 		        }
 		        options = extend(true, {}, options);
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        let destBucket;
 		        let destName;
 		        let newFile;
@@ -172387,7 +172713,7 @@ function requireFile () {
 		                .on('response', res => {
 		                throughStream.emit('response', res);
 		                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-		                common_1.util.handleResp(null, res, null, onResponse);
+		                nodejs_common_1.util.handleResp(null, res, null, onResponse);
 		            })
 		                .resume();
 		            // We listen to the response event from the request stream so that we
@@ -172525,6 +172851,7 @@ function requireFile () {
 		     * @property {string} [configPath] A full JSON file path to use with
 		     *     `gcs-resumable-upload`. This maps to the {@link https://github.com/yeoman/configstore/tree/0df1ec950d952b1f0dfb39ce22af8e505dffc71a#configpath| configstore option by the same name}.
 		     * @property {object} [metadata] Metadata to set on the file.
+		     * @property {number} [offset] The starting byte of the upload stream for resuming an interrupted upload.
 		     * @property {string} [origin] Origin header to set for the upload.
 		     * @property {string} [predefinedAcl] Apply a predefined set of access
 		     * controls to this object.
@@ -172689,7 +173016,9 @@ function requireFile () {
 		     *     CRC32c checksum. You may use MD5 if preferred, but that hash is not
 		     *     supported for composite objects. An error will be raised if MD5 is
 		     *     specified but is not available. You may also choose to skip validation
-		     *     completely, however this is **not recommended**.
+		     *     completely, however this is **not recommended**. In addition to specifying
+		     *     validation type, providing `metadata.crc32c` or `metadata.md5Hash` will
+		     *     cause the server to perform validation in addition to client validation.
 		     *     NOTE: Validation is automatically skipped for objects that were
 		     *     uploaded using the `gzip` option and have already compressed content.
 		     */
@@ -172793,7 +173122,7 @@ function requireFile () {
 		     */
 		    // eslint-disable-next-line @typescript-eslint/no-explicit-any
 		    createWriteStream(options = {}) {
-		        options = Object.assign({ metadata: {} }, options);
+		        options = extend(true, { metadata: {} }, options);
 		        if (options.contentType) {
 		            options.metadata.contentType = options.contentType;
 		        }
@@ -173914,7 +174243,7 @@ function requireFile () {
 		            Object.assign(acc, currentHeaders.headers);
 		            return acc;
 		        }, {});
-		        common_1.util.makeRequest({
+		        nodejs_common_1.util.makeRequest({
 		            method: 'HEAD',
 		            uri: `${this.storage.apiEndpoint}/${this.bucket.name}/${encodeURIComponent(this.name)}`,
 		            headers,
@@ -174047,7 +174376,7 @@ function requireFile () {
 		     * Another example:
 		     */
 		    makePublic(callback) {
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.acl.add({
 		            entity: 'allUsers',
 		            role: 'READER',
@@ -174209,7 +174538,7 @@ function requireFile () {
 		        const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : {};
 		        callback =
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.copy(destination, options, (err, destinationFile, copyApiResponse) => {
 		            if (err) {
 		                err.message = 'file#copy failed with an error - ' + err.message;
@@ -174320,7 +174649,7 @@ function requireFile () {
 		        const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : {};
 		        callback =
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.move(destinationFile, options, callback);
 		    }
 		    /**
@@ -174583,7 +174912,7 @@ function requireFile () {
 		     * @private
 		     */
 		    startResumableUpload_(dup, options) {
-		        options = Object.assign({
+		        options = extend(true, {
 		            metadata: {},
 		        }, options);
 		        const retryOptions = this.storage.retryOptions;
@@ -174636,7 +174965,7 @@ function requireFile () {
 		     * @private
 		     */
 		    startSimpleUpload_(dup, options) {
-		        options = Object.assign({
+		        options = extend(true, {
 		            metadata: {},
 		        }, options);
 		        const apiEndpoint = this.storage.apiEndpoint;
@@ -174670,7 +174999,7 @@ function requireFile () {
 		            reqOpts.qs.predefinedAcl = 'publicRead';
 		        }
 		        Object.assign(reqOpts.qs, this.instancePreconditionOpts, options.preconditionOpts);
-		        common_1.util.makeWritableStream(dup, {
+		        nodejs_common_1.util.makeWritableStream(dup, {
 		            makeAuthenticatedRequest: (reqOpts) => {
 		                this.request(reqOpts, (err, body, resp) => {
 		                    if (err) {
@@ -175041,7 +175370,7 @@ var notification = {};
 // limitations under the License.
 Object.defineProperty(notification, "__esModule", { value: true });
 notification.Notification = void 0;
-const common_1 = src$b;
+const nodejs_common_1 = nodejsCommon;
 const promisify_1 = src$a;
 /**
  * The API-formatted resource description of the notification.
@@ -175074,7 +175403,7 @@ const promisify_1 = src$a;
  * const notification = myBucket.notification('1');
  * ```
  */
-class Notification extends common_1.ServiceObject {
+class Notification extends nodejs_common_1.ServiceObject {
     constructor(bucket, id) {
         const methods = {
             /**
@@ -175207,7 +175536,7 @@ class Notification extends common_1.ServiceObject {
             method: 'DELETE',
             uri: '',
             qs: options,
-        }, callback || common_1.util.noop);
+        }, callback || nodejs_common_1.util.noop);
     }
     /**
      * Get a notification and its metadata if it exists.
@@ -175357,16 +175686,16 @@ function requireBucket () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.Bucket = exports.BucketExceptionMessages = exports.AvailableServiceObjectMethods = exports.BucketActionToHTTPMethod = void 0;
-		const common_1 = src$b;
+		const nodejs_common_1 = nodejsCommon;
 		const paginator_1 = src;
 		const promisify_1 = src$a;
 		const arrify = arrify_1;
 		const extend = extend$4;
-		const fs = require$$0__default["default"];
+		const fs = require$$0__default$1["default"];
 		const mime = mimeTypes;
-		const path = require$$1__default$4["default"];
+		const path = require$$1__default$3["default"];
 		const pLimit = pLimit_1;
-		const util_1 = require$$1__default$3["default"];
+		const util_1 = require$$1__default$2["default"];
 		const retry = lib;
 		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		const snakeize$1 = snakeize;
@@ -175376,7 +175705,7 @@ function requireBucket () {
 		const notification_1 = notification;
 		const storage_1 = requireStorage();
 		const signer_1 = requireSigner();
-		const stream_1 = require$$0__default$4["default"];
+		const stream_1 = require$$0__default$5["default"];
 		var BucketActionToHTTPMethod;
 		(function (BucketActionToHTTPMethod) {
 		    BucketActionToHTTPMethod["list"] = "GET";
@@ -175619,7 +175948,7 @@ function requireBucket () {
 		 * const bucket = storage.bucket('albums');
 		 * ```
 		 */
-		class Bucket extends common_1.ServiceObject {
+		class Bucket extends nodejs_common_1.ServiceObject {
 		    constructor(storage, name, options) {
 		        var _a, _b, _c, _d;
 		        options = options || {};
@@ -176028,7 +176357,7 @@ function requireBucket () {
 		     *     **Note**: For configuring a raw-formatted rule object to be passed as `action`
 		     *               please refer to the [examples]{@link https://cloud.google.com/storage/docs/managing-lifecycles#configexamples}.
 		     * @property {object} condition Condition a bucket must meet before the
-		     *     action occurson the bucket. Refer to followitn supported [conditions]{@link https://cloud.google.com/storage/docs/lifecycle#conditions}.
+		     *     action occurs on the bucket. Refer to following supported [conditions]{@link https://cloud.google.com/storage/docs/lifecycle#conditions}.
 		     * @property {string} [storageClass] When using the `setStorageClass`
 		     *     action, provide this option to dictate which storage class the object
 		     *     should update to. Please see
@@ -176328,7 +176657,7 @@ function requireBucket () {
 		        // eslint-disable-next-line @typescript-eslint/no-explicit-any
 		        sources = sources.map(convertToFile);
 		        const destinationFile = convertToFile(destination);
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        if (!destinationFile.metadata.contentType) {
 		            const destinationContentType = mime.contentType(destinationFile.name);
 		            if (destinationContentType) {
@@ -176614,7 +176943,7 @@ function requireBucket () {
 		            options = optionsOrCallback;
 		        }
 		        const topicIsObject = topic !== null && typeof topic === 'object';
-		        if (topicIsObject && common_1.util.isCustomType(topic, 'pubsub/topic')) {
+		        if (topicIsObject && nodejs_common_1.util.isCustomType(topic, 'pubsub/topic')) {
 		            // eslint-disable-next-line @typescript-eslint/no-explicit-any
 		            topic = topic.name;
 		        }
@@ -176884,7 +177213,7 @@ function requireBucket () {
 		            billing: {
 		                requesterPays: false,
 		            },
-		        }, callback || common_1.util.noop);
+		        }, callback || nodejs_common_1.util.noop);
 		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
 		    }
 		    /**
@@ -177033,7 +177362,7 @@ function requireBucket () {
 		            billing: {
 		                requesterPays: true,
 		            },
-		        }, callback || common_1.util.noop);
+		        }, callback || nodejs_common_1.util.noop);
 		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
 		    }
 		    /**
@@ -177999,7 +178328,7 @@ function requireBucket () {
 		        const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : {};
 		        callback =
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
-		        callback = callback || common_1.util.noop;
+		        callback = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        this.setMetadata({ labels }, options, callback);
 		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
@@ -178712,9 +179041,10 @@ function requireBucket () {
 	var notification_1 = notification;
 	Object.defineProperty(exports, "Notification", { enumerable: true, get: function () { return notification_1.Notification; } });
 	var storage_1 = requireStorage();
+	Object.defineProperty(exports, "IdempotencyStrategy", { enumerable: true, get: function () { return storage_1.IdempotencyStrategy; } });
 	Object.defineProperty(exports, "Storage", { enumerable: true, get: function () { return storage_1.Storage; } });
 	
-} (src$c));
+} (src$b));
 
 var tmpPromise = {exports: {}};
 
@@ -178748,9 +179078,9 @@ function requireOld () {
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-	var pathModule = require$$1__default$4["default"];
+	var pathModule = require$$1__default$3["default"];
 	var isWindows = process.platform === 'win32';
-	var fs = require$$0__default["default"];
+	var fs = require$$0__default$1["default"];
 
 	// JavaScript implementation of realpath, ported from node pre-v6
 
@@ -179046,7 +179376,7 @@ function requireFs_realpath () {
 	realpath.monkeypatch = monkeypatch;
 	realpath.unmonkeypatch = unmonkeypatch;
 
-	var fs = require$$0__default["default"];
+	var fs = require$$0__default$1["default"];
 	var origRealpath = fs.realpath;
 	var origRealpathSync = fs.realpathSync;
 
@@ -180409,7 +180739,7 @@ function requireCommon () {
 	  return Object.prototype.hasOwnProperty.call(obj, field)
 	}
 
-	var path = require$$1__default$4["default"];
+	var path = require$$1__default$3["default"];
 	var minimatch = requireMinimatch();
 	var isAbsolute = requirePathIsAbsolute();
 	var Minimatch = minimatch.Minimatch;
@@ -180643,13 +180973,13 @@ function requireSync () {
 	sync = globSync;
 	globSync.GlobSync = GlobSync;
 
-	var fs = require$$0__default["default"];
+	var fs = require$$0__default$1["default"];
 	var rp = requireFs_realpath();
 	var minimatch = requireMinimatch();
 	minimatch.Minimatch;
 	requireGlob().Glob;
-	var path = require$$1__default$4["default"];
-	var assert = require$$0__default$6["default"];
+	var path = require$$1__default$3["default"];
+	var assert = require$$0__default$7["default"];
 	var isAbsolute = requirePathIsAbsolute();
 	var common = requireCommon();
 	var setopts = common.setopts;
@@ -181233,14 +181563,14 @@ function requireGlob () {
 
 	glob_1 = glob;
 
-	var fs = require$$0__default["default"];
+	var fs = require$$0__default$1["default"];
 	var rp = requireFs_realpath();
 	var minimatch = requireMinimatch();
 	minimatch.Minimatch;
 	var inherits = requireInherits();
-	var EE = require$$0__default$2["default"].EventEmitter;
-	var path = require$$1__default$4["default"];
-	var assert = require$$0__default$6["default"];
+	var EE = require$$0__default$3["default"].EventEmitter;
+	var path = require$$1__default$3["default"];
+	var assert = require$$0__default$7["default"];
 	var isAbsolute = requirePathIsAbsolute();
 	var globSync = requireSync();
 	var common = requireCommon();
@@ -181976,9 +182306,9 @@ function requireGlob () {
 	return glob_1;
 }
 
-const assert = require$$0__default$6["default"];
-const path$2 = require$$1__default$4["default"];
-const fs = require$$0__default["default"];
+const assert = require$$0__default$7["default"];
+const path$2 = require$$1__default$3["default"];
+const fs = require$$0__default$1["default"];
 let glob = undefined;
 try {
   glob = requireGlob();
@@ -182349,10 +182679,10 @@ rimraf.sync = rimrafSync;
 	/*
 	 * Module dependencies.
 	 */
-	const fs = require$$0__default["default"];
-	const os = require$$1__default["default"];
-	const path = require$$1__default$4["default"];
-	const crypto = require$$0__default$8["default"];
+	const fs = require$$0__default$1["default"];
+	const os = require$$0__default["default"];
+	const path = require$$1__default$3["default"];
+	const crypto = require$$0__default$9["default"];
 	const _c = { fs: fs.constants, os: os.constants };
 	const rimraf = rimraf_1;
 
@@ -183122,7 +183452,7 @@ rimraf.sync = rimrafSync;
 
 (function (module) {
 
-	const { promisify } = require$$1__default$3["default"];
+	const { promisify } = require$$1__default$2["default"];
 	const tmp$1 = tmp.exports;
 
 	// file
@@ -183212,8 +183542,8 @@ var ioUtil$2 = {};
 	var _a;
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getCmdPath = exports.tryGetExecutablePath = exports.isRooted = exports.isDirectory = exports.exists = exports.IS_WINDOWS = exports.unlink = exports.symlink = exports.stat = exports.rmdir = exports.rename = exports.readlink = exports.readdir = exports.mkdir = exports.lstat = exports.copyFile = exports.chmod = void 0;
-	const fs = __importStar(require$$0__default["default"]);
-	const path = __importStar(require$$1__default$4["default"]);
+	const fs = __importStar(require$$0__default$1["default"]);
+	const path = __importStar(require$$1__default$3["default"]);
 	_a = fs.promises, exports.chmod = _a.chmod, exports.copyFile = _a.copyFile, exports.lstat = _a.lstat, exports.mkdir = _a.mkdir, exports.readdir = _a.readdir, exports.readlink = _a.readlink, exports.rename = _a.rename, exports.rmdir = _a.rmdir, exports.stat = _a.stat, exports.symlink = _a.symlink, exports.unlink = _a.unlink;
 	exports.IS_WINDOWS = process.platform === 'win32';
 	function exists(fsPath) {
@@ -183389,10 +183719,10 @@ var __awaiter$2 = (commonjsGlobal && commonjsGlobal.__awaiter) || function (this
 };
 Object.defineProperty(io$1, "__esModule", { value: true });
 io$1.findInPath = io$1.which = io$1.mkdirP = io$1.rmRF = io$1.mv = io$1.cp = void 0;
-const assert_1 = require$$0__default$6["default"];
-const childProcess = __importStar$2(require$$0__default$9["default"]);
-const path$1 = __importStar$2(require$$1__default$4["default"]);
-const util_1 = require$$1__default$3["default"];
+const assert_1 = require$$0__default$7["default"];
+const childProcess = __importStar$2(require$$0__default$a["default"]);
+const path$1 = __importStar$2(require$$1__default$3["default"]);
+const util_1 = require$$1__default$2["default"];
 const ioUtil$1 = __importStar$2(ioUtil$2);
 const exec$1 = util_1.promisify(childProcess.exec);
 const execFile = util_1.promisify(childProcess.execFile);
@@ -183729,10 +184059,10 @@ var __awaiter$1 = (commonjsGlobal && commonjsGlobal.__awaiter) || function (this
 };
 Object.defineProperty(toolrunner, "__esModule", { value: true });
 toolrunner.argStringToArray = toolrunner.ToolRunner = void 0;
-const os = __importStar$1(require$$1__default["default"]);
-const events = __importStar$1(require$$0__default$2["default"]);
-const child = __importStar$1(require$$0__default$9["default"]);
-const path = __importStar$1(require$$1__default$4["default"]);
+const os = __importStar$1(require$$0__default["default"]);
+const events = __importStar$1(require$$0__default$3["default"]);
+const child = __importStar$1(require$$0__default$a["default"]);
+const path = __importStar$1(require$$1__default$3["default"]);
 const io = __importStar$1(io$1);
 const ioUtil = __importStar$1(ioUtil$2);
 const timers_1 = require$$6__default["default"];
@@ -184497,7 +184827,7 @@ const saveState = (state) => {
 
 const main = async () => {
     const inputs = getInputs();
-    const bucket = new src$c.Storage().bucket(inputs.bucket);
+    const bucket = new src$b.Storage().bucket(inputs.bucket);
     const folderPrefix = `${context.repo.owner}/${context.repo.repo}`;
     const exactFileName = `${folderPrefix}/${inputs.key}.tar`;
     const bestMatch = await coreExports.group('🔍 Searching the best cache archive available', () => {
