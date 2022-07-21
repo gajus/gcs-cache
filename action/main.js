@@ -438,7 +438,7 @@ TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
         new Buffer(connectOptions.proxyAuth).toString('base64');
   }
 
-  debug('making CONNECT request');
+  debug$1('making CONNECT request');
   var connectReq = self.request(connectOptions);
   connectReq.useChunkedEncodingByDefault = false; // for v0.6
   connectReq.once('response', onResponse); // for v0.6
@@ -464,7 +464,7 @@ TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
     socket.removeAllListeners();
 
     if (res.statusCode !== 200) {
-      debug('tunneling socket could not be established, statusCode=%d',
+      debug$1('tunneling socket could not be established, statusCode=%d',
         res.statusCode);
       socket.destroy();
       var error = new Error('tunneling socket could not be established, ' +
@@ -475,7 +475,7 @@ TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
       return;
     }
     if (head.length > 0) {
-      debug('got illegal response body from proxy');
+      debug$1('got illegal response body from proxy');
       socket.destroy();
       var error = new Error('got illegal response body from proxy');
       error.code = 'ECONNRESET';
@@ -483,7 +483,7 @@ TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
       self.removeSocket(placeholder);
       return;
     }
-    debug('tunneling connection has established');
+    debug$1('tunneling connection has established');
     self.sockets[self.sockets.indexOf(placeholder)] = socket;
     return cb(socket);
   }
@@ -491,7 +491,7 @@ TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
   function onError(cause) {
     connectReq.removeAllListeners();
 
-    debug('tunneling socket could not be established, cause=%s\n',
+    debug$1('tunneling socket could not be established, cause=%s\n',
           cause.message, cause.stack);
     var error = new Error('tunneling socket could not be established, ' +
                           'cause=' + cause.message);
@@ -563,9 +563,9 @@ function mergeOptions(target) {
 }
 
 
-var debug;
+var debug$1;
 if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
-  debug = function() {
+  debug$1 = function() {
     var args = Array.prototype.slice.call(arguments);
     if (typeof args[0] === 'string') {
       args[0] = 'TUNNEL: ' + args[0];
@@ -575,9 +575,9 @@ if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
     console.error.apply(console, args);
   };
 } else {
-  debug = function() {};
+  debug$1 = function() {};
 }
-tunnel.debug = debug; // for test
+tunnel.debug = debug$1; // for test
 
 (function (module) {
 	module.exports = tunnel;
@@ -2719,7 +2719,7 @@ const VERSION$5 = "6.0.12";
 const userAgent = `octokit-endpoint.js/${VERSION$5} ${getUserAgent()}`;
 // DEFAULTS has all properties set that EndpointOptions has, except url.
 // So we use RequestParameters and add method as additional required property.
-const DEFAULTS = {
+const DEFAULTS$1 = {
     method: "GET",
     baseUrl: "https://api.github.com",
     headers: {
@@ -2732,7 +2732,7 @@ const DEFAULTS = {
     },
 };
 
-const endpoint = withDefaults$2(null, DEFAULTS);
+const endpoint = withDefaults$2(null, DEFAULTS$1);
 
 var lib$4 = {exports: {}};
 
@@ -96518,7 +96518,7 @@ const logOnceHeaders = onceExports((deprecation) => console.warn(deprecation));
 /**
  * Error with extra properties to help with debugging
  */
-class RequestError extends Error {
+class RequestError$1 extends Error {
     constructor(message, statusCode, options) {
         super(message);
         // Maintains proper stack trace (only available on V8)
@@ -96613,7 +96613,7 @@ function fetchWrapper(requestOptions) {
             if (status < 400) {
                 return;
             }
-            throw new RequestError(response.statusText, status, {
+            throw new RequestError$1(response.statusText, status, {
                 response: {
                     url,
                     status,
@@ -96624,7 +96624,7 @@ function fetchWrapper(requestOptions) {
             });
         }
         if (status === 304) {
-            throw new RequestError("Not modified", status, {
+            throw new RequestError$1("Not modified", status, {
                 response: {
                     url,
                     status,
@@ -96636,7 +96636,7 @@ function fetchWrapper(requestOptions) {
         }
         if (status >= 400) {
             const data = await getResponseData(response);
-            const error = new RequestError(toErrorMessage(data), status, {
+            const error = new RequestError$1(toErrorMessage(data), status, {
                 response: {
                     url,
                     status,
@@ -96658,9 +96658,9 @@ function fetchWrapper(requestOptions) {
         };
     })
         .catch((error) => {
-        if (error instanceof RequestError)
+        if (error instanceof RequestError$1)
             throw error;
-        throw new RequestError(error.message, 500, {
+        throw new RequestError$1(error.message, 500, {
             request: requestOptions,
         });
     });
@@ -99051,7 +99051,7 @@ var getProperty = function getProperty(obj, name) {
 	return obj[name];
 };
 
-var extend$1 = function extend() {
+var extend$2 = function extend() {
 	var options, name, src, copy, copyIsArray, clone;
 	var target = arguments[0];
 	var i = 1;
@@ -99668,78 +99668,70 @@ var util$6 = {};
 
 var src$b = {};
 
-var hasRequiredSrc$4;
-
-function requireSrc$4 () {
-	if (hasRequiredSrc$4) return src$b;
-	hasRequiredSrc$4 = 1;
-	Object.defineProperty(src$b, "__esModule", { value: true });
-	src$b.MissingProjectIdError = src$b.replaceProjectIdToken = void 0;
-	const stream_1 = require$$0__default$6["default"];
-	// Copyright 2014 Google LLC
-	//
-	// Licensed under the Apache License, Version 2.0 (the "License");
-	// you may not use this file except in compliance with the License.
-	// You may obtain a copy of the License at
-	//
-	//      http://www.apache.org/licenses/LICENSE-2.0
-	//
-	// Unless required by applicable law or agreed to in writing, software
-	// distributed under the License is distributed on an "AS IS" BASIS,
-	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	// See the License for the specific language governing permissions and
-	// limitations under the License.
-	/**
-	 * Populate the `{{projectId}}` placeholder.
-	 *
-	 * @throws {Error} If a projectId is required, but one is not provided.
-	 *
-	 * @param {*} - Any input value that may contain a placeholder. Arrays and objects will be looped.
-	 * @param {string} projectId - A projectId. If not provided
-	 * @return {*} - The original argument with all placeholders populated.
-	 */
-	// eslint-disable-next-line  @typescript-eslint/no-explicit-any
-	function replaceProjectIdToken(value, projectId) {
-	    if (Array.isArray(value)) {
-	        value = value.map(v => replaceProjectIdToken(v, projectId));
-	    }
-	    if (value !== null &&
-	        typeof value === 'object' &&
-	        !(value instanceof Buffer) &&
-	        !(value instanceof stream_1.Stream) &&
-	        typeof value.hasOwnProperty === 'function') {
-	        for (const opt in value) {
-	            // eslint-disable-next-line no-prototype-builtins
-	            if (value.hasOwnProperty(opt)) {
-	                value[opt] = replaceProjectIdToken(value[opt], projectId);
-	            }
-	        }
-	    }
-	    if (typeof value === 'string' &&
-	        value.indexOf('{{projectId}}') > -1) {
-	        if (!projectId || projectId === '{{projectId}}') {
-	            throw new MissingProjectIdError();
-	        }
-	        value = value.replace(/{{projectId}}/g, projectId);
-	    }
-	    return value;
-	}
-	src$b.replaceProjectIdToken = replaceProjectIdToken;
-	/**
-	 * Custom error type for missing project ID errors.
-	 */
-	class MissingProjectIdError extends Error {
-	    constructor() {
-	        super(...arguments);
-	        this.message = `Sorry, we cannot connect to Cloud Services without a project
-	    ID. You may specify one with an environment variable named
-	    "GOOGLE_CLOUD_PROJECT".`.replace(/ +/g, ' ');
-	    }
-	}
-	src$b.MissingProjectIdError = MissingProjectIdError;
-	
-	return src$b;
+Object.defineProperty(src$b, "__esModule", { value: true });
+src$b.MissingProjectIdError = src$b.replaceProjectIdToken = void 0;
+const stream_1$3 = require$$0__default$6["default"];
+// Copyright 2014 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+/**
+ * Populate the `{{projectId}}` placeholder.
+ *
+ * @throws {Error} If a projectId is required, but one is not provided.
+ *
+ * @param {*} - Any input value that may contain a placeholder. Arrays and objects will be looped.
+ * @param {string} projectId - A projectId. If not provided
+ * @return {*} - The original argument with all placeholders populated.
+ */
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+function replaceProjectIdToken(value, projectId) {
+    if (Array.isArray(value)) {
+        value = value.map(v => replaceProjectIdToken(v, projectId));
+    }
+    if (value !== null &&
+        typeof value === 'object' &&
+        !(value instanceof Buffer) &&
+        !(value instanceof stream_1$3.Stream) &&
+        typeof value.hasOwnProperty === 'function') {
+        for (const opt in value) {
+            // eslint-disable-next-line no-prototype-builtins
+            if (value.hasOwnProperty(opt)) {
+                value[opt] = replaceProjectIdToken(value[opt], projectId);
+            }
+        }
+    }
+    if (typeof value === 'string' &&
+        value.indexOf('{{projectId}}') > -1) {
+        if (!projectId || projectId === '{{projectId}}') {
+            throw new MissingProjectIdError();
+        }
+        value = value.replace(/{{projectId}}/g, projectId);
+    }
+    return value;
 }
+src$b.replaceProjectIdToken = replaceProjectIdToken;
+/**
+ * Custom error type for missing project ID errors.
+ */
+class MissingProjectIdError extends Error {
+    constructor() {
+        super(...arguments);
+        this.message = `Sorry, we cannot connect to Cloud Services without a project
+    ID. You may specify one with an environment variable named
+    "GOOGLE_CLOUD_PROJECT".`.replace(/ +/g, ' ');
+    }
+}
+src$b.MissingProjectIdError = MissingProjectIdError;
 
 var ent = {};
 
@@ -104853,20 +104845,13 @@ function requireNode$1 () {
  * treat as a browser.
  */
 
-var hasRequiredSrc$3;
-
-function requireSrc$3 () {
-	if (hasRequiredSrc$3) return src$7.exports;
-	hasRequiredSrc$3 = 1;
-	(function (module) {
-		if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
-			module.exports = requireBrowser();
-		} else {
-			module.exports = requireNode$1();
-		}
+(function (module) {
+	if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
+		module.exports = requireBrowser();
+	} else {
+		module.exports = requireNode$1();
+	}
 } (src$7));
-	return src$7.exports;
-}
 
 var promisify = {};
 
@@ -104896,16 +104881,16 @@ function requirePromisify () {
 }
 
 var src$6;
-var hasRequiredSrc$2;
+var hasRequiredSrc$1;
 
-function requireSrc$2 () {
-	if (hasRequiredSrc$2) return src$6;
-	hasRequiredSrc$2 = 1;
+function requireSrc$1 () {
+	if (hasRequiredSrc$1) return src$6;
+	hasRequiredSrc$1 = 1;
 	var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	const events_1 = require$$0__default$2["default"];
-	const debug_1 = __importDefault(requireSrc$3());
+	const debug_1 = __importDefault(src$7.exports);
 	const promisify_1 = __importDefault(requirePromisify());
 	const debug = debug_1.default('agent-base');
 	function isAgent(v) {
@@ -105117,7 +105102,7 @@ function requireParseProxyResponse () {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(parseProxyResponse, "__esModule", { value: true });
-	const debug_1 = __importDefault(requireSrc$3());
+	const debug_1 = __importDefault(src$7.exports);
 	const debug = debug_1.default('https-proxy-agent:parse-proxy-response');
 	function parseProxyResponse$1(socket) {
 	    return new Promise((resolve, reject) => {
@@ -105203,8 +105188,8 @@ function requireAgent$1 () {
 	const tls_1 = __importDefault(require$$1__default$1["default"]);
 	const url_1 = __importDefault(require$$2__default["default"]);
 	const assert_1 = __importDefault(require$$6__default["default"]);
-	const debug_1 = __importDefault(requireSrc$3());
-	const agent_base_1 = requireSrc$2();
+	const debug_1 = __importDefault(src$7.exports);
+	const agent_base_1 = requireSrc$1();
 	const parse_proxy_response_1 = __importDefault(requireParseProxyResponse());
 	const debug = debug_1.default('https-proxy-agent:agent');
 	/**
@@ -105404,16 +105389,16 @@ var __importDefault$1 = (commonjsGlobal && commonjsGlobal.__importDefault) || fu
 };
 Object.defineProperty(gaxios$1, "__esModule", { value: true });
 gaxios$1.Gaxios = void 0;
-const extend_1$1 = __importDefault$1(extend$1);
+const extend_1$1 = __importDefault$1(extend$2);
 const https_1$1 = require$$1__default$2["default"];
-const node_fetch_1$1 = __importDefault$1(lib$4.exports);
+const node_fetch_1$2 = __importDefault$1(lib$4.exports);
 const querystring_1$1 = __importDefault$1(require$$0__default$9["default"]);
 const is_stream_1$1 = __importDefault$1(isStream_1);
 const url_1$1 = require$$2__default["default"];
 const common_1$1 = common$3;
 const retry_1$1 = retry$4;
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fetch$1 = hasFetch$1() ? window.fetch : node_fetch_1$1.default;
+const fetch$1 = hasFetch$1() ? window.fetch : node_fetch_1$2.default;
 function hasWindow$1() {
     return typeof window !== 'undefined' && !!window;
 }
@@ -112049,16 +112034,16 @@ var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || func
 };
 Object.defineProperty(gaxios, "__esModule", { value: true });
 gaxios.Gaxios = void 0;
-const extend_1 = __importDefault(extend$1);
+const extend_1 = __importDefault(extend$2);
 const https_1 = require$$1__default$2["default"];
-const node_fetch_1 = __importDefault(lib$4.exports);
+const node_fetch_1$1 = __importDefault(lib$4.exports);
 const querystring_1 = __importDefault(require$$0__default$9["default"]);
 const is_stream_1 = __importDefault(isStream_1);
 const url_1 = require$$2__default["default"];
 const common_1 = common$1;
 const retry_1 = retry$3;
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fetch = hasFetch() ? window.fetch : node_fetch_1.default;
+const fetch = hasFetch() ? window.fetch : node_fetch_1$1.default;
 function hasWindow() {
     return typeof window !== 'undefined' && !!window;
 }
@@ -141368,11 +141353,11 @@ function requireLib () {
 	return lib$1.exports;
 }
 
-var hasRequiredSrc$1;
+var hasRequiredSrc;
 
-function requireSrc$1 () {
-	if (hasRequiredSrc$1) return src$3;
-	hasRequiredSrc$1 = 1;
+function requireSrc () {
+	if (hasRequiredSrc) return src$3;
+	hasRequiredSrc = 1;
 	/**
 	 * Copyright 2018 Google LLC
 	 *
@@ -141559,7 +141544,7 @@ class GoogleToken {
                 // bit time to overall module loading, and is likely not frequently
                 // used.  In a future release, p12 support will be entirely removed.
                 if (!getPem) {
-                    getPem = (await Promise.resolve().then(() => requireSrc$1())).getPem;
+                    getPem = (await Promise.resolve().then(() => requireSrc())).getPem;
                 }
                 const privateKey = await getPem(keyFile);
                 return { privateKey };
@@ -145676,287 +145661,279 @@ var downscopedclient = {};
 	
 } (src$a));
 
-var retryRequest = {exports: {}};
+var retryRequest$1 = {exports: {}};
 
-var hasRequiredRetryRequest;
+const {PassThrough} = require$$0__default$6["default"];
+const debug = src$7.exports('retry-request');
+const extend$1 = extend$2;
 
-function requireRetryRequest () {
-	if (hasRequiredRetryRequest) return retryRequest.exports;
-	hasRequiredRetryRequest = 1;
+const DEFAULTS = {
+  objectMode: false,
+  retries: 2,
 
-	const {PassThrough} = require$$0__default$6["default"];
-	const debug = requireSrc$3()('retry-request');
-	const extend = extend$1;
+  /*
+    The maximum time to delay in seconds. If retryDelayMultiplier results in a
+    delay greater than maxRetryDelay, retries should delay by maxRetryDelay
+    seconds instead.
+  */
+  maxRetryDelay: 64,
 
-	const DEFAULTS = {
-	  objectMode: false,
-	  retries: 2,
+  /*
+    The multiplier by which to increase the delay time between the completion of
+    failed requests, and the initiation of the subsequent retrying request.
+  */
+  retryDelayMultiplier: 2,
 
-	  /*
-	    The maximum time to delay in seconds. If retryDelayMultiplier results in a
-	    delay greater than maxRetryDelay, retries should delay by maxRetryDelay
-	    seconds instead.
-	  */
-	  maxRetryDelay: 64,
+  /*
+    The length of time to keep retrying in seconds. The last sleep period will
+    be shortened as necessary, so that the last retry runs at deadline (and not
+    considerably beyond it).  The total time starting from when the initial
+    request is sent, after which an error will be returned, regardless of the
+    retrying attempts made meanwhile.
+   */
+  totalTimeout: 600,
 
-	  /*
-	    The multiplier by which to increase the delay time between the completion of
-	    failed requests, and the initiation of the subsequent retrying request.
-	  */
-	  retryDelayMultiplier: 2,
+  noResponseRetries: 2,
+  currentRetryAttempt: 0,
+  shouldRetryFn: function (response) {
+    const retryRanges = [
+      // https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+      // 1xx - Retry (Informational, request still processing)
+      // 2xx - Do not retry (Success)
+      // 3xx - Do not retry (Redirect)
+      // 4xx - Do not retry (Client errors)
+      // 429 - Retry ("Too Many Requests")
+      // 5xx - Retry (Server errors)
+      [100, 199],
+      [429, 429],
+      [500, 599],
+    ];
 
-	  /*
-	    The length of time to keep retrying in seconds. The last sleep period will
-	    be shortened as necessary, so that the last retry runs at deadline (and not
-	    considerably beyond it).  The total time starting from when the initial
-	    request is sent, after which an error will be returned, regardless of the
-	    retrying attempts made meanwhile.
-	   */
-	  totalTimeout: 600,
+    const statusCode = response.statusCode;
+    debug(`Response status: ${statusCode}`);
 
-	  noResponseRetries: 2,
-	  currentRetryAttempt: 0,
-	  shouldRetryFn: function (response) {
-	    const retryRanges = [
-	      // https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
-	      // 1xx - Retry (Informational, request still processing)
-	      // 2xx - Do not retry (Success)
-	      // 3xx - Do not retry (Redirect)
-	      // 4xx - Do not retry (Client errors)
-	      // 429 - Retry ("Too Many Requests")
-	      // 5xx - Retry (Server errors)
-	      [100, 199],
-	      [429, 429],
-	      [500, 599],
-	    ];
+    let range;
+    while ((range = retryRanges.shift())) {
+      if (statusCode >= range[0] && statusCode <= range[1]) {
+        // Not a successful status or redirect.
+        return true;
+      }
+    }
+  },
+};
 
-	    const statusCode = response.statusCode;
-	    debug(`Response status: ${statusCode}`);
+function retryRequest(requestOpts, opts, callback) {
+  const streamMode = typeof arguments[arguments.length - 1] !== 'function';
 
-	    let range;
-	    while ((range = retryRanges.shift())) {
-	      if (statusCode >= range[0] && statusCode <= range[1]) {
-	        // Not a successful status or redirect.
-	        return true;
-	      }
-	    }
-	  },
-	};
+  if (typeof opts === 'function') {
+    callback = opts;
+  }
 
-	function retryRequest$1(requestOpts, opts, callback) {
-	  const streamMode = typeof arguments[arguments.length - 1] !== 'function';
+  const manualCurrentRetryAttemptWasSet =
+    opts && typeof opts.currentRetryAttempt === 'number';
+  opts = extend$1({}, DEFAULTS, opts);
 
-	  if (typeof opts === 'function') {
-	    callback = opts;
-	  }
+  if (typeof opts.request === 'undefined') {
+    try {
+      // eslint-disable-next-line node/no-unpublished-require
+      opts.request = require('request');
+    } catch (e) {
+      throw new Error('A request library must be provided to retry-request.');
+    }
+  }
 
-	  const manualCurrentRetryAttemptWasSet =
-	    opts && typeof opts.currentRetryAttempt === 'number';
-	  opts = extend({}, DEFAULTS, opts);
+  let currentRetryAttempt = opts.currentRetryAttempt;
 
-	  if (typeof opts.request === 'undefined') {
-	    try {
-	      // eslint-disable-next-line node/no-unpublished-require
-	      opts.request = require('request');
-	    } catch (e) {
-	      throw new Error('A request library must be provided to retry-request.');
-	    }
-	  }
+  let numNoResponseAttempts = 0;
+  let streamResponseHandled = false;
 
-	  let currentRetryAttempt = opts.currentRetryAttempt;
+  let retryStream;
+  let requestStream;
+  let delayStream;
 
-	  let numNoResponseAttempts = 0;
-	  let streamResponseHandled = false;
+  let activeRequest;
+  const retryRequest = {
+    abort: function () {
+      if (activeRequest && activeRequest.abort) {
+        activeRequest.abort();
+      }
+    },
+  };
 
-	  let retryStream;
-	  let requestStream;
-	  let delayStream;
+  if (streamMode) {
+    retryStream = new PassThrough({objectMode: opts.objectMode});
+    retryStream.abort = resetStreams;
+  }
 
-	  let activeRequest;
-	  const retryRequest = {
-	    abort: function () {
-	      if (activeRequest && activeRequest.abort) {
-	        activeRequest.abort();
-	      }
-	    },
-	  };
+  const timeOfFirstRequest = Date.now();
+  if (currentRetryAttempt > 0) {
+    retryAfterDelay(currentRetryAttempt);
+  } else {
+    makeRequest();
+  }
 
-	  if (streamMode) {
-	    retryStream = new PassThrough({objectMode: opts.objectMode});
-	    retryStream.abort = resetStreams;
-	  }
+  if (streamMode) {
+    return retryStream;
+  } else {
+    return retryRequest;
+  }
 
-	  const timeOfFirstRequest = Date.now();
-	  if (currentRetryAttempt > 0) {
-	    retryAfterDelay(currentRetryAttempt);
-	  } else {
-	    makeRequest();
-	  }
+  function resetStreams() {
+    delayStream = null;
 
-	  if (streamMode) {
-	    return retryStream;
-	  } else {
-	    return retryRequest;
-	  }
+    if (requestStream) {
+      requestStream.abort && requestStream.abort();
+      requestStream.cancel && requestStream.cancel();
 
-	  function resetStreams() {
-	    delayStream = null;
+      if (requestStream.destroy) {
+        requestStream.destroy();
+      } else if (requestStream.end) {
+        requestStream.end();
+      }
+    }
+  }
 
-	    if (requestStream) {
-	      requestStream.abort && requestStream.abort();
-	      requestStream.cancel && requestStream.cancel();
+  function makeRequest() {
+    currentRetryAttempt++;
+    debug(`Current retry attempt: ${currentRetryAttempt}`);
 
-	      if (requestStream.destroy) {
-	        requestStream.destroy();
-	      } else if (requestStream.end) {
-	        requestStream.end();
-	      }
-	    }
-	  }
+    if (streamMode) {
+      streamResponseHandled = false;
 
-	  function makeRequest() {
-	    currentRetryAttempt++;
-	    debug(`Current retry attempt: ${currentRetryAttempt}`);
+      delayStream = new PassThrough({objectMode: opts.objectMode});
+      requestStream = opts.request(requestOpts);
 
-	    if (streamMode) {
-	      streamResponseHandled = false;
+      setImmediate(() => {
+        retryStream.emit('request');
+      });
 
-	      delayStream = new PassThrough({objectMode: opts.objectMode});
-	      requestStream = opts.request(requestOpts);
+      requestStream
+        // gRPC via google-cloud-node can emit an `error` as well as a `response`
+        // Whichever it emits, we run with-- we can't run with both. That's what
+        // is up with the `streamResponseHandled` tracking.
+        .on('error', err => {
+          if (streamResponseHandled) {
+            return;
+          }
 
-	      setImmediate(() => {
-	        retryStream.emit('request');
-	      });
+          streamResponseHandled = true;
+          onResponse(err);
+        })
+        .on('response', (resp, body) => {
+          if (streamResponseHandled) {
+            return;
+          }
 
-	      requestStream
-	        // gRPC via google-cloud-node can emit an `error` as well as a `response`
-	        // Whichever it emits, we run with-- we can't run with both. That's what
-	        // is up with the `streamResponseHandled` tracking.
-	        .on('error', err => {
-	          if (streamResponseHandled) {
-	            return;
-	          }
+          streamResponseHandled = true;
+          onResponse(null, resp, body);
+        })
+        .on('complete', retryStream.emit.bind(retryStream, 'complete'));
 
-	          streamResponseHandled = true;
-	          onResponse(err);
-	        })
-	        .on('response', (resp, body) => {
-	          if (streamResponseHandled) {
-	            return;
-	          }
+      requestStream.pipe(delayStream);
+    } else {
+      activeRequest = opts.request(requestOpts, onResponse);
+    }
+  }
 
-	          streamResponseHandled = true;
-	          onResponse(null, resp, body);
-	        })
-	        .on('complete', retryStream.emit.bind(retryStream, 'complete'));
+  function retryAfterDelay(currentRetryAttempt) {
+    if (streamMode) {
+      resetStreams();
+    }
 
-	      requestStream.pipe(delayStream);
-	    } else {
-	      activeRequest = opts.request(requestOpts, onResponse);
-	    }
-	  }
+    const nextRetryDelay = getNextRetryDelay({
+      maxRetryDelay: opts.maxRetryDelay,
+      retryDelayMultiplier: opts.retryDelayMultiplier,
+      retryNumber: currentRetryAttempt,
+      timeOfFirstRequest,
+      totalTimeout: opts.totalTimeout,
+    });
+    debug(`Next retry delay: ${nextRetryDelay}`);
 
-	  function retryAfterDelay(currentRetryAttempt) {
-	    if (streamMode) {
-	      resetStreams();
-	    }
+    if (nextRetryDelay <= 0) {
+      numNoResponseAttempts = opts.noResponseRetries + 1;
+      return;
+    }
 
-	    const nextRetryDelay = getNextRetryDelay({
-	      maxRetryDelay: opts.maxRetryDelay,
-	      retryDelayMultiplier: opts.retryDelayMultiplier,
-	      retryNumber: currentRetryAttempt,
-	      timeOfFirstRequest,
-	      totalTimeout: opts.totalTimeout,
-	    });
-	    debug(`Next retry delay: ${nextRetryDelay}`);
+    setTimeout(makeRequest, nextRetryDelay);
+  }
 
-	    if (nextRetryDelay <= 0) {
-	      numNoResponseAttempts = opts.noResponseRetries + 1;
-	      return;
-	    }
+  function onResponse(err, response, body) {
+    // An error such as DNS resolution.
+    if (err) {
+      numNoResponseAttempts++;
 
-	    setTimeout(makeRequest, nextRetryDelay);
-	  }
+      if (numNoResponseAttempts <= opts.noResponseRetries) {
+        retryAfterDelay(numNoResponseAttempts);
+      } else {
+        if (streamMode) {
+          retryStream.emit('error', err);
+          retryStream.end();
+        } else {
+          callback(err, response, body);
+        }
+      }
 
-	  function onResponse(err, response, body) {
-	    // An error such as DNS resolution.
-	    if (err) {
-	      numNoResponseAttempts++;
+      return;
+    }
 
-	      if (numNoResponseAttempts <= opts.noResponseRetries) {
-	        retryAfterDelay(numNoResponseAttempts);
-	      } else {
-	        if (streamMode) {
-	          retryStream.emit('error', err);
-	          retryStream.end();
-	        } else {
-	          callback(err, response, body);
-	        }
-	      }
+    // Send the response to see if we should try again.
+    // NOTE: "currentRetryAttempt" isn't accurate by default, as it counts
+    // the very first request sent as the first "retry". It is only accurate
+    // when a user provides their own "currentRetryAttempt" option at
+    // instantiation.
+    const adjustedCurrentRetryAttempt = manualCurrentRetryAttemptWasSet
+      ? currentRetryAttempt
+      : currentRetryAttempt - 1;
+    if (
+      adjustedCurrentRetryAttempt < opts.retries &&
+      opts.shouldRetryFn(response)
+    ) {
+      retryAfterDelay(currentRetryAttempt);
+      return;
+    }
 
-	      return;
-	    }
-
-	    // Send the response to see if we should try again.
-	    // NOTE: "currentRetryAttempt" isn't accurate by default, as it counts
-	    // the very first request sent as the first "retry". It is only accurate
-	    // when a user provides their own "currentRetryAttempt" option at
-	    // instantiation.
-	    const adjustedCurrentRetryAttempt = manualCurrentRetryAttemptWasSet
-	      ? currentRetryAttempt
-	      : currentRetryAttempt - 1;
-	    if (
-	      adjustedCurrentRetryAttempt < opts.retries &&
-	      opts.shouldRetryFn(response)
-	    ) {
-	      retryAfterDelay(currentRetryAttempt);
-	      return;
-	    }
-
-	    // No more attempts need to be made, just continue on.
-	    if (streamMode) {
-	      retryStream.emit('response', response);
-	      delayStream.pipe(retryStream);
-	      requestStream.on('error', err => {
-	        retryStream.destroy(err);
-	      });
-	    } else {
-	      callback(err, response, body);
-	    }
-	  }
-	}
-
-	retryRequest.exports = retryRequest$1;
-
-	function getNextRetryDelay(config) {
-	  const {
-	    maxRetryDelay,
-	    retryDelayMultiplier,
-	    retryNumber,
-	    timeOfFirstRequest,
-	    totalTimeout,
-	  } = config;
-
-	  const maxRetryDelayMs = maxRetryDelay * 1000;
-	  const totalTimeoutMs = totalTimeout * 1000;
-
-	  const jitter = Math.floor(Math.random() * 1000);
-	  const calculatedNextRetryDelay =
-	    Math.pow(retryDelayMultiplier, retryNumber) * 1000 + jitter;
-
-	  const maxAllowableDelayMs =
-	    totalTimeoutMs - (Date.now() - timeOfFirstRequest);
-
-	  return Math.min(
-	    calculatedNextRetryDelay,
-	    maxAllowableDelayMs,
-	    maxRetryDelayMs
-	  );
-	}
-
-	retryRequest.exports.getNextRetryDelay = getNextRetryDelay;
-	return retryRequest.exports;
+    // No more attempts need to be made, just continue on.
+    if (streamMode) {
+      retryStream.emit('response', response);
+      delayStream.pipe(retryStream);
+      requestStream.on('error', err => {
+        retryStream.destroy(err);
+      });
+    } else {
+      callback(err, response, body);
+    }
+  }
 }
+
+retryRequest$1.exports = retryRequest;
+
+function getNextRetryDelay(config) {
+  const {
+    maxRetryDelay,
+    retryDelayMultiplier,
+    retryNumber,
+    timeOfFirstRequest,
+    totalTimeout,
+  } = config;
+
+  const maxRetryDelayMs = maxRetryDelay * 1000;
+  const totalTimeoutMs = totalTimeout * 1000;
+
+  const jitter = Math.floor(Math.random() * 1000);
+  const calculatedNextRetryDelay =
+    Math.pow(retryDelayMultiplier, retryNumber) * 1000 + jitter;
+
+  const maxAllowableDelayMs =
+    totalTimeoutMs - (Date.now() - timeOfFirstRequest);
+
+  return Math.min(
+    calculatedNextRetryDelay,
+    maxAllowableDelayMs,
+    maxRetryDelayMs
+  );
+}
+
+retryRequest$1.exports.getNextRetryDelay = getNextRetryDelay;
 
 var src$2 = {};
 
@@ -146018,9 +145995,9 @@ function requireAgent () {
 	const net_1 = __importDefault(require$$0__default$8["default"]);
 	const tls_1 = __importDefault(require$$1__default$1["default"]);
 	const url_1 = __importDefault(require$$2__default["default"]);
-	const debug_1 = __importDefault(requireSrc$3());
+	const debug_1 = __importDefault(src$7.exports);
 	const once_1 = __importDefault(requireDist$1());
-	const agent_base_1 = requireSrc$2();
+	const agent_base_1 = requireSrc$1();
 	const debug = (0, debug_1.default)('http-proxy-agent');
 	function isHTTPS(protocol) {
 	    return typeof protocol === 'string' ? /^https:?$/i.test(protocol) : false;
@@ -146171,114 +146148,10 @@ function requireDist () {
 	return dist;
 }
 
-var hasRequiredAgents;
-
-function requireAgents () {
-	if (hasRequiredAgents) return agents;
-	hasRequiredAgents = 1;
-	(function (exports) {
-		/**
-		 * @license
-		 * Copyright 2019 Google LLC
-		 *
-		 * Licensed under the Apache License, Version 2.0 (the "License");
-		 * you may not use this file except in compliance with the License.
-		 * You may obtain a copy of the License at
-		 *
-		 *      http://www.apache.org/licenses/LICENSE-2.0
-		 *
-		 * Unless required by applicable law or agreed to in writing, software
-		 * distributed under the License is distributed on an "AS IS" BASIS,
-		 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		 * See the License for the specific language governing permissions and
-		 * limitations under the License.
-		 */
-		Object.defineProperty(exports, "__esModule", { value: true });
-		exports.getAgent = exports.pool = void 0;
-		const http_1 = require$$0__default$3["default"];
-		const https_1 = require$$1__default$2["default"];
-		// eslint-disable-next-line node/no-deprecated-api
-		const url_1 = require$$2__default["default"];
-		exports.pool = new Map();
-		/**
-		 * Determines if a proxy should be considered based on the environment.
-		 *
-		 * @param uri The request uri
-		 * @returns {boolean}
-		 */
-		function shouldUseProxyForURI(uri) {
-		    const noProxyEnv = process.env.NO_PROXY || process.env.no_proxy;
-		    if (!noProxyEnv) {
-		        return true;
-		    }
-		    const givenURI = new URL(uri);
-		    for (const noProxyRaw of noProxyEnv.split(',')) {
-		        const noProxy = noProxyRaw.trim();
-		        if (noProxy === givenURI.origin || noProxy === givenURI.hostname) {
-		            return false;
-		        }
-		        else if (noProxy.startsWith('*.') || noProxy.startsWith('.')) {
-		            const noProxyWildcard = noProxy.replace(/^\*\./, '.');
-		            if (givenURI.hostname.endsWith(noProxyWildcard)) {
-		                return false;
-		            }
-		        }
-		    }
-		    return true;
-		}
-		/**
-		 * Returns a custom request Agent if one is found, otherwise returns undefined
-		 * which will result in the global http(s) Agent being used.
-		 * @private
-		 * @param {string} uri The request uri
-		 * @param {Options} reqOpts The request options
-		 * @returns {HttpAnyAgent|undefined}
-		 */
-		function getAgent(uri, reqOpts) {
-		    const isHttp = uri.startsWith('http://');
-		    const proxy = reqOpts.proxy ||
-		        process.env.HTTP_PROXY ||
-		        process.env.http_proxy ||
-		        process.env.HTTPS_PROXY ||
-		        process.env.https_proxy;
-		    const poolOptions = Object.assign({}, reqOpts.pool);
-		    const manuallyProvidedProxy = !!reqOpts.proxy;
-		    const shouldUseProxy = manuallyProvidedProxy || shouldUseProxyForURI(uri);
-		    if (proxy && shouldUseProxy) {
-		        // tslint:disable-next-line variable-name
-		        const Agent = isHttp
-		            ? requireDist()
-		            : requireDist$2();
-		        const proxyOpts = { ...(0, url_1.parse)(proxy), ...poolOptions };
-		        return new Agent(proxyOpts);
-		    }
-		    let key = isHttp ? 'http' : 'https';
-		    if (reqOpts.forever) {
-		        key += ':forever';
-		        if (!exports.pool.has(key)) {
-		            // tslint:disable-next-line variable-name
-		            const Agent = isHttp ? http_1.Agent : https_1.Agent;
-		            exports.pool.set(key, new Agent({ ...poolOptions, keepAlive: true }));
-		        }
-		    }
-		    return exports.pool.get(key);
-		}
-		exports.getAgent = getAgent;
-		
-} (agents));
-	return agents;
-}
-
-var TeenyStatistics = {};
-
-var hasRequiredTeenyStatistics;
-
-function requireTeenyStatistics () {
-	if (hasRequiredTeenyStatistics) return TeenyStatistics;
-	hasRequiredTeenyStatistics = 1;
+(function (exports) {
 	/**
 	 * @license
-	 * Copyright 2020 Google LLC
+	 * Copyright 2019 Google LLC
 	 *
 	 * Licensed under the Apache License, Version 2.0 (the "License");
 	 * you may not use this file except in compliance with the License.
@@ -146292,147 +146165,236 @@ function requireTeenyStatistics () {
 	 * See the License for the specific language governing permissions and
 	 * limitations under the License.
 	 */
-	Object.defineProperty(TeenyStatistics, "__esModule", { value: true });
-	TeenyStatistics.TeenyStatistics = TeenyStatistics.TeenyStatisticsWarning = void 0;
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.getAgent = exports.pool = void 0;
+	const http_1 = require$$0__default$3["default"];
+	const https_1 = require$$1__default$2["default"];
+	// eslint-disable-next-line node/no-deprecated-api
+	const url_1 = require$$2__default["default"];
+	exports.pool = new Map();
 	/**
-	 * @class TeenyStatisticsWarning
-	 * @extends Error
-	 * @description While an error, is used for emitting warnings when
-	 *   meeting certain configured thresholds.
-	 * @see process.emitWarning
+	 * Determines if a proxy should be considered based on the environment.
+	 *
+	 * @param uri The request uri
+	 * @returns {boolean}
 	 */
-	class TeenyStatisticsWarning extends Error {
-	    /**
-	     * @param {string} message
-	     */
-	    constructor(message) {
-	        super(message);
-	        this.threshold = 0;
-	        this.type = '';
-	        this.value = 0;
-	        this.name = this.constructor.name;
-	        Error.captureStackTrace(this, this.constructor);
+	function shouldUseProxyForURI(uri) {
+	    const noProxyEnv = process.env.NO_PROXY || process.env.no_proxy;
+	    if (!noProxyEnv) {
+	        return true;
 	    }
+	    const givenURI = new URL(uri);
+	    for (const noProxyRaw of noProxyEnv.split(',')) {
+	        const noProxy = noProxyRaw.trim();
+	        if (noProxy === givenURI.origin || noProxy === givenURI.hostname) {
+	            return false;
+	        }
+	        else if (noProxy.startsWith('*.') || noProxy.startsWith('.')) {
+	            const noProxyWildcard = noProxy.replace(/^\*\./, '.');
+	            if (givenURI.hostname.endsWith(noProxyWildcard)) {
+	                return false;
+	            }
+	        }
+	    }
+	    return true;
 	}
-	TeenyStatistics.TeenyStatisticsWarning = TeenyStatisticsWarning;
-	TeenyStatisticsWarning.CONCURRENT_REQUESTS = 'ConcurrentRequestsExceededWarning';
 	/**
-	 * @class TeenyStatistics
-	 * @description Maintain various statistics internal to teeny-request. Tracking
-	 *   is not automatic and must be instrumented within teeny-request.
+	 * Returns a custom request Agent if one is found, otherwise returns undefined
+	 * which will result in the global http(s) Agent being used.
+	 * @private
+	 * @param {string} uri The request uri
+	 * @param {Options} reqOpts The request options
+	 * @returns {HttpAnyAgent|undefined}
 	 */
-	class TeenyStatistics$1 {
-	    /**
-	     * @param {TeenyStatisticsOptions} [opts]
-	     */
-	    constructor(opts) {
-	        /**
-	         * @type {number}
-	         * @private
-	         * @default 0
-	         */
-	        this._concurrentRequests = 0;
-	        /**
-	         * @type {boolean}
-	         * @private
-	         * @default false
-	         */
-	        this._didConcurrentRequestWarn = false;
-	        this._options = TeenyStatistics$1._prepareOptions(opts);
+	function getAgent(uri, reqOpts) {
+	    const isHttp = uri.startsWith('http://');
+	    const proxy = reqOpts.proxy ||
+	        process.env.HTTP_PROXY ||
+	        process.env.http_proxy ||
+	        process.env.HTTPS_PROXY ||
+	        process.env.https_proxy;
+	    const poolOptions = Object.assign({}, reqOpts.pool);
+	    const manuallyProvidedProxy = !!reqOpts.proxy;
+	    const shouldUseProxy = manuallyProvidedProxy || shouldUseProxyForURI(uri);
+	    if (proxy && shouldUseProxy) {
+	        // tslint:disable-next-line variable-name
+	        const Agent = isHttp
+	            ? requireDist()
+	            : requireDist$2();
+	        const proxyOpts = { ...(0, url_1.parse)(proxy), ...poolOptions };
+	        return new Agent(proxyOpts);
 	    }
-	    /**
-	     * Returns a copy of the current options.
-	     * @return {TeenyStatisticsOptions}
-	     */
-	    getOptions() {
-	        return Object.assign({}, this._options);
-	    }
-	    /**
-	     * Change configured statistics options. This will not preserve unspecified
-	     *   options that were previously specified, i.e. this is a reset of options.
-	     * @param {TeenyStatisticsOptions} [opts]
-	     * @returns {TeenyStatisticsConfig} The previous options.
-	     * @see _prepareOptions
-	     */
-	    setOptions(opts) {
-	        const oldOpts = this._options;
-	        this._options = TeenyStatistics$1._prepareOptions(opts);
-	        return oldOpts;
-	    }
-	    /**
-	     * @readonly
-	     * @return {TeenyStatisticsCounters}
-	     */
-	    get counters() {
-	        return {
-	            concurrentRequests: this._concurrentRequests,
-	        };
-	    }
-	    /**
-	     * @description Should call this right before making a request.
-	     */
-	    requestStarting() {
-	        this._concurrentRequests++;
-	        if (this._options.concurrentRequests > 0 &&
-	            this._concurrentRequests >= this._options.concurrentRequests &&
-	            !this._didConcurrentRequestWarn) {
-	            this._didConcurrentRequestWarn = true;
-	            const warning = new TeenyStatisticsWarning('Possible excessive concurrent requests detected. ' +
-	                this._concurrentRequests +
-	                ' requests in-flight, which exceeds the configured threshold of ' +
-	                this._options.concurrentRequests +
-	                '. Use the TEENY_REQUEST_WARN_CONCURRENT_REQUESTS environment ' +
-	                'variable or the concurrentRequests option of teeny-request to ' +
-	                'increase or disable (0) this warning.');
-	            warning.type = TeenyStatisticsWarning.CONCURRENT_REQUESTS;
-	            warning.value = this._concurrentRequests;
-	            warning.threshold = this._options.concurrentRequests;
-	            process.emitWarning(warning);
+	    let key = isHttp ? 'http' : 'https';
+	    if (reqOpts.forever) {
+	        key += ':forever';
+	        if (!exports.pool.has(key)) {
+	            // tslint:disable-next-line variable-name
+	            const Agent = isHttp ? http_1.Agent : https_1.Agent;
+	            exports.pool.set(key, new Agent({ ...poolOptions, keepAlive: true }));
 	        }
 	    }
-	    /**
-	     * @description When using `requestStarting`, call this after the request
-	     *   has finished.
-	     */
-	    requestFinished() {
-	        // TODO negative?
-	        this._concurrentRequests--;
-	    }
-	    /**
-	     * Configuration Precedence:
-	     *   1. Dependency inversion via defined option.
-	     *   2. Global numeric environment variable.
-	     *   3. Built-in default.
-	     * This will not preserve unspecified options previously specified.
-	     * @param {TeenyStatisticsOptions} [opts]
-	     * @returns {TeenyStatisticsOptions}
-	     * @private
-	     */
-	    static _prepareOptions({ concurrentRequests: diConcurrentRequests, } = {}) {
-	        let concurrentRequests = this.DEFAULT_WARN_CONCURRENT_REQUESTS;
-	        const envConcurrentRequests = Number(process.env.TEENY_REQUEST_WARN_CONCURRENT_REQUESTS);
-	        if (diConcurrentRequests !== undefined) {
-	            concurrentRequests = diConcurrentRequests;
-	        }
-	        else if (!Number.isNaN(envConcurrentRequests)) {
-	            concurrentRequests = envConcurrentRequests;
-	        }
-	        return { concurrentRequests };
-	    }
+	    return exports.pool.get(key);
 	}
-	TeenyStatistics.TeenyStatistics = TeenyStatistics$1;
-	/**
-	 * @description A default threshold representing when to warn about excessive
-	 *   in-flight/concurrent requests.
-	 * @type {number}
-	 * @static
-	 * @readonly
-	 * @default 5000
-	 */
-	TeenyStatistics$1.DEFAULT_WARN_CONCURRENT_REQUESTS = 5000;
+	exports.getAgent = getAgent;
 	
-	return TeenyStatistics;
+} (agents));
+
+var TeenyStatistics$1 = {};
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+Object.defineProperty(TeenyStatistics$1, "__esModule", { value: true });
+TeenyStatistics$1.TeenyStatistics = TeenyStatistics$1.TeenyStatisticsWarning = void 0;
+/**
+ * @class TeenyStatisticsWarning
+ * @extends Error
+ * @description While an error, is used for emitting warnings when
+ *   meeting certain configured thresholds.
+ * @see process.emitWarning
+ */
+class TeenyStatisticsWarning extends Error {
+    /**
+     * @param {string} message
+     */
+    constructor(message) {
+        super(message);
+        this.threshold = 0;
+        this.type = '';
+        this.value = 0;
+        this.name = this.constructor.name;
+        Error.captureStackTrace(this, this.constructor);
+    }
 }
+TeenyStatistics$1.TeenyStatisticsWarning = TeenyStatisticsWarning;
+TeenyStatisticsWarning.CONCURRENT_REQUESTS = 'ConcurrentRequestsExceededWarning';
+/**
+ * @class TeenyStatistics
+ * @description Maintain various statistics internal to teeny-request. Tracking
+ *   is not automatic and must be instrumented within teeny-request.
+ */
+class TeenyStatistics {
+    /**
+     * @param {TeenyStatisticsOptions} [opts]
+     */
+    constructor(opts) {
+        /**
+         * @type {number}
+         * @private
+         * @default 0
+         */
+        this._concurrentRequests = 0;
+        /**
+         * @type {boolean}
+         * @private
+         * @default false
+         */
+        this._didConcurrentRequestWarn = false;
+        this._options = TeenyStatistics._prepareOptions(opts);
+    }
+    /**
+     * Returns a copy of the current options.
+     * @return {TeenyStatisticsOptions}
+     */
+    getOptions() {
+        return Object.assign({}, this._options);
+    }
+    /**
+     * Change configured statistics options. This will not preserve unspecified
+     *   options that were previously specified, i.e. this is a reset of options.
+     * @param {TeenyStatisticsOptions} [opts]
+     * @returns {TeenyStatisticsConfig} The previous options.
+     * @see _prepareOptions
+     */
+    setOptions(opts) {
+        const oldOpts = this._options;
+        this._options = TeenyStatistics._prepareOptions(opts);
+        return oldOpts;
+    }
+    /**
+     * @readonly
+     * @return {TeenyStatisticsCounters}
+     */
+    get counters() {
+        return {
+            concurrentRequests: this._concurrentRequests,
+        };
+    }
+    /**
+     * @description Should call this right before making a request.
+     */
+    requestStarting() {
+        this._concurrentRequests++;
+        if (this._options.concurrentRequests > 0 &&
+            this._concurrentRequests >= this._options.concurrentRequests &&
+            !this._didConcurrentRequestWarn) {
+            this._didConcurrentRequestWarn = true;
+            const warning = new TeenyStatisticsWarning('Possible excessive concurrent requests detected. ' +
+                this._concurrentRequests +
+                ' requests in-flight, which exceeds the configured threshold of ' +
+                this._options.concurrentRequests +
+                '. Use the TEENY_REQUEST_WARN_CONCURRENT_REQUESTS environment ' +
+                'variable or the concurrentRequests option of teeny-request to ' +
+                'increase or disable (0) this warning.');
+            warning.type = TeenyStatisticsWarning.CONCURRENT_REQUESTS;
+            warning.value = this._concurrentRequests;
+            warning.threshold = this._options.concurrentRequests;
+            process.emitWarning(warning);
+        }
+    }
+    /**
+     * @description When using `requestStarting`, call this after the request
+     *   has finished.
+     */
+    requestFinished() {
+        // TODO negative?
+        this._concurrentRequests--;
+    }
+    /**
+     * Configuration Precedence:
+     *   1. Dependency inversion via defined option.
+     *   2. Global numeric environment variable.
+     *   3. Built-in default.
+     * This will not preserve unspecified options previously specified.
+     * @param {TeenyStatisticsOptions} [opts]
+     * @returns {TeenyStatisticsOptions}
+     * @private
+     */
+    static _prepareOptions({ concurrentRequests: diConcurrentRequests, } = {}) {
+        let concurrentRequests = this.DEFAULT_WARN_CONCURRENT_REQUESTS;
+        const envConcurrentRequests = Number(process.env.TEENY_REQUEST_WARN_CONCURRENT_REQUESTS);
+        if (diConcurrentRequests !== undefined) {
+            concurrentRequests = diConcurrentRequests;
+        }
+        else if (!Number.isNaN(envConcurrentRequests)) {
+            concurrentRequests = envConcurrentRequests;
+        }
+        return { concurrentRequests };
+    }
+}
+TeenyStatistics$1.TeenyStatistics = TeenyStatistics;
+/**
+ * @description A default threshold representing when to warn about excessive
+ *   in-flight/concurrent requests.
+ * @type {number}
+ * @static
+ * @readonly
+ * @default 5000
+ */
+TeenyStatistics.DEFAULT_WARN_CONCURRENT_REQUESTS = 5000;
 
 var stubs$1 = function stubs(obj, method, cfg, stub) {
   if (!obj || !method || !obj[method])
@@ -146495,267 +146457,259 @@ function StreamEvents(stream) {
   return stream
 }
 
-var streamEvents = StreamEvents;
+var streamEvents$1 = StreamEvents;
 
-var hasRequiredSrc;
-
-function requireSrc () {
-	if (hasRequiredSrc) return src$2;
-	hasRequiredSrc = 1;
-	/**
-	 * @license
-	 * Copyright 2018 Google LLC
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *      http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-	Object.defineProperty(src$2, "__esModule", { value: true });
-	src$2.teenyRequest = src$2.RequestError = void 0;
-	const node_fetch_1 = lib$4.exports;
-	const stream_1 = require$$0__default$6["default"];
-	const uuid = dist$3;
-	const agents_1 = requireAgents();
-	const TeenyStatistics_1 = requireTeenyStatistics();
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	const streamEvents$1 = streamEvents;
-	class RequestError extends Error {
-	}
-	src$2.RequestError = RequestError;
-	/**
-	 * Convert options from Request to Fetch format
-	 * @private
-	 * @param reqOpts Request options
-	 */
-	function requestToFetchOptions(reqOpts) {
-	    const options = {
-	        method: reqOpts.method || 'GET',
-	        ...(reqOpts.timeout && { timeout: reqOpts.timeout }),
-	        ...(typeof reqOpts.gzip === 'boolean' && { compress: reqOpts.gzip }),
-	    };
-	    if (typeof reqOpts.json === 'object') {
-	        // Add Content-type: application/json header
-	        reqOpts.headers = reqOpts.headers || {};
-	        reqOpts.headers['Content-Type'] = 'application/json';
-	        // Set body to JSON representation of value
-	        options.body = JSON.stringify(reqOpts.json);
-	    }
-	    else {
-	        if (Buffer.isBuffer(reqOpts.body)) {
-	            options.body = reqOpts.body;
-	        }
-	        else if (typeof reqOpts.body !== 'string') {
-	            options.body = JSON.stringify(reqOpts.body);
-	        }
-	        else {
-	            options.body = reqOpts.body;
-	        }
-	    }
-	    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	    options.headers = reqOpts.headers;
-	    let uri = (reqOpts.uri ||
-	        reqOpts.url);
-	    if (!uri) {
-	        throw new Error('Missing uri or url in reqOpts.');
-	    }
-	    if (reqOpts.useQuerystring === true || typeof reqOpts.qs === 'object') {
-	        // eslint-disable-next-line @typescript-eslint/no-var-requires
-	        const qs = require$$0__default$9["default"];
-	        const params = qs.stringify(reqOpts.qs);
-	        uri = uri + '?' + params;
-	    }
-	    options.agent = (0, agents_1.getAgent)(uri, reqOpts);
-	    return { uri, options };
-	}
-	/**
-	 * Convert a response from `fetch` to `request` format.
-	 * @private
-	 * @param opts The `request` options used to create the request.
-	 * @param res The Fetch response
-	 * @returns A `request` response object
-	 */
-	function fetchToRequestResponse(opts, res) {
-	    const request = {};
-	    request.agent = opts.agent || false;
-	    request.headers = (opts.headers || {});
-	    request.href = res.url;
-	    // headers need to be converted from a map to an obj
-	    const resHeaders = {};
-	    res.headers.forEach((value, key) => (resHeaders[key] = value));
-	    const response = Object.assign(res.body, {
-	        statusCode: res.status,
-	        statusMessage: res.statusText,
-	        request,
-	        body: res.body,
-	        headers: resHeaders,
-	        toJSON: () => ({ headers: resHeaders }),
-	    });
-	    return response;
-	}
-	/**
-	 * Create POST body from two parts as multipart/related content-type
-	 * @private
-	 * @param boundary
-	 * @param multipart
-	 */
-	function createMultipartStream(boundary, multipart) {
-	    const finale = `--${boundary}--`;
-	    const stream = new stream_1.PassThrough();
-	    for (const part of multipart) {
-	        const preamble = `--${boundary}\r\nContent-Type: ${part['Content-Type']}\r\n\r\n`;
-	        stream.write(preamble);
-	        if (typeof part.body === 'string') {
-	            stream.write(part.body);
-	            stream.write('\r\n');
-	        }
-	        else {
-	            part.body.pipe(stream, { end: false });
-	            part.body.on('end', () => {
-	                stream.write('\r\n');
-	                stream.write(finale);
-	                stream.end();
-	            });
-	        }
-	    }
-	    return stream;
-	}
-	function teenyRequest(reqOpts, callback) {
-	    const { uri, options } = requestToFetchOptions(reqOpts);
-	    const multipart = reqOpts.multipart;
-	    if (reqOpts.multipart && multipart.length === 2) {
-	        if (!callback) {
-	            // TODO: add support for multipart uploads through streaming
-	            throw new Error('Multipart without callback is not implemented.');
-	        }
-	        const boundary = uuid.v4();
-	        options.headers['Content-Type'] = `multipart/related; boundary=${boundary}`;
-	        options.body = createMultipartStream(boundary, multipart);
-	        // Multipart upload
-	        teenyRequest.stats.requestStarting();
-	        (0, node_fetch_1.default)(uri, options).then(res => {
-	            teenyRequest.stats.requestFinished();
-	            const header = res.headers.get('content-type');
-	            const response = fetchToRequestResponse(options, res);
-	            const body = response.body;
-	            if (header === 'application/json' ||
-	                header === 'application/json; charset=utf-8') {
-	                res.json().then(json => {
-	                    response.body = json;
-	                    callback(null, response, json);
-	                }, (err) => {
-	                    callback(err, response, body);
-	                });
-	                return;
-	            }
-	            res.text().then(text => {
-	                response.body = text;
-	                callback(null, response, text);
-	            }, err => {
-	                callback(err, response, body);
-	            });
-	        }, err => {
-	            teenyRequest.stats.requestFinished();
-	            callback(err, null, null);
-	        });
-	        return;
-	    }
-	    if (callback === undefined) {
-	        // Stream mode
-	        const requestStream = streamEvents$1(new stream_1.PassThrough());
-	        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	        let responseStream;
-	        requestStream.once('reading', () => {
-	            if (responseStream) {
-	                responseStream.pipe(requestStream);
-	            }
-	            else {
-	                requestStream.once('response', () => {
-	                    responseStream.pipe(requestStream);
-	                });
-	            }
-	        });
-	        options.compress = false;
-	        teenyRequest.stats.requestStarting();
-	        (0, node_fetch_1.default)(uri, options).then(res => {
-	            teenyRequest.stats.requestFinished();
-	            responseStream = res.body;
-	            responseStream.on('error', (err) => {
-	                requestStream.emit('error', err);
-	            });
-	            const response = fetchToRequestResponse(options, res);
-	            requestStream.emit('response', response);
-	        }, err => {
-	            teenyRequest.stats.requestFinished();
-	            requestStream.emit('error', err);
-	        });
-	        // fetch doesn't supply the raw HTTP stream, instead it
-	        // returns a PassThrough piped from the HTTP response
-	        // stream.
-	        return requestStream;
-	    }
-	    // GET or POST with callback
-	    teenyRequest.stats.requestStarting();
-	    (0, node_fetch_1.default)(uri, options).then(res => {
-	        teenyRequest.stats.requestFinished();
-	        const header = res.headers.get('content-type');
-	        const response = fetchToRequestResponse(options, res);
-	        const body = response.body;
-	        if (header === 'application/json' ||
-	            header === 'application/json; charset=utf-8') {
-	            if (response.statusCode === 204) {
-	                // Probably a DELETE
-	                callback(null, response, body);
-	                return;
-	            }
-	            res.json().then(json => {
-	                response.body = json;
-	                callback(null, response, json);
-	            }, err => {
-	                callback(err, response, body);
-	            });
-	            return;
-	        }
-	        res.text().then(text => {
-	            const response = fetchToRequestResponse(options, res);
-	            response.body = text;
-	            callback(null, response, text);
-	        }, err => {
-	            callback(err, response, body);
-	        });
-	    }, err => {
-	        teenyRequest.stats.requestFinished();
-	        callback(err, null, null);
-	    });
-	    return;
-	}
-	src$2.teenyRequest = teenyRequest;
-	teenyRequest.defaults = (defaults) => {
-	    return (reqOpts, callback) => {
-	        const opts = { ...defaults, ...reqOpts };
-	        if (callback === undefined) {
-	            return teenyRequest(opts);
-	        }
-	        teenyRequest(opts, callback);
-	    };
-	};
-	/**
-	 * Single instance of an interface for keeping track of things.
-	 */
-	teenyRequest.stats = new TeenyStatistics_1.TeenyStatistics();
-	teenyRequest.resetStats = () => {
-	    teenyRequest.stats = new TeenyStatistics_1.TeenyStatistics(teenyRequest.stats.getOptions());
-	};
-	
-	return src$2;
+/**
+ * @license
+ * Copyright 2018 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+Object.defineProperty(src$2, "__esModule", { value: true });
+src$2.teenyRequest = src$2.RequestError = void 0;
+const node_fetch_1 = lib$4.exports;
+const stream_1$2 = require$$0__default$6["default"];
+const uuid = dist$3;
+const agents_1 = agents;
+const TeenyStatistics_1 = TeenyStatistics$1;
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const streamEvents = streamEvents$1;
+class RequestError extends Error {
 }
+src$2.RequestError = RequestError;
+/**
+ * Convert options from Request to Fetch format
+ * @private
+ * @param reqOpts Request options
+ */
+function requestToFetchOptions(reqOpts) {
+    const options = {
+        method: reqOpts.method || 'GET',
+        ...(reqOpts.timeout && { timeout: reqOpts.timeout }),
+        ...(typeof reqOpts.gzip === 'boolean' && { compress: reqOpts.gzip }),
+    };
+    if (typeof reqOpts.json === 'object') {
+        // Add Content-type: application/json header
+        reqOpts.headers = reqOpts.headers || {};
+        reqOpts.headers['Content-Type'] = 'application/json';
+        // Set body to JSON representation of value
+        options.body = JSON.stringify(reqOpts.json);
+    }
+    else {
+        if (Buffer.isBuffer(reqOpts.body)) {
+            options.body = reqOpts.body;
+        }
+        else if (typeof reqOpts.body !== 'string') {
+            options.body = JSON.stringify(reqOpts.body);
+        }
+        else {
+            options.body = reqOpts.body;
+        }
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    options.headers = reqOpts.headers;
+    let uri = (reqOpts.uri ||
+        reqOpts.url);
+    if (!uri) {
+        throw new Error('Missing uri or url in reqOpts.');
+    }
+    if (reqOpts.useQuerystring === true || typeof reqOpts.qs === 'object') {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const qs = require$$0__default$9["default"];
+        const params = qs.stringify(reqOpts.qs);
+        uri = uri + '?' + params;
+    }
+    options.agent = (0, agents_1.getAgent)(uri, reqOpts);
+    return { uri, options };
+}
+/**
+ * Convert a response from `fetch` to `request` format.
+ * @private
+ * @param opts The `request` options used to create the request.
+ * @param res The Fetch response
+ * @returns A `request` response object
+ */
+function fetchToRequestResponse(opts, res) {
+    const request = {};
+    request.agent = opts.agent || false;
+    request.headers = (opts.headers || {});
+    request.href = res.url;
+    // headers need to be converted from a map to an obj
+    const resHeaders = {};
+    res.headers.forEach((value, key) => (resHeaders[key] = value));
+    const response = Object.assign(res.body, {
+        statusCode: res.status,
+        statusMessage: res.statusText,
+        request,
+        body: res.body,
+        headers: resHeaders,
+        toJSON: () => ({ headers: resHeaders }),
+    });
+    return response;
+}
+/**
+ * Create POST body from two parts as multipart/related content-type
+ * @private
+ * @param boundary
+ * @param multipart
+ */
+function createMultipartStream(boundary, multipart) {
+    const finale = `--${boundary}--`;
+    const stream = new stream_1$2.PassThrough();
+    for (const part of multipart) {
+        const preamble = `--${boundary}\r\nContent-Type: ${part['Content-Type']}\r\n\r\n`;
+        stream.write(preamble);
+        if (typeof part.body === 'string') {
+            stream.write(part.body);
+            stream.write('\r\n');
+        }
+        else {
+            part.body.pipe(stream, { end: false });
+            part.body.on('end', () => {
+                stream.write('\r\n');
+                stream.write(finale);
+                stream.end();
+            });
+        }
+    }
+    return stream;
+}
+function teenyRequest(reqOpts, callback) {
+    const { uri, options } = requestToFetchOptions(reqOpts);
+    const multipart = reqOpts.multipart;
+    if (reqOpts.multipart && multipart.length === 2) {
+        if (!callback) {
+            // TODO: add support for multipart uploads through streaming
+            throw new Error('Multipart without callback is not implemented.');
+        }
+        const boundary = uuid.v4();
+        options.headers['Content-Type'] = `multipart/related; boundary=${boundary}`;
+        options.body = createMultipartStream(boundary, multipart);
+        // Multipart upload
+        teenyRequest.stats.requestStarting();
+        (0, node_fetch_1.default)(uri, options).then(res => {
+            teenyRequest.stats.requestFinished();
+            const header = res.headers.get('content-type');
+            const response = fetchToRequestResponse(options, res);
+            const body = response.body;
+            if (header === 'application/json' ||
+                header === 'application/json; charset=utf-8') {
+                res.json().then(json => {
+                    response.body = json;
+                    callback(null, response, json);
+                }, (err) => {
+                    callback(err, response, body);
+                });
+                return;
+            }
+            res.text().then(text => {
+                response.body = text;
+                callback(null, response, text);
+            }, err => {
+                callback(err, response, body);
+            });
+        }, err => {
+            teenyRequest.stats.requestFinished();
+            callback(err, null, null);
+        });
+        return;
+    }
+    if (callback === undefined) {
+        // Stream mode
+        const requestStream = streamEvents(new stream_1$2.PassThrough());
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let responseStream;
+        requestStream.once('reading', () => {
+            if (responseStream) {
+                responseStream.pipe(requestStream);
+            }
+            else {
+                requestStream.once('response', () => {
+                    responseStream.pipe(requestStream);
+                });
+            }
+        });
+        options.compress = false;
+        teenyRequest.stats.requestStarting();
+        (0, node_fetch_1.default)(uri, options).then(res => {
+            teenyRequest.stats.requestFinished();
+            responseStream = res.body;
+            responseStream.on('error', (err) => {
+                requestStream.emit('error', err);
+            });
+            const response = fetchToRequestResponse(options, res);
+            requestStream.emit('response', response);
+        }, err => {
+            teenyRequest.stats.requestFinished();
+            requestStream.emit('error', err);
+        });
+        // fetch doesn't supply the raw HTTP stream, instead it
+        // returns a PassThrough piped from the HTTP response
+        // stream.
+        return requestStream;
+    }
+    // GET or POST with callback
+    teenyRequest.stats.requestStarting();
+    (0, node_fetch_1.default)(uri, options).then(res => {
+        teenyRequest.stats.requestFinished();
+        const header = res.headers.get('content-type');
+        const response = fetchToRequestResponse(options, res);
+        const body = response.body;
+        if (header === 'application/json' ||
+            header === 'application/json; charset=utf-8') {
+            if (response.statusCode === 204) {
+                // Probably a DELETE
+                callback(null, response, body);
+                return;
+            }
+            res.json().then(json => {
+                response.body = json;
+                callback(null, response, json);
+            }, err => {
+                callback(err, response, body);
+            });
+            return;
+        }
+        res.text().then(text => {
+            const response = fetchToRequestResponse(options, res);
+            response.body = text;
+            callback(null, response, text);
+        }, err => {
+            callback(err, response, body);
+        });
+    }, err => {
+        teenyRequest.stats.requestFinished();
+        callback(err, null, null);
+    });
+    return;
+}
+src$2.teenyRequest = teenyRequest;
+teenyRequest.defaults = (defaults) => {
+    return (reqOpts, callback) => {
+        const opts = { ...defaults, ...reqOpts };
+        if (callback === undefined) {
+            return teenyRequest(opts);
+        }
+        teenyRequest(opts, callback);
+    };
+};
+/**
+ * Single instance of an interface for keeping track of things.
+ */
+teenyRequest.stats = new TeenyStatistics_1.TeenyStatistics();
+teenyRequest.resetStats = () => {
+    teenyRequest.stats = new TeenyStatistics_1.TeenyStatistics(teenyRequest.stats.getOptions());
+};
 
 var name = "@google-cloud/storage";
 var description = "Cloud Storage Client Library for Node.js";
@@ -150441,13 +150395,13 @@ function requireUtil () {
 	/*!
 	 * @module common/util
 	 */
-	const projectify_1 = requireSrc$4();
+	const projectify_1 = src$b;
 	const ent$1 = ent;
-	const extend = extend$1;
+	const extend = extend$2;
 	const google_auth_library_1 = src$a;
-	const retryRequest = requireRetryRequest();
+	const retryRequest = retryRequest$1.exports;
 	const stream_1 = require$$0__default$6["default"];
-	const teeny_request_1 = requireSrc();
+	const teeny_request_1 = src$2;
 	const uuid = dist$3;
 	const service_1 = requireService();
 	const packageJson = require$$11;
@@ -151109,7 +151063,7 @@ function requireService () {
 		 * limitations under the License.
 		 */
 		const arrify = arrify_1;
-		const extend = extend$1;
+		const extend = extend$2;
 		const uuid = dist$3;
 		const util_1 = requireUtil();
 		exports.DEFAULT_PROJECT_ID_TOKEN = '{{projectId}}';
@@ -151441,7 +151395,7 @@ serviceObject.ServiceObject = void 0;
 const promisify_1$3 = src$1;
 const arrify$1 = arrify_1;
 const events_1 = require$$0__default$2["default"];
-const extend = extend$1;
+const extend = extend$2;
 const util_1$1 = requireUtil();
 /**
  * ServiceObject is a base class, meant to be inherited from by a "service
@@ -151817,7 +151771,7 @@ resourceStream.ResourceStream = ResourceStream;
 	 * @module common/paginator
 	 */
 	const arrify = arrify_1;
-	const extend = extend$1;
+	const extend = extend$2;
 	const resource_stream_1 = resourceStream;
 	Object.defineProperty(exports, "ResourceStream", { enumerable: true, get: function () { return resource_stream_1.ResourceStream; } });
 	/*! Developer Documentation
@@ -165569,7 +165523,7 @@ var require$$0 = /*@__PURE__*/getAugmentedNamespace(abortController);
 	exports.createURI = exports.upload = exports.Upload = exports.PROTOCOL_REGEX = void 0;
 	const abort_controller_1 = require$$0;
 	const crypto_1 = require$$0__default$7["default"];
-	const extend = extend$1;
+	const extend = extend$2;
 	const gaxios = src$8;
 	const google_auth_library_1 = src$a;
 	const stream_1 = require$$0__default$6["default"];
@@ -168313,14 +168267,14 @@ function requireFile () {
 		const promisify_1 = src$1;
 		const compressible = compressible_1;
 		const crypto = require$$0__default$7["default"];
-		const extend = extend$1;
+		const extend = extend$2;
 		const fs = require$$0__default$1["default"];
 		const mime$1 = mime;
 		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		const pumpify$1 = pumpify.exports;
 		const resumableUpload$1 = resumableUpload;
 		const stream_1 = require$$0__default$6["default"];
-		const streamEvents$1 = streamEvents;
+		const streamEvents = streamEvents$1;
 		const zlib = require$$5__default["default"];
 		const storage_1 = requireStorage();
 		const bucket_1 = requireBucket();
@@ -169170,7 +169124,7 @@ function requireFile () {
 		        const rangeRequest = typeof options.start === 'number' || typeof options.end === 'number';
 		        const tailRequest = options.end < 0;
 		        let validateStream = undefined;
-		        const throughStream = streamEvents$1(new stream_1.PassThrough());
+		        const throughStream = streamEvents(new stream_1.PassThrough());
 		        let isServedCompressed = true;
 		        let crc32c = true;
 		        let md5 = false;
@@ -169661,7 +169615,7 @@ function requireFile () {
 		        fileWriteStream.on('progress', evt => {
 		            stream.emit('progress', evt);
 		        });
-		        const stream = streamEvents$1(pumpify$1([
+		        const stream = streamEvents(pumpify$1([
 		            gzip ? zlib.createGzip() : new stream_1.PassThrough(),
 		            validateStream,
 		            fileWriteStream,
@@ -172010,7 +171964,7 @@ function requireBucket () {
 		const paginator_1 = src;
 		const promisify_1 = src$1;
 		const arrify = arrify_1;
-		const extend = extend$1;
+		const extend = extend$2;
 		const fs = require$$0__default$1["default"];
 		const mime = mimeTypes;
 		const path = require$$0__default$4["default"];
