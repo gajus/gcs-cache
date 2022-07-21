@@ -14,8 +14,8 @@ import {
 import {
   getState,
 } from './getState';
-import type {
-  CacheActionMetadata,
+import {
+  type CacheActionMetadata,
 } from './types';
 
 const main = async () => {

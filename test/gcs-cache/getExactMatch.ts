@@ -1,16 +1,15 @@
 /* eslint-disable no-import-assign */
 
 import * as github from '@actions/github';
-import type {
-  Bucket,
+import {
+  type Bucket,
 } from '@google-cloud/storage';
-import type {
-  TestFn,
+import anyTest, {
+  type TestFn,
 } from 'ava';
-import anyTest from 'ava';
 import * as sinon from 'sinon';
-import type {
-  SinonSandbox,
+import {
+  type SinonSandbox,
 } from 'sinon';
 import {
   getExactMatch,

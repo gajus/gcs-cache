@@ -1,8 +1,8 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import type {
-  File,
-  Bucket,
+import {
+  type File,
+  type Bucket,
 } from '@google-cloud/storage';
 
 export const getExactMatch = async (
@@ -18,7 +18,7 @@ export const getExactMatch = async (
   let exactFileExists: boolean;
 
   try {
-    exactFileExists = (await exactFile.exists())?.[0];
+    exactFileExists = (await exactFile.exists())[0];
   } catch (error) {
     core.error('Failed to check if an exact match exists');
 

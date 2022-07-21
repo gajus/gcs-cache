@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
-import type {
-  Inputs,
+import {
+  type Inputs,
 } from './types';
 
 export const getInputs = (): Inputs => {

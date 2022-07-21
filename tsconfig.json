@@ -1,9 +1,4 @@
 {
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  },
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -26,6 +21,12 @@
   ],
   "include": [
     "src",
-    "test"
-  ]
+    "test",
+    "rollup.config.ts"
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
-import type {
-  State,
+import {
+  type State,
 } from './types';
 
 export const saveState = (state: State): void => {

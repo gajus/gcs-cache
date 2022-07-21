@@ -2,25 +2,24 @@
 
 var require$$0$4 = require('os');
 var require$$0$5 = require('fs');
-var require$$1$6 = require('path');
-var require$$0$6 = require('http');
+var require$$0$8 = require('path');
+var require$$0$7 = require('http');
 var require$$1$5 = require('https');
-var require$$0$a = require('net');
+var require$$0$c = require('net');
 var require$$1$4 = require('tls');
-var require$$0$7 = require('events');
-var require$$0$b = require('assert');
+var require$$0$6 = require('events');
+var require$$6$1 = require('assert');
 var require$$4$1 = require('util');
-var require$$0$8 = require('stream');
+var require$$0$9 = require('crypto');
+var require$$0$a = require('stream');
 var require$$0$e = require('child_process');
 var require$$2$2 = require('url');
 var require$$5$1 = require('zlib');
-var require$$0$9 = require('buffer');
-var require$$0$c = require('querystring');
-var require$$1$7 = require('tty');
-var require$$0$d = require('crypto');
-var require$$0$f = require('constants');
-var require$$6$1 = require('timers');
-var path$d = require('node:path');
+var require$$0$b = require('buffer');
+var require$$0$d = require('querystring');
+var require$$1$6 = require('tty');
+var require$$6$2 = require('timers');
+var path$a = require('node:path');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -44,25 +43,24 @@ function _interopNamespace(e) {
 
 var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0$4);
 var require$$0__default$1 = /*#__PURE__*/_interopDefaultLegacy(require$$0$5);
-var require$$1__default$2 = /*#__PURE__*/_interopDefaultLegacy(require$$1$6);
-var require$$0__default$2 = /*#__PURE__*/_interopDefaultLegacy(require$$0$6);
-var require$$1__default$1 = /*#__PURE__*/_interopDefaultLegacy(require$$1$5);
-var require$$0__default$6 = /*#__PURE__*/_interopDefaultLegacy(require$$0$a);
-var require$$1__default = /*#__PURE__*/_interopDefaultLegacy(require$$1$4);
-var require$$0__default$3 = /*#__PURE__*/_interopDefaultLegacy(require$$0$7);
-var require$$0__default$7 = /*#__PURE__*/_interopDefaultLegacy(require$$0$b);
-var require$$4__default = /*#__PURE__*/_interopDefaultLegacy(require$$4$1);
 var require$$0__default$4 = /*#__PURE__*/_interopDefaultLegacy(require$$0$8);
+var require$$0__default$3 = /*#__PURE__*/_interopDefaultLegacy(require$$0$7);
+var require$$1__default$1 = /*#__PURE__*/_interopDefaultLegacy(require$$1$5);
+var require$$0__default$8 = /*#__PURE__*/_interopDefaultLegacy(require$$0$c);
+var require$$1__default = /*#__PURE__*/_interopDefaultLegacy(require$$1$4);
+var require$$0__default$2 = /*#__PURE__*/_interopDefaultLegacy(require$$0$6);
+var require$$6__default = /*#__PURE__*/_interopDefaultLegacy(require$$6$1);
+var require$$4__default = /*#__PURE__*/_interopDefaultLegacy(require$$4$1);
+var require$$0__default$5 = /*#__PURE__*/_interopDefaultLegacy(require$$0$9);
+var require$$0__default$6 = /*#__PURE__*/_interopDefaultLegacy(require$$0$a);
 var require$$0__default$a = /*#__PURE__*/_interopDefaultLegacy(require$$0$e);
 var require$$2__default = /*#__PURE__*/_interopDefaultLegacy(require$$2$2);
 var require$$5__default = /*#__PURE__*/_interopDefaultLegacy(require$$5$1);
-var require$$0__default$5 = /*#__PURE__*/_interopDefaultLegacy(require$$0$9);
-var require$$0__default$8 = /*#__PURE__*/_interopDefaultLegacy(require$$0$c);
-var require$$1__default$3 = /*#__PURE__*/_interopDefaultLegacy(require$$1$7);
+var require$$0__default$7 = /*#__PURE__*/_interopDefaultLegacy(require$$0$b);
 var require$$0__default$9 = /*#__PURE__*/_interopDefaultLegacy(require$$0$d);
-var require$$0__default$b = /*#__PURE__*/_interopDefaultLegacy(require$$0$f);
-var require$$6__default = /*#__PURE__*/_interopDefaultLegacy(require$$6$1);
-var path__namespace = /*#__PURE__*/_interopNamespace(path$d);
+var require$$1__default$2 = /*#__PURE__*/_interopDefaultLegacy(require$$1$6);
+var require$$6__default$1 = /*#__PURE__*/_interopDefaultLegacy(require$$6$2);
+var path__namespace = /*#__PURE__*/_interopNamespace(path$a);
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -153,7 +151,7 @@ var __importStar$b = (commonjsGlobal && commonjsGlobal.__importStar) || function
 };
 Object.defineProperty(command, "__esModule", { value: true });
 command.issue = command.issueCommand = void 0;
-const os$5 = __importStar$b(require$$0__default["default"]);
+const os$4 = __importStar$b(require$$0__default["default"]);
 const utils_1$1 = utils$1;
 /**
  * Commands
@@ -167,7 +165,7 @@ const utils_1$1 = utils$1;
  */
 function issueCommand$1(command, properties, message) {
     const cmd = new Command(command, properties, message);
-    process.stdout.write(cmd.toString() + os$5.EOL);
+    process.stdout.write(cmd.toString() + os$4.EOL);
 }
 command.issueCommand = issueCommand$1;
 function issue(name, message = '') {
@@ -249,18 +247,18 @@ Object.defineProperty(fileCommand, "__esModule", { value: true });
 fileCommand.issueCommand = void 0;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fs$b = __importStar$a(require$$0__default$1["default"]);
-const os$4 = __importStar$a(require$$0__default["default"]);
+const fs$7 = __importStar$a(require$$0__default$1["default"]);
+const os$3 = __importStar$a(require$$0__default["default"]);
 const utils_1 = utils$1;
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
     }
-    if (!fs$b.existsSync(filePath)) {
+    if (!fs$7.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
     }
-    fs$b.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os$4.EOL}`, {
+    fs$7.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os$3.EOL}`, {
         encoding: 'utf8'
     });
 }
@@ -268,35 +266,38 @@ fileCommand.issueCommand = issueCommand;
 
 var oidcUtils = {};
 
-var httpClient = {};
+var lib$5 = {};
 
 var proxy = {};
 
 Object.defineProperty(proxy, "__esModule", { value: true });
+proxy.checkBypass = proxy.getProxyUrl = void 0;
 function getProxyUrl(reqUrl) {
-    let usingSsl = reqUrl.protocol === 'https:';
-    let proxyUrl;
+    const usingSsl = reqUrl.protocol === 'https:';
     if (checkBypass(reqUrl)) {
-        return proxyUrl;
+        return undefined;
     }
-    let proxyVar;
-    if (usingSsl) {
-        proxyVar = process.env['https_proxy'] || process.env['HTTPS_PROXY'];
+    const proxyVar = (() => {
+        if (usingSsl) {
+            return process.env['https_proxy'] || process.env['HTTPS_PROXY'];
+        }
+        else {
+            return process.env['http_proxy'] || process.env['HTTP_PROXY'];
+        }
+    })();
+    if (proxyVar) {
+        return new URL(proxyVar);
     }
     else {
-        proxyVar = process.env['http_proxy'] || process.env['HTTP_PROXY'];
+        return undefined;
     }
-    if (proxyVar) {
-        proxyUrl = new URL(proxyVar);
-    }
-    return proxyUrl;
 }
 proxy.getProxyUrl = getProxyUrl;
 function checkBypass(reqUrl) {
     if (!reqUrl.hostname) {
         return false;
     }
-    let noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
+    const noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
     if (!noProxy) {
         return false;
     }
@@ -312,12 +313,12 @@ function checkBypass(reqUrl) {
         reqPort = 443;
     }
     // Format the request hostname and hostname with port
-    let upperReqHosts = [reqUrl.hostname.toUpperCase()];
+    const upperReqHosts = [reqUrl.hostname.toUpperCase()];
     if (typeof reqPort === 'number') {
         upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
     }
     // Compare request host against noproxy
-    for (let upperNoProxyItem of noProxy
+    for (const upperNoProxyItem of noProxy
         .split(',')
         .map(x => x.trim().toUpperCase())
         .filter(x => x)) {
@@ -333,291 +334,307 @@ var tunnel$1 = {exports: {}};
 
 var tunnel = {};
 
-var hasRequiredTunnel$1;
-
-function requireTunnel$1 () {
-	if (hasRequiredTunnel$1) return tunnel;
-	hasRequiredTunnel$1 = 1;
-	var tls = require$$1__default["default"];
-	var http = require$$0__default$2["default"];
-	var https = require$$1__default$1["default"];
-	var events = require$$0__default$3["default"];
-	var util = require$$4__default["default"];
+var tls = require$$1__default["default"];
+var http = require$$0__default$3["default"];
+var https = require$$1__default$1["default"];
+var events$1 = require$$0__default$2["default"];
+var util$8 = require$$4__default["default"];
 
 
-	tunnel.httpOverHttp = httpOverHttp;
-	tunnel.httpsOverHttp = httpsOverHttp;
-	tunnel.httpOverHttps = httpOverHttps;
-	tunnel.httpsOverHttps = httpsOverHttps;
+tunnel.httpOverHttp = httpOverHttp;
+tunnel.httpsOverHttp = httpsOverHttp;
+tunnel.httpOverHttps = httpOverHttps;
+tunnel.httpsOverHttps = httpsOverHttps;
 
 
-	function httpOverHttp(options) {
-	  var agent = new TunnelingAgent(options);
-	  agent.request = http.request;
-	  return agent;
-	}
-
-	function httpsOverHttp(options) {
-	  var agent = new TunnelingAgent(options);
-	  agent.request = http.request;
-	  agent.createSocket = createSecureSocket;
-	  agent.defaultPort = 443;
-	  return agent;
-	}
-
-	function httpOverHttps(options) {
-	  var agent = new TunnelingAgent(options);
-	  agent.request = https.request;
-	  return agent;
-	}
-
-	function httpsOverHttps(options) {
-	  var agent = new TunnelingAgent(options);
-	  agent.request = https.request;
-	  agent.createSocket = createSecureSocket;
-	  agent.defaultPort = 443;
-	  return agent;
-	}
-
-
-	function TunnelingAgent(options) {
-	  var self = this;
-	  self.options = options || {};
-	  self.proxyOptions = self.options.proxy || {};
-	  self.maxSockets = self.options.maxSockets || http.Agent.defaultMaxSockets;
-	  self.requests = [];
-	  self.sockets = [];
-
-	  self.on('free', function onFree(socket, host, port, localAddress) {
-	    var options = toOptions(host, port, localAddress);
-	    for (var i = 0, len = self.requests.length; i < len; ++i) {
-	      var pending = self.requests[i];
-	      if (pending.host === options.host && pending.port === options.port) {
-	        // Detect the request to connect same origin server,
-	        // reuse the connection.
-	        self.requests.splice(i, 1);
-	        pending.request.onSocket(socket);
-	        return;
-	      }
-	    }
-	    socket.destroy();
-	    self.removeSocket(socket);
-	  });
-	}
-	util.inherits(TunnelingAgent, events.EventEmitter);
-
-	TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
-	  var self = this;
-	  var options = mergeOptions({request: req}, self.options, toOptions(host, port, localAddress));
-
-	  if (self.sockets.length >= this.maxSockets) {
-	    // We are over limit so we'll add it to the queue.
-	    self.requests.push(options);
-	    return;
-	  }
-
-	  // If we are under maxSockets create a new one.
-	  self.createSocket(options, function(socket) {
-	    socket.on('free', onFree);
-	    socket.on('close', onCloseOrRemove);
-	    socket.on('agentRemove', onCloseOrRemove);
-	    req.onSocket(socket);
-
-	    function onFree() {
-	      self.emit('free', socket, options);
-	    }
-
-	    function onCloseOrRemove(err) {
-	      self.removeSocket(socket);
-	      socket.removeListener('free', onFree);
-	      socket.removeListener('close', onCloseOrRemove);
-	      socket.removeListener('agentRemove', onCloseOrRemove);
-	    }
-	  });
-	};
-
-	TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
-	  var self = this;
-	  var placeholder = {};
-	  self.sockets.push(placeholder);
-
-	  var connectOptions = mergeOptions({}, self.proxyOptions, {
-	    method: 'CONNECT',
-	    path: options.host + ':' + options.port,
-	    agent: false,
-	    headers: {
-	      host: options.host + ':' + options.port
-	    }
-	  });
-	  if (options.localAddress) {
-	    connectOptions.localAddress = options.localAddress;
-	  }
-	  if (connectOptions.proxyAuth) {
-	    connectOptions.headers = connectOptions.headers || {};
-	    connectOptions.headers['Proxy-Authorization'] = 'Basic ' +
-	        new Buffer(connectOptions.proxyAuth).toString('base64');
-	  }
-
-	  debug('making CONNECT request');
-	  var connectReq = self.request(connectOptions);
-	  connectReq.useChunkedEncodingByDefault = false; // for v0.6
-	  connectReq.once('response', onResponse); // for v0.6
-	  connectReq.once('upgrade', onUpgrade);   // for v0.6
-	  connectReq.once('connect', onConnect);   // for v0.7 or later
-	  connectReq.once('error', onError);
-	  connectReq.end();
-
-	  function onResponse(res) {
-	    // Very hacky. This is necessary to avoid http-parser leaks.
-	    res.upgrade = true;
-	  }
-
-	  function onUpgrade(res, socket, head) {
-	    // Hacky.
-	    process.nextTick(function() {
-	      onConnect(res, socket, head);
-	    });
-	  }
-
-	  function onConnect(res, socket, head) {
-	    connectReq.removeAllListeners();
-	    socket.removeAllListeners();
-
-	    if (res.statusCode !== 200) {
-	      debug('tunneling socket could not be established, statusCode=%d',
-	        res.statusCode);
-	      socket.destroy();
-	      var error = new Error('tunneling socket could not be established, ' +
-	        'statusCode=' + res.statusCode);
-	      error.code = 'ECONNRESET';
-	      options.request.emit('error', error);
-	      self.removeSocket(placeholder);
-	      return;
-	    }
-	    if (head.length > 0) {
-	      debug('got illegal response body from proxy');
-	      socket.destroy();
-	      var error = new Error('got illegal response body from proxy');
-	      error.code = 'ECONNRESET';
-	      options.request.emit('error', error);
-	      self.removeSocket(placeholder);
-	      return;
-	    }
-	    debug('tunneling connection has established');
-	    self.sockets[self.sockets.indexOf(placeholder)] = socket;
-	    return cb(socket);
-	  }
-
-	  function onError(cause) {
-	    connectReq.removeAllListeners();
-
-	    debug('tunneling socket could not be established, cause=%s\n',
-	          cause.message, cause.stack);
-	    var error = new Error('tunneling socket could not be established, ' +
-	                          'cause=' + cause.message);
-	    error.code = 'ECONNRESET';
-	    options.request.emit('error', error);
-	    self.removeSocket(placeholder);
-	  }
-	};
-
-	TunnelingAgent.prototype.removeSocket = function removeSocket(socket) {
-	  var pos = this.sockets.indexOf(socket);
-	  if (pos === -1) {
-	    return;
-	  }
-	  this.sockets.splice(pos, 1);
-
-	  var pending = this.requests.shift();
-	  if (pending) {
-	    // If we have pending requests and a socket gets closed a new one
-	    // needs to be created to take over in the pool for the one that closed.
-	    this.createSocket(pending, function(socket) {
-	      pending.request.onSocket(socket);
-	    });
-	  }
-	};
-
-	function createSecureSocket(options, cb) {
-	  var self = this;
-	  TunnelingAgent.prototype.createSocket.call(self, options, function(socket) {
-	    var hostHeader = options.request.getHeader('host');
-	    var tlsOptions = mergeOptions({}, self.options, {
-	      socket: socket,
-	      servername: hostHeader ? hostHeader.replace(/:.*$/, '') : options.host
-	    });
-
-	    // 0 is dummy port for v0.6
-	    var secureSocket = tls.connect(0, tlsOptions);
-	    self.sockets[self.sockets.indexOf(socket)] = secureSocket;
-	    cb(secureSocket);
-	  });
-	}
-
-
-	function toOptions(host, port, localAddress) {
-	  if (typeof host === 'string') { // since v0.10
-	    return {
-	      host: host,
-	      port: port,
-	      localAddress: localAddress
-	    };
-	  }
-	  return host; // for v0.11 or later
-	}
-
-	function mergeOptions(target) {
-	  for (var i = 1, len = arguments.length; i < len; ++i) {
-	    var overrides = arguments[i];
-	    if (typeof overrides === 'object') {
-	      var keys = Object.keys(overrides);
-	      for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
-	        var k = keys[j];
-	        if (overrides[k] !== undefined) {
-	          target[k] = overrides[k];
-	        }
-	      }
-	    }
-	  }
-	  return target;
-	}
-
-
-	var debug;
-	if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
-	  debug = function() {
-	    var args = Array.prototype.slice.call(arguments);
-	    if (typeof args[0] === 'string') {
-	      args[0] = 'TUNNEL: ' + args[0];
-	    } else {
-	      args.unshift('TUNNEL:');
-	    }
-	    console.error.apply(console, args);
-	  };
-	} else {
-	  debug = function() {};
-	}
-	tunnel.debug = debug; // for test
-	return tunnel;
+function httpOverHttp(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = http.request;
+  return agent;
 }
 
-var hasRequiredTunnel;
+function httpsOverHttp(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = http.request;
+  agent.createSocket = createSecureSocket;
+  agent.defaultPort = 443;
+  return agent;
+}
 
-function requireTunnel () {
-	if (hasRequiredTunnel) return tunnel$1.exports;
-	hasRequiredTunnel = 1;
-	(function (module) {
-		module.exports = requireTunnel$1();
+function httpOverHttps(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = https.request;
+  return agent;
+}
+
+function httpsOverHttps(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = https.request;
+  agent.createSocket = createSecureSocket;
+  agent.defaultPort = 443;
+  return agent;
+}
+
+
+function TunnelingAgent(options) {
+  var self = this;
+  self.options = options || {};
+  self.proxyOptions = self.options.proxy || {};
+  self.maxSockets = self.options.maxSockets || http.Agent.defaultMaxSockets;
+  self.requests = [];
+  self.sockets = [];
+
+  self.on('free', function onFree(socket, host, port, localAddress) {
+    var options = toOptions(host, port, localAddress);
+    for (var i = 0, len = self.requests.length; i < len; ++i) {
+      var pending = self.requests[i];
+      if (pending.host === options.host && pending.port === options.port) {
+        // Detect the request to connect same origin server,
+        // reuse the connection.
+        self.requests.splice(i, 1);
+        pending.request.onSocket(socket);
+        return;
+      }
+    }
+    socket.destroy();
+    self.removeSocket(socket);
+  });
+}
+util$8.inherits(TunnelingAgent, events$1.EventEmitter);
+
+TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
+  var self = this;
+  var options = mergeOptions({request: req}, self.options, toOptions(host, port, localAddress));
+
+  if (self.sockets.length >= this.maxSockets) {
+    // We are over limit so we'll add it to the queue.
+    self.requests.push(options);
+    return;
+  }
+
+  // If we are under maxSockets create a new one.
+  self.createSocket(options, function(socket) {
+    socket.on('free', onFree);
+    socket.on('close', onCloseOrRemove);
+    socket.on('agentRemove', onCloseOrRemove);
+    req.onSocket(socket);
+
+    function onFree() {
+      self.emit('free', socket, options);
+    }
+
+    function onCloseOrRemove(err) {
+      self.removeSocket(socket);
+      socket.removeListener('free', onFree);
+      socket.removeListener('close', onCloseOrRemove);
+      socket.removeListener('agentRemove', onCloseOrRemove);
+    }
+  });
+};
+
+TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
+  var self = this;
+  var placeholder = {};
+  self.sockets.push(placeholder);
+
+  var connectOptions = mergeOptions({}, self.proxyOptions, {
+    method: 'CONNECT',
+    path: options.host + ':' + options.port,
+    agent: false,
+    headers: {
+      host: options.host + ':' + options.port
+    }
+  });
+  if (options.localAddress) {
+    connectOptions.localAddress = options.localAddress;
+  }
+  if (connectOptions.proxyAuth) {
+    connectOptions.headers = connectOptions.headers || {};
+    connectOptions.headers['Proxy-Authorization'] = 'Basic ' +
+        new Buffer(connectOptions.proxyAuth).toString('base64');
+  }
+
+  debug$3('making CONNECT request');
+  var connectReq = self.request(connectOptions);
+  connectReq.useChunkedEncodingByDefault = false; // for v0.6
+  connectReq.once('response', onResponse); // for v0.6
+  connectReq.once('upgrade', onUpgrade);   // for v0.6
+  connectReq.once('connect', onConnect);   // for v0.7 or later
+  connectReq.once('error', onError);
+  connectReq.end();
+
+  function onResponse(res) {
+    // Very hacky. This is necessary to avoid http-parser leaks.
+    res.upgrade = true;
+  }
+
+  function onUpgrade(res, socket, head) {
+    // Hacky.
+    process.nextTick(function() {
+      onConnect(res, socket, head);
+    });
+  }
+
+  function onConnect(res, socket, head) {
+    connectReq.removeAllListeners();
+    socket.removeAllListeners();
+
+    if (res.statusCode !== 200) {
+      debug$3('tunneling socket could not be established, statusCode=%d',
+        res.statusCode);
+      socket.destroy();
+      var error = new Error('tunneling socket could not be established, ' +
+        'statusCode=' + res.statusCode);
+      error.code = 'ECONNRESET';
+      options.request.emit('error', error);
+      self.removeSocket(placeholder);
+      return;
+    }
+    if (head.length > 0) {
+      debug$3('got illegal response body from proxy');
+      socket.destroy();
+      var error = new Error('got illegal response body from proxy');
+      error.code = 'ECONNRESET';
+      options.request.emit('error', error);
+      self.removeSocket(placeholder);
+      return;
+    }
+    debug$3('tunneling connection has established');
+    self.sockets[self.sockets.indexOf(placeholder)] = socket;
+    return cb(socket);
+  }
+
+  function onError(cause) {
+    connectReq.removeAllListeners();
+
+    debug$3('tunneling socket could not be established, cause=%s\n',
+          cause.message, cause.stack);
+    var error = new Error('tunneling socket could not be established, ' +
+                          'cause=' + cause.message);
+    error.code = 'ECONNRESET';
+    options.request.emit('error', error);
+    self.removeSocket(placeholder);
+  }
+};
+
+TunnelingAgent.prototype.removeSocket = function removeSocket(socket) {
+  var pos = this.sockets.indexOf(socket);
+  if (pos === -1) {
+    return;
+  }
+  this.sockets.splice(pos, 1);
+
+  var pending = this.requests.shift();
+  if (pending) {
+    // If we have pending requests and a socket gets closed a new one
+    // needs to be created to take over in the pool for the one that closed.
+    this.createSocket(pending, function(socket) {
+      pending.request.onSocket(socket);
+    });
+  }
+};
+
+function createSecureSocket(options, cb) {
+  var self = this;
+  TunnelingAgent.prototype.createSocket.call(self, options, function(socket) {
+    var hostHeader = options.request.getHeader('host');
+    var tlsOptions = mergeOptions({}, self.options, {
+      socket: socket,
+      servername: hostHeader ? hostHeader.replace(/:.*$/, '') : options.host
+    });
+
+    // 0 is dummy port for v0.6
+    var secureSocket = tls.connect(0, tlsOptions);
+    self.sockets[self.sockets.indexOf(socket)] = secureSocket;
+    cb(secureSocket);
+  });
+}
+
+
+function toOptions(host, port, localAddress) {
+  if (typeof host === 'string') { // since v0.10
+    return {
+      host: host,
+      port: port,
+      localAddress: localAddress
+    };
+  }
+  return host; // for v0.11 or later
+}
+
+function mergeOptions(target) {
+  for (var i = 1, len = arguments.length; i < len; ++i) {
+    var overrides = arguments[i];
+    if (typeof overrides === 'object') {
+      var keys = Object.keys(overrides);
+      for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
+        var k = keys[j];
+        if (overrides[k] !== undefined) {
+          target[k] = overrides[k];
+        }
+      }
+    }
+  }
+  return target;
+}
+
+
+var debug$3;
+if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
+  debug$3 = function() {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof args[0] === 'string') {
+      args[0] = 'TUNNEL: ' + args[0];
+    } else {
+      args.unshift('TUNNEL:');
+    }
+    console.error.apply(console, args);
+  };
+} else {
+  debug$3 = function() {};
+}
+tunnel.debug = debug$3; // for test
+
+(function (module) {
+	module.exports = tunnel;
 } (tunnel$1));
-	return tunnel$1.exports;
-}
 
 (function (exports) {
+	/* eslint-disable @typescript-eslint/no-explicit-any */
+	var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+	}) : (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    o[k2] = m[k];
+	}));
+	var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+	    Object.defineProperty(o, "default", { enumerable: true, value: v });
+	}) : function(o, v) {
+	    o["default"] = v;
+	});
+	var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+	    if (mod && mod.__esModule) return mod;
+	    var result = {};
+	    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+	    __setModuleDefault(result, mod);
+	    return result;
+	};
+	var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+	    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+	    return new (P || (P = Promise))(function (resolve, reject) {
+	        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+	        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+	        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+	        step((generator = generator.apply(thisArg, _arguments || [])).next());
+	    });
+	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	const http = require$$0__default$2["default"];
-	const https = require$$1__default$1["default"];
-	const pm = proxy;
-	let tunnel;
+	exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
+	const http = __importStar(require$$0__default$3["default"]);
+	const https = __importStar(require$$1__default$1["default"]);
+	const pm = __importStar(proxy);
+	const tunnel = __importStar(tunnel$1.exports);
 	var HttpCodes;
 	(function (HttpCodes) {
 	    HttpCodes[HttpCodes["OK"] = 200] = "OK";
@@ -662,7 +679,7 @@ function requireTunnel () {
 	 * @param serverUrl  The server URL where the request will be sent. For example, https://api.github.com
 	 */
 	function getProxyUrl(serverUrl) {
-	    let proxyUrl = pm.getProxyUrl(new URL(serverUrl));
+	    const proxyUrl = pm.getProxyUrl(new URL(serverUrl));
 	    return proxyUrl ? proxyUrl.href : '';
 	}
 	exports.getProxyUrl = getProxyUrl;
@@ -695,20 +712,22 @@ function requireTunnel () {
 	        this.message = message;
 	    }
 	    readBody() {
-	        return new Promise(async (resolve, reject) => {
-	            let output = Buffer.alloc(0);
-	            this.message.on('data', (chunk) => {
-	                output = Buffer.concat([output, chunk]);
-	            });
-	            this.message.on('end', () => {
-	                resolve(output.toString());
-	            });
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+	                let output = Buffer.alloc(0);
+	                this.message.on('data', (chunk) => {
+	                    output = Buffer.concat([output, chunk]);
+	                });
+	                this.message.on('end', () => {
+	                    resolve(output.toString());
+	                });
+	            }));
 	        });
 	    }
 	}
 	exports.HttpClientResponse = HttpClientResponse;
 	function isHttps(requestUrl) {
-	    let parsedUrl = new URL(requestUrl);
+	    const parsedUrl = new URL(requestUrl);
 	    return parsedUrl.protocol === 'https:';
 	}
 	exports.isHttps = isHttps;
@@ -751,141 +770,169 @@ function requireTunnel () {
 	        }
 	    }
 	    options(requestUrl, additionalHeaders) {
-	        return this.request('OPTIONS', requestUrl, null, additionalHeaders || {});
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('OPTIONS', requestUrl, null, additionalHeaders || {});
+	        });
 	    }
 	    get(requestUrl, additionalHeaders) {
-	        return this.request('GET', requestUrl, null, additionalHeaders || {});
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('GET', requestUrl, null, additionalHeaders || {});
+	        });
 	    }
 	    del(requestUrl, additionalHeaders) {
-	        return this.request('DELETE', requestUrl, null, additionalHeaders || {});
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('DELETE', requestUrl, null, additionalHeaders || {});
+	        });
 	    }
 	    post(requestUrl, data, additionalHeaders) {
-	        return this.request('POST', requestUrl, data, additionalHeaders || {});
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('POST', requestUrl, data, additionalHeaders || {});
+	        });
 	    }
 	    patch(requestUrl, data, additionalHeaders) {
-	        return this.request('PATCH', requestUrl, data, additionalHeaders || {});
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('PATCH', requestUrl, data, additionalHeaders || {});
+	        });
 	    }
 	    put(requestUrl, data, additionalHeaders) {
-	        return this.request('PUT', requestUrl, data, additionalHeaders || {});
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('PUT', requestUrl, data, additionalHeaders || {});
+	        });
 	    }
 	    head(requestUrl, additionalHeaders) {
-	        return this.request('HEAD', requestUrl, null, additionalHeaders || {});
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request('HEAD', requestUrl, null, additionalHeaders || {});
+	        });
 	    }
 	    sendStream(verb, requestUrl, stream, additionalHeaders) {
-	        return this.request(verb, requestUrl, stream, additionalHeaders);
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return this.request(verb, requestUrl, stream, additionalHeaders);
+	        });
 	    }
 	    /**
 	     * Gets a typed object from an endpoint
 	     * Be aware that not found returns a null.  Other errors (4xx, 5xx) reject the promise
 	     */
-	    async getJson(requestUrl, additionalHeaders = {}) {
-	        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-	        let res = await this.get(requestUrl, additionalHeaders);
-	        return this._processResponse(res, this.requestOptions);
+	    getJson(requestUrl, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            const res = yield this.get(requestUrl, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
 	    }
-	    async postJson(requestUrl, obj, additionalHeaders = {}) {
-	        let data = JSON.stringify(obj, null, 2);
-	        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-	        additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
-	        let res = await this.post(requestUrl, data, additionalHeaders);
-	        return this._processResponse(res, this.requestOptions);
+	    postJson(requestUrl, obj, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const data = JSON.stringify(obj, null, 2);
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+	            const res = yield this.post(requestUrl, data, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
 	    }
-	    async putJson(requestUrl, obj, additionalHeaders = {}) {
-	        let data = JSON.stringify(obj, null, 2);
-	        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-	        additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
-	        let res = await this.put(requestUrl, data, additionalHeaders);
-	        return this._processResponse(res, this.requestOptions);
+	    putJson(requestUrl, obj, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const data = JSON.stringify(obj, null, 2);
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+	            const res = yield this.put(requestUrl, data, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
 	    }
-	    async patchJson(requestUrl, obj, additionalHeaders = {}) {
-	        let data = JSON.stringify(obj, null, 2);
-	        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-	        additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
-	        let res = await this.patch(requestUrl, data, additionalHeaders);
-	        return this._processResponse(res, this.requestOptions);
+	    patchJson(requestUrl, obj, additionalHeaders = {}) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            const data = JSON.stringify(obj, null, 2);
+	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+	            const res = yield this.patch(requestUrl, data, additionalHeaders);
+	            return this._processResponse(res, this.requestOptions);
+	        });
 	    }
 	    /**
 	     * Makes a raw http request.
 	     * All other methods such as get, post, patch, and request ultimately call this.
 	     * Prefer get, del, post and patch
 	     */
-	    async request(verb, requestUrl, data, headers) {
-	        if (this._disposed) {
-	            throw new Error('Client has already been disposed.');
-	        }
-	        let parsedUrl = new URL(requestUrl);
-	        let info = this._prepareRequest(verb, parsedUrl, headers);
-	        // Only perform retries on reads since writes may not be idempotent.
-	        let maxTries = this._allowRetries && RetryableHttpVerbs.indexOf(verb) != -1
-	            ? this._maxRetries + 1
-	            : 1;
-	        let numTries = 0;
-	        let response;
-	        while (numTries < maxTries) {
-	            response = await this.requestRaw(info, data);
-	            // Check if it's an authentication challenge
-	            if (response &&
-	                response.message &&
-	                response.message.statusCode === HttpCodes.Unauthorized) {
-	                let authenticationHandler;
-	                for (let i = 0; i < this.handlers.length; i++) {
-	                    if (this.handlers[i].canHandleAuthentication(response)) {
-	                        authenticationHandler = this.handlers[i];
-	                        break;
-	                    }
-	                }
-	                if (authenticationHandler) {
-	                    return authenticationHandler.handleAuthentication(this, info, data);
-	                }
-	                else {
-	                    // We have received an unauthorized response but have no handlers to handle it.
-	                    // Let the response return to the caller.
-	                    return response;
-	                }
+	    request(verb, requestUrl, data, headers) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            if (this._disposed) {
+	                throw new Error('Client has already been disposed.');
 	            }
-	            let redirectsRemaining = this._maxRedirects;
-	            while (HttpRedirectCodes.indexOf(response.message.statusCode) != -1 &&
-	                this._allowRedirects &&
-	                redirectsRemaining > 0) {
-	                const redirectUrl = response.message.headers['location'];
-	                if (!redirectUrl) {
-	                    // if there's no location to redirect to, we won't
-	                    break;
-	                }
-	                let parsedRedirectUrl = new URL(redirectUrl);
-	                if (parsedUrl.protocol == 'https:' &&
-	                    parsedUrl.protocol != parsedRedirectUrl.protocol &&
-	                    !this._allowRedirectDowngrade) {
-	                    throw new Error('Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.');
-	                }
-	                // we need to finish reading the response before reassigning response
-	                // which will leak the open socket.
-	                await response.readBody();
-	                // strip authorization header if redirected to a different hostname
-	                if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
-	                    for (let header in headers) {
-	                        // header names are case insensitive
-	                        if (header.toLowerCase() === 'authorization') {
-	                            delete headers[header];
+	            const parsedUrl = new URL(requestUrl);
+	            let info = this._prepareRequest(verb, parsedUrl, headers);
+	            // Only perform retries on reads since writes may not be idempotent.
+	            const maxTries = this._allowRetries && RetryableHttpVerbs.includes(verb)
+	                ? this._maxRetries + 1
+	                : 1;
+	            let numTries = 0;
+	            let response;
+	            do {
+	                response = yield this.requestRaw(info, data);
+	                // Check if it's an authentication challenge
+	                if (response &&
+	                    response.message &&
+	                    response.message.statusCode === HttpCodes.Unauthorized) {
+	                    let authenticationHandler;
+	                    for (const handler of this.handlers) {
+	                        if (handler.canHandleAuthentication(response)) {
+	                            authenticationHandler = handler;
+	                            break;
 	                        }
 	                    }
+	                    if (authenticationHandler) {
+	                        return authenticationHandler.handleAuthentication(this, info, data);
+	                    }
+	                    else {
+	                        // We have received an unauthorized response but have no handlers to handle it.
+	                        // Let the response return to the caller.
+	                        return response;
+	                    }
 	                }
-	                // let's make the request with the new redirectUrl
-	                info = this._prepareRequest(verb, parsedRedirectUrl, headers);
-	                response = await this.requestRaw(info, data);
-	                redirectsRemaining--;
-	            }
-	            if (HttpResponseRetryCodes.indexOf(response.message.statusCode) == -1) {
-	                // If not a retry code, return immediately instead of retrying
-	                return response;
-	            }
-	            numTries += 1;
-	            if (numTries < maxTries) {
-	                await response.readBody();
-	                await this._performExponentialBackoff(numTries);
-	            }
-	        }
-	        return response;
+	                let redirectsRemaining = this._maxRedirects;
+	                while (response.message.statusCode &&
+	                    HttpRedirectCodes.includes(response.message.statusCode) &&
+	                    this._allowRedirects &&
+	                    redirectsRemaining > 0) {
+	                    const redirectUrl = response.message.headers['location'];
+	                    if (!redirectUrl) {
+	                        // if there's no location to redirect to, we won't
+	                        break;
+	                    }
+	                    const parsedRedirectUrl = new URL(redirectUrl);
+	                    if (parsedUrl.protocol === 'https:' &&
+	                        parsedUrl.protocol !== parsedRedirectUrl.protocol &&
+	                        !this._allowRedirectDowngrade) {
+	                        throw new Error('Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.');
+	                    }
+	                    // we need to finish reading the response before reassigning response
+	                    // which will leak the open socket.
+	                    yield response.readBody();
+	                    // strip authorization header if redirected to a different hostname
+	                    if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
+	                        for (const header in headers) {
+	                            // header names are case insensitive
+	                            if (header.toLowerCase() === 'authorization') {
+	                                delete headers[header];
+	                            }
+	                        }
+	                    }
+	                    // let's make the request with the new redirectUrl
+	                    info = this._prepareRequest(verb, parsedRedirectUrl, headers);
+	                    response = yield this.requestRaw(info, data);
+	                    redirectsRemaining--;
+	                }
+	                if (!response.message.statusCode ||
+	                    !HttpResponseRetryCodes.includes(response.message.statusCode)) {
+	                    // If not a retry code, return immediately instead of retrying
+	                    return response;
+	                }
+	                numTries += 1;
+	                if (numTries < maxTries) {
+	                    yield response.readBody();
+	                    yield this._performExponentialBackoff(numTries);
+	                }
+	            } while (numTries < maxTries);
+	            return response;
+	        });
 	    }
 	    /**
 	     * Needs to be called if keepAlive is set to true in request options.
@@ -902,14 +949,22 @@ function requireTunnel () {
 	     * @param data
 	     */
 	    requestRaw(info, data) {
-	        return new Promise((resolve, reject) => {
-	            let callbackForResult = function (err, res) {
-	                if (err) {
-	                    reject(err);
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve, reject) => {
+	                function callbackForResult(err, res) {
+	                    if (err) {
+	                        reject(err);
+	                    }
+	                    else if (!res) {
+	                        // If `err` is not passed, then `res` must be passed.
+	                        reject(new Error('Unknown error'));
+	                    }
+	                    else {
+	                        resolve(res);
+	                    }
 	                }
-	                resolve(res);
-	            };
-	            this.requestRawWithCallback(info, data, callbackForResult);
+	                this.requestRawWithCallback(info, data, callbackForResult);
+	            });
 	        });
 	    }
 	    /**
@@ -919,21 +974,24 @@ function requireTunnel () {
 	     * @param onResult
 	     */
 	    requestRawWithCallback(info, data, onResult) {
-	        let socket;
 	        if (typeof data === 'string') {
+	            if (!info.options.headers) {
+	                info.options.headers = {};
+	            }
 	            info.options.headers['Content-Length'] = Buffer.byteLength(data, 'utf8');
 	        }
 	        let callbackCalled = false;
-	        let handleResult = (err, res) => {
+	        function handleResult(err, res) {
 	            if (!callbackCalled) {
 	                callbackCalled = true;
 	                onResult(err, res);
 	            }
-	        };
-	        let req = info.httpModule.request(info.options, (msg) => {
-	            let res = new HttpClientResponse(msg);
-	            handleResult(null, res);
+	        }
+	        const req = info.httpModule.request(info.options, (msg) => {
+	            const res = new HttpClientResponse(msg);
+	            handleResult(undefined, res);
 	        });
+	        let socket;
 	        req.on('socket', sock => {
 	            socket = sock;
 	        });
@@ -942,12 +1000,12 @@ function requireTunnel () {
 	            if (socket) {
 	                socket.end();
 	            }
-	            handleResult(new Error('Request timeout: ' + info.options.path), null);
+	            handleResult(new Error(`Request timeout: ${info.options.path}`));
 	        });
 	        req.on('error', function (err) {
 	            // err has statusCode property
 	            // res should have headers
-	            handleResult(err, null);
+	            handleResult(err);
 	        });
 	        if (data && typeof data === 'string') {
 	            req.write(data, 'utf8');
@@ -968,7 +1026,7 @@ function requireTunnel () {
 	     * @param serverUrl  The server URL where the request will be sent. For example, https://api.github.com
 	     */
 	    getAgent(serverUrl) {
-	        let parsedUrl = new URL(serverUrl);
+	        const parsedUrl = new URL(serverUrl);
 	        return this._getAgent(parsedUrl);
 	    }
 	    _prepareRequest(method, requestUrl, headers) {
@@ -992,21 +1050,19 @@ function requireTunnel () {
 	        info.options.agent = this._getAgent(info.parsedUrl);
 	        // gives handlers an opportunity to participate
 	        if (this.handlers) {
-	            this.handlers.forEach(handler => {
+	            for (const handler of this.handlers) {
 	                handler.prepareRequest(info.options);
-	            });
+	            }
 	        }
 	        return info;
 	    }
 	    _mergeHeaders(headers) {
-	        const lowercaseKeys = obj => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
 	        if (this.requestOptions && this.requestOptions.headers) {
-	            return Object.assign({}, lowercaseKeys(this.requestOptions.headers), lowercaseKeys(headers));
+	            return Object.assign({}, lowercaseKeys(this.requestOptions.headers), lowercaseKeys(headers || {}));
 	        }
 	        return lowercaseKeys(headers || {});
 	    }
 	    _getExistingOrDefaultHeader(additionalHeaders, header, _default) {
-	        const lowercaseKeys = obj => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
 	        let clientHeader;
 	        if (this.requestOptions && this.requestOptions.headers) {
 	            clientHeader = lowercaseKeys(this.requestOptions.headers)[header];
@@ -1015,8 +1071,8 @@ function requireTunnel () {
 	    }
 	    _getAgent(parsedUrl) {
 	        let agent;
-	        let proxyUrl = pm.getProxyUrl(parsedUrl);
-	        let useProxy = proxyUrl && proxyUrl.hostname;
+	        const proxyUrl = pm.getProxyUrl(parsedUrl);
+	        const useProxy = proxyUrl && proxyUrl.hostname;
 	        if (this._keepAlive && useProxy) {
 	            agent = this._proxyAgent;
 	        }
@@ -1024,29 +1080,22 @@ function requireTunnel () {
 	            agent = this._agent;
 	        }
 	        // if agent is already assigned use that agent.
-	        if (!!agent) {
+	        if (agent) {
 	            return agent;
 	        }
 	        const usingSsl = parsedUrl.protocol === 'https:';
 	        let maxSockets = 100;
-	        if (!!this.requestOptions) {
+	        if (this.requestOptions) {
 	            maxSockets = this.requestOptions.maxSockets || http.globalAgent.maxSockets;
 	        }
-	        if (useProxy) {
-	            // If using proxy, need tunnel
-	            if (!tunnel) {
-	                tunnel = requireTunnel();
-	            }
+	        // This is `useProxy` again, but we need to check `proxyURl` directly for TypeScripts's flow analysis.
+	        if (proxyUrl && proxyUrl.hostname) {
 	            const agentOptions = {
-	                maxSockets: maxSockets,
+	                maxSockets,
 	                keepAlive: this._keepAlive,
-	                proxy: {
-	                    ...((proxyUrl.username || proxyUrl.password) && {
-	                        proxyAuth: `${proxyUrl.username}:${proxyUrl.password}`
-	                    }),
-	                    host: proxyUrl.hostname,
-	                    port: proxyUrl.port
-	                }
+	                proxy: Object.assign(Object.assign({}, ((proxyUrl.username || proxyUrl.password) && {
+	                    proxyAuth: `${proxyUrl.username}:${proxyUrl.password}`
+	                })), { host: proxyUrl.hostname, port: proxyUrl.port })
 	            };
 	            let tunnelAgent;
 	            const overHttps = proxyUrl.protocol === 'https:';
@@ -1061,7 +1110,7 @@ function requireTunnel () {
 	        }
 	        // if reusing agent across request and tunneling agent isn't assigned create a new agent
 	        if (this._keepAlive && !agent) {
-	            const options = { keepAlive: this._keepAlive, maxSockets: maxSockets };
+	            const options = { keepAlive: this._keepAlive, maxSockets };
 	            agent = usingSsl ? new https.Agent(options) : new http.Agent(options);
 	            this._agent = agent;
 	        }
@@ -1080,96 +1129,115 @@ function requireTunnel () {
 	        return agent;
 	    }
 	    _performExponentialBackoff(retryNumber) {
-	        retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
-	        const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
-	        return new Promise(resolve => setTimeout(() => resolve(), ms));
+	        return __awaiter(this, void 0, void 0, function* () {
+	            retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
+	            const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
+	            return new Promise(resolve => setTimeout(() => resolve(), ms));
+	        });
 	    }
-	    static dateTimeDeserializer(key, value) {
-	        if (typeof value === 'string') {
-	            let a = new Date(value);
-	            if (!isNaN(a.valueOf())) {
-	                return a;
-	            }
-	        }
-	        return value;
-	    }
-	    async _processResponse(res, options) {
-	        return new Promise(async (resolve, reject) => {
-	            const statusCode = res.message.statusCode;
-	            const response = {
-	                statusCode: statusCode,
-	                result: null,
-	                headers: {}
-	            };
-	            // not found leads to null obj returned
-	            if (statusCode == HttpCodes.NotFound) {
-	                resolve(response);
-	            }
-	            let obj;
-	            let contents;
-	            // get the result from the body
-	            try {
-	                contents = await res.readBody();
-	                if (contents && contents.length > 0) {
-	                    if (options && options.deserializeDates) {
-	                        obj = JSON.parse(contents, HttpClient.dateTimeDeserializer);
+	    _processResponse(res, options) {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+	                const statusCode = res.message.statusCode || 0;
+	                const response = {
+	                    statusCode,
+	                    result: null,
+	                    headers: {}
+	                };
+	                // not found leads to null obj returned
+	                if (statusCode === HttpCodes.NotFound) {
+	                    resolve(response);
+	                }
+	                // get the result from the body
+	                function dateTimeDeserializer(key, value) {
+	                    if (typeof value === 'string') {
+	                        const a = new Date(value);
+	                        if (!isNaN(a.valueOf())) {
+	                            return a;
+	                        }
+	                    }
+	                    return value;
+	                }
+	                let obj;
+	                let contents;
+	                try {
+	                    contents = yield res.readBody();
+	                    if (contents && contents.length > 0) {
+	                        if (options && options.deserializeDates) {
+	                            obj = JSON.parse(contents, dateTimeDeserializer);
+	                        }
+	                        else {
+	                            obj = JSON.parse(contents);
+	                        }
+	                        response.result = obj;
+	                    }
+	                    response.headers = res.message.headers;
+	                }
+	                catch (err) {
+	                    // Invalid resource (contents not json);  leaving result obj null
+	                }
+	                // note that 3xx redirects are handled by the http layer.
+	                if (statusCode > 299) {
+	                    let msg;
+	                    // if exception/error in body, attempt to get better error
+	                    if (obj && obj.message) {
+	                        msg = obj.message;
+	                    }
+	                    else if (contents && contents.length > 0) {
+	                        // it may be the case that the exception is in the body message as string
+	                        msg = contents;
 	                    }
 	                    else {
-	                        obj = JSON.parse(contents);
+	                        msg = `Failed request: (${statusCode})`;
 	                    }
-	                    response.result = obj;
-	                }
-	                response.headers = res.message.headers;
-	            }
-	            catch (err) {
-	                // Invalid resource (contents not json);  leaving result obj null
-	            }
-	            // note that 3xx redirects are handled by the http layer.
-	            if (statusCode > 299) {
-	                let msg;
-	                // if exception/error in body, attempt to get better error
-	                if (obj && obj.message) {
-	                    msg = obj.message;
-	                }
-	                else if (contents && contents.length > 0) {
-	                    // it may be the case that the exception is in the body message as string
-	                    msg = contents;
+	                    const err = new HttpClientError(msg, statusCode);
+	                    err.result = response.result;
+	                    reject(err);
 	                }
 	                else {
-	                    msg = 'Failed request: (' + statusCode + ')';
+	                    resolve(response);
 	                }
-	                let err = new HttpClientError(msg, statusCode);
-	                err.result = response.result;
-	                reject(err);
-	            }
-	            else {
-	                resolve(response);
-	            }
+	            }));
 	        });
 	    }
 	}
 	exports.HttpClient = HttpClient;
-} (httpClient));
+	const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
+	
+} (lib$5));
 
 var auth = {};
 
+var __awaiter$6 = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(auth, "__esModule", { value: true });
+auth.PersonalAccessTokenCredentialHandler = auth.BearerCredentialHandler = auth.BasicCredentialHandler = void 0;
 class BasicCredentialHandler {
     constructor(username, password) {
         this.username = username;
         this.password = password;
     }
     prepareRequest(options) {
-        options.headers['Authorization'] =
-            'Basic ' +
-                Buffer.from(this.username + ':' + this.password).toString('base64');
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString('base64')}`;
     }
     // This handler cannot handle 401
-    canHandleAuthentication(response) {
+    canHandleAuthentication() {
         return false;
     }
-    handleAuthentication(httpClient, requestInfo, objs) {
-        return null;
+    handleAuthentication() {
+        return __awaiter$6(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
     }
 }
 auth.BasicCredentialHandler = BasicCredentialHandler;
@@ -1180,14 +1248,19 @@ class BearerCredentialHandler {
     // currently implements pre-authorization
     // TODO: support preAuth = false where it hooks on 401
     prepareRequest(options) {
-        options.headers['Authorization'] = 'Bearer ' + this.token;
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Bearer ${this.token}`;
     }
     // This handler cannot handle 401
-    canHandleAuthentication(response) {
+    canHandleAuthentication() {
         return false;
     }
-    handleAuthentication(httpClient, requestInfo, objs) {
-        return null;
+    handleAuthentication() {
+        return __awaiter$6(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
     }
 }
 auth.BearerCredentialHandler = BearerCredentialHandler;
@@ -1198,15 +1271,19 @@ class PersonalAccessTokenCredentialHandler {
     // currently implements pre-authorization
     // TODO: support preAuth = false where it hooks on 401
     prepareRequest(options) {
-        options.headers['Authorization'] =
-            'Basic ' + Buffer.from('PAT:' + this.token).toString('base64');
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`PAT:${this.token}`).toString('base64')}`;
     }
     // This handler cannot handle 401
-    canHandleAuthentication(response) {
+    canHandleAuthentication() {
         return false;
     }
-    handleAuthentication(httpClient, requestInfo, objs) {
-        return null;
+    handleAuthentication() {
+        return __awaiter$6(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
     }
 }
 auth.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHandler;
@@ -1227,7 +1304,7 @@ function requireOidcUtils () {
 	};
 	Object.defineProperty(oidcUtils, "__esModule", { value: true });
 	oidcUtils.OidcClient = void 0;
-	const http_client_1 = httpClient;
+	const http_client_1 = lib$5;
 	const auth_1 = auth;
 	const core_1 = requireCore();
 	class OidcClient {
@@ -1589,6 +1666,73 @@ function requireSummary () {
 	return summary;
 }
 
+var pathUtils = {};
+
+var hasRequiredPathUtils;
+
+function requirePathUtils () {
+	if (hasRequiredPathUtils) return pathUtils;
+	hasRequiredPathUtils = 1;
+	var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+	}) : (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    o[k2] = m[k];
+	}));
+	var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+	    Object.defineProperty(o, "default", { enumerable: true, value: v });
+	}) : function(o, v) {
+	    o["default"] = v;
+	});
+	var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+	    if (mod && mod.__esModule) return mod;
+	    var result = {};
+	    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+	    __setModuleDefault(result, mod);
+	    return result;
+	};
+	Object.defineProperty(pathUtils, "__esModule", { value: true });
+	pathUtils.toPlatformPath = pathUtils.toWin32Path = pathUtils.toPosixPath = void 0;
+	const path = __importStar(require$$0__default$4["default"]);
+	/**
+	 * toPosixPath converts the given path to the posix form. On Windows, \\ will be
+	 * replaced with /.
+	 *
+	 * @param pth. Path to transform.
+	 * @return string Posix path.
+	 */
+	function toPosixPath(pth) {
+	    return pth.replace(/[\\]/g, '/');
+	}
+	pathUtils.toPosixPath = toPosixPath;
+	/**
+	 * toWin32Path converts the given path to the win32 form. On Linux, / will be
+	 * replaced with \\.
+	 *
+	 * @param pth. Path to transform.
+	 * @return string Win32 path.
+	 */
+	function toWin32Path(pth) {
+	    return pth.replace(/[/]/g, '\\');
+	}
+	pathUtils.toWin32Path = toWin32Path;
+	/**
+	 * toPlatformPath converts the given path to a platform-specific path. It does
+	 * this by replacing instances of / and \ with the platform-specific path
+	 * separator.
+	 *
+	 * @param pth The path to platformize.
+	 * @return string The platform-specific path.
+	 */
+	function toPlatformPath(pth) {
+	    return pth.replace(/[/\\]/g, path.sep);
+	}
+	pathUtils.toPlatformPath = toPlatformPath;
+	
+	return pathUtils;
+}
+
 var hasRequiredCore;
 
 function requireCore () {
@@ -1629,7 +1773,7 @@ function requireCore () {
 		const file_command_1 = fileCommand;
 		const utils_1 = utils$1;
 		const os = __importStar(require$$0__default["default"]);
-		const path = __importStar(require$$1__default$2["default"]);
+		const path = __importStar(require$$0__default$4["default"]);
 		const oidc_utils_1 = requireOidcUtils();
 		/**
 		 * The code to exit an action
@@ -1915,6 +2059,13 @@ function requireCore () {
 		 */
 		var summary_2 = requireSummary();
 		Object.defineProperty(exports, "markdownSummary", { enumerable: true, get: function () { return summary_2.markdownSummary; } });
+		/**
+		 * Path exports
+		 */
+		var path_utils_1 = requirePathUtils();
+		Object.defineProperty(exports, "toPosixPath", { enumerable: true, get: function () { return path_utils_1.toPosixPath; } });
+		Object.defineProperty(exports, "toWin32Path", { enumerable: true, get: function () { return path_utils_1.toWin32Path; } });
+		Object.defineProperty(exports, "toPlatformPath", { enumerable: true, get: function () { return path_utils_1.toPlatformPath; } });
 		
 } (core$3));
 	return core$3;
@@ -1922,169 +2073,15 @@ function requireCore () {
 
 var coreExports = requireCore();
 
-var src$b = {};
+var src$c = {};
 
 var bucket = {};
 
 var nodejsCommon = {};
 
-var operation = {};
+var service = {};
 
-var serviceObject = {};
-
-var src$a = {};
-
-(function (exports) {
-	/* eslint-disable prefer-rest-params */
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.callbackifyAll = exports.callbackify = exports.promisifyAll = exports.promisify = void 0;
-	/**
-	 * Wraps a callback style function to conditionally return a promise.
-	 *
-	 * @param {function} originalMethod - The method to promisify.
-	 * @param {object=} options - Promise options.
-	 * @param {boolean} options.singular - Resolve the promise with single arg instead of an array.
-	 * @return {function} wrapped
-	 */
-	function promisify(originalMethod, options) {
-	    if (originalMethod.promisified_) {
-	        return originalMethod;
-	    }
-	    options = options || {};
-	    const slice = Array.prototype.slice;
-	    // tslint:disable-next-line:no-any
-	    const wrapper = function () {
-	        let last;
-	        for (last = arguments.length - 1; last >= 0; last--) {
-	            const arg = arguments[last];
-	            if (typeof arg === 'undefined') {
-	                continue; // skip trailing undefined.
-	            }
-	            if (typeof arg !== 'function') {
-	                break; // non-callback last argument found.
-	            }
-	            return originalMethod.apply(this, arguments);
-	        }
-	        // peel trailing undefined.
-	        const args = slice.call(arguments, 0, last + 1);
-	        // tslint:disable-next-line:variable-name
-	        let PromiseCtor = Promise;
-	        // Because dedupe will likely create a single install of
-	        // @google-cloud/common to be shared amongst all modules, we need to
-	        // localize it at the Service level.
-	        if (this && this.Promise) {
-	            PromiseCtor = this.Promise;
-	        }
-	        return new PromiseCtor((resolve, reject) => {
-	            // tslint:disable-next-line:no-any
-	            args.push((...args) => {
-	                const callbackArgs = slice.call(args);
-	                const err = callbackArgs.shift();
-	                if (err) {
-	                    return reject(err);
-	                }
-	                if (options.singular && callbackArgs.length === 1) {
-	                    resolve(callbackArgs[0]);
-	                }
-	                else {
-	                    resolve(callbackArgs);
-	                }
-	            });
-	            originalMethod.apply(this, args);
-	        });
-	    };
-	    wrapper.promisified_ = true;
-	    return wrapper;
-	}
-	exports.promisify = promisify;
-	/**
-	 * Promisifies certain Class methods. This will not promisify private or
-	 * streaming methods.
-	 *
-	 * @param {module:common/service} Class - Service class.
-	 * @param {object=} options - Configuration object.
-	 */
-	// tslint:disable-next-line:variable-name
-	function promisifyAll(Class, options) {
-	    const exclude = (options && options.exclude) || [];
-	    const ownPropertyNames = Object.getOwnPropertyNames(Class.prototype);
-	    const methods = ownPropertyNames.filter(methodName => {
-	        // clang-format off
-	        return (!exclude.includes(methodName) &&
-	            typeof Class.prototype[methodName] === 'function' && // is it a function?
-	            !/(^_|(Stream|_)|promise$)|^constructor$/.test(methodName) // is it promisable?
-	        );
-	        // clang-format on
-	    });
-	    methods.forEach(methodName => {
-	        const originalMethod = Class.prototype[methodName];
-	        if (!originalMethod.promisified_) {
-	            Class.prototype[methodName] = exports.promisify(originalMethod, options);
-	        }
-	    });
-	}
-	exports.promisifyAll = promisifyAll;
-	/**
-	 * Wraps a promisy type function to conditionally call a callback function.
-	 *
-	 * @param {function} originalMethod - The method to callbackify.
-	 * @param {object=} options - Callback options.
-	 * @param {boolean} options.singular - Pass to the callback a single arg instead of an array.
-	 * @return {function} wrapped
-	 */
-	function callbackify(originalMethod) {
-	    if (originalMethod.callbackified_) {
-	        return originalMethod;
-	    }
-	    // tslint:disable-next-line:no-any
-	    const wrapper = function () {
-	        if (typeof arguments[arguments.length - 1] !== 'function') {
-	            return originalMethod.apply(this, arguments);
-	        }
-	        const cb = Array.prototype.pop.call(arguments);
-	        originalMethod.apply(this, arguments).then(
-	        // tslint:disable-next-line:no-any
-	        (res) => {
-	            res = Array.isArray(res) ? res : [res];
-	            cb(null, ...res);
-	        }, (err) => cb(err));
-	    };
-	    wrapper.callbackified_ = true;
-	    return wrapper;
-	}
-	exports.callbackify = callbackify;
-	/**
-	 * Callbackifies certain Class methods. This will not callbackify private or
-	 * streaming methods.
-	 *
-	 * @param {module:common/service} Class - Service class.
-	 * @param {object=} options - Configuration object.
-	 */
-	function callbackifyAll(
-	// tslint:disable-next-line:variable-name
-	Class, options) {
-	    const exclude = (options && options.exclude) || [];
-	    const ownPropertyNames = Object.getOwnPropertyNames(Class.prototype);
-	    const methods = ownPropertyNames.filter(methodName => {
-	        // clang-format off
-	        return (!exclude.includes(methodName) &&
-	            typeof Class.prototype[methodName] === 'function' && // is it a function?
-	            !/^_|(Stream|_)|^constructor$/.test(methodName) // is it callbackifyable?
-	        );
-	        // clang-format on
-	    });
-	    methods.forEach(methodName => {
-	        const originalMethod = Class.prototype[methodName];
-	        if (!originalMethod.callbackified_) {
-	            Class.prototype[methodName] = exports.callbackify(originalMethod);
-	        }
-	    });
-	}
-	exports.callbackifyAll = callbackifyAll;
-	
-} (src$a));
-
-const arrify$4 = value => {
+const arrify$3 = value => {
 	if (value === null || value === undefined) {
 		return [];
 	}
@@ -2104,7 +2101,7 @@ const arrify$4 = value => {
 	return [value];
 };
 
-var arrify_1 = arrify$4;
+var arrify_1 = arrify$3;
 
 var hasOwn = Object.prototype.hasOwnProperty;
 var toStr = Object.prototype.toString;
@@ -2168,7 +2165,7 @@ var getProperty = function getProperty(obj, name) {
 	return obj[name];
 };
 
-var extend$4 = function extend() {
+var extend$2 = function extend() {
 	var options, name, src, copy, copyIsArray, clone;
 	var target = arguments[0];
 	var i = 1;
@@ -2222,12 +2219,572 @@ var extend$4 = function extend() {
 	return target;
 };
 
-var util$9 = {};
+var dist$3 = {};
 
-var src$9 = {};
+var v1$1 = {};
 
-Object.defineProperty(src$9, "__esModule", { value: true });
-const stream_1$3 = require$$0__default$4["default"];
+var rng$1 = {};
+
+Object.defineProperty(rng$1, "__esModule", {
+  value: true
+});
+rng$1.default = rng;
+
+var _crypto$2 = _interopRequireDefault$b(require$$0__default$5["default"]);
+
+function _interopRequireDefault$b(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const rnds8Pool = new Uint8Array(256); // # of random values to pre-allocate
+
+let poolPtr = rnds8Pool.length;
+
+function rng() {
+  if (poolPtr > rnds8Pool.length - 16) {
+    _crypto$2.default.randomFillSync(rnds8Pool);
+
+    poolPtr = 0;
+  }
+
+  return rnds8Pool.slice(poolPtr, poolPtr += 16);
+}
+
+var stringify$2 = {};
+
+var validate$2 = {};
+
+var regex = {};
+
+Object.defineProperty(regex, "__esModule", {
+  value: true
+});
+regex.default = void 0;
+var _default$c = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+regex.default = _default$c;
+
+Object.defineProperty(validate$2, "__esModule", {
+  value: true
+});
+validate$2.default = void 0;
+
+var _regex = _interopRequireDefault$a(regex);
+
+function _interopRequireDefault$a(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function validate$1(uuid) {
+  return typeof uuid === 'string' && _regex.default.test(uuid);
+}
+
+var _default$b = validate$1;
+validate$2.default = _default$b;
+
+Object.defineProperty(stringify$2, "__esModule", {
+  value: true
+});
+stringify$2.default = void 0;
+
+var _validate$2 = _interopRequireDefault$9(validate$2);
+
+function _interopRequireDefault$9(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+const byteToHex = [];
+
+for (let i = 0; i < 256; ++i) {
+  byteToHex.push((i + 0x100).toString(16).substr(1));
+}
+
+function stringify$1(arr, offset = 0) {
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  const uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!(0, _validate$2.default)(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}
+
+var _default$a = stringify$1;
+stringify$2.default = _default$a;
+
+Object.defineProperty(v1$1, "__esModule", {
+  value: true
+});
+v1$1.default = void 0;
+
+var _rng$1 = _interopRequireDefault$8(rng$1);
+
+var _stringify$2 = _interopRequireDefault$8(stringify$2);
+
+function _interopRequireDefault$8(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+let _nodeId;
+
+let _clockseq; // Previous uuid creation time
+
+
+let _lastMSecs = 0;
+let _lastNSecs = 0; // See https://github.com/uuidjs/uuid for API details
+
+function v1(options, buf, offset) {
+  let i = buf && offset || 0;
+  const b = buf || new Array(16);
+  options = options || {};
+  let node = options.node || _nodeId;
+  let clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq; // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+
+  if (node == null || clockseq == null) {
+    const seedBytes = options.random || (options.rng || _rng$1.default)();
+
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [seedBytes[0] | 0x01, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
+    }
+
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  } // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+
+
+  let msecs = options.msecs !== undefined ? options.msecs : Date.now(); // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+
+  let nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1; // Time since last uuid creation (in msecs)
+
+  const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000; // Per 4.2.1.2, Bump clockseq on clock regression
+
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  } // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+
+
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  } // Per 4.2.1.2 Throw error if too many uuids are requested
+
+
+  if (nsecs >= 10000) {
+    throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq; // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+
+  msecs += 12219292800000; // `time_low`
+
+  const tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff; // `time_mid`
+
+  const tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff; // `time_high_and_version`
+
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+
+  b[i++] = tmh >>> 16 & 0xff; // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+
+  b[i++] = clockseq >>> 8 | 0x80; // `clock_seq_low`
+
+  b[i++] = clockseq & 0xff; // `node`
+
+  for (let n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf || (0, _stringify$2.default)(b);
+}
+
+var _default$9 = v1;
+v1$1.default = _default$9;
+
+var v3$1 = {};
+
+var v35 = {};
+
+var parse$8 = {};
+
+Object.defineProperty(parse$8, "__esModule", {
+  value: true
+});
+parse$8.default = void 0;
+
+var _validate$1 = _interopRequireDefault$7(validate$2);
+
+function _interopRequireDefault$7(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function parse$7(uuid) {
+  if (!(0, _validate$1.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  let v;
+  const arr = new Uint8Array(16); // Parse ########-....-....-....-............
+
+  arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
+  arr[1] = v >>> 16 & 0xff;
+  arr[2] = v >>> 8 & 0xff;
+  arr[3] = v & 0xff; // Parse ........-####-....-....-............
+
+  arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
+  arr[5] = v & 0xff; // Parse ........-....-####-....-............
+
+  arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
+  arr[7] = v & 0xff; // Parse ........-....-....-####-............
+
+  arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
+  arr[9] = v & 0xff; // Parse ........-....-....-....-############
+  // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
+
+  arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
+  arr[11] = v / 0x100000000 & 0xff;
+  arr[12] = v >>> 24 & 0xff;
+  arr[13] = v >>> 16 & 0xff;
+  arr[14] = v >>> 8 & 0xff;
+  arr[15] = v & 0xff;
+  return arr;
+}
+
+var _default$8 = parse$7;
+parse$8.default = _default$8;
+
+Object.defineProperty(v35, "__esModule", {
+  value: true
+});
+v35.default = _default$7;
+v35.URL = v35.DNS = void 0;
+
+var _stringify$1 = _interopRequireDefault$6(stringify$2);
+
+var _parse = _interopRequireDefault$6(parse$8);
+
+function _interopRequireDefault$6(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function stringToBytes(str) {
+  str = unescape(encodeURIComponent(str)); // UTF8 escape
+
+  const bytes = [];
+
+  for (let i = 0; i < str.length; ++i) {
+    bytes.push(str.charCodeAt(i));
+  }
+
+  return bytes;
+}
+
+const DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+v35.DNS = DNS;
+const URL$2 = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+v35.URL = URL$2;
+
+function _default$7(name, version, hashfunc) {
+  function generateUUID(value, namespace, buf, offset) {
+    if (typeof value === 'string') {
+      value = stringToBytes(value);
+    }
+
+    if (typeof namespace === 'string') {
+      namespace = (0, _parse.default)(namespace);
+    }
+
+    if (namespace.length !== 16) {
+      throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
+    } // Compute hash of namespace and value, Per 4.3
+    // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
+    // hashfunc([...namespace, ... value])`
+
+
+    let bytes = new Uint8Array(16 + value.length);
+    bytes.set(namespace);
+    bytes.set(value, namespace.length);
+    bytes = hashfunc(bytes);
+    bytes[6] = bytes[6] & 0x0f | version;
+    bytes[8] = bytes[8] & 0x3f | 0x80;
+
+    if (buf) {
+      offset = offset || 0;
+
+      for (let i = 0; i < 16; ++i) {
+        buf[offset + i] = bytes[i];
+      }
+
+      return buf;
+    }
+
+    return (0, _stringify$1.default)(bytes);
+  } // Function#name is not settable on some platforms (#270)
+
+
+  try {
+    generateUUID.name = name; // eslint-disable-next-line no-empty
+  } catch (err) {} // For CommonJS default export support
+
+
+  generateUUID.DNS = DNS;
+  generateUUID.URL = URL$2;
+  return generateUUID;
+}
+
+var md5$2 = {};
+
+Object.defineProperty(md5$2, "__esModule", {
+  value: true
+});
+md5$2.default = void 0;
+
+var _crypto$1 = _interopRequireDefault$5(require$$0__default$5["default"]);
+
+function _interopRequireDefault$5(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function md5$1(bytes) {
+  if (Array.isArray(bytes)) {
+    bytes = Buffer.from(bytes);
+  } else if (typeof bytes === 'string') {
+    bytes = Buffer.from(bytes, 'utf8');
+  }
+
+  return _crypto$1.default.createHash('md5').update(bytes).digest();
+}
+
+var _default$6 = md5$1;
+md5$2.default = _default$6;
+
+Object.defineProperty(v3$1, "__esModule", {
+  value: true
+});
+v3$1.default = void 0;
+
+var _v$1 = _interopRequireDefault$4(v35);
+
+var _md = _interopRequireDefault$4(md5$2);
+
+function _interopRequireDefault$4(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const v3 = (0, _v$1.default)('v3', 0x30, _md.default);
+var _default$5 = v3;
+v3$1.default = _default$5;
+
+var v4$1 = {};
+
+Object.defineProperty(v4$1, "__esModule", {
+  value: true
+});
+v4$1.default = void 0;
+
+var _rng = _interopRequireDefault$3(rng$1);
+
+var _stringify = _interopRequireDefault$3(stringify$2);
+
+function _interopRequireDefault$3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function v4(options, buf, offset) {
+  options = options || {};
+
+  const rnds = options.random || (options.rng || _rng.default)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (let i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return (0, _stringify.default)(rnds);
+}
+
+var _default$4 = v4;
+v4$1.default = _default$4;
+
+var v5$1 = {};
+
+var sha1$2 = {};
+
+Object.defineProperty(sha1$2, "__esModule", {
+  value: true
+});
+sha1$2.default = void 0;
+
+var _crypto = _interopRequireDefault$2(require$$0__default$5["default"]);
+
+function _interopRequireDefault$2(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function sha1$1(bytes) {
+  if (Array.isArray(bytes)) {
+    bytes = Buffer.from(bytes);
+  } else if (typeof bytes === 'string') {
+    bytes = Buffer.from(bytes, 'utf8');
+  }
+
+  return _crypto.default.createHash('sha1').update(bytes).digest();
+}
+
+var _default$3 = sha1$1;
+sha1$2.default = _default$3;
+
+Object.defineProperty(v5$1, "__esModule", {
+  value: true
+});
+v5$1.default = void 0;
+
+var _v = _interopRequireDefault$1(v35);
+
+var _sha = _interopRequireDefault$1(sha1$2);
+
+function _interopRequireDefault$1(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const v5 = (0, _v.default)('v5', 0x50, _sha.default);
+var _default$2 = v5;
+v5$1.default = _default$2;
+
+var nil = {};
+
+Object.defineProperty(nil, "__esModule", {
+  value: true
+});
+nil.default = void 0;
+var _default$1 = '00000000-0000-0000-0000-000000000000';
+nil.default = _default$1;
+
+var version$3 = {};
+
+Object.defineProperty(version$3, "__esModule", {
+  value: true
+});
+version$3.default = void 0;
+
+var _validate = _interopRequireDefault(validate$2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function version$2(uuid) {
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  return parseInt(uuid.substr(14, 1), 16);
+}
+
+var _default = version$2;
+version$3.default = _default;
+
+(function (exports) {
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	Object.defineProperty(exports, "v1", {
+	  enumerable: true,
+	  get: function () {
+	    return _v.default;
+	  }
+	});
+	Object.defineProperty(exports, "v3", {
+	  enumerable: true,
+	  get: function () {
+	    return _v2.default;
+	  }
+	});
+	Object.defineProperty(exports, "v4", {
+	  enumerable: true,
+	  get: function () {
+	    return _v3.default;
+	  }
+	});
+	Object.defineProperty(exports, "v5", {
+	  enumerable: true,
+	  get: function () {
+	    return _v4.default;
+	  }
+	});
+	Object.defineProperty(exports, "NIL", {
+	  enumerable: true,
+	  get: function () {
+	    return _nil.default;
+	  }
+	});
+	Object.defineProperty(exports, "version", {
+	  enumerable: true,
+	  get: function () {
+	    return _version.default;
+	  }
+	});
+	Object.defineProperty(exports, "validate", {
+	  enumerable: true,
+	  get: function () {
+	    return _validate.default;
+	  }
+	});
+	Object.defineProperty(exports, "stringify", {
+	  enumerable: true,
+	  get: function () {
+	    return _stringify.default;
+	  }
+	});
+	Object.defineProperty(exports, "parse", {
+	  enumerable: true,
+	  get: function () {
+	    return _parse.default;
+	  }
+	});
+
+	var _v = _interopRequireDefault(v1$1);
+
+	var _v2 = _interopRequireDefault(v3$1);
+
+	var _v3 = _interopRequireDefault(v4$1);
+
+	var _v4 = _interopRequireDefault(v5$1);
+
+	var _nil = _interopRequireDefault(nil);
+
+	var _version = _interopRequireDefault(version$3);
+
+	var _validate = _interopRequireDefault(validate$2);
+
+	var _stringify = _interopRequireDefault(stringify$2);
+
+	var _parse = _interopRequireDefault(parse$8);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+} (dist$3));
+
+var util$7 = {};
+
+var src$b = {};
+
+Object.defineProperty(src$b, "__esModule", { value: true });
+src$b.MissingProjectIdError = src$b.replaceProjectIdToken = void 0;
+const stream_1$3 = require$$0__default$6["default"];
 // Copyright 2014 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -2276,7 +2833,7 @@ function replaceProjectIdToken(value, projectId) {
     }
     return value;
 }
-src$9.replaceProjectIdToken = replaceProjectIdToken;
+src$b.replaceProjectIdToken = replaceProjectIdToken;
 /**
  * Custom error type for missing project ID errors.
  */
@@ -2288,9 +2845,9 @@ class MissingProjectIdError extends Error {
     "GOOGLE_CLOUD_PROJECT".`.replace(/ +/g, ' ');
     }
 }
-src$9.MissingProjectIdError = MissingProjectIdError;
+src$b.MissingProjectIdError = MissingProjectIdError;
 
-var ent$1 = {};
+var ent = {};
 
 /** Highest positive signed 32-bit float value */
 const maxInt = 2147483647; // aka. 0x7FFFFFFF or 2^31-1
@@ -6460,24 +7017,24 @@ function decode (str) {
     });
 }
 
-ent$1.encode = encode_1;
-ent$1.decode = decode_1;
+ent.encode = encode_1;
+ent.decode = decode_1;
 
-var src$8 = {};
+var src$a = {};
 
 var googleauth = {};
 
-var src$7 = {};
+var src$9 = {};
 
-var src$6 = {};
+var src$8 = {};
 
-var gaxios = {};
+var gaxios$1 = {};
 
 var lib$4 = {exports: {}};
 
 var publicApi = {};
 
-var URL$2 = {exports: {}};
+var URL$1 = {exports: {}};
 
 var conversions = {};
 var lib$3 = conversions;
@@ -84447,6 +85004,7 @@ var combiningMarksRegex = /[\u0300-\u036F\u0483-\u0489\u0591-\u05BD\u05BF\u05C1\
 function validateLabel(label, processing_option) {
   if (label.substr(0, 4) === "xn--") {
     label = punycode.toUnicode(label);
+    PROCESSING_OPTIONS.NONTRANSITIONAL;
   }
 
   var error = false;
@@ -86231,9 +86789,9 @@ URLImpl.implementation = class URLImpl {
 	    Worker: { URL: URL }
 	  }
 	};
-} (URL$2));
+} (URL$1));
 
-publicApi.URL = URL$2.exports.interface;
+publicApi.URL = URL$1.exports.interface;
 publicApi.serializeURL = urlStateMachine.exports.serializeURL;
 publicApi.serializeURLOrigin = urlStateMachine.exports.serializeURLOrigin;
 publicApi.basicURLParse = urlStateMachine.exports.basicURLParse;
@@ -86256,7 +86814,7 @@ function requireSafer () {
 	if (hasRequiredSafer) return safer_1;
 	hasRequiredSafer = 1;
 
-	var buffer = require$$0__default$5["default"];
+	var buffer = require$$0__default$7["default"];
 	var Buffer = buffer.Buffer;
 
 	var safer = {};
@@ -86402,7 +86960,7 @@ var safeBuffer$1 = {exports: {}};
 
 (function (module, exports) {
 	/* eslint-disable node/no-deprecated-api */
-	var buffer = require$$0__default$5["default"];
+	var buffer = require$$0__default$7["default"];
 	var Buffer = buffer.Buffer;
 
 	// alternative to using Object.keys for old browsers
@@ -98006,8 +98564,8 @@ function requireEncoding () {
 
 	function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-	var Stream = _interopDefault(require$$0__default$4["default"]);
-	var http = _interopDefault(require$$0__default$2["default"]);
+	var Stream = _interopDefault(require$$0__default$6["default"]);
+	var http = _interopDefault(require$$0__default$3["default"]);
 	var Url = _interopDefault(require$$2__default["default"]);
 	var whatwgUrl = _interopDefault(publicApi);
 	var https = _interopDefault(require$$1__default$1["default"]);
@@ -99726,7 +100284,7 @@ isStream.transform = stream =>
 
 var isStream_1 = isStream;
 
-var common$2 = {};
+var common$3 = {};
 
 // Copyright 2018 Google LLC
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -99740,10 +100298,10 @@ var common$2 = {};
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-Object.defineProperty(common$2, "__esModule", { value: true });
-common$2.GaxiosError = void 0;
+Object.defineProperty(common$3, "__esModule", { value: true });
+common$3.GaxiosError = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
-class GaxiosError extends Error {
+class GaxiosError$1 extends Error {
     constructor(message, options, response) {
         super(message);
         this.response = response;
@@ -99751,7 +100309,7 @@ class GaxiosError extends Error {
         this.code = response.status.toString();
     }
 }
-common$2.GaxiosError = GaxiosError;
+common$3.GaxiosError = GaxiosError$1;
 
 var retry$4 = {};
 
@@ -99769,9 +100327,9 @@ var retry$4 = {};
 // limitations under the License.
 Object.defineProperty(retry$4, "__esModule", { value: true });
 retry$4.getRetryConfig = void 0;
-async function getRetryConfig(err) {
+async function getRetryConfig$1(err) {
     var _a;
-    let config = getConfig(err);
+    let config = getConfig$1(err);
     if (!err || !err.config || (!config && !err.config.retry)) {
         return { shouldRetry: false };
     }
@@ -99808,7 +100366,7 @@ async function getRetryConfig(err) {
     // Put the config back into the err
     err.config.retryConfig = config;
     // Determine if we should retry the request
-    const shouldRetryFn = config.shouldRetry || shouldRetryRequest;
+    const shouldRetryFn = config.shouldRetry || shouldRetryRequest$1;
     if (!(await shouldRetryFn(err))) {
         return { shouldRetry: false, config: err.config };
     }
@@ -99831,13 +100389,13 @@ async function getRetryConfig(err) {
     await backoff;
     return { shouldRetry: true, config: err.config };
 }
-retry$4.getRetryConfig = getRetryConfig;
+retry$4.getRetryConfig = getRetryConfig$1;
 /**
  * Determine based on config if we should retry the request.
  * @param err The GaxiosError passed to the interceptor.
  */
-function shouldRetryRequest(err) {
-    const config = getConfig(err);
+function shouldRetryRequest$1(err) {
+    const config = getConfig$1(err);
     // node-fetch raises an AbortError if signaled:
     // https://github.com/bitinn/node-fetch#request-cancellation-with-abortsignal
     if (err.name === 'AbortError') {
@@ -99883,7 +100441,7 @@ function shouldRetryRequest(err) {
  * Acquire the raxConfig object from an GaxiosError if available.
  * @param err The Gaxios error with a config object.
  */
-function getConfig(err) {
+function getConfig$1(err) {
     if (err && err.config && err.config.retryConfig) {
         return err.config.retryConfig;
     }
@@ -99892,7 +100450,7 @@ function getConfig(err) {
 
 var agent$1 = {};
 
-var src$5 = {exports: {}};
+var src$7 = {exports: {}};
 
 var browser = {exports: {}};
 
@@ -100067,11 +100625,11 @@ function requireMs () {
 	return ms;
 }
 
-var common$1;
+var common$2;
 var hasRequiredCommon$1;
 
 function requireCommon$1 () {
-	if (hasRequiredCommon$1) return common$1;
+	if (hasRequiredCommon$1) return common$2;
 	hasRequiredCommon$1 = 1;
 	/**
 	 * This is the common logic for both the Node.js and web browser
@@ -100345,8 +100903,8 @@ function requireCommon$1 () {
 		return createDebug;
 	}
 
-	common$1 = setup;
-	return common$1;
+	common$2 = setup;
+	return common$2;
 }
 
 /* eslint-env browser */
@@ -100653,7 +101211,7 @@ function requireSupportsColor () {
 	if (hasRequiredSupportsColor) return supportsColor_1;
 	hasRequiredSupportsColor = 1;
 	const os = require$$0__default["default"];
-	const tty = require$$1__default$3["default"];
+	const tty = require$$1__default$2["default"];
 	const hasFlag = requireHasFlag();
 
 	const {env} = process;
@@ -100799,7 +101357,7 @@ function requireNode$1 () {
 	if (hasRequiredNode$1) return node$1.exports;
 	hasRequiredNode$1 = 1;
 	(function (module, exports) {
-		const tty = require$$1__default$3["default"];
+		const tty = require$$1__default$2["default"];
 		const util = require$$4__default["default"];
 
 		/**
@@ -101073,17 +101631,17 @@ function requireNode$1 () {
 	} else {
 		module.exports = requireNode$1();
 	}
-} (src$5));
+} (src$7));
 
-var promisify$3 = {};
+var promisify = {};
 
 var hasRequiredPromisify;
 
 function requirePromisify () {
-	if (hasRequiredPromisify) return promisify$3;
+	if (hasRequiredPromisify) return promisify;
 	hasRequiredPromisify = 1;
-	Object.defineProperty(promisify$3, "__esModule", { value: true });
-	function promisify(fn) {
+	Object.defineProperty(promisify, "__esModule", { value: true });
+	function promisify$1(fn) {
 	    return function (req, opts) {
 	        return new Promise((resolve, reject) => {
 	            fn.call(this, req, opts, (err, rtn) => {
@@ -101097,22 +101655,22 @@ function requirePromisify () {
 	        });
 	    };
 	}
-	promisify$3.default = promisify;
+	promisify.default = promisify$1;
 	
-	return promisify$3;
+	return promisify;
 }
 
-var src$4;
+var src$6;
 var hasRequiredSrc$1;
 
 function requireSrc$1 () {
-	if (hasRequiredSrc$1) return src$4;
+	if (hasRequiredSrc$1) return src$6;
 	hasRequiredSrc$1 = 1;
 	var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
-	const events_1 = require$$0__default$3["default"];
-	const debug_1 = __importDefault(src$5.exports);
+	const events_1 = require$$0__default$2["default"];
+	const debug_1 = __importDefault(src$7.exports);
 	const promisify_1 = __importDefault(requirePromisify());
 	const debug = debug_1.default('agent-base');
 	function isAgent(v) {
@@ -101308,9 +101866,9 @@ function requireSrc$1 () {
 	    // So that `instanceof` works correctly
 	    createAgent.prototype = createAgent.Agent.prototype;
 	})(createAgent || (createAgent = {}));
-	src$4 = createAgent;
+	src$6 = createAgent;
 	
-	return src$4;
+	return src$6;
 }
 
 var parseProxyResponse = {};
@@ -101324,7 +101882,7 @@ function requireParseProxyResponse () {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(parseProxyResponse, "__esModule", { value: true });
-	const debug_1 = __importDefault(src$5.exports);
+	const debug_1 = __importDefault(src$7.exports);
 	const debug = debug_1.default('https-proxy-agent:parse-proxy-response');
 	function parseProxyResponse$1(socket) {
 	    return new Promise((resolve, reject) => {
@@ -101406,11 +101964,11 @@ function requireAgent$1 () {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(agent$1, "__esModule", { value: true });
-	const net_1 = __importDefault(require$$0__default$6["default"]);
+	const net_1 = __importDefault(require$$0__default$8["default"]);
 	const tls_1 = __importDefault(require$$1__default["default"]);
 	const url_1 = __importDefault(require$$2__default["default"]);
-	const assert_1 = __importDefault(require$$0__default$7["default"]);
-	const debug_1 = __importDefault(src$5.exports);
+	const assert_1 = __importDefault(require$$6__default["default"]);
+	const debug_1 = __importDefault(src$7.exports);
 	const agent_base_1 = requireSrc$1();
 	const parse_proxy_response_1 = __importDefault(requireParseProxyResponse());
 	const debug = debug_1.default('https-proxy-agent:agent');
@@ -101572,11 +102130,11 @@ function requireAgent$1 () {
 	return agent$1;
 }
 
-var dist$3;
+var dist$2;
 var hasRequiredDist$2;
 
 function requireDist$2 () {
-	if (hasRequiredDist$2) return dist$3;
+	if (hasRequiredDist$2) return dist$2;
 	hasRequiredDist$2 = 1;
 	var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -101589,9 +102147,9 @@ function requireDist$2 () {
 	    createHttpsProxyAgent.HttpsProxyAgent = agent_1.default;
 	    createHttpsProxyAgent.prototype = agent_1.default.prototype;
 	})(createHttpsProxyAgent || (createHttpsProxyAgent = {}));
-	dist$3 = createHttpsProxyAgent;
+	dist$2 = createHttpsProxyAgent;
 	
-	return dist$3;
+	return dist$2;
 }
 
 // Copyright 2018 Google LLC
@@ -101606,34 +102164,34 @@ function requireDist$2 () {
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-var __importDefault$3 = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+var __importDefault$4 = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-Object.defineProperty(gaxios, "__esModule", { value: true });
-gaxios.Gaxios = void 0;
-const extend_1 = __importDefault$3(extend$4);
-const https_1 = require$$1__default$1["default"];
-const node_fetch_1$1 = __importDefault$3(lib$4.exports);
-const querystring_1 = __importDefault$3(require$$0__default$8["default"]);
-const is_stream_1 = __importDefault$3(isStream_1);
-const url_1 = require$$2__default["default"];
-const common_1 = common$2;
-const retry_1 = retry$4;
+Object.defineProperty(gaxios$1, "__esModule", { value: true });
+gaxios$1.Gaxios = void 0;
+const extend_1$1 = __importDefault$4(extend$2);
+const https_1$1 = require$$1__default$1["default"];
+const node_fetch_1$2 = __importDefault$4(lib$4.exports);
+const querystring_1$1 = __importDefault$4(require$$0__default$9["default"]);
+const is_stream_1$1 = __importDefault$4(isStream_1);
+const url_1$1 = require$$2__default["default"];
+const common_1$1 = common$3;
+const retry_1$1 = retry$4;
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fetch = hasFetch() ? window.fetch : node_fetch_1$1.default;
-function hasWindow() {
+const fetch$1 = hasFetch$1() ? window.fetch : node_fetch_1$2.default;
+function hasWindow$1() {
     return typeof window !== 'undefined' && !!window;
 }
-function hasFetch() {
-    return hasWindow() && !!window.fetch;
+function hasFetch$1() {
+    return hasWindow$1() && !!window.fetch;
 }
-function hasBuffer() {
+function hasBuffer$1() {
     return typeof Buffer !== 'undefined';
 }
-function hasHeader(options, header) {
-    return !!getHeader(options, header);
+function hasHeader$1(options, header) {
+    return !!getHeader$1(options, header);
 }
-function getHeader(options, header) {
+function getHeader$1(options, header) {
     header = header.toLowerCase();
     for (const key of Object.keys((options === null || options === void 0 ? void 0 : options.headers) || {})) {
         if (header === key.toLowerCase()) {
@@ -101642,26 +102200,27 @@ function getHeader(options, header) {
     }
     return undefined;
 }
-let HttpsProxyAgent;
-function loadProxy() {
-    const proxy = process.env.HTTPS_PROXY ||
-        process.env.https_proxy ||
-        process.env.HTTP_PROXY ||
-        process.env.http_proxy;
+let HttpsProxyAgent$1;
+function loadProxy$1() {
+    var _a, _b, _c, _d;
+    const proxy = ((_a = process === null || process === void 0 ? void 0 : process.env) === null || _a === void 0 ? void 0 : _a.HTTPS_PROXY) ||
+        ((_b = process === null || process === void 0 ? void 0 : process.env) === null || _b === void 0 ? void 0 : _b.https_proxy) ||
+        ((_c = process === null || process === void 0 ? void 0 : process.env) === null || _c === void 0 ? void 0 : _c.HTTP_PROXY) ||
+        ((_d = process === null || process === void 0 ? void 0 : process.env) === null || _d === void 0 ? void 0 : _d.http_proxy);
     if (proxy) {
-        HttpsProxyAgent = requireDist$2();
+        HttpsProxyAgent$1 = requireDist$2();
     }
     return proxy;
 }
-loadProxy();
-function skipProxy(url) {
+loadProxy$1();
+function skipProxy$1(url) {
     var _a;
     const noProxyEnv = (_a = process.env.NO_PROXY) !== null && _a !== void 0 ? _a : process.env.no_proxy;
     if (!noProxyEnv) {
         return false;
     }
     const noProxyUrls = noProxyEnv.split(',');
-    const parsedURL = new url_1.URL(url);
+    const parsedURL = new url_1$1.URL(url);
     return !!noProxyUrls.find(url => {
         if (url.startsWith('*.') || url.startsWith('.')) {
             url = url.replace(/^\*\./, '.');
@@ -101674,17 +102233,17 @@ function skipProxy(url) {
 }
 // Figure out if we should be using a proxy. Only if it's required, load
 // the https-proxy-agent module as it adds startup cost.
-function getProxy(url) {
+function getProxy$1(url) {
     // If there is a match between the no_proxy env variables and the url, then do not proxy
-    if (skipProxy(url)) {
+    if (skipProxy$1(url)) {
         return undefined;
         // If there is not a match between the no_proxy env variables and the url, check to see if there should be a proxy
     }
     else {
-        return loadProxy();
+        return loadProxy$1();
     }
 }
-class Gaxios {
+class Gaxios$1 {
     /**
      * The Gaxios class is responsible for making HTTP requests.
      * @param defaults The default set of options to be used for this instance.
@@ -101702,7 +102261,7 @@ class Gaxios {
         return this._request(opts);
     }
     async _defaultAdapter(opts) {
-        const fetchImpl = opts.fetchImplementation || fetch;
+        const fetchImpl = opts.fetchImplementation || fetch$1;
         const res = (await fetchImpl(opts.url, opts));
         const data = await this.getResponseData(opts, res);
         return this.translateResponse(opts, res, data);
@@ -101721,14 +102280,14 @@ class Gaxios {
                 translatedResponse = await this._defaultAdapter(opts);
             }
             if (!opts.validateStatus(translatedResponse.status)) {
-                throw new common_1.GaxiosError(`Request failed with status code ${translatedResponse.status}`, opts, translatedResponse);
+                throw new common_1$1.GaxiosError(`Request failed with status code ${translatedResponse.status}`, opts, translatedResponse);
             }
             return translatedResponse;
         }
         catch (e) {
             const err = e;
             err.config = opts;
-            const { shouldRetry, config } = await retry_1.getRetryConfig(e);
+            const { shouldRetry, config } = await (0, retry_1$1.getRetryConfig)(err);
             if (shouldRetry && config) {
                 err.config.retryConfig.currentRetryAttempt =
                     config.retryConfig.currentRetryAttempt;
@@ -101764,7 +102323,7 @@ class Gaxios {
      * @param opts The original options passed from the client.
      */
     validateOpts(options) {
-        const opts = extend_1.default(true, {}, this.defaults, options);
+        const opts = (0, extend_1$1.default)(true, {}, this.defaults, options);
         if (!opts.url) {
             throw new Error('URL is required.');
         }
@@ -101793,13 +102352,13 @@ class Gaxios {
             const isFormData = typeof FormData === 'undefined'
                 ? false
                 : (opts === null || opts === void 0 ? void 0 : opts.data) instanceof FormData;
-            if (is_stream_1.default.readable(opts.data)) {
+            if (is_stream_1$1.default.readable(opts.data)) {
                 opts.body = opts.data;
             }
-            else if (hasBuffer() && Buffer.isBuffer(opts.data)) {
+            else if (hasBuffer$1() && Buffer.isBuffer(opts.data)) {
                 // Do not attempt to JSON.stringify() a Buffer:
                 opts.body = opts.data;
-                if (!hasHeader(opts, 'Content-Type')) {
+                if (!hasHeader$1(opts, 'Content-Type')) {
                     opts.headers['Content-Type'] = 'application/json';
                 }
             }
@@ -101807,13 +102366,13 @@ class Gaxios {
                 // If www-form-urlencoded content type has been set, but data is
                 // provided as an object, serialize the content using querystring:
                 if (!isFormData) {
-                    if (getHeader(opts, 'content-type') ===
+                    if (getHeader$1(opts, 'content-type') ===
                         'application/x-www-form-urlencoded') {
                         opts.body = opts.paramsSerializer(opts.data);
                     }
                     else {
                         // } else if (!(opts.data instanceof FormData)) {
-                        if (!hasHeader(opts, 'Content-Type')) {
+                        if (!hasHeader$1(opts, 'Content-Type')) {
                             opts.headers['Content-Type'] = 'application/json';
                         }
                         opts.body = JSON.stringify(opts.data);
@@ -101830,7 +102389,7 @@ class Gaxios {
             opts.headers['Accept'] = 'application/json';
         }
         opts.method = opts.method || 'GET';
-        const proxy = getProxy(opts.url);
+        const proxy = getProxy$1(opts.url);
         if (proxy) {
             if (this.agentCache.has(proxy)) {
                 opts.agent = this.agentCache.get(proxy);
@@ -101838,8 +102397,8 @@ class Gaxios {
             else {
                 // Proxy is being used in conjunction with mTLS.
                 if (opts.cert && opts.key) {
-                    const parsedURL = new url_1.URL(proxy);
-                    opts.agent = new HttpsProxyAgent({
+                    const parsedURL = new url_1$1.URL(proxy);
+                    opts.agent = new HttpsProxyAgent$1({
                         port: parsedURL.port,
                         host: parsedURL.host,
                         protocol: parsedURL.protocol,
@@ -101848,7 +102407,7 @@ class Gaxios {
                     });
                 }
                 else {
-                    opts.agent = new HttpsProxyAgent(proxy);
+                    opts.agent = new HttpsProxyAgent$1(proxy);
                 }
                 this.agentCache.set(proxy, opts.agent);
             }
@@ -101859,7 +102418,7 @@ class Gaxios {
                 opts.agent = this.agentCache.get(opts.key);
             }
             else {
-                opts.agent = new https_1.Agent({
+                opts.agent = new https_1$1.Agent({
                     cert: opts.cert,
                     key: opts.key,
                 });
@@ -101880,7 +102439,7 @@ class Gaxios {
      * @param params key value pars to encode
      */
     paramsSerializer(params) {
-        return querystring_1.default.stringify(params);
+        return querystring_1$1.default.stringify(params);
     }
     translateResponse(opts, res, data) {
         // headers need to be converted from a map to an obj
@@ -101901,7 +102460,7 @@ class Gaxios {
         };
     }
 }
-gaxios.Gaxios = Gaxios;
+gaxios$1.Gaxios = Gaxios$1;
 
 (function (exports) {
 	// Copyright 2018 Google LLC
@@ -101917,10 +102476,10 @@ gaxios.Gaxios = Gaxios;
 	// See the License for the specific language governing permissions and
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.request = exports.instance = exports.Gaxios = void 0;
-	const gaxios_1 = gaxios;
+	exports.request = exports.instance = exports.Gaxios = exports.GaxiosError = void 0;
+	const gaxios_1 = gaxios$1;
 	Object.defineProperty(exports, "Gaxios", { enumerable: true, get: function () { return gaxios_1.Gaxios; } });
-	var common_1 = common$2;
+	var common_1 = common$3;
 	Object.defineProperty(exports, "GaxiosError", { enumerable: true, get: function () { return common_1.GaxiosError; } });
 	/**
 	 * The default instance used when the `request` method is directly
@@ -101936,11 +102495,11 @@ gaxios.Gaxios = Gaxios;
 	}
 	exports.request = request;
 	
-} (src$6));
+} (src$8));
 
 var jsonBigint = {exports: {}};
 
-var stringify$2 = {exports: {}};
+var stringify = {exports: {}};
 
 /*
  *      bignumber.js v9.0.2
@@ -102014,7 +102573,7 @@ var
 /*
  * Create and return a BigNumber constructor.
  */
-function clone$2(configObject) {
+function clone(configObject) {
   var div, convertBase, parseNumeric,
     P = BigNumber.prototype = { constructor: BigNumber, toString: null, valueOf: null },
     ONE = new BigNumber(1),
@@ -102320,7 +102879,7 @@ function clone$2(configObject) {
   // CONSTRUCTOR PROPERTIES
 
 
-  BigNumber.clone = clone$2;
+  BigNumber.clone = clone;
 
   BigNumber.ROUND_UP = 0;
   BigNumber.ROUND_DOWN = 1;
@@ -104828,7 +105387,7 @@ function toFixedPoint(str, e, z) {
 // EXPORT
 
 
-var BigNumber$1 = clone$2();
+var BigNumber$1 = clone();
 
 var bignumber = /*#__PURE__*/Object.freeze({
 	__proto__: null,
@@ -105216,7 +105775,7 @@ var require$$0$2 = /*@__PURE__*/getAugmentedNamespace(bignumber);
 	        };
 	    }
 	}());
-} (stringify$2));
+} (stringify));
 
 var BigNumber = null;
 
@@ -105658,10 +106217,10 @@ var json_parse$1 = function (options) {
   };
 };
 
-var parse$8 = json_parse$1;
+var parse$6 = json_parse$1;
 
-var json_stringify = stringify$2.exports.stringify;
-var json_parse     = parse$8;
+var json_stringify = stringify.exports.stringify;
+var json_parse     = parse$6;
 
 jsonBigint.exports = function(options) {
     return  {
@@ -105682,7 +106241,7 @@ jsonBigint.exports.stringify = json_stringify;
 	 */
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.requestTimeout = exports.resetIsAvailableCache = exports.isAvailable = exports.project = exports.instance = exports.HEADERS = exports.HEADER_VALUE = exports.HEADER_NAME = exports.SECONDARY_HOST_ADDRESS = exports.HOST_ADDRESS = exports.BASE_PATH = void 0;
-	const gaxios_1 = src$6;
+	const gaxios_1 = src$8;
 	const jsonBigint$1 = jsonBigint.exports;
 	exports.BASE_PATH = '/computeMetadata/v1';
 	exports.HOST_ADDRESS = 'http://169.254.169.254';
@@ -105766,8 +106325,9 @@ jsonBigint.exports.stringify = json_stringify;
 	        return res.data;
 	    }
 	    catch (e) {
-	        if (e.response && e.response.status !== 200) {
-	            e.message = `Unsuccessful response status code. ${e.message}`;
+	        const err = e;
+	        if (err.response && err.response.status !== 200) {
+	            err.message = `Unsuccessful response status code. ${err.message}`;
 	        }
 	        throw e;
 	    }
@@ -105793,7 +106353,7 @@ jsonBigint.exports.stringify = json_stringify;
 	    // occur, this is for folks running locally.
 	    //
 	    let responded = false;
-	    const r1 = gaxios_1.request(options)
+	    const r1 = (0, gaxios_1.request)(options)
 	        .then(res => {
 	        responded = true;
 	        return res;
@@ -105807,7 +106367,7 @@ jsonBigint.exports.stringify = json_stringify;
 	            throw err;
 	        }
 	    });
-	    const r2 = gaxios_1.request(secondaryOptions)
+	    const r2 = (0, gaxios_1.request)(secondaryOptions)
 	        .then(res => {
 	        responded = true;
 	        return res;
@@ -105867,7 +106427,8 @@ jsonBigint.exports.stringify = json_stringify;
 	        await cachedIsAvailableResponse;
 	        return true;
 	    }
-	    catch (err) {
+	    catch (e) {
+	        const err = e;
 	        if (process.env.DEBUG_AUTH) {
 	            console.info(err);
 	        }
@@ -105928,11 +106489,11 @@ jsonBigint.exports.stringify = json_stringify;
 	}
 	exports.requestTimeout = requestTimeout;
 	
-} (src$7));
+} (src$9));
 
-var crypto$8 = {};
+var crypto$6 = {};
 
-var crypto$7 = {};
+var crypto$5 = {};
 
 var base64Js = {};
 
@@ -106092,8 +106653,8 @@ var hasRequiredText_min;
 function requireText_min () {
 	if (hasRequiredText_min) return text_min;
 	hasRequiredText_min = 1;
-	(function(l){function m(){}function k(a,c){a=void 0===a?"utf-8":a;c=void 0===c?{fatal:!1}:c;if(-1===r.indexOf(a.toLowerCase()))throw new RangeError("Failed to construct 'TextDecoder': The encoding label provided ('"+a+"') is invalid.");if(c.fatal)throw Error("Failed to construct 'TextDecoder': the 'fatal' option is unsupported.");}function t(a){return Buffer.from(a.buffer,a.byteOffset,a.byteLength).toString("utf-8")}function u(a){var c=URL.createObjectURL(new Blob([a],{type:"text/plain;charset=UTF-8"}));
-	try{var f=new XMLHttpRequest;f.open("GET",c,!1);f.send();return f.responseText}catch(e){return q(a)}finally{URL.revokeObjectURL(c);}}function q(a){for(var c=0,f=Math.min(65536,a.length+1),e=new Uint16Array(f),h=[],d=0;;){var b=c<a.length;if(!b||d>=f-1){h.push(String.fromCharCode.apply(null,e.subarray(0,d)));if(!b)return h.join("");a=a.subarray(c);d=c=0;}b=a[c++];if(0===(b&128))e[d++]=b;else if(192===(b&224)){var g=a[c++]&63;e[d++]=(b&31)<<6|g;}else if(224===(b&240)){g=a[c++]&63;var n=a[c++]&63;e[d++]=
+	(function(l){function m(){}function k(a,c){a=void 0===a?"utf-8":a;c=void 0===c?{fatal:!1}:c;if(-1===r.indexOf(a.toLowerCase()))throw new RangeError("Failed to construct 'TextDecoder': The encoding label provided ('"+a+"') is invalid.");if(c.fatal)throw Error("Failed to construct 'TextDecoder': the 'fatal' option is unsupported.");}function t(a){return Buffer.from(a.buffer,a.byteOffset,a.byteLength).toString("utf-8")}function u(a){try{var c=URL.createObjectURL(new Blob([a],{type:"text/plain;charset=UTF-8"}));
+	var f=new XMLHttpRequest;f.open("GET",c,!1);f.send();return f.responseText}catch(e){return q(a)}finally{c&&URL.revokeObjectURL(c);}}function q(a){for(var c=0,f=Math.min(65536,a.length+1),e=new Uint16Array(f),h=[],d=0;;){var b=c<a.length;if(!b||d>=f-1){h.push(String.fromCharCode.apply(null,e.subarray(0,d)));if(!b)return h.join("");a=a.subarray(c);d=c=0;}b=a[c++];if(0===(b&128))e[d++]=b;else if(192===(b&224)){var g=a[c++]&63;e[d++]=(b&31)<<6|g;}else if(224===(b&240)){g=a[c++]&63;var n=a[c++]&63;e[d++]=
 	(b&31)<<12|g<<6|n;}else if(240===(b&248)){g=a[c++]&63;n=a[c++]&63;var v=a[c++]&63;b=(b&7)<<18|g<<12|n<<6|v;65535<b&&(b-=65536,e[d++]=b>>>10&1023|55296,b=56320|b&1023);e[d++]=b;}}}if(l.TextEncoder&&l.TextDecoder)return !1;var r=["utf-8","utf8","unicode-1-1-utf-8"];Object.defineProperty(m.prototype,"encoding",{value:"utf-8"});m.prototype.encode=function(a,c){c=void 0===c?{stream:!1}:c;if(c.stream)throw Error("Failed to encode: the 'stream' option is unsupported.");c=0;for(var f=a.length,e=0,h=Math.max(32,
 	f+(f>>>1)+7),d=new Uint8Array(h>>>3<<3);c<f;){var b=a.charCodeAt(c++);if(55296<=b&&56319>=b){if(c<f){var g=a.charCodeAt(c);56320===(g&64512)&&(++c,b=((b&1023)<<10)+(g&1023)+65536);}if(55296<=b&&56319>=b)continue}e+4>d.length&&(h+=8,h*=1+c/a.length*2,h=h>>>3<<3,g=new Uint8Array(h),g.set(d),d=g);if(0===(b&4294967168))d[e++]=b;else {if(0===(b&4294965248))d[e++]=b>>>6&31|192;else if(0===(b&4294901760))d[e++]=b>>>12&15|224,d[e++]=b>>>6&63|128;else if(0===(b&4292870144))d[e++]=b>>>18&7|240,d[e++]=b>>>12&
 	63|128,d[e++]=b>>>6&63|128;else continue;d[e++]=b&63|128;}}return d.slice?d.slice(0,e):d.subarray(0,e)};Object.defineProperty(k.prototype,"encoding",{value:"utf-8"});Object.defineProperty(k.prototype,"fatal",{value:!1});Object.defineProperty(k.prototype,"ignoreBOM",{value:!1});var p=q;"function"===typeof Buffer&&Buffer.from?p=t:"function"===typeof Blob&&"function"===typeof URL&&"function"===typeof URL.createObjectURL&&(p=u);k.prototype.decode=function(a,c){c=void 0===c?{stream:!1}:c;if(c.stream)throw Error("Failed to decode: the 'stream' option is unsupported.");
@@ -106104,7 +106665,7 @@ function requireText_min () {
 var hasRequiredCrypto$1;
 
 function requireCrypto$1 () {
-	if (hasRequiredCrypto$1) return crypto$7;
+	if (hasRequiredCrypto$1) return crypto$5;
 	hasRequiredCrypto$1 = 1;
 	// Copyright 2019 Google LLC
 	//
@@ -106120,8 +106681,8 @@ function requireCrypto$1 () {
 	// See the License for the specific language governing permissions and
 	// limitations under the License.
 	/* global window */
-	Object.defineProperty(crypto$7, "__esModule", { value: true });
-	crypto$7.BrowserCrypto = void 0;
+	Object.defineProperty(crypto$5, "__esModule", { value: true });
+	crypto$5.BrowserCrypto = void 0;
 	// This file implements crypto functions we need using in-browser
 	// SubtleCrypto interface `window.crypto.subtle`.
 	const base64js = base64Js;
@@ -106218,7 +106779,7 @@ function requireCrypto$1 () {
 	        const inputBuffer = new TextEncoder().encode(str);
 	        // Result is ArrayBuffer as well.
 	        const outputBuffer = await window.crypto.subtle.digest('SHA-256', inputBuffer);
-	        return crypto_1.fromArrayBufferToHex(outputBuffer);
+	        return (0, crypto_1.fromArrayBufferToHex)(outputBuffer);
 	    }
 	    /**
 	     * Computes the HMAC hash of a message using the provided crypto key and the
@@ -106244,12 +106805,12 @@ function requireCrypto$1 () {
 	        return window.crypto.subtle.sign('HMAC', cryptoKey, enc.encode(msg));
 	    }
 	}
-	crypto$7.BrowserCrypto = BrowserCrypto;
+	crypto$5.BrowserCrypto = BrowserCrypto;
 	
-	return crypto$7;
+	return crypto$5;
 }
 
-var crypto$6 = {};
+var crypto$4 = {};
 
 // Copyright 2019 Google LLC
 //
@@ -106264,24 +106825,24 @@ var crypto$6 = {};
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-Object.defineProperty(crypto$6, "__esModule", { value: true });
-crypto$6.NodeCrypto = void 0;
-const crypto$5 = require$$0__default$9["default"];
+Object.defineProperty(crypto$4, "__esModule", { value: true });
+crypto$4.NodeCrypto = void 0;
+const crypto$3 = require$$0__default$5["default"];
 class NodeCrypto {
     async sha256DigestBase64(str) {
-        return crypto$5.createHash('sha256').update(str).digest('base64');
+        return crypto$3.createHash('sha256').update(str).digest('base64');
     }
     randomBytesBase64(count) {
-        return crypto$5.randomBytes(count).toString('base64');
+        return crypto$3.randomBytes(count).toString('base64');
     }
     async verify(pubkey, data, signature) {
-        const verifier = crypto$5.createVerify('sha256');
+        const verifier = crypto$3.createVerify('sha256');
         verifier.update(data);
         verifier.end();
         return verifier.verify(pubkey, signature, 'base64');
     }
     async sign(privateKey, data) {
-        const signer = crypto$5.createSign('RSA-SHA256');
+        const signer = crypto$3.createSign('RSA-SHA256');
         signer.update(data);
         signer.end();
         return signer.sign(privateKey, 'base64');
@@ -106299,7 +106860,7 @@ class NodeCrypto {
      *   string in hexadecimal encoding.
      */
     async sha256DigestHex(str) {
-        return crypto$5.createHash('sha256').update(str).digest('hex');
+        return crypto$3.createHash('sha256').update(str).digest('hex');
     }
     /**
      * Computes the HMAC hash of a message using the provided crypto key and the
@@ -106311,10 +106872,10 @@ class NodeCrypto {
      */
     async signWithHmacSha256(key, msg) {
         const cryptoKey = typeof key === 'string' ? key : toBuffer(key);
-        return toArrayBuffer(crypto$5.createHmac('sha256', cryptoKey).update(msg).digest());
+        return toArrayBuffer(crypto$3.createHmac('sha256', cryptoKey).update(msg).digest());
     }
 }
-crypto$6.NodeCrypto = NodeCrypto;
+crypto$4.NodeCrypto = NodeCrypto;
 /**
  * Converts a Node.js Buffer to an ArrayBuffer.
  * https://stackoverflow.com/questions/8609289/convert-a-binary-nodejs-buffer-to-javascript-arraybuffer
@@ -106336,7 +106897,7 @@ function toBuffer(arrayBuffer) {
 var hasRequiredCrypto;
 
 function requireCrypto () {
-	if (hasRequiredCrypto) return crypto$8;
+	if (hasRequiredCrypto) return crypto$6;
 	hasRequiredCrypto = 1;
 	// Copyright 2019 Google LLC
 	//
@@ -106352,23 +106913,23 @@ function requireCrypto () {
 	// See the License for the specific language governing permissions and
 	// limitations under the License.
 	/* global window */
-	Object.defineProperty(crypto$8, "__esModule", { value: true });
-	crypto$8.fromArrayBufferToHex = crypto$8.hasBrowserCrypto = crypto$8.createCrypto = void 0;
+	Object.defineProperty(crypto$6, "__esModule", { value: true });
+	crypto$6.fromArrayBufferToHex = crypto$6.hasBrowserCrypto = crypto$6.createCrypto = void 0;
 	const crypto_1 = requireCrypto$1();
-	const crypto_2 = crypto$6;
+	const crypto_2 = crypto$4;
 	function createCrypto() {
 	    if (hasBrowserCrypto()) {
 	        return new crypto_1.BrowserCrypto();
 	    }
 	    return new crypto_2.NodeCrypto();
 	}
-	crypto$8.createCrypto = createCrypto;
+	crypto$6.createCrypto = createCrypto;
 	function hasBrowserCrypto() {
 	    return (typeof window !== 'undefined' &&
 	        typeof window.crypto !== 'undefined' &&
 	        typeof window.crypto.subtle !== 'undefined');
 	}
-	crypto$8.hasBrowserCrypto = hasBrowserCrypto;
+	crypto$6.hasBrowserCrypto = hasBrowserCrypto;
 	/**
 	 * Converts an ArrayBuffer to a hexadecimal string.
 	 * @param arrayBuffer The ArrayBuffer to convert to hexadecimal string.
@@ -106384,9 +106945,9 @@ function requireCrypto () {
 	    })
 	        .join('');
 	}
-	crypto$8.fromArrayBufferToHex = fromArrayBufferToHex;
+	crypto$6.fromArrayBufferToHex = fromArrayBufferToHex;
 	
-	return crypto$8;
+	return crypto$6;
 }
 
 var transporters = {};
@@ -106413,7 +106974,7 @@ options.validate = void 0;
 // Now it refers to an Axiox Request Config object.  This is here to help
 // ensure users don't pass invalid options when they upgrade from 0.x to 1.x.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function validate$2(options) {
+function validate(options) {
     const vpairs = [
         { invalid: 'uri', expected: 'url' },
         { invalid: 'json', expected: 'data' },
@@ -106426,14 +106987,14 @@ function validate$2(options) {
         }
     }
 }
-options.validate = validate$2;
+options.validate = validate;
 
 var name$1 = "google-auth-library";
-var version$3 = "7.14.1";
+var version$1 = "8.1.1";
 var author$1 = "Google Inc.";
 var description$1 = "Google APIs Authentication Client Library for Node.js";
 var engines$1 = {
-	node: ">=10"
+	node: ">=12"
 };
 var main$2 = "./build/src/index.js";
 var types$1 = "./build/src/index.d.ts";
@@ -106450,9 +107011,9 @@ var dependencies$1 = {
 	"base64-js": "^1.3.0",
 	"ecdsa-sig-formatter": "^1.0.11",
 	"fast-text-encoding": "^1.0.0",
-	gaxios: "^4.0.0",
-	"gcp-metadata": "^4.2.0",
-	gtoken: "^5.0.4",
+	gaxios: "^5.0.0",
+	"gcp-metadata": "^5.0.0",
+	gtoken: "^6.0.0",
 	jws: "^4.0.0",
 	"lru-cache": "^6.0.0"
 };
@@ -106462,7 +107023,7 @@ var devDependencies$1 = {
 	"@types/chai": "^4.1.7",
 	"@types/jws": "^3.1.0",
 	"@types/lru-cache": "^5.0.0",
-	"@types/mocha": "^8.0.0",
+	"@types/mocha": "^9.0.0",
 	"@types/mv": "^2.1.0",
 	"@types/ncp": "^2.0.1",
 	"@types/node": "^16.0.0",
@@ -106473,28 +107034,27 @@ var devDependencies$1 = {
 	chai: "^4.2.0",
 	codecov: "^3.0.2",
 	execa: "^5.0.0",
-	gts: "^2.0.0",
+	gts: "^3.1.0",
 	"is-docker": "^2.0.0",
 	karma: "^6.0.0",
 	"karma-chrome-launcher": "^3.0.0",
 	"karma-coverage": "^2.0.0",
 	"karma-firefox-launcher": "^2.0.0",
 	"karma-mocha": "^2.0.0",
-	"karma-remap-coverage": "^0.1.5",
 	"karma-sourcemap-loader": "^0.3.7",
 	"karma-webpack": "^5.0.0",
 	keypair: "^1.0.4",
-	linkinator: "^2.0.0",
-	mocha: "^8.0.0",
+	linkinator: "^4.0.0",
+	mocha: "^9.2.2",
 	mv: "^2.1.1",
 	ncp: "^2.0.0",
 	nock: "^13.0.0",
 	"null-loader": "^4.0.0",
-	puppeteer: "^13.0.0",
-	sinon: "^13.0.0",
+	puppeteer: "^15.0.0",
+	sinon: "^14.0.0",
 	tmp: "^0.2.0",
 	"ts-loader": "^8.0.0",
-	typescript: "^3.8.3",
+	typescript: "^4.6.3",
 	webpack: "^5.21.2",
 	"webpack-cli": "^4.0.0"
 };
@@ -106525,7 +107085,7 @@ var scripts$1 = {
 var license$1 = "Apache-2.0";
 var require$$2 = {
 	name: name$1,
-	version: version$3,
+	version: version$1,
 	author: author$1,
 	description: description$1,
 	engines: engines$1,
@@ -106555,7 +107115,7 @@ var require$$2 = {
 // limitations under the License.
 Object.defineProperty(transporters, "__esModule", { value: true });
 transporters.DefaultTransporter = void 0;
-const gaxios_1$1 = src$6;
+const gaxios_1$4 = src$8;
 const options_1 = options;
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pkg = require$$2;
@@ -106594,7 +107154,7 @@ class DefaultTransporter {
         // ensure the user isn't passing in request-style options
         opts = this.configure(opts);
         try {
-            options_1.validate(opts);
+            (0, options_1.validate)(opts);
         }
         catch (e) {
             if (callback) {
@@ -106605,14 +107165,14 @@ class DefaultTransporter {
             }
         }
         if (callback) {
-            gaxios_1$1.request(opts).then(r => {
+            (0, gaxios_1$4.request)(opts).then(r => {
                 callback(null, r);
             }, e => {
                 callback(this.processError(e));
             });
         }
         else {
-            return gaxios_1$1.request(opts).catch(e => {
+            return (0, gaxios_1$4.request)(opts).catch(e => {
                 throw this.processError(e);
             });
         }
@@ -106664,7 +107224,7 @@ var safeBuffer = {exports: {}};
 /* eslint-disable node/no-deprecated-api */
 
 (function (module, exports) {
-	var buffer = require$$0__default$5["default"];
+	var buffer = require$$0__default$7["default"];
 	var Buffer = buffer.Buffer;
 
 	// alternative to using Object.keys for old browsers
@@ -106952,7 +107512,7 @@ var authclient = {};
 // limitations under the License.
 Object.defineProperty(authclient, "__esModule", { value: true });
 authclient.AuthClient = void 0;
-const events_1$1 = require$$0__default$3["default"];
+const events_1$1 = require$$0__default$2["default"];
 const transporters_1$2 = transporters;
 class AuthClient extends events_1$1.EventEmitter {
     constructor() {
@@ -107064,8 +107624,8 @@ loginticket.LoginTicket = LoginTicket;
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.OAuth2Client = exports.CertificateFormat = exports.CodeChallengeMethod = void 0;
-	const querystring = require$$0__default$8["default"];
-	const stream = require$$0__default$4["default"];
+	const querystring = require$$0__default$9["default"];
+	const stream = require$$0__default$6["default"];
 	const formatEcdsa = ecdsaSigFormatter;
 	const crypto_1 = requireCrypto();
 	const authclient_1 = authclient;
@@ -107133,7 +107693,7 @@ loginticket.LoginTicket = LoginTicket;
 	    async generateCodeVerifierAsync() {
 	        // base64 encoding uses 6 bits per character, and we want to generate128
 	        // characters. 6*128/8 = 96.
-	        const crypto = crypto_1.createCrypto();
+	        const crypto = (0, crypto_1.createCrypto)();
 	        const randomString = crypto.randomBytesBase64(96);
 	        // The valid characters in the code_verifier are [A-Z]/[a-z]/[0-9]/
 	        // "-"/"."/"_"/"~". Base64 encoded strings are pretty close, so we're just
@@ -107527,7 +108087,7 @@ loginticket.LoginTicket = LoginTicket;
 	    }
 	    async getFederatedSignonCertsAsync() {
 	        const nowTime = new Date().getTime();
-	        const format = crypto_1.hasBrowserCrypto()
+	        const format = (0, crypto_1.hasBrowserCrypto)()
 	            ? CertificateFormat.JWK
 	            : CertificateFormat.PEM;
 	        if (this.certificateExpiry &&
@@ -107551,7 +108111,9 @@ loginticket.LoginTicket = LoginTicket;
 	            res = await this.transporter.request({ url });
 	        }
 	        catch (e) {
-	            e.message = `Failed to retrieve verification certificates: ${e.message}`;
+	            if (e instanceof Error) {
+	                e.message = `Failed to retrieve verification certificates: ${e.message}`;
+	            }
 	            throw e;
 	        }
 	        const cacheControl = res ? res.headers['cache-control'] : undefined;
@@ -107599,7 +108161,9 @@ loginticket.LoginTicket = LoginTicket;
 	            res = await this.transporter.request({ url });
 	        }
 	        catch (e) {
-	            e.message = `Failed to retrieve verification certificates: ${e.message}`;
+	            if (e instanceof Error) {
+	                e.message = `Failed to retrieve verification certificates: ${e.message}`;
+	            }
 	            throw e;
 	        }
 	        return { pubkeys: res.data, res };
@@ -107620,7 +108184,7 @@ loginticket.LoginTicket = LoginTicket;
 	     * @return Returns a promise resolving to LoginTicket on verification.
 	     */
 	    async verifySignedJwtWithCertsAsync(jwt, certs, requiredAudience, issuers, maxExpiry) {
-	        const crypto = crypto_1.createCrypto();
+	        const crypto = (0, crypto_1.createCrypto)();
 	        if (!maxExpiry) {
 	            maxExpiry = OAuth2Client.MAX_TOKEN_LIFETIME_SECS_;
 	        }
@@ -107636,7 +108200,9 @@ loginticket.LoginTicket = LoginTicket;
 	            envelope = JSON.parse(crypto.decodeBase64StringUtf8(segments[0]));
 	        }
 	        catch (err) {
-	            err.message = `Can't parse token envelope: ${segments[0]}': ${err.message}`;
+	            if (err instanceof Error) {
+	                err.message = `Can't parse token envelope: ${segments[0]}': ${err.message}`;
+	            }
 	            throw err;
 	        }
 	        if (!envelope) {
@@ -107646,7 +108212,9 @@ loginticket.LoginTicket = LoginTicket;
 	            payload = JSON.parse(crypto.decodeBase64StringUtf8(segments[1]));
 	        }
 	        catch (err) {
-	            err.message = `Can't parse token payload '${segments[0]}`;
+	            if (err instanceof Error) {
+	                err.message = `Can't parse token payload '${segments[0]}`;
+	            }
 	            throw err;
 	        }
 	        if (!payload) {
@@ -107808,8 +108376,9 @@ loginticket.LoginTicket = LoginTicket;
 // limitations under the License.
 Object.defineProperty(computeclient, "__esModule", { value: true });
 computeclient.Compute = void 0;
-const arrify$3 = arrify_1;
-const gcpMetadata$1 = src$7;
+const arrify$2 = arrify_1;
+const gaxios_1$3 = src$8;
+const gcpMetadata$1 = src$9;
 const oauth2client_1$4 = oauth2client;
 class Compute extends oauth2client_1$4.OAuth2Client {
     /**
@@ -107824,7 +108393,7 @@ class Compute extends oauth2client_1$4.OAuth2Client {
         // refreshed before the first API call is made.
         this.credentials = { expiry_date: 1, refresh_token: 'compute-placeholder' };
         this.serviceAccountEmail = options.serviceAccountEmail || 'default';
-        this.scopes = arrify$3(options.scopes);
+        this.scopes = arrify$2(options.scopes);
     }
     /**
      * Refreshes the access token.
@@ -107847,8 +108416,10 @@ class Compute extends oauth2client_1$4.OAuth2Client {
             data = await gcpMetadata$1.instance(instanceOptions);
         }
         catch (e) {
-            e.message = `Could not refresh access token: ${e.message}`;
-            this.wrapError(e);
+            if (e instanceof gaxios_1$3.GaxiosError) {
+                e.message = `Could not refresh access token: ${e.message}`;
+                this.wrapError(e);
+            }
             throw e;
         }
         const tokens = data;
@@ -107874,7 +108445,9 @@ class Compute extends oauth2client_1$4.OAuth2Client {
             idToken = await gcpMetadata$1.instance(instanceOptions);
         }
         catch (e) {
-            e.message = `Could not fetch ID token: ${e.message}`;
+            if (e instanceof Error) {
+                e.message = `Could not fetch ID token: ${e.message}`;
+            }
             throw e;
         }
         return idToken;
@@ -107976,7 +108549,7 @@ var envDetect = {};
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getEnv = exports.clear = exports.GCPEnv = void 0;
-	const gcpMetadata = src$7;
+	const gcpMetadata = src$9;
 	var GCPEnv;
 	(function (GCPEnv) {
 	    GCPEnv["APP_ENGINE"] = "APP_ENGINE";
@@ -108054,15 +108627,527 @@ var envDetect = {};
 
 var jwtclient = {};
 
-var src$3 = {};
+var src$5 = {};
+
+var src$4 = {};
+
+var gaxios = {};
+
+var common$1 = {};
+
+// Copyright 2018 Google LLC
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+Object.defineProperty(common$1, "__esModule", { value: true });
+common$1.GaxiosError = void 0;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+class GaxiosError extends Error {
+    constructor(message, options, response) {
+        super(message);
+        this.response = response;
+        this.config = options;
+        this.code = response.status.toString();
+    }
+}
+common$1.GaxiosError = GaxiosError;
+
+var retry$3 = {};
+
+// Copyright 2018 Google LLC
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+Object.defineProperty(retry$3, "__esModule", { value: true });
+retry$3.getRetryConfig = void 0;
+async function getRetryConfig(err) {
+    var _a;
+    let config = getConfig(err);
+    if (!err || !err.config || (!config && !err.config.retry)) {
+        return { shouldRetry: false };
+    }
+    config = config || {};
+    config.currentRetryAttempt = config.currentRetryAttempt || 0;
+    config.retry =
+        config.retry === undefined || config.retry === null ? 3 : config.retry;
+    config.httpMethodsToRetry = config.httpMethodsToRetry || [
+        'GET',
+        'HEAD',
+        'PUT',
+        'OPTIONS',
+        'DELETE',
+    ];
+    config.noResponseRetries =
+        config.noResponseRetries === undefined || config.noResponseRetries === null
+            ? 2
+            : config.noResponseRetries;
+    // If this wasn't in the list of status codes where we want
+    // to automatically retry, return.
+    const retryRanges = [
+        // https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+        // 1xx - Retry (Informational, request still processing)
+        // 2xx - Do not retry (Success)
+        // 3xx - Do not retry (Redirect)
+        // 4xx - Do not retry (Client errors)
+        // 429 - Retry ("Too Many Requests")
+        // 5xx - Retry (Server errors)
+        [100, 199],
+        [429, 429],
+        [500, 599],
+    ];
+    config.statusCodesToRetry = config.statusCodesToRetry || retryRanges;
+    // Put the config back into the err
+    err.config.retryConfig = config;
+    // Determine if we should retry the request
+    const shouldRetryFn = config.shouldRetry || shouldRetryRequest;
+    if (!(await shouldRetryFn(err))) {
+        return { shouldRetry: false, config: err.config };
+    }
+    // Calculate time to wait with exponential backoff.
+    // If this is the first retry, look for a configured retryDelay.
+    const retryDelay = config.currentRetryAttempt ? 0 : (_a = config.retryDelay) !== null && _a !== void 0 ? _a : 100;
+    // Formula: retryDelay + ((2^c - 1 / 2) * 1000)
+    const delay = retryDelay + ((Math.pow(2, config.currentRetryAttempt) - 1) / 2) * 1000;
+    // We're going to retry!  Incremenent the counter.
+    err.config.retryConfig.currentRetryAttempt += 1;
+    // Create a promise that invokes the retry after the backOffDelay
+    const backoff = new Promise(resolve => {
+        setTimeout(resolve, delay);
+    });
+    // Notify the user if they added an `onRetryAttempt` handler
+    if (config.onRetryAttempt) {
+        config.onRetryAttempt(err);
+    }
+    // Return the promise in which recalls Gaxios to retry the request
+    await backoff;
+    return { shouldRetry: true, config: err.config };
+}
+retry$3.getRetryConfig = getRetryConfig;
+/**
+ * Determine based on config if we should retry the request.
+ * @param err The GaxiosError passed to the interceptor.
+ */
+function shouldRetryRequest(err) {
+    const config = getConfig(err);
+    // node-fetch raises an AbortError if signaled:
+    // https://github.com/bitinn/node-fetch#request-cancellation-with-abortsignal
+    if (err.name === 'AbortError') {
+        return false;
+    }
+    // If there's no config, or retries are disabled, return.
+    if (!config || config.retry === 0) {
+        return false;
+    }
+    // Check if this error has no response (ETIMEDOUT, ENOTFOUND, etc)
+    if (!err.response &&
+        (config.currentRetryAttempt || 0) >= config.noResponseRetries) {
+        return false;
+    }
+    // Only retry with configured HttpMethods.
+    if (!err.config.method ||
+        config.httpMethodsToRetry.indexOf(err.config.method.toUpperCase()) < 0) {
+        return false;
+    }
+    // If this wasn't in the list of status codes where we want
+    // to automatically retry, return.
+    if (err.response && err.response.status) {
+        let isInRange = false;
+        for (const [min, max] of config.statusCodesToRetry) {
+            const status = err.response.status;
+            if (status >= min && status <= max) {
+                isInRange = true;
+                break;
+            }
+        }
+        if (!isInRange) {
+            return false;
+        }
+    }
+    // If we are out of retry attempts, return
+    config.currentRetryAttempt = config.currentRetryAttempt || 0;
+    if (config.currentRetryAttempt >= config.retry) {
+        return false;
+    }
+    return true;
+}
+/**
+ * Acquire the raxConfig object from an GaxiosError if available.
+ * @param err The Gaxios error with a config object.
+ */
+function getConfig(err) {
+    if (err && err.config && err.config.retryConfig) {
+        return err.config.retryConfig;
+    }
+    return;
+}
+
+// Copyright 2018 Google LLC
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+var __importDefault$3 = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(gaxios, "__esModule", { value: true });
+gaxios.Gaxios = void 0;
+const extend_1 = __importDefault$3(extend$2);
+const https_1 = require$$1__default$1["default"];
+const node_fetch_1$1 = __importDefault$3(lib$4.exports);
+const querystring_1 = __importDefault$3(require$$0__default$9["default"]);
+const is_stream_1 = __importDefault$3(isStream_1);
+const url_1 = require$$2__default["default"];
+const common_1 = common$1;
+const retry_1 = retry$3;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const fetch = hasFetch() ? window.fetch : node_fetch_1$1.default;
+function hasWindow() {
+    return typeof window !== 'undefined' && !!window;
+}
+function hasFetch() {
+    return hasWindow() && !!window.fetch;
+}
+function hasBuffer() {
+    return typeof Buffer !== 'undefined';
+}
+function hasHeader(options, header) {
+    return !!getHeader(options, header);
+}
+function getHeader(options, header) {
+    header = header.toLowerCase();
+    for (const key of Object.keys((options === null || options === void 0 ? void 0 : options.headers) || {})) {
+        if (header === key.toLowerCase()) {
+            return options.headers[key];
+        }
+    }
+    return undefined;
+}
+let HttpsProxyAgent;
+function loadProxy() {
+    const proxy = process.env.HTTPS_PROXY ||
+        process.env.https_proxy ||
+        process.env.HTTP_PROXY ||
+        process.env.http_proxy;
+    if (proxy) {
+        HttpsProxyAgent = requireDist$2();
+    }
+    return proxy;
+}
+loadProxy();
+function skipProxy(url) {
+    var _a;
+    const noProxyEnv = (_a = process.env.NO_PROXY) !== null && _a !== void 0 ? _a : process.env.no_proxy;
+    if (!noProxyEnv) {
+        return false;
+    }
+    const noProxyUrls = noProxyEnv.split(',');
+    const parsedURL = new url_1.URL(url);
+    return !!noProxyUrls.find(url => {
+        if (url.startsWith('*.') || url.startsWith('.')) {
+            url = url.replace(/^\*\./, '.');
+            return parsedURL.hostname.endsWith(url);
+        }
+        else {
+            return url === parsedURL.origin || url === parsedURL.hostname;
+        }
+    });
+}
+// Figure out if we should be using a proxy. Only if it's required, load
+// the https-proxy-agent module as it adds startup cost.
+function getProxy(url) {
+    // If there is a match between the no_proxy env variables and the url, then do not proxy
+    if (skipProxy(url)) {
+        return undefined;
+        // If there is not a match between the no_proxy env variables and the url, check to see if there should be a proxy
+    }
+    else {
+        return loadProxy();
+    }
+}
+class Gaxios {
+    /**
+     * The Gaxios class is responsible for making HTTP requests.
+     * @param defaults The default set of options to be used for this instance.
+     */
+    constructor(defaults) {
+        this.agentCache = new Map();
+        this.defaults = defaults || {};
+    }
+    /**
+     * Perform an HTTP request with the given options.
+     * @param opts Set of HTTP options that will be used for this HTTP request.
+     */
+    async request(opts = {}) {
+        opts = this.validateOpts(opts);
+        return this._request(opts);
+    }
+    async _defaultAdapter(opts) {
+        const fetchImpl = opts.fetchImplementation || fetch;
+        const res = (await fetchImpl(opts.url, opts));
+        const data = await this.getResponseData(opts, res);
+        return this.translateResponse(opts, res, data);
+    }
+    /**
+     * Internal, retryable version of the `request` method.
+     * @param opts Set of HTTP options that will be used for this HTTP request.
+     */
+    async _request(opts = {}) {
+        try {
+            let translatedResponse;
+            if (opts.adapter) {
+                translatedResponse = await opts.adapter(opts, this._defaultAdapter.bind(this));
+            }
+            else {
+                translatedResponse = await this._defaultAdapter(opts);
+            }
+            if (!opts.validateStatus(translatedResponse.status)) {
+                throw new common_1.GaxiosError(`Request failed with status code ${translatedResponse.status}`, opts, translatedResponse);
+            }
+            return translatedResponse;
+        }
+        catch (e) {
+            const err = e;
+            err.config = opts;
+            const { shouldRetry, config } = await retry_1.getRetryConfig(e);
+            if (shouldRetry && config) {
+                err.config.retryConfig.currentRetryAttempt =
+                    config.retryConfig.currentRetryAttempt;
+                return this._request(err.config);
+            }
+            throw err;
+        }
+    }
+    async getResponseData(opts, res) {
+        switch (opts.responseType) {
+            case 'stream':
+                return res.body;
+            case 'json': {
+                let data = await res.text();
+                try {
+                    data = JSON.parse(data);
+                }
+                catch (_a) {
+                    // continue
+                }
+                return data;
+            }
+            case 'arraybuffer':
+                return res.arrayBuffer();
+            case 'blob':
+                return res.blob();
+            default:
+                return res.text();
+        }
+    }
+    /**
+     * Validates the options, and merges them with defaults.
+     * @param opts The original options passed from the client.
+     */
+    validateOpts(options) {
+        const opts = extend_1.default(true, {}, this.defaults, options);
+        if (!opts.url) {
+            throw new Error('URL is required.');
+        }
+        // baseUrl has been deprecated, remove in 2.0
+        const baseUrl = opts.baseUrl || opts.baseURL;
+        if (baseUrl) {
+            opts.url = baseUrl + opts.url;
+        }
+        opts.paramsSerializer = opts.paramsSerializer || this.paramsSerializer;
+        if (opts.params && Object.keys(opts.params).length > 0) {
+            let additionalQueryParams = opts.paramsSerializer(opts.params);
+            if (additionalQueryParams.startsWith('?')) {
+                additionalQueryParams = additionalQueryParams.slice(1);
+            }
+            const prefix = opts.url.includes('?') ? '&' : '?';
+            opts.url = opts.url + prefix + additionalQueryParams;
+        }
+        if (typeof options.maxContentLength === 'number') {
+            opts.size = options.maxContentLength;
+        }
+        if (typeof options.maxRedirects === 'number') {
+            opts.follow = options.maxRedirects;
+        }
+        opts.headers = opts.headers || {};
+        if (opts.data) {
+            const isFormData = typeof FormData === 'undefined'
+                ? false
+                : (opts === null || opts === void 0 ? void 0 : opts.data) instanceof FormData;
+            if (is_stream_1.default.readable(opts.data)) {
+                opts.body = opts.data;
+            }
+            else if (hasBuffer() && Buffer.isBuffer(opts.data)) {
+                // Do not attempt to JSON.stringify() a Buffer:
+                opts.body = opts.data;
+                if (!hasHeader(opts, 'Content-Type')) {
+                    opts.headers['Content-Type'] = 'application/json';
+                }
+            }
+            else if (typeof opts.data === 'object') {
+                // If www-form-urlencoded content type has been set, but data is
+                // provided as an object, serialize the content using querystring:
+                if (!isFormData) {
+                    if (getHeader(opts, 'content-type') ===
+                        'application/x-www-form-urlencoded') {
+                        opts.body = opts.paramsSerializer(opts.data);
+                    }
+                    else {
+                        // } else if (!(opts.data instanceof FormData)) {
+                        if (!hasHeader(opts, 'Content-Type')) {
+                            opts.headers['Content-Type'] = 'application/json';
+                        }
+                        opts.body = JSON.stringify(opts.data);
+                    }
+                }
+            }
+            else {
+                opts.body = opts.data;
+            }
+        }
+        opts.validateStatus = opts.validateStatus || this.validateStatus;
+        opts.responseType = opts.responseType || 'json';
+        if (!opts.headers['Accept'] && opts.responseType === 'json') {
+            opts.headers['Accept'] = 'application/json';
+        }
+        opts.method = opts.method || 'GET';
+        const proxy = getProxy(opts.url);
+        if (proxy) {
+            if (this.agentCache.has(proxy)) {
+                opts.agent = this.agentCache.get(proxy);
+            }
+            else {
+                // Proxy is being used in conjunction with mTLS.
+                if (opts.cert && opts.key) {
+                    const parsedURL = new url_1.URL(proxy);
+                    opts.agent = new HttpsProxyAgent({
+                        port: parsedURL.port,
+                        host: parsedURL.host,
+                        protocol: parsedURL.protocol,
+                        cert: opts.cert,
+                        key: opts.key,
+                    });
+                }
+                else {
+                    opts.agent = new HttpsProxyAgent(proxy);
+                }
+                this.agentCache.set(proxy, opts.agent);
+            }
+        }
+        else if (opts.cert && opts.key) {
+            // Configure client for mTLS:
+            if (this.agentCache.has(opts.key)) {
+                opts.agent = this.agentCache.get(opts.key);
+            }
+            else {
+                opts.agent = new https_1.Agent({
+                    cert: opts.cert,
+                    key: opts.key,
+                });
+                this.agentCache.set(opts.key, opts.agent);
+            }
+        }
+        return opts;
+    }
+    /**
+     * By default, throw for any non-2xx status code
+     * @param status status code from the HTTP response
+     */
+    validateStatus(status) {
+        return status >= 200 && status < 300;
+    }
+    /**
+     * Encode a set of key/value pars into a querystring format (?foo=bar&baz=boo)
+     * @param params key value pars to encode
+     */
+    paramsSerializer(params) {
+        return querystring_1.default.stringify(params);
+    }
+    translateResponse(opts, res, data) {
+        // headers need to be converted from a map to an obj
+        const headers = {};
+        res.headers.forEach((value, key) => {
+            headers[key] = value;
+        });
+        return {
+            config: opts,
+            data: data,
+            headers,
+            status: res.status,
+            statusText: res.statusText,
+            // XMLHttpRequestLike
+            request: {
+                responseURL: res.url,
+            },
+        };
+    }
+}
+gaxios.Gaxios = Gaxios;
+
+(function (exports) {
+	// Copyright 2018 Google LLC
+	// Licensed under the Apache License, Version 2.0 (the "License");
+	// you may not use this file except in compliance with the License.
+	// You may obtain a copy of the License at
+	//
+	//    http://www.apache.org/licenses/LICENSE-2.0
+	//
+	// Unless required by applicable law or agreed to in writing, software
+	// distributed under the License is distributed on an "AS IS" BASIS,
+	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	// See the License for the specific language governing permissions and
+	// limitations under the License.
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.request = exports.instance = exports.Gaxios = void 0;
+	const gaxios_1 = gaxios;
+	Object.defineProperty(exports, "Gaxios", { enumerable: true, get: function () { return gaxios_1.Gaxios; } });
+	var common_1 = common$1;
+	Object.defineProperty(exports, "GaxiosError", { enumerable: true, get: function () { return common_1.GaxiosError; } });
+	/**
+	 * The default instance used when the `request` method is directly
+	 * invoked.
+	 */
+	exports.instance = new gaxios_1.Gaxios();
+	/**
+	 * Make an HTTP request using the given options.
+	 * @param opts Options for the request
+	 */
+	async function request(opts) {
+	    return exports.instance.request(opts);
+	}
+	exports.request = request;
+	
+} (src$4));
 
 var jws$2 = {};
 
 /*global module, process*/
 
 var Buffer$6 = safeBuffer.exports.Buffer;
-var Stream$3 = require$$0__default$4["default"];
-var util$8 = require$$4__default["default"];
+var Stream$2 = require$$0__default$6["default"];
+var util$6 = require$$4__default["default"];
 
 function DataStream$2(data) {
   this.buffer = null;
@@ -108097,7 +109182,7 @@ function DataStream$2(data) {
 
   throw new TypeError('Unexpected data type ('+ typeof data + ')');
 }
-util$8.inherits(DataStream$2, Stream$3);
+util$6.inherits(DataStream$2, Stream$2);
 
 DataStream$2.prototype.write = function write(data) {
   this.buffer = Buffer$6.concat([this.buffer, Buffer$6.from(data)]);
@@ -108116,8 +109201,8 @@ DataStream$2.prototype.end = function end(data) {
 var dataStream = DataStream$2;
 
 /*jshint node:true */
-var Buffer$5 = require$$0__default$5["default"].Buffer; // browserify
-var SlowBuffer = require$$0__default$5["default"].SlowBuffer;
+var Buffer$5 = require$$0__default$7["default"].Buffer; // browserify
+var SlowBuffer = require$$0__default$7["default"].SlowBuffer;
 
 var bufferEqualConstantTime = bufferEq;
 
@@ -108158,16 +109243,16 @@ bufferEq.restore = function() {
 
 var bufferEqual = bufferEqualConstantTime;
 var Buffer$4 = safeBuffer.exports.Buffer;
-var crypto$4 = require$$0__default$9["default"];
+var crypto$2 = require$$0__default$5["default"];
 var formatEcdsa = ecdsaSigFormatter;
-var util$7 = require$$4__default["default"];
+var util$5 = require$$4__default["default"];
 
 var MSG_INVALID_ALGORITHM = '"%s" is not a valid algorithm.\n  Supported algorithms are:\n  "HS256", "HS384", "HS512", "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "ES512" and "none".';
 var MSG_INVALID_SECRET = 'secret must be a string or buffer';
 var MSG_INVALID_VERIFIER_KEY = 'key must be a string or a buffer';
 var MSG_INVALID_SIGNER_KEY = 'key must be a string, a buffer or an object';
 
-var supportsKeyObjects = typeof crypto$4.createPublicKey === 'function';
+var supportsKeyObjects = typeof crypto$2.createPublicKey === 'function';
 if (supportsKeyObjects) {
   MSG_INVALID_VERIFIER_KEY += ' or a KeyObject';
   MSG_INVALID_SECRET += 'or a KeyObject';
@@ -108267,7 +109352,7 @@ function toBase64(base64url) {
 
 function typeError(template) {
   var args = [].slice.call(arguments, 1);
-  var errMsg = util$7.format.bind(util$7, template).apply(null, args);
+  var errMsg = util$5.format.bind(util$5, template).apply(null, args);
   return new TypeError(errMsg);
 }
 
@@ -108285,7 +109370,7 @@ function createHmacSigner(bits) {
   return function sign(thing, secret) {
     checkIsSecretKey(secret);
     thing = normalizeInput(thing);
-    var hmac = crypto$4.createHmac('sha' + bits, secret);
+    var hmac = crypto$2.createHmac('sha' + bits, secret);
     var sig = (hmac.update(thing), hmac.digest('base64'));
     return fromBase64(sig);
   }
@@ -108304,7 +109389,7 @@ function createKeySigner(bits) {
     thing = normalizeInput(thing);
     // Even though we are specifying "RSA" here, this works with ECDSA
     // keys as well.
-    var signer = crypto$4.createSign('RSA-SHA' + bits);
+    var signer = crypto$2.createSign('RSA-SHA' + bits);
     var sig = (signer.update(thing), signer.sign(privateKey, 'base64'));
     return fromBase64(sig);
   }
@@ -108315,7 +109400,7 @@ function createKeyVerifier(bits) {
     checkIsPublicKey(publicKey);
     thing = normalizeInput(thing);
     signature = toBase64(signature);
-    var verifier = crypto$4.createVerify('RSA-SHA' + bits);
+    var verifier = crypto$2.createVerify('RSA-SHA' + bits);
     verifier.update(thing);
     return verifier.verify(publicKey, signature, 'base64');
   }
@@ -108325,11 +109410,11 @@ function createPSSKeySigner(bits) {
   return function sign(thing, privateKey) {
     checkIsPrivateKey(privateKey);
     thing = normalizeInput(thing);
-    var signer = crypto$4.createSign('RSA-SHA' + bits);
+    var signer = crypto$2.createSign('RSA-SHA' + bits);
     var sig = (signer.update(thing), signer.sign({
       key: privateKey,
-      padding: crypto$4.constants.RSA_PKCS1_PSS_PADDING,
-      saltLength: crypto$4.constants.RSA_PSS_SALTLEN_DIGEST
+      padding: crypto$2.constants.RSA_PKCS1_PSS_PADDING,
+      saltLength: crypto$2.constants.RSA_PSS_SALTLEN_DIGEST
     }, 'base64'));
     return fromBase64(sig);
   }
@@ -108340,12 +109425,12 @@ function createPSSKeyVerifier(bits) {
     checkIsPublicKey(publicKey);
     thing = normalizeInput(thing);
     signature = toBase64(signature);
-    var verifier = crypto$4.createVerify('RSA-SHA' + bits);
+    var verifier = crypto$2.createVerify('RSA-SHA' + bits);
     verifier.update(thing);
     return verifier.verify({
       key: publicKey,
-      padding: crypto$4.constants.RSA_PKCS1_PSS_PADDING,
-      saltLength: crypto$4.constants.RSA_PSS_SALTLEN_DIGEST
+      padding: crypto$2.constants.RSA_PKCS1_PSS_PADDING,
+      saltLength: crypto$2.constants.RSA_PSS_SALTLEN_DIGEST
     }, signature, 'base64');
   }
 }
@@ -108409,7 +109494,7 @@ var jwa$2 = function jwa(algorithm) {
 
 /*global module*/
 
-var Buffer$3 = require$$0__default$5["default"].Buffer;
+var Buffer$3 = require$$0__default$7["default"].Buffer;
 
 var tostring = function toString(obj) {
   if (typeof obj === 'string')
@@ -108424,9 +109509,9 @@ var tostring = function toString(obj) {
 var Buffer$2 = safeBuffer.exports.Buffer;
 var DataStream$1 = dataStream;
 var jwa$1 = jwa$2;
-var Stream$2 = require$$0__default$4["default"];
-var toString$2 = tostring;
-var util$6 = require$$4__default["default"];
+var Stream$1 = require$$0__default$6["default"];
+var toString$1 = tostring;
+var util$4 = require$$4__default["default"];
 
 function base64url(string, encoding) {
   return Buffer$2
@@ -108439,9 +109524,9 @@ function base64url(string, encoding) {
 
 function jwsSecuredInput(header, payload, encoding) {
   encoding = encoding || 'utf8';
-  var encodedHeader = base64url(toString$2(header), 'binary');
-  var encodedPayload = base64url(toString$2(payload), encoding);
-  return util$6.format('%s.%s', encodedHeader, encodedPayload);
+  var encodedHeader = base64url(toString$1(header), 'binary');
+  var encodedPayload = base64url(toString$1(payload), encoding);
+  return util$4.format('%s.%s', encodedHeader, encodedPayload);
 }
 
 function jwsSign(opts) {
@@ -108452,7 +109537,7 @@ function jwsSign(opts) {
   var algo = jwa$1(header.alg);
   var securedInput = jwsSecuredInput(header, payload, encoding);
   var signature = algo.sign(securedInput, secretOrKey);
-  return util$6.format('%s.%s', securedInput, signature);
+  return util$4.format('%s.%s', securedInput, signature);
 }
 
 function SignStream$1(opts) {
@@ -108473,7 +109558,7 @@ function SignStream$1(opts) {
       this.sign();
   }.bind(this));
 }
-util$6.inherits(SignStream$1, Stream$2);
+util$4.inherits(SignStream$1, Stream$1);
 
 SignStream$1.prototype.sign = function sign() {
   try {
@@ -108504,9 +109589,9 @@ var signStream = SignStream$1;
 var Buffer$1 = safeBuffer.exports.Buffer;
 var DataStream = dataStream;
 var jwa = jwa$2;
-var Stream$1 = require$$0__default$4["default"];
-var toString$1 = tostring;
-var util$5 = require$$4__default["default"];
+var Stream = require$$0__default$6["default"];
+var toString = tostring;
+var util$3 = require$$4__default["default"];
 var JWS_REGEX = /^[a-zA-Z0-9\-_]+?\.[a-zA-Z0-9\-_]+?\.([a-zA-Z0-9\-_]+)?$/;
 
 function isObject$1(thing) {
@@ -108549,7 +109634,7 @@ function jwsVerify(jwsSig, algorithm, secretOrKey) {
     err.code = "MISSING_ALGORITHM";
     throw err;
   }
-  jwsSig = toString$1(jwsSig);
+  jwsSig = toString(jwsSig);
   var signature = signatureFromJWS(jwsSig);
   var securedInput = securedInputFromJWS(jwsSig);
   var algo = jwa(algorithm);
@@ -108558,7 +109643,7 @@ function jwsVerify(jwsSig, algorithm, secretOrKey) {
 
 function jwsDecode(jwsSig, opts) {
   opts = opts || {};
-  jwsSig = toString$1(jwsSig);
+  jwsSig = toString(jwsSig);
 
   if (!isValidJws(jwsSig))
     return null;
@@ -108598,7 +109683,7 @@ function VerifyStream$1(opts) {
       this.verify();
   }.bind(this));
 }
-util$5.inherits(VerifyStream$1, Stream$1);
+util$3.inherits(VerifyStream$1, Stream);
 VerifyStream$1.prototype.verify = function verify() {
   try {
     var valid = jwsVerify(this.signature.buffer, this.algorithm, this.key.buffer);
@@ -108645,7 +109730,7 @@ jws$2.createVerify = function createVerify(opts) {
   return new VerifyStream(opts);
 };
 
-var src$2 = {};
+var src$3 = {};
 
 var lib$1 = {exports: {}};
 
@@ -108672,7 +109757,7 @@ function requireForge () {
 	return forge;
 }
 
-var util$4 = {exports: {}};
+var util$2 = {exports: {}};
 
 /**
  * Base-N/Base-X encoding/decoding functions.
@@ -108878,16 +109963,16 @@ function requireBaseN () {
  * Copyright (c) 2010-2018 Digital Bazaar, Inc.
  */
 
-var hasRequiredUtil;
+var hasRequiredUtil$1;
 
-function requireUtil () {
-	if (hasRequiredUtil) return util$4.exports;
-	hasRequiredUtil = 1;
+function requireUtil$1 () {
+	if (hasRequiredUtil$1) return util$2.exports;
+	hasRequiredUtil$1 = 1;
 	var forge = requireForge();
 	var baseN = requireBaseN();
 
 	/* Utilities API */
-	var util = util$4.exports = forge.util = forge.util || {};
+	var util = util$2.exports = forge.util = forge.util || {};
 
 	// define setImmediate and nextTick
 	(function() {
@@ -111527,7 +112612,7 @@ function requireUtil () {
 	    }, 0);
 	  }
 	};
-	return util$4.exports;
+	return util$2.exports;
 }
 
 /**
@@ -111545,7 +112630,7 @@ function requireCipher () {
 	if (hasRequiredCipher) return cipher;
 	hasRequiredCipher = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 
 	cipher = forge.cipher = forge.cipher || {};
 
@@ -111786,7 +112871,7 @@ function requireCipherModes () {
 	if (hasRequiredCipherModes) return cipherModes.exports;
 	hasRequiredCipherModes = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 
 	forge.cipher = forge.cipher || {};
 
@@ -112807,7 +113892,7 @@ function requireAes () {
 	var forge = requireForge();
 	requireCipher();
 	requireCipherModes();
-	requireUtil();
+	requireUtil$1();
 
 	/* AES API */
 	aes = forge.aes = forge.aes || {};
@@ -114217,7 +115302,7 @@ function requireAsn1 () {
 	if (hasRequiredAsn1) return asn1.exports;
 	hasRequiredAsn1 = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 	requireOids();
 
 	/* ASN.1 API */
@@ -115557,7 +116642,7 @@ function requireHmac () {
 	hasRequiredHmac = 1;
 	var forge = requireForge();
 	requireMd();
-	requireUtil();
+	requireUtil$1();
 
 	/* HMAC API */
 	var hmac$1 = hmac.exports = forge.hmac = forge.hmac || {};
@@ -115695,7 +116780,7 @@ function requireHmac () {
 	return hmac.exports;
 }
 
-var md5$2 = {exports: {}};
+var md5 = {exports: {}};
 
 /**
  * Message Digest Algorithm 5 with 128-bit digest (MD5) implementation.
@@ -115708,21 +116793,21 @@ var md5$2 = {exports: {}};
 var hasRequiredMd5;
 
 function requireMd5 () {
-	if (hasRequiredMd5) return md5$2.exports;
+	if (hasRequiredMd5) return md5.exports;
 	hasRequiredMd5 = 1;
 	var forge = requireForge();
 	requireMd();
-	requireUtil();
+	requireUtil$1();
 
-	var md5 = md5$2.exports = forge.md5 = forge.md5 || {};
-	forge.md.md5 = forge.md.algorithms.md5 = md5;
+	var md5$1 = md5.exports = forge.md5 = forge.md5 || {};
+	forge.md.md5 = forge.md.algorithms.md5 = md5$1;
 
 	/**
 	 * Creates an MD5 message digest object.
 	 *
 	 * @return a message digest object.
 	 */
-	md5.create = function() {
+	md5$1.create = function() {
 	  // do initialization as necessary
 	  if(!_initialized) {
 	    _init();
@@ -115992,7 +117077,7 @@ function requireMd5 () {
 	    len -= 64;
 	  }
 	}
-	return md5$2.exports;
+	return md5.exports;
 }
 
 var pem = {exports: {}};
@@ -116032,7 +117117,7 @@ function requirePem () {
 	if (hasRequiredPem) return pem.exports;
 	hasRequiredPem = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 
 	// shortcut for pem API
 	var pem$1 = pem.exports = forge.pem = forge.pem || {};
@@ -116286,7 +117371,7 @@ function requireDes () {
 	var forge = requireForge();
 	requireCipher();
 	requireCipherModes();
-	requireUtil();
+	requireUtil$1();
 
 	/* DES API */
 	des = forge.des = forge.des || {};
@@ -116770,13 +117855,13 @@ function requirePbkdf2 () {
 	var forge = requireForge();
 	requireHmac();
 	requireMd();
-	requireUtil();
+	requireUtil$1();
 
 	var pkcs5 = forge.pkcs5 = forge.pkcs5 || {};
 
 	var crypto;
 	if(forge.util.isNodejs && !forge.options.usePureJavaScript) {
-	  crypto = require$$0__default$9["default"];
+	  crypto = require$$0__default$5["default"];
 	}
 
 	/**
@@ -116993,7 +118078,7 @@ function requireSha256 () {
 	hasRequiredSha256 = 1;
 	var forge = requireForge();
 	requireMd();
-	requireUtil();
+	requireUtil$1();
 
 	var sha256$1 = sha256.exports = forge.sha256 = forge.sha256 || {};
 	forge.md.sha256 = forge.md.algorithms.sha256 = sha256$1;
@@ -117332,12 +118417,12 @@ function requirePrng () {
 	if (hasRequiredPrng) return prng.exports;
 	hasRequiredPrng = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 
 	var _crypto = null;
 	if(forge.util.isNodejs && !forge.options.usePureJavaScript &&
 	  !process.versions['node-webkit']) {
-	  _crypto = require$$0__default$9["default"];
+	  _crypto = require$$0__default$5["default"];
 	}
 
 	/* PRNG API */
@@ -117767,7 +118852,7 @@ function requireRandom () {
 	requireAes();
 	requireSha256();
 	requirePrng();
-	requireUtil();
+	requireUtil$1();
 
 	(function() {
 
@@ -117955,7 +119040,7 @@ function requireRc2 () {
 	if (hasRequiredRc2) return rc2;
 	hasRequiredRc2 = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 
 	var piTable = [
 	  0xd9, 0x78, 0xf9, 0xc4, 0x19, 0xdd, 0xb5, 0xed, 0x28, 0xe9, 0xfd, 0x79, 0x4a, 0xa0, 0xd8, 0x9d,
@@ -119628,7 +120713,7 @@ function requireJsbn () {
 
 var pkcs1 = {exports: {}};
 
-var sha1$2 = {exports: {}};
+var sha1 = {exports: {}};
 
 /**
  * Secure Hash Algorithm with 160-bit digest (SHA-1) implementation.
@@ -119641,21 +120726,21 @@ var sha1$2 = {exports: {}};
 var hasRequiredSha1;
 
 function requireSha1 () {
-	if (hasRequiredSha1) return sha1$2.exports;
+	if (hasRequiredSha1) return sha1.exports;
 	hasRequiredSha1 = 1;
 	var forge = requireForge();
 	requireMd();
-	requireUtil();
+	requireUtil$1();
 
-	var sha1 = sha1$2.exports = forge.sha1 = forge.sha1 || {};
-	forge.md.sha1 = forge.md.algorithms.sha1 = sha1;
+	var sha1$1 = sha1.exports = forge.sha1 = forge.sha1 || {};
+	forge.md.sha1 = forge.md.algorithms.sha1 = sha1$1;
 
 	/**
 	 * Creates a SHA-1 message digest object.
 	 *
 	 * @return a message digest object.
 	 */
-	sha1.create = function() {
+	sha1$1.create = function() {
 	  // do initialization as necessary
 	  if(!_initialized) {
 	    _init();
@@ -119955,7 +121040,7 @@ function requireSha1 () {
 	    len -= 64;
 	  }
 	}
-	return sha1$2.exports;
+	return sha1.exports;
 }
 
 /**
@@ -120010,7 +121095,7 @@ function requirePkcs1 () {
 	if (hasRequiredPkcs1) return pkcs1.exports;
 	hasRequiredPkcs1 = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 	requireRandom();
 	requireSha1();
 
@@ -120259,7 +121344,7 @@ function requirePrime () {
 	if (hasRequiredPrime) return prime.exports;
 	hasRequiredPrime = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 	requireJsbn();
 	requireRandom();
 
@@ -120625,13 +121710,13 @@ function requireRsa () {
 	requirePkcs1();
 	requirePrime();
 	requireRandom();
-	requireUtil();
+	requireUtil$1();
 
 	if(typeof BigInteger === 'undefined') {
 	  var BigInteger = forge.jsbn.BigInteger;
 	}
 
-	var _crypto = forge.util.isNodejs ? require$$0__default$9["default"] : null;
+	var _crypto = forge.util.isNodejs ? require$$0__default$5["default"] : null;
 
 	// shortcut for asn.1 API
 	var asn1 = forge.asn1;
@@ -122515,7 +123600,7 @@ function requirePbe () {
 	requireRandom();
 	requireRc2();
 	requireRsa();
-	requireUtil();
+	requireUtil$1();
 
 	if(typeof BigInteger === 'undefined') {
 	  var BigInteger = forge.jsbn.BigInteger;
@@ -123632,7 +124717,7 @@ function requirePkcs7asn1 () {
 	hasRequiredPkcs7asn1 = 1;
 	var forge = requireForge();
 	requireAsn1();
-	requireUtil();
+	requireUtil$1();
 
 	// shortcut for ASN.1 API
 	var asn1 = forge.asn1;
@@ -123954,7 +125039,7 @@ function requireMgf1 () {
 	if (hasRequiredMgf1) return mgf1.exports;
 	hasRequiredMgf1 = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 
 	forge.mgf = forge.mgf || {};
 	var mgf1$1 = mgf1.exports = forge.mgf.mgf1 = forge.mgf1 = forge.mgf1 || {};
@@ -124043,7 +125128,7 @@ function requirePss () {
 	hasRequiredPss = 1;
 	var forge = requireForge();
 	requireRandom();
-	requireUtil();
+	requireUtil$1();
 
 	// shortcut for PSS API
 	var pss$1 = pss.exports = forge.pss = forge.pss || {};
@@ -124403,7 +125488,7 @@ function requireX509 () {
 	requirePem();
 	requirePss();
 	requireRsa();
-	requireUtil();
+	requireUtil$1();
 
 	// shortcut for asn.1 API
 	var asn1 = forge.asn1;
@@ -127606,7 +128691,7 @@ function requirePkcs12 () {
 	requireRandom();
 	requireRsa();
 	requireSha1();
-	requireUtil();
+	requireUtil$1();
 	requireX509();
 
 	// shortcut for asn.1 & PKI API
@@ -128602,7 +129687,7 @@ function requirePki () {
 	requirePkcs12();
 	requirePss();
 	requireRsa();
-	requireUtil();
+	requireUtil$1();
 	requireX509();
 
 	// shortcut for asn.1 API
@@ -128937,7 +130022,7 @@ function requireTls () {
 	requirePki();
 	requireRandom();
 	requireSha1();
-	requireUtil();
+	requireUtil$1();
 
 	/**
 	 * Generates pseudo random bytes by mixing the result of two hash functions,
@@ -133271,7 +134356,7 @@ function requireSha512 () {
 	hasRequiredSha512 = 1;
 	var forge = requireForge();
 	requireMd();
-	requireUtil();
+	requireUtil$1();
 
 	var sha512$1 = sha512.exports = forge.sha512 = forge.sha512 || {};
 
@@ -133943,7 +135028,7 @@ function requireEd25519 () {
 	requireJsbn();
 	requireRandom();
 	requireSha512();
-	requireUtil();
+	requireUtil$1();
 	var asn1Validator = requireAsn1Validator();
 	var publicKeyValidator = asn1Validator.publicKeyValidator;
 	var privateKeyValidator = asn1Validator.privateKeyValidator;
@@ -135021,7 +136106,7 @@ function requireKem () {
 	if (hasRequiredKem) return kem;
 	hasRequiredKem = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 	requireRandom();
 	requireJsbn();
 
@@ -135197,7 +136282,7 @@ function requireLog () {
 	if (hasRequiredLog) return log;
 	hasRequiredLog = 1;
 	var forge = requireForge();
-	requireUtil();
+	requireUtil$1();
 
 	/* LOG API */
 	log = forge.log = forge.log || {};
@@ -135571,7 +136656,7 @@ function requirePkcs7 () {
 	requirePem();
 	requirePkcs7asn1();
 	requireRandom();
-	requireUtil();
+	requireUtil$1();
 	requireX509();
 
 	// shortcut for ASN.1 API
@@ -136780,7 +137865,7 @@ function requireSsh () {
 	requireHmac();
 	requireMd5();
 	requireSha1();
-	requireUtil();
+	requireUtil$1();
 
 	var ssh$1 = ssh.exports = forge.ssh = forge.ssh || {};
 
@@ -137043,7 +138128,7 @@ function requireLib () {
 		requireRc2();
 		requireSsh();
 		requireTls();
-		requireUtil();
+		requireUtil$1();
 } (lib$1));
 	return lib$1.exports;
 }
@@ -137051,7 +138136,7 @@ function requireLib () {
 var hasRequiredSrc;
 
 function requireSrc () {
-	if (hasRequiredSrc) return src$2;
+	if (hasRequiredSrc) return src$3;
 	hasRequiredSrc = 1;
 	/**
 	 * Copyright 2018 Google LLC
@@ -137059,12 +138144,12 @@ function requireSrc () {
 	 * Distributed under MIT license.
 	 * See file LICENSE for detail or copy at https://opensource.org/licenses/MIT
 	 */
-	Object.defineProperty(src$2, "__esModule", { value: true });
-	src$2.getPem = void 0;
+	Object.defineProperty(src$3, "__esModule", { value: true });
+	src$3.getPem = void 0;
 	const fs = require$$0__default$1["default"];
 	const forge = requireLib();
 	const util_1 = require$$4__default["default"];
-	const readFile = util_1.promisify(fs.readFile);
+	const readFile = (0, util_1.promisify)(fs.readFile);
 	function getPem(filename, callback) {
 	    if (callback) {
 	        getPemAsync(filename)
@@ -137075,7 +138160,7 @@ function requireSrc () {
 	        return getPemAsync(filename);
 	    }
 	}
-	src$2.getPem = getPem;
+	src$3.getPem = getPem;
 	function getPemAsync(filename) {
 	    return readFile(filename, { encoding: 'base64' }).then(keyp12 => {
 	        return convertToPem(keyp12);
@@ -137101,24 +138186,31 @@ function requireSrc () {
 	    }
 	}
 	
-	return src$2;
+	return src$3;
 }
 
-/**
- * Copyright 2018 Google LLC
- *
- * Distributed under MIT license.
- * See file LICENSE for detail or copy at https://opensource.org/licenses/MIT
- */
-Object.defineProperty(src$3, "__esModule", { value: true });
-src$3.GoogleToken = void 0;
-const fs$a = require$$0__default$1["default"];
-const gaxios_1 = src$6;
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+Object.defineProperty(src$5, "__esModule", { value: true });
+src$5.GoogleToken = void 0;
+const fs$6 = require$$0__default$1["default"];
+const gaxios_1$2 = src$4;
 const jws$1 = jws$2;
-const path$c = require$$1__default$2["default"];
-const util_1$5 = require$$4__default["default"];
-const readFile$1 = fs$a.readFile
-    ? util_1$5.promisify(fs$a.readFile)
+const path$9 = require$$0__default$4["default"];
+const util_1$3 = require$$4__default["default"];
+const readFile$1 = fs$6.readFile
+    ? (0, util_1$3.promisify)(fs$6.readFile)
     : async () => {
         // if running in the web-browser, fs.readFile may not have been shimmed.
         throw new ErrorWithCode('use key rather than keyFile.', 'MISSING_CREDENTIALS');
@@ -137139,6 +138231,9 @@ class GoogleToken {
      * @param options  Configuration object.
      */
     constructor(options) {
+        this.transporter = {
+            request: opts => (0, gaxios_1$2.request)(opts),
+        };
         this.configure(options);
     }
     get accessToken() {
@@ -137204,7 +138299,7 @@ class GoogleToken {
      * @returns an object with privateKey and clientEmail properties
      */
     async getCredentials(keyFile) {
-        const ext = path$c.extname(keyFile);
+        const ext = path$9.extname(keyFile);
         switch (ext) {
             case '.json': {
                 const key = await readFile$1(keyFile, 'utf8');
@@ -137284,7 +138379,7 @@ class GoogleToken {
             throw new Error('No token to revoke.');
         }
         const url = GOOGLE_REVOKE_TOKEN_URL + this.accessToken;
-        await gaxios_1.request({ url });
+        await this.transporter.request({ url });
         this.configure({
             email: this.iss,
             sub: this.sub,
@@ -137312,11 +138407,15 @@ class GoogleToken {
             this.scope = options.scope;
         }
         this.eagerRefreshThresholdMillis = options.eagerRefreshThresholdMillis;
+        if (options.transporter) {
+            this.transporter = options.transporter;
+        }
     }
     /**
      * Request the token from Google.
      */
     async requestToken() {
+        var _a, _b;
         const iat = Math.floor(new Date().getTime() / 1000);
         const additionalClaims = this.additionalClaims || {};
         const payload = Object.assign({
@@ -137333,7 +138432,7 @@ class GoogleToken {
             secret: this.key,
         });
         try {
-            const r = await gaxios_1.request({
+            const r = await this.transporter.request({
                 method: 'POST',
                 url: GOOGLE_TOKEN_URL,
                 data: {
@@ -137353,7 +138452,9 @@ class GoogleToken {
         catch (e) {
             this.rawToken = undefined;
             this.tokenExpires = undefined;
-            const body = e.response && e.response.data ? e.response.data : {};
+            const body = e.response && ((_a = e.response) === null || _a === void 0 ? void 0 : _a.data)
+                ? (_b = e.response) === null || _b === void 0 ? void 0 : _b.data
+                : {};
             if (body.error) {
                 const desc = body.error_description
                     ? `: ${body.error_description}`
@@ -137364,7 +138465,7 @@ class GoogleToken {
         }
     }
 }
-src$3.GoogleToken = GoogleToken;
+src$5.GoogleToken = GoogleToken;
 
 var jwtaccess = {};
 
@@ -138183,7 +139284,8 @@ class JWTAccess {
         this.email = email;
         this.key = key;
         this.keyId = keyId;
-        this.eagerRefreshThresholdMillis = eagerRefreshThresholdMillis !== null && eagerRefreshThresholdMillis !== void 0 ? eagerRefreshThresholdMillis : 5 * 60 * 1000;
+        this.eagerRefreshThresholdMillis =
+            eagerRefreshThresholdMillis !== null && eagerRefreshThresholdMillis !== void 0 ? eagerRefreshThresholdMillis : 5 * 60 * 1000;
     }
     /**
      * Ensures that we're caching a key appropriately, giving precedence to scopes vs. url
@@ -138349,7 +139451,7 @@ jwtaccess.JWTAccess = JWTAccess;
 // limitations under the License.
 Object.defineProperty(jwtclient, "__esModule", { value: true });
 jwtclient.JWT = void 0;
-const gtoken_1 = src$3;
+const gtoken_1 = src$5;
 const jwtaccess_1 = jwtaccess;
 const oauth2client_1$2 = oauth2client;
 class JWT extends oauth2client_1$2.OAuth2Client {
@@ -138718,6 +139820,125 @@ class UserRefreshClient extends oauth2client_1$1.OAuth2Client {
 }
 refreshclient.UserRefreshClient = UserRefreshClient;
 
+var impersonated = {};
+
+/**
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+Object.defineProperty(impersonated, "__esModule", { value: true });
+impersonated.Impersonated = impersonated.IMPERSONATED_ACCOUNT_TYPE = void 0;
+const oauth2client_1 = oauth2client;
+const gaxios_1$1 = src$8;
+impersonated.IMPERSONATED_ACCOUNT_TYPE = 'impersonated_service_account';
+class Impersonated extends oauth2client_1.OAuth2Client {
+    /**
+     * Impersonated service account credentials.
+     *
+     * Create a new access token by impersonating another service account.
+     *
+     * Impersonated Credentials allowing credentials issued to a user or
+     * service account to impersonate another. The source project using
+     * Impersonated Credentials must enable the "IAMCredentials" API.
+     * Also, the target service account must grant the orginating principal
+     * the "Service Account Token Creator" IAM role.
+     *
+     * @param {object} options - The configuration object.
+     * @param {object} [options.sourceClient] the source credential used as to
+     * acquire the impersonated credentials.
+     * @param {string} [options.targetPrincipal] the service account to
+     * impersonate.
+     * @param {string[]} [options.delegates] the chained list of delegates
+     * required to grant the final access_token. If set, the sequence of
+     * identities must have "Service Account Token Creator" capability granted to
+     * the preceding identity. For example, if set to [serviceAccountB,
+     * serviceAccountC], the sourceCredential must have the Token Creator role on
+     * serviceAccountB. serviceAccountB must have the Token Creator on
+     * serviceAccountC. Finally, C must have Token Creator on target_principal.
+     * If left unset, sourceCredential must have that role on targetPrincipal.
+     * @param {string[]} [options.targetScopes] scopes to request during the
+     * authorization grant.
+     * @param {number} [options.lifetime] number of seconds the delegated
+     * credential should be valid for up to 3600 seconds by default, or 43,200
+     * seconds by extending the token's lifetime, see:
+     * https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
+     * @param {string} [options.endpoint] api endpoint override.
+     */
+    constructor(options = {}) {
+        var _a, _b, _c, _d, _e, _f;
+        super(options);
+        this.credentials = {
+            expiry_date: 1,
+            refresh_token: 'impersonated-placeholder',
+        };
+        this.sourceClient = (_a = options.sourceClient) !== null && _a !== void 0 ? _a : new oauth2client_1.OAuth2Client();
+        this.targetPrincipal = (_b = options.targetPrincipal) !== null && _b !== void 0 ? _b : '';
+        this.delegates = (_c = options.delegates) !== null && _c !== void 0 ? _c : [];
+        this.targetScopes = (_d = options.targetScopes) !== null && _d !== void 0 ? _d : [];
+        this.lifetime = (_e = options.lifetime) !== null && _e !== void 0 ? _e : 3600;
+        this.endpoint = (_f = options.endpoint) !== null && _f !== void 0 ? _f : 'https://iamcredentials.googleapis.com';
+    }
+    /**
+     * Refreshes the access token.
+     * @param refreshToken Unused parameter
+     */
+    async refreshToken(refreshToken) {
+        var _a, _b, _c, _d, _e, _f;
+        try {
+            await this.sourceClient.getAccessToken();
+            const name = 'projects/-/serviceAccounts/' + this.targetPrincipal;
+            const u = `${this.endpoint}/v1/${name}:generateAccessToken`;
+            const body = {
+                delegates: this.delegates,
+                scope: this.targetScopes,
+                lifetime: this.lifetime + 's',
+            };
+            const res = await this.sourceClient.request({
+                url: u,
+                data: body,
+                method: 'POST',
+            });
+            const tokenResponse = res.data;
+            this.credentials.access_token = tokenResponse.accessToken;
+            this.credentials.expiry_date = Date.parse(tokenResponse.expireTime);
+            return {
+                tokens: this.credentials,
+                res,
+            };
+        }
+        catch (error) {
+            if (!(error instanceof Error))
+                throw error;
+            let status = 0;
+            let message = '';
+            if (error instanceof gaxios_1$1.GaxiosError) {
+                status = (_c = (_b = (_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.error) === null || _c === void 0 ? void 0 : _c.status;
+                message = (_f = (_e = (_d = error === null || error === void 0 ? void 0 : error.response) === null || _d === void 0 ? void 0 : _d.data) === null || _e === void 0 ? void 0 : _e.error) === null || _f === void 0 ? void 0 : _f.message;
+            }
+            if (status && message) {
+                error.message = `${status}: unable to impersonate: ${message}`;
+                throw error;
+            }
+            else {
+                error.message = `unable to impersonate: ${error}`;
+                throw error;
+            }
+        }
+    }
+}
+impersonated.Impersonated = Impersonated;
+
 var externalclient = {};
 
 var baseexternalclient = {};
@@ -138741,8 +139962,8 @@ var oauth2common = {};
 // limitations under the License.
 Object.defineProperty(oauth2common, "__esModule", { value: true });
 oauth2common.getErrorFromOAuthErrorResponse = oauth2common.OAuthClientAuthHandler = void 0;
-const querystring$2 = require$$0__default$8["default"];
-const crypto_1$2 = requireCrypto();
+const querystring$2 = require$$0__default$9["default"];
+const crypto_1$3 = requireCrypto();
 /** List of HTTP methods that accept request bodies. */
 const METHODS_SUPPORTING_REQUEST_BODY = ['PUT', 'POST', 'PATCH'];
 /**
@@ -138759,7 +139980,7 @@ class OAuthClientAuthHandler {
      */
     constructor(clientAuthentication) {
         this.clientAuthentication = clientAuthentication;
-        this.crypto = crypto_1$2.createCrypto();
+        this.crypto = (0, crypto_1$3.createCrypto)();
     }
     /**
      * Applies client authentication on the OAuth request's headers or POST
@@ -138916,7 +140137,8 @@ oauth2common.getErrorFromOAuthErrorResponse = getErrorFromOAuthErrorResponse;
 // limitations under the License.
 Object.defineProperty(stscredentials, "__esModule", { value: true });
 stscredentials.StsCredentials = void 0;
-const querystring$1 = require$$0__default$8["default"];
+const gaxios_1 = src$8;
+const querystring$1 = require$$0__default$9["default"];
 const transporters_1$1 = transporters;
 const oauth2common_1 = oauth2common;
 /**
@@ -138996,8 +140218,8 @@ class StsCredentials extends oauth2common_1.OAuthClientAuthHandler {
         }
         catch (error) {
             // Translate error to OAuthError.
-            if (error.response) {
-                throw oauth2common_1.getErrorFromOAuthErrorResponse(error.response.data, 
+            if (error instanceof gaxios_1.GaxiosError && error.response) {
+                throw (0, oauth2common_1.getErrorFromOAuthErrorResponse)(error.response.data, 
                 // Preserve other fields from the original error.
                 error);
             }
@@ -139024,7 +140246,7 @@ stscredentials.StsCredentials = StsCredentials;
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.BaseExternalAccountClient = exports.CLOUD_RESOURCE_MANAGER = exports.EXTERNAL_ACCOUNT_TYPE = exports.EXPIRATION_TIME_OFFSET = void 0;
-	const stream = require$$0__default$4["default"];
+	const stream = require$$0__default$6["default"];
 	const authclient_1 = authclient;
 	const sts = stscredentials;
 	/**
@@ -139481,16 +140703,16 @@ var identitypoolclient = {};
 var _a, _b, _c;
 Object.defineProperty(identitypoolclient, "__esModule", { value: true });
 identitypoolclient.IdentityPoolClient = void 0;
-const fs$9 = require$$0__default$1["default"];
-const util_1$4 = require$$4__default["default"];
+const fs$5 = require$$0__default$1["default"];
+const util_1$2 = require$$4__default["default"];
 const baseexternalclient_1$3 = baseexternalclient;
 // fs.readfile is undefined in browser karma tests causing
 // `npm run browser-test` to fail as test.oauth2.ts imports this file via
 // src/index.ts.
 // Fallback to void function to avoid promisify throwing a TypeError.
-const readFile = util_1$4.promisify((_a = fs$9.readFile) !== null && _a !== void 0 ? _a : (() => { }));
-const realpath = util_1$4.promisify((_b = fs$9.realpath) !== null && _b !== void 0 ? _b : (() => { }));
-const lstat = util_1$4.promisify((_c = fs$9.lstat) !== null && _c !== void 0 ? _c : (() => { }));
+const readFile = (0, util_1$2.promisify)((_a = fs$5.readFile) !== null && _a !== void 0 ? _a : (() => { }));
+const realpath = (0, util_1$2.promisify)((_b = fs$5.realpath) !== null && _b !== void 0 ? _b : (() => { }));
+const lstat = (0, util_1$2.promisify)((_c = fs$5.lstat) !== null && _c !== void 0 ? _c : (() => { }));
 /**
  * Defines the Url-sourced and file-sourced external account clients mainly
  * used for K8s and Azure workloads.
@@ -139519,7 +140741,8 @@ class IdentityPoolClient extends baseexternalclient_1$3.BaseExternalAccountClien
         }
         // Text is the default format type.
         this.formatType = ((_a = options.credential_source.format) === null || _a === void 0 ? void 0 : _a.type) || 'text';
-        this.formatSubjectTokenFieldName = (_b = options.credential_source.format) === null || _b === void 0 ? void 0 : _b.subject_token_field_name;
+        this.formatSubjectTokenFieldName =
+            (_b = options.credential_source.format) === null || _b === void 0 ? void 0 : _b.subject_token_field_name;
         if (this.formatType !== 'json' && this.formatType !== 'text') {
             throw new Error(`Invalid credential_source format "${this.formatType}"`);
         }
@@ -139565,7 +140788,9 @@ class IdentityPoolClient extends baseexternalclient_1$3.BaseExternalAccountClien
             }
         }
         catch (err) {
-            err.message = `The file at ${filePath} does not exist, or it is not a file. ${err.message}`;
+            if (err instanceof Error) {
+                err.message = `The file at ${filePath} does not exist, or it is not a file. ${err.message}`;
+            }
             throw err;
         }
         let subjectToken;
@@ -139638,7 +140863,7 @@ var awsrequestsigner = {};
 // limitations under the License.
 Object.defineProperty(awsrequestsigner, "__esModule", { value: true });
 awsrequestsigner.AwsRequestSigner = void 0;
-const crypto_1$1 = requireCrypto();
+const crypto_1$2 = requireCrypto();
 /** AWS Signature Version 4 signing algorithm identifier.  */
 const AWS_ALGORITHM = 'AWS4-HMAC-SHA256';
 /**
@@ -139664,7 +140889,7 @@ class AwsRequestSigner {
     constructor(getCredentials, region) {
         this.getCredentials = getCredentials;
         this.region = region;
-        this.crypto = crypto_1$1.createCrypto();
+        this.crypto = (0, crypto_1$2.createCrypto)();
     }
     /**
      * Generates the signed request for the provided HTTP request for calling
@@ -139823,7 +141048,7 @@ async function generateAuthenticationHeaderMap(options) {
     // https://docs.aws.amazon.com/general/latest/gr/sigv4-add-signature-to-request.html
     const authorizationHeader = `${AWS_ALGORITHM} Credential=${options.securityCredentials.accessKeyId}/` +
         `${credentialScope}, SignedHeaders=${signedHeaders}, ` +
-        `Signature=${crypto_1$1.fromArrayBufferToHex(signature)}`;
+        `Signature=${(0, crypto_1$2.fromArrayBufferToHex)(signature)}`;
     return {
         // Do not return x-amz-date if date is available.
         amzDate: reformattedAdditionalAmzHeaders.date ? undefined : amzDate,
@@ -140138,17 +141363,18 @@ externalclient.ExternalAccountClient = ExternalAccountClient;
 Object.defineProperty(googleauth, "__esModule", { value: true });
 googleauth.GoogleAuth = googleauth.CLOUD_SDK_CLIENT_ID = void 0;
 const child_process_1 = require$$0__default$a["default"];
-const fs$8 = require$$0__default$1["default"];
-const gcpMetadata = src$7;
-const os$3 = require$$0__default["default"];
-const path$b = require$$1__default$2["default"];
-const crypto_1 = requireCrypto();
+const fs$4 = require$$0__default$1["default"];
+const gcpMetadata = src$9;
+const os$2 = require$$0__default["default"];
+const path$8 = require$$0__default$4["default"];
+const crypto_1$1 = requireCrypto();
 const transporters_1 = transporters;
 const computeclient_1 = computeclient;
 const idtokenclient_1 = idtokenclient;
 const envDetect_1 = envDetect;
 const jwtclient_1 = jwtclient;
 const refreshclient_1 = refreshclient;
+const impersonated_1 = impersonated;
 const externalclient_1 = externalclient;
 const baseexternalclient_1 = baseexternalclient;
 googleauth.CLOUD_SDK_CLIENT_ID = '764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com';
@@ -140360,13 +141586,13 @@ class GoogleAuth {
             // Linux or Mac
             const home = process.env['HOME'];
             if (home) {
-                location = path$b.join(home, '.config');
+                location = path$8.join(home, '.config');
             }
         }
         // If we found the root path, expand it.
         if (location) {
-            location = path$b.join(location, 'gcloud', 'application_default_credentials.json');
-            if (!fs$8.existsSync(location)) {
+            location = path$8.join(location, 'gcloud', 'application_default_credentials.json');
+            if (!fs$4.existsSync(location)) {
                 location = null;
             }
         }
@@ -140394,8 +141620,8 @@ class GoogleAuth {
         try {
             // Resolve path to actual file in case of symlink. Expect a thrown error
             // if not resolvable.
-            filePath = fs$8.realpathSync(filePath);
-            if (!fs$8.lstatSync(filePath).isFile()) {
+            filePath = fs$4.realpathSync(filePath);
+            if (!fs$4.lstatSync(filePath).isFile()) {
                 throw new Error();
             }
         }
@@ -140406,8 +141632,43 @@ class GoogleAuth {
             throw err;
         }
         // Now open a read stream on the file, and parse it.
-        const readStream = fs$8.createReadStream(filePath);
+        const readStream = fs$4.createReadStream(filePath);
         return this.fromStream(readStream, options);
+    }
+    /**
+     * Create a credentials instance using a given impersonated input options.
+     * @param json The impersonated input object.
+     * @returns JWT or UserRefresh Client with data
+     */
+    fromImpersonatedJSON(json) {
+        var _a, _b, _c, _d;
+        if (!json) {
+            throw new Error('Must pass in a JSON object containing an  impersonated refresh token');
+        }
+        if (json.type !== impersonated_1.IMPERSONATED_ACCOUNT_TYPE) {
+            throw new Error(`The incoming JSON object does not have the "${impersonated_1.IMPERSONATED_ACCOUNT_TYPE}" type`);
+        }
+        if (!json.source_credentials) {
+            throw new Error('The incoming JSON object does not contain a source_credentials field');
+        }
+        if (!json.service_account_impersonation_url) {
+            throw new Error('The incoming JSON object does not contain a service_account_impersonation_url field');
+        }
+        // Create source client for impersonation
+        const sourceClient = new refreshclient_1.UserRefreshClient(json.source_credentials.client_id, json.source_credentials.client_secret, json.source_credentials.refresh_token);
+        // Extreact service account from service_account_impersonation_url
+        const targetPrincipal = (_b = (_a = /(?<target>[^/]+):generateAccessToken$/.exec(json.service_account_impersonation_url)) === null || _a === void 0 ? void 0 : _a.groups) === null || _b === void 0 ? void 0 : _b.target;
+        if (!targetPrincipal) {
+            throw new RangeError(`Cannot extract target principal from ${json.service_account_impersonation_url}`);
+        }
+        const targetScopes = (_c = this.getAnyScopes()) !== null && _c !== void 0 ? _c : [];
+        const client = new impersonated_1.Impersonated({
+            delegates: (_d = json.delegates) !== null && _d !== void 0 ? _d : [],
+            sourceClient: sourceClient,
+            targetPrincipal: targetPrincipal,
+            targetScopes: Array.isArray(targetScopes) ? targetScopes : [targetScopes],
+        });
+        return client;
     }
     /**
      * Create a credentials instance using the given input options.
@@ -140424,6 +141685,9 @@ class GoogleAuth {
         if (json.type === 'authorized_user') {
             client = new refreshclient_1.UserRefreshClient(options);
             client.fromJSON(json);
+        }
+        else if (json.type === impersonated_1.IMPERSONATED_ACCOUNT_TYPE) {
+            client = this.fromImpersonatedJSON(json);
         }
         else if (json.type === baseexternalclient_1.EXTERNAL_ACCOUNT_TYPE) {
             client = externalclient_1.ExternalAccountClient.fromJSON(json, options);
@@ -140451,6 +141715,9 @@ class GoogleAuth {
         if (json.type === 'authorized_user') {
             client = new refreshclient_1.UserRefreshClient(options);
             client.fromJSON(json);
+        }
+        else if (json.type === impersonated_1.IMPERSONATED_ACCOUNT_TYPE) {
+            client = this.fromImpersonatedJSON(json);
         }
         else if (json.type === baseexternalclient_1.EXTERNAL_ACCOUNT_TYPE) {
             client = externalclient_1.ExternalAccountClient.fromJSON(json, options);
@@ -140536,7 +141803,7 @@ class GoogleAuth {
      * @api private
      */
     _isWindows() {
-        const sys = os$3.platform();
+        const sys = os$2.platform();
         if (sys && sys.length >= 3) {
             if (sys.substring(0, 3).toLowerCase() === 'win') {
                 return true;
@@ -140549,7 +141816,7 @@ class GoogleAuth {
      */
     async getDefaultServiceProjectId() {
         return new Promise(resolve => {
-            child_process_1.exec('gcloud config config-helper --format json', (err, stdout) => {
+            (0, child_process_1.exec)('gcloud config config-helper --format json', (err, stdout) => {
                 if (!err && stdout) {
                     try {
                         const projectId = JSON.parse(stdout).configuration.properties.core.project;
@@ -140642,7 +141909,13 @@ class GoogleAuth {
         }
     }
     async getCredentialsAsync() {
-        await this.getClient();
+        const client = await this.getClient();
+        if (client instanceof baseexternalclient_1.BaseExternalAccountClient) {
+            const serviceAccountEmail = client.getServiceAccountEmail();
+            if (serviceAccountEmail) {
+                return { client_email: serviceAccountEmail };
+            }
+        }
         if (this.jsonContent) {
             const credential = {
                 client_email: this.jsonContent.client_email,
@@ -140671,17 +141944,14 @@ class GoogleAuth {
      * Automatically obtain a client based on the provided configuration.  If no
      * options were passed, use Application Default Credentials.
      */
-    async getClient(options) {
-        if (options) {
-            throw new Error('Passing options to getClient is forbidden in v5.0.0. Use new GoogleAuth(opts) instead.');
-        }
+    async getClient() {
         if (!this.cachedCredential) {
             if (this.jsonContent) {
                 this._cacheClientFromJSON(this.jsonContent, this.clientOptions);
             }
             else if (this.keyFilename) {
-                const filePath = path$b.resolve(this.keyFilename);
-                const stream = fs$8.createReadStream(filePath);
+                const filePath = path$8.resolve(this.keyFilename);
+                const stream = fs$4.createReadStream(filePath);
                 await this.fromStreamAsync(stream, this.clientOptions);
             }
             else {
@@ -140745,7 +142015,7 @@ class GoogleAuth {
      * Determine the compute environment in which the code is running.
      */
     getEnv() {
-        return envDetect_1.getEnv();
+        return (0, envDetect_1.getEnv)();
     }
     /**
      * Sign the given data with the current private key, or go out
@@ -140754,20 +142024,10 @@ class GoogleAuth {
      */
     async sign(data) {
         const client = await this.getClient();
-        const crypto = crypto_1.createCrypto();
+        const crypto = (0, crypto_1$1.createCrypto)();
         if (client instanceof jwtclient_1.JWT && client.key) {
             const sign = await crypto.sign(client.key, data);
             return sign;
-        }
-        // signBlob requires a service account email and the underlying
-        // access token to have iam.serviceAccounts.signBlob permission
-        // on the specified resource name.
-        // The "Service Account Token Creator" role should cover this.
-        // As a result external account credentials can support this
-        // operation when service account impersonation is enabled.
-        if (client instanceof baseexternalclient_1.BaseExternalAccountClient &&
-            client.getServiceAccountEmail()) {
-            return this.signBlob(crypto, client.getServiceAccountEmail(), data);
         }
         const projectId = await this.getProjectId();
         if (!projectId) {
@@ -140841,117 +142101,6 @@ class IAMAuth {
 }
 iam$1.IAMAuth = IAMAuth;
 
-var impersonated = {};
-
-/**
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-Object.defineProperty(impersonated, "__esModule", { value: true });
-impersonated.Impersonated = void 0;
-const oauth2client_1 = oauth2client;
-class Impersonated extends oauth2client_1.OAuth2Client {
-    /**
-     * Impersonated service account credentials.
-     *
-     * Create a new access token by impersonating another service account.
-     *
-     * Impersonated Credentials allowing credentials issued to a user or
-     * service account to impersonate another. The source project using
-     * Impersonated Credentials must enable the "IAMCredentials" API.
-     * Also, the target service account must grant the orginating principal
-     * the "Service Account Token Creator" IAM role.
-     *
-     * @param {object} options - The configuration object.
-     * @param {object} [options.sourceClient] the source credential used as to
-     * acquire the impersonated credentials.
-     * @param {string} [options.targetPrincipal] the service account to
-     * impersonate.
-     * @param {string[]} [options.delegates] the chained list of delegates
-     * required to grant the final access_token. If set, the sequence of
-     * identities must have "Service Account Token Creator" capability granted to
-     * the preceding identity. For example, if set to [serviceAccountB,
-     * serviceAccountC], the sourceCredential must have the Token Creator role on
-     * serviceAccountB. serviceAccountB must have the Token Creator on
-     * serviceAccountC. Finally, C must have Token Creator on target_principal.
-     * If left unset, sourceCredential must have that role on targetPrincipal.
-     * @param {string[]} [options.targetScopes] scopes to request during the
-     * authorization grant.
-     * @param {number} [options.lifetime] number of seconds the delegated
-     * credential should be valid for up to 3600 seconds by default, or 43,200
-     * seconds by extending the token's lifetime, see:
-     * https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
-     * @param {string} [options.endpoint] api endpoint override.
-     */
-    constructor(options = {}) {
-        var _a, _b, _c, _d, _e, _f;
-        super(options);
-        this.credentials = {
-            expiry_date: 1,
-            refresh_token: 'impersonated-placeholder',
-        };
-        this.sourceClient = (_a = options.sourceClient) !== null && _a !== void 0 ? _a : new oauth2client_1.OAuth2Client();
-        this.targetPrincipal = (_b = options.targetPrincipal) !== null && _b !== void 0 ? _b : '';
-        this.delegates = (_c = options.delegates) !== null && _c !== void 0 ? _c : [];
-        this.targetScopes = (_d = options.targetScopes) !== null && _d !== void 0 ? _d : [];
-        this.lifetime = (_e = options.lifetime) !== null && _e !== void 0 ? _e : 3600;
-        this.endpoint = (_f = options.endpoint) !== null && _f !== void 0 ? _f : 'https://iamcredentials.googleapis.com';
-    }
-    /**
-     * Refreshes the access token.
-     * @param refreshToken Unused parameter
-     */
-    async refreshToken(refreshToken) {
-        var _a, _b, _c, _d, _e, _f;
-        try {
-            await this.sourceClient.getAccessToken();
-            const name = 'projects/-/serviceAccounts/' + this.targetPrincipal;
-            const u = `${this.endpoint}/v1/${name}:generateAccessToken`;
-            const body = {
-                delegates: this.delegates,
-                scope: this.targetScopes,
-                lifetime: this.lifetime + 's',
-            };
-            const res = await this.sourceClient.request({
-                url: u,
-                data: body,
-                method: 'POST',
-            });
-            const tokenResponse = res.data;
-            this.credentials.access_token = tokenResponse.accessToken;
-            this.credentials.expiry_date = Date.parse(tokenResponse.expireTime);
-            return {
-                tokens: this.credentials,
-                res,
-            };
-        }
-        catch (error) {
-            const status = (_c = (_b = (_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.error) === null || _c === void 0 ? void 0 : _c.status;
-            const message = (_f = (_e = (_d = error === null || error === void 0 ? void 0 : error.response) === null || _d === void 0 ? void 0 : _d.data) === null || _e === void 0 ? void 0 : _e.error) === null || _f === void 0 ? void 0 : _f.message;
-            if (status && message) {
-                error.message = `${status}: unable to impersonate: ${message}`;
-                throw error;
-            }
-            else {
-                error.message = `unable to impersonate: ${error}`;
-                throw error;
-            }
-        }
-    }
-}
-impersonated.Impersonated = Impersonated;
-
 var downscopedclient = {};
 
 (function (exports) {
@@ -140970,7 +142119,7 @@ var downscopedclient = {};
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.DownscopedClient = exports.EXPIRATION_TIME_OFFSET = exports.MAX_ACCESS_BOUNDARY_RULES_COUNT = void 0;
-	const stream = require$$0__default$4["default"];
+	const stream = require$$0__default$6["default"];
 	const authclient_1 = authclient;
 	const sts = stscredentials;
 	/**
@@ -141236,7 +142385,7 @@ var downscopedclient = {};
 
 (function (exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.GoogleAuth = exports.auth = void 0;
+	exports.GoogleAuth = exports.auth = exports.DefaultTransporter = exports.DownscopedClient = exports.BaseExternalAccountClient = exports.ExternalAccountClient = exports.IdentityPoolClient = exports.AwsClient = exports.UserRefreshClient = exports.LoginTicket = exports.OAuth2Client = exports.CodeChallengeMethod = exports.Impersonated = exports.JWT = exports.JWTAccess = exports.IdTokenClient = exports.IAMAuth = exports.GCPEnv = exports.Compute = exports.AuthClient = void 0;
 	// Copyright 2017 Google LLC
 	//
 	// Licensed under the Apache License, Version 2.0 (the "License");
@@ -141290,15 +142439,15 @@ var downscopedclient = {};
 	const auth = new googleauth_1.GoogleAuth();
 	exports.auth = auth;
 	
-} (src$8));
+} (src$a));
 
-var retryRequest$2 = {exports: {}};
+var retryRequest$1 = {exports: {}};
 
-var { PassThrough: PassThrough$1 } = require$$0__default$4["default"];
-var debug$3 = src$5.exports('retry-request');
-var extend$3 = extend$4;
+const {PassThrough} = require$$0__default$6["default"];
+const debug$2 = src$7.exports('retry-request');
+const extend$1 = extend$2;
 
-var DEFAULTS = {
+const DEFAULTS = {
   objectMode: false,
   retries: 2,
 
@@ -141307,7 +142456,7 @@ var DEFAULTS = {
     delay greater than maxRetryDelay, retries should delay by maxRetryDelay
     seconds instead.
   */
-  maxRetryDelay: 64, 
+  maxRetryDelay: 64,
 
   /*
     The multiplier by which to increase the delay time between the completion of
@@ -141327,7 +142476,7 @@ var DEFAULTS = {
   noResponseRetries: 2,
   currentRetryAttempt: 0,
   shouldRetryFn: function (response) {
-    var retryRanges = [
+    const retryRanges = [
       // https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
       // 1xx - Retry (Informational, request still processing)
       // 2xx - Do not retry (Success)
@@ -141337,64 +142486,66 @@ var DEFAULTS = {
       // 5xx - Retry (Server errors)
       [100, 199],
       [429, 429],
-      [500, 599]
+      [500, 599],
     ];
 
-    var statusCode = response.statusCode;
-    debug$3(`Response status: ${statusCode}`);
+    const statusCode = response.statusCode;
+    debug$2(`Response status: ${statusCode}`);
 
-    var range;
+    let range;
     while ((range = retryRanges.shift())) {
       if (statusCode >= range[0] && statusCode <= range[1]) {
         // Not a successful status or redirect.
         return true;
       }
     }
-  }
+  },
 };
 
-function retryRequest$1(requestOpts, opts, callback) {
-  var streamMode = typeof arguments[arguments.length - 1] !== 'function';
+function retryRequest(requestOpts, opts, callback) {
+  const streamMode = typeof arguments[arguments.length - 1] !== 'function';
 
   if (typeof opts === 'function') {
     callback = opts;
   }
 
-  var manualCurrentRetryAttemptWasSet = opts && typeof opts.currentRetryAttempt === 'number';
-  opts = extend$3({}, DEFAULTS, opts);
+  const manualCurrentRetryAttemptWasSet =
+    opts && typeof opts.currentRetryAttempt === 'number';
+  opts = extend$1({}, DEFAULTS, opts);
 
   if (typeof opts.request === 'undefined') {
     try {
+      // eslint-disable-next-line node/no-unpublished-require
       opts.request = require('request');
     } catch (e) {
       throw new Error('A request library must be provided to retry-request.');
     }
   }
 
-  var currentRetryAttempt = opts.currentRetryAttempt;
+  let currentRetryAttempt = opts.currentRetryAttempt;
 
-  var numNoResponseAttempts = 0;
-  var streamResponseHandled = false;
+  let numNoResponseAttempts = 0;
+  let streamResponseHandled = false;
 
-  var retryStream;
-  var requestStream;
-  var delayStream;
+  let retryStream;
+  let requestStream;
+  let delayStream;
 
-  var activeRequest;
-  var retryRequest = {
+  let activeRequest;
+  const retryRequest = {
     abort: function () {
       if (activeRequest && activeRequest.abort) {
         activeRequest.abort();
       }
-    }
+    },
   };
 
   if (streamMode) {
-    retryStream = new PassThrough$1({ objectMode: opts.objectMode });
+    retryStream = new PassThrough({objectMode: opts.objectMode});
     retryStream.abort = resetStreams;
   }
 
-  var timeOfFirstRequest = Date.now();
+  const timeOfFirstRequest = Date.now();
   if (currentRetryAttempt > 0) {
     retryAfterDelay(currentRetryAttempt);
   } else {
@@ -141424,15 +142575,15 @@ function retryRequest$1(requestOpts, opts, callback) {
 
   function makeRequest() {
     currentRetryAttempt++;
-    debug$3(`Current retry attempt: ${currentRetryAttempt}`);
+    debug$2(`Current retry attempt: ${currentRetryAttempt}`);
 
     if (streamMode) {
       streamResponseHandled = false;
 
-      delayStream = new PassThrough$1({ objectMode: opts.objectMode });
+      delayStream = new PassThrough({objectMode: opts.objectMode});
       requestStream = opts.request(requestOpts);
 
-      setImmediate(function () {
+      setImmediate(() => {
         retryStream.emit('request');
       });
 
@@ -141440,7 +142591,7 @@ function retryRequest$1(requestOpts, opts, callback) {
         // gRPC via google-cloud-node can emit an `error` as well as a `response`
         // Whichever it emits, we run with-- we can't run with both. That's what
         // is up with the `streamResponseHandled` tracking.
-        .on('error', function (err) {
+        .on('error', err => {
           if (streamResponseHandled) {
             return;
           }
@@ -141448,7 +142599,7 @@ function retryRequest$1(requestOpts, opts, callback) {
           streamResponseHandled = true;
           onResponse(err);
         })
-        .on('response', function (resp, body) {
+        .on('response', (resp, body) => {
           if (streamResponseHandled) {
             return;
           }
@@ -141469,14 +142620,19 @@ function retryRequest$1(requestOpts, opts, callback) {
       resetStreams();
     }
 
-    var nextRetryDelay = getNextRetryDelay({
+    const nextRetryDelay = getNextRetryDelay({
       maxRetryDelay: opts.maxRetryDelay,
       retryDelayMultiplier: opts.retryDelayMultiplier,
       retryNumber: currentRetryAttempt,
       timeOfFirstRequest,
       totalTimeout: opts.totalTimeout,
     });
-    debug$3(`Next retry delay: ${nextRetryDelay}`);
+    debug$2(`Next retry delay: ${nextRetryDelay}`);
+
+    if (nextRetryDelay <= 0) {
+      numNoResponseAttempts = opts.noResponseRetries + 1;
+      return;
+    }
 
     setTimeout(makeRequest, nextRetryDelay);
   }
@@ -141505,8 +142661,13 @@ function retryRequest$1(requestOpts, opts, callback) {
     // the very first request sent as the first "retry". It is only accurate
     // when a user provides their own "currentRetryAttempt" option at
     // instantiation.
-    var adjustedCurrentRetryAttempt = manualCurrentRetryAttemptWasSet ? currentRetryAttempt : currentRetryAttempt - 1;
-    if (adjustedCurrentRetryAttempt < opts.retries && opts.shouldRetryFn(response)) {
+    const adjustedCurrentRetryAttempt = manualCurrentRetryAttemptWasSet
+      ? currentRetryAttempt
+      : currentRetryAttempt - 1;
+    if (
+      adjustedCurrentRetryAttempt < opts.retries &&
+      opts.shouldRetryFn(response)
+    ) {
       retryAfterDelay(currentRetryAttempt);
       return;
     }
@@ -141515,7 +142676,7 @@ function retryRequest$1(requestOpts, opts, callback) {
     if (streamMode) {
       retryStream.emit('response', response);
       delayStream.pipe(retryStream);
-      requestStream.on('error', function (err) {
+      requestStream.on('error', err => {
         retryStream.destroy(err);
       });
     } else {
@@ -141524,10 +142685,10 @@ function retryRequest$1(requestOpts, opts, callback) {
   }
 }
 
-retryRequest$2.exports = retryRequest$1;
+retryRequest$1.exports = retryRequest;
 
 function getNextRetryDelay(config) {
-  var {
+  const {
     maxRetryDelay,
     retryDelayMultiplier,
     retryNumber,
@@ -141535,579 +142696,26 @@ function getNextRetryDelay(config) {
     totalTimeout,
   } = config;
 
-  var maxRetryDelayMs = maxRetryDelay * 1000;
-  var totalTimeoutMs = totalTimeout * 1000;
+  const maxRetryDelayMs = maxRetryDelay * 1000;
+  const totalTimeoutMs = totalTimeout * 1000;
 
-  var jitter = Math.floor(Math.random() * 1000);
-  var calculatedNextRetryDelay = Math.pow(retryDelayMultiplier, retryNumber) * 1000 + jitter;
+  const jitter = Math.floor(Math.random() * 1000);
+  const calculatedNextRetryDelay =
+    Math.pow(retryDelayMultiplier, retryNumber) * 1000 + jitter;
 
-  var maxAllowableDelayMs = totalTimeoutMs - (Date.now() - timeOfFirstRequest);
+  const maxAllowableDelayMs =
+    totalTimeoutMs - (Date.now() - timeOfFirstRequest);
 
-  return Math.min(calculatedNextRetryDelay, maxAllowableDelayMs, maxRetryDelayMs);
+  return Math.min(
+    calculatedNextRetryDelay,
+    maxAllowableDelayMs,
+    maxRetryDelayMs
+  );
 }
 
-retryRequest$2.exports.getNextRetryDelay = getNextRetryDelay;
+retryRequest$1.exports.getNextRetryDelay = getNextRetryDelay;
 
-var src$1 = {};
-
-var dist$2 = {};
-
-var v1$1 = {};
-
-var rng$1 = {};
-
-Object.defineProperty(rng$1, "__esModule", {
-  value: true
-});
-rng$1.default = rng;
-
-var _crypto$2 = _interopRequireDefault$b(require$$0__default$9["default"]);
-
-function _interopRequireDefault$b(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const rnds8Pool = new Uint8Array(256); // # of random values to pre-allocate
-
-let poolPtr = rnds8Pool.length;
-
-function rng() {
-  if (poolPtr > rnds8Pool.length - 16) {
-    _crypto$2.default.randomFillSync(rnds8Pool);
-
-    poolPtr = 0;
-  }
-
-  return rnds8Pool.slice(poolPtr, poolPtr += 16);
-}
-
-var stringify$1 = {};
-
-var validate$1 = {};
-
-var regex = {};
-
-Object.defineProperty(regex, "__esModule", {
-  value: true
-});
-regex.default = void 0;
-var _default$c = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-regex.default = _default$c;
-
-Object.defineProperty(validate$1, "__esModule", {
-  value: true
-});
-validate$1.default = void 0;
-
-var _regex = _interopRequireDefault$a(regex);
-
-function _interopRequireDefault$a(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function validate(uuid) {
-  return typeof uuid === 'string' && _regex.default.test(uuid);
-}
-
-var _default$b = validate;
-validate$1.default = _default$b;
-
-Object.defineProperty(stringify$1, "__esModule", {
-  value: true
-});
-stringify$1.default = void 0;
-
-var _validate$2 = _interopRequireDefault$9(validate$1);
-
-function _interopRequireDefault$9(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-const byteToHex = [];
-
-for (let i = 0; i < 256; ++i) {
-  byteToHex.push((i + 0x100).toString(16).substr(1));
-}
-
-function stringify(arr, offset = 0) {
-  // Note: Be careful editing this code!  It's been tuned for performance
-  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
-  const uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
-  // of the following:
-  // - One or more input array values don't map to a hex octet (leading to
-  // "undefined" in the uuid)
-  // - Invalid input values for the RFC `version` or `variant` fields
-
-  if (!(0, _validate$2.default)(uuid)) {
-    throw TypeError('Stringified UUID is invalid');
-  }
-
-  return uuid;
-}
-
-var _default$a = stringify;
-stringify$1.default = _default$a;
-
-Object.defineProperty(v1$1, "__esModule", {
-  value: true
-});
-v1$1.default = void 0;
-
-var _rng$1 = _interopRequireDefault$8(rng$1);
-
-var _stringify$2 = _interopRequireDefault$8(stringify$1);
-
-function _interopRequireDefault$8(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// **`v1()` - Generate time-based UUID**
-//
-// Inspired by https://github.com/LiosK/UUID.js
-// and http://docs.python.org/library/uuid.html
-let _nodeId;
-
-let _clockseq; // Previous uuid creation time
-
-
-let _lastMSecs = 0;
-let _lastNSecs = 0; // See https://github.com/uuidjs/uuid for API details
-
-function v1(options, buf, offset) {
-  let i = buf && offset || 0;
-  const b = buf || new Array(16);
-  options = options || {};
-  let node = options.node || _nodeId;
-  let clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq; // node and clockseq need to be initialized to random values if they're not
-  // specified.  We do this lazily to minimize issues related to insufficient
-  // system entropy.  See #189
-
-  if (node == null || clockseq == null) {
-    const seedBytes = options.random || (options.rng || _rng$1.default)();
-
-    if (node == null) {
-      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
-      node = _nodeId = [seedBytes[0] | 0x01, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
-    }
-
-    if (clockseq == null) {
-      // Per 4.2.2, randomize (14 bit) clockseq
-      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
-    }
-  } // UUID timestamps are 100 nano-second units since the Gregorian epoch,
-  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
-  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
-  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
-
-
-  let msecs = options.msecs !== undefined ? options.msecs : Date.now(); // Per 4.2.1.2, use count of uuid's generated during the current clock
-  // cycle to simulate higher resolution clock
-
-  let nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1; // Time since last uuid creation (in msecs)
-
-  const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000; // Per 4.2.1.2, Bump clockseq on clock regression
-
-  if (dt < 0 && options.clockseq === undefined) {
-    clockseq = clockseq + 1 & 0x3fff;
-  } // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
-  // time interval
-
-
-  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
-    nsecs = 0;
-  } // Per 4.2.1.2 Throw error if too many uuids are requested
-
-
-  if (nsecs >= 10000) {
-    throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
-  }
-
-  _lastMSecs = msecs;
-  _lastNSecs = nsecs;
-  _clockseq = clockseq; // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
-
-  msecs += 12219292800000; // `time_low`
-
-  const tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
-  b[i++] = tl >>> 24 & 0xff;
-  b[i++] = tl >>> 16 & 0xff;
-  b[i++] = tl >>> 8 & 0xff;
-  b[i++] = tl & 0xff; // `time_mid`
-
-  const tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
-  b[i++] = tmh >>> 8 & 0xff;
-  b[i++] = tmh & 0xff; // `time_high_and_version`
-
-  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
-
-  b[i++] = tmh >>> 16 & 0xff; // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
-
-  b[i++] = clockseq >>> 8 | 0x80; // `clock_seq_low`
-
-  b[i++] = clockseq & 0xff; // `node`
-
-  for (let n = 0; n < 6; ++n) {
-    b[i + n] = node[n];
-  }
-
-  return buf || (0, _stringify$2.default)(b);
-}
-
-var _default$9 = v1;
-v1$1.default = _default$9;
-
-var v3$1 = {};
-
-var v35 = {};
-
-var parse$7 = {};
-
-Object.defineProperty(parse$7, "__esModule", {
-  value: true
-});
-parse$7.default = void 0;
-
-var _validate$1 = _interopRequireDefault$7(validate$1);
-
-function _interopRequireDefault$7(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function parse$6(uuid) {
-  if (!(0, _validate$1.default)(uuid)) {
-    throw TypeError('Invalid UUID');
-  }
-
-  let v;
-  const arr = new Uint8Array(16); // Parse ########-....-....-....-............
-
-  arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
-  arr[1] = v >>> 16 & 0xff;
-  arr[2] = v >>> 8 & 0xff;
-  arr[3] = v & 0xff; // Parse ........-####-....-....-............
-
-  arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
-  arr[5] = v & 0xff; // Parse ........-....-####-....-............
-
-  arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
-  arr[7] = v & 0xff; // Parse ........-....-....-####-............
-
-  arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
-  arr[9] = v & 0xff; // Parse ........-....-....-....-############
-  // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
-
-  arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
-  arr[11] = v / 0x100000000 & 0xff;
-  arr[12] = v >>> 24 & 0xff;
-  arr[13] = v >>> 16 & 0xff;
-  arr[14] = v >>> 8 & 0xff;
-  arr[15] = v & 0xff;
-  return arr;
-}
-
-var _default$8 = parse$6;
-parse$7.default = _default$8;
-
-Object.defineProperty(v35, "__esModule", {
-  value: true
-});
-v35.default = _default$7;
-v35.URL = v35.DNS = void 0;
-
-var _stringify$1 = _interopRequireDefault$6(stringify$1);
-
-var _parse = _interopRequireDefault$6(parse$7);
-
-function _interopRequireDefault$6(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function stringToBytes(str) {
-  str = unescape(encodeURIComponent(str)); // UTF8 escape
-
-  const bytes = [];
-
-  for (let i = 0; i < str.length; ++i) {
-    bytes.push(str.charCodeAt(i));
-  }
-
-  return bytes;
-}
-
-const DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
-v35.DNS = DNS;
-const URL$1 = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
-v35.URL = URL$1;
-
-function _default$7(name, version, hashfunc) {
-  function generateUUID(value, namespace, buf, offset) {
-    if (typeof value === 'string') {
-      value = stringToBytes(value);
-    }
-
-    if (typeof namespace === 'string') {
-      namespace = (0, _parse.default)(namespace);
-    }
-
-    if (namespace.length !== 16) {
-      throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
-    } // Compute hash of namespace and value, Per 4.3
-    // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
-    // hashfunc([...namespace, ... value])`
-
-
-    let bytes = new Uint8Array(16 + value.length);
-    bytes.set(namespace);
-    bytes.set(value, namespace.length);
-    bytes = hashfunc(bytes);
-    bytes[6] = bytes[6] & 0x0f | version;
-    bytes[8] = bytes[8] & 0x3f | 0x80;
-
-    if (buf) {
-      offset = offset || 0;
-
-      for (let i = 0; i < 16; ++i) {
-        buf[offset + i] = bytes[i];
-      }
-
-      return buf;
-    }
-
-    return (0, _stringify$1.default)(bytes);
-  } // Function#name is not settable on some platforms (#270)
-
-
-  try {
-    generateUUID.name = name; // eslint-disable-next-line no-empty
-  } catch (err) {} // For CommonJS default export support
-
-
-  generateUUID.DNS = DNS;
-  generateUUID.URL = URL$1;
-  return generateUUID;
-}
-
-var md5$1 = {};
-
-Object.defineProperty(md5$1, "__esModule", {
-  value: true
-});
-md5$1.default = void 0;
-
-var _crypto$1 = _interopRequireDefault$5(require$$0__default$9["default"]);
-
-function _interopRequireDefault$5(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function md5(bytes) {
-  if (Array.isArray(bytes)) {
-    bytes = Buffer.from(bytes);
-  } else if (typeof bytes === 'string') {
-    bytes = Buffer.from(bytes, 'utf8');
-  }
-
-  return _crypto$1.default.createHash('md5').update(bytes).digest();
-}
-
-var _default$6 = md5;
-md5$1.default = _default$6;
-
-Object.defineProperty(v3$1, "__esModule", {
-  value: true
-});
-v3$1.default = void 0;
-
-var _v$1 = _interopRequireDefault$4(v35);
-
-var _md = _interopRequireDefault$4(md5$1);
-
-function _interopRequireDefault$4(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const v3 = (0, _v$1.default)('v3', 0x30, _md.default);
-var _default$5 = v3;
-v3$1.default = _default$5;
-
-var v4$1 = {};
-
-Object.defineProperty(v4$1, "__esModule", {
-  value: true
-});
-v4$1.default = void 0;
-
-var _rng = _interopRequireDefault$3(rng$1);
-
-var _stringify = _interopRequireDefault$3(stringify$1);
-
-function _interopRequireDefault$3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function v4(options, buf, offset) {
-  options = options || {};
-
-  const rnds = options.random || (options.rng || _rng.default)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-
-
-  rnds[6] = rnds[6] & 0x0f | 0x40;
-  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
-
-  if (buf) {
-    offset = offset || 0;
-
-    for (let i = 0; i < 16; ++i) {
-      buf[offset + i] = rnds[i];
-    }
-
-    return buf;
-  }
-
-  return (0, _stringify.default)(rnds);
-}
-
-var _default$4 = v4;
-v4$1.default = _default$4;
-
-var v5$1 = {};
-
-var sha1$1 = {};
-
-Object.defineProperty(sha1$1, "__esModule", {
-  value: true
-});
-sha1$1.default = void 0;
-
-var _crypto = _interopRequireDefault$2(require$$0__default$9["default"]);
-
-function _interopRequireDefault$2(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function sha1(bytes) {
-  if (Array.isArray(bytes)) {
-    bytes = Buffer.from(bytes);
-  } else if (typeof bytes === 'string') {
-    bytes = Buffer.from(bytes, 'utf8');
-  }
-
-  return _crypto.default.createHash('sha1').update(bytes).digest();
-}
-
-var _default$3 = sha1;
-sha1$1.default = _default$3;
-
-Object.defineProperty(v5$1, "__esModule", {
-  value: true
-});
-v5$1.default = void 0;
-
-var _v = _interopRequireDefault$1(v35);
-
-var _sha = _interopRequireDefault$1(sha1$1);
-
-function _interopRequireDefault$1(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const v5 = (0, _v.default)('v5', 0x50, _sha.default);
-var _default$2 = v5;
-v5$1.default = _default$2;
-
-var nil = {};
-
-Object.defineProperty(nil, "__esModule", {
-  value: true
-});
-nil.default = void 0;
-var _default$1 = '00000000-0000-0000-0000-000000000000';
-nil.default = _default$1;
-
-var version$2 = {};
-
-Object.defineProperty(version$2, "__esModule", {
-  value: true
-});
-version$2.default = void 0;
-
-var _validate = _interopRequireDefault(validate$1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function version$1(uuid) {
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Invalid UUID');
-  }
-
-  return parseInt(uuid.substr(14, 1), 16);
-}
-
-var _default = version$1;
-version$2.default = _default;
-
-(function (exports) {
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	Object.defineProperty(exports, "v1", {
-	  enumerable: true,
-	  get: function () {
-	    return _v.default;
-	  }
-	});
-	Object.defineProperty(exports, "v3", {
-	  enumerable: true,
-	  get: function () {
-	    return _v2.default;
-	  }
-	});
-	Object.defineProperty(exports, "v4", {
-	  enumerable: true,
-	  get: function () {
-	    return _v3.default;
-	  }
-	});
-	Object.defineProperty(exports, "v5", {
-	  enumerable: true,
-	  get: function () {
-	    return _v4.default;
-	  }
-	});
-	Object.defineProperty(exports, "NIL", {
-	  enumerable: true,
-	  get: function () {
-	    return _nil.default;
-	  }
-	});
-	Object.defineProperty(exports, "version", {
-	  enumerable: true,
-	  get: function () {
-	    return _version.default;
-	  }
-	});
-	Object.defineProperty(exports, "validate", {
-	  enumerable: true,
-	  get: function () {
-	    return _validate.default;
-	  }
-	});
-	Object.defineProperty(exports, "stringify", {
-	  enumerable: true,
-	  get: function () {
-	    return _stringify.default;
-	  }
-	});
-	Object.defineProperty(exports, "parse", {
-	  enumerable: true,
-	  get: function () {
-	    return _parse.default;
-	  }
-	});
-
-	var _v = _interopRequireDefault(v1$1);
-
-	var _v2 = _interopRequireDefault(v3$1);
-
-	var _v3 = _interopRequireDefault(v4$1);
-
-	var _v4 = _interopRequireDefault(v5$1);
-
-	var _nil = _interopRequireDefault(nil);
-
-	var _version = _interopRequireDefault(version$2);
-
-	var _validate = _interopRequireDefault(validate$1);
-
-	var _stringify = _interopRequireDefault(stringify$1);
-
-	var _parse = _interopRequireDefault(parse$7);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-} (dist$2));
+var src$2 = {};
 
 var agents = {};
 
@@ -142164,10 +142772,10 @@ function requireAgent () {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(agent, "__esModule", { value: true });
-	const net_1 = __importDefault(require$$0__default$6["default"]);
+	const net_1 = __importDefault(require$$0__default$8["default"]);
 	const tls_1 = __importDefault(require$$1__default["default"]);
 	const url_1 = __importDefault(require$$2__default["default"]);
-	const debug_1 = __importDefault(src$5.exports);
+	const debug_1 = __importDefault(src$7.exports);
 	const once_1 = __importDefault(requireDist$1());
 	const agent_base_1 = requireSrc$1();
 	const debug = (0, debug_1.default)('http-proxy-agent');
@@ -142339,7 +142947,7 @@ function requireDist () {
 	 */
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getAgent = exports.pool = void 0;
-	const http_1 = require$$0__default$2["default"];
+	const http_1 = require$$0__default$3["default"];
 	const https_1 = require$$1__default$1["default"];
 	// eslint-disable-next-line node/no-deprecated-api
 	const url_1 = require$$2__default["default"];
@@ -142393,7 +143001,7 @@ function requireDist () {
 	        const Agent = isHttp
 	            ? requireDist()
 	            : requireDist$2();
-	        const proxyOpts = { ...url_1.parse(proxy), ...poolOptions };
+	        const proxyOpts = { ...(0, url_1.parse)(proxy), ...poolOptions };
 	        return new Agent(proxyOpts);
 	    }
 	    let key = isHttp ? 'http' : 'https';
@@ -142647,18 +143255,18 @@ var streamEvents$1 = StreamEvents;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-Object.defineProperty(src$1, "__esModule", { value: true });
-src$1.teenyRequest = src$1.RequestError = void 0;
+Object.defineProperty(src$2, "__esModule", { value: true });
+src$2.teenyRequest = src$2.RequestError = void 0;
 const node_fetch_1 = lib$4.exports;
-const stream_1$2 = require$$0__default$4["default"];
-const uuid = dist$2;
+const stream_1$2 = require$$0__default$6["default"];
+const uuid = dist$3;
 const agents_1 = agents;
 const TeenyStatistics_1 = TeenyStatistics$1;
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const streamEvents = streamEvents$1;
 class RequestError extends Error {
 }
-src$1.RequestError = RequestError;
+src$2.RequestError = RequestError;
 /**
  * Convert options from Request to Fetch format
  * @private
@@ -142697,11 +143305,11 @@ function requestToFetchOptions(reqOpts) {
     }
     if (reqOpts.useQuerystring === true || typeof reqOpts.qs === 'object') {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const qs = require$$0__default$8["default"];
+        const qs = require$$0__default$9["default"];
         const params = qs.stringify(reqOpts.qs);
         uri = uri + '?' + params;
     }
-    options.agent = agents_1.getAgent(uri, reqOpts);
+    options.agent = (0, agents_1.getAgent)(uri, reqOpts);
     return { uri, options };
 }
 /**
@@ -142769,7 +143377,7 @@ function teenyRequest(reqOpts, callback) {
         options.body = createMultipartStream(boundary, multipart);
         // Multipart upload
         teenyRequest.stats.requestStarting();
-        node_fetch_1.default(uri, options).then(res => {
+        (0, node_fetch_1.default)(uri, options).then(res => {
             teenyRequest.stats.requestFinished();
             const header = res.headers.get('content-type');
             const response = fetchToRequestResponse(options, res);
@@ -142813,7 +143421,7 @@ function teenyRequest(reqOpts, callback) {
         });
         options.compress = false;
         teenyRequest.stats.requestStarting();
-        node_fetch_1.default(uri, options).then(res => {
+        (0, node_fetch_1.default)(uri, options).then(res => {
             teenyRequest.stats.requestFinished();
             responseStream = res.body;
             responseStream.on('error', (err) => {
@@ -142832,7 +143440,7 @@ function teenyRequest(reqOpts, callback) {
     }
     // GET or POST with callback
     teenyRequest.stats.requestStarting();
-    node_fetch_1.default(uri, options).then(res => {
+    (0, node_fetch_1.default)(uri, options).then(res => {
         teenyRequest.stats.requestFinished();
         const header = res.headers.get('content-type');
         const response = fetchToRequestResponse(options, res);
@@ -142865,7 +143473,7 @@ function teenyRequest(reqOpts, callback) {
     });
     return;
 }
-src$1.teenyRequest = teenyRequest;
+src$2.teenyRequest = teenyRequest;
 teenyRequest.defaults = (defaults) => {
     return (reqOpts, callback) => {
         const opts = { ...defaults, ...reqOpts };
@@ -142883,19 +143491,146 @@ teenyRequest.resetStats = () => {
     teenyRequest.stats = new TeenyStatistics_1.TeenyStatistics(teenyRequest.stats.getOptions());
 };
 
+var name = "@google-cloud/storage";
+var description = "Cloud Storage Client Library for Node.js";
+var version = "6.2.3";
+var license = "Apache-2.0";
+var author = "Google Inc.";
+var engines = {
+	node: ">=12"
+};
+var repository = "googleapis/nodejs-storage";
+var main$1 = "./build/src/index.js";
+var types = "./build/src/index.d.ts";
+var files = [
+	"build/src",
+	"!build/src/**/*.map"
+];
+var keywords = [
+	"google apis client",
+	"google api client",
+	"google apis",
+	"google api",
+	"google",
+	"google cloud platform",
+	"google cloud",
+	"cloud",
+	"google storage",
+	"storage"
+];
+var scripts = {
+	predocs: "npm run compile",
+	docs: "jsdoc -c .jsdoc.js",
+	"system-test": "mocha build/system-test --timeout 600000 --exit",
+	"conformance-test": "mocha --parallel build/conformance-test/ --require build/conformance-test/globalHooks.js",
+	"preconformance-test": "npm run compile",
+	"presystem-test": "npm run compile",
+	test: "c8 mocha build/test",
+	pretest: "npm run compile",
+	lint: "gts check",
+	"samples-test": "npm link && cd samples/ && npm link ../ && npm test && cd ../",
+	"all-test": "npm test && npm run system-test && npm run samples-test",
+	check: "gts check",
+	clean: "gts clean",
+	compile: "tsc -p .",
+	fix: "gts fix",
+	prepare: "npm run compile",
+	"docs-test": "linkinator docs",
+	"predocs-test": "npm run docs",
+	benchwrapper: "node bin/benchwrapper.js",
+	prelint: "cd samples; npm link ../; npm install",
+	precompile: "gts clean"
+};
+var dependencies = {
+	"@google-cloud/paginator": "^3.0.7",
+	"@google-cloud/projectify": "^3.0.0",
+	"@google-cloud/promisify": "^3.0.0",
+	"abort-controller": "^3.0.0",
+	arrify: "^2.0.0",
+	"async-retry": "^1.3.3",
+	compressible: "^2.0.12",
+	duplexify: "^4.0.0",
+	ent: "^2.2.0",
+	extend: "^3.0.2",
+	gaxios: "^5.0.0",
+	"google-auth-library": "^8.0.1",
+	mime: "^3.0.0",
+	"mime-types": "^2.0.8",
+	"p-limit": "^3.0.1",
+	pumpify: "^2.0.0",
+	"retry-request": "^5.0.0",
+	"stream-events": "^1.0.4",
+	"teeny-request": "^8.0.0",
+	uuid: "^8.0.0"
+};
+var devDependencies = {
+	"@google-cloud/pubsub": "^3.0.0",
+	"@grpc/grpc-js": "^1.0.3",
+	"@grpc/proto-loader": "^0.6.0",
+	"@types/async-retry": "^1.4.3",
+	"@types/compressible": "^2.0.0",
+	"@types/ent": "^2.2.1",
+	"@types/extend": "^3.0.0",
+	"@types/mime": "^2.0.0",
+	"@types/mime-types": "^2.1.0",
+	"@types/mocha": "^9.1.1",
+	"@types/mockery": "^1.4.29",
+	"@types/node": "^17.0.30",
+	"@types/node-fetch": "^2.1.3",
+	"@types/proxyquire": "^1.3.28",
+	"@types/pumpify": "^1.4.1",
+	"@types/request": "^2.48.4",
+	"@types/sinon": "^10.0.0",
+	"@types/tmp": "0.2.3",
+	"@types/uuid": "^8.0.0",
+	"@types/yargs": "^17.0.10",
+	c8: "^7.0.0",
+	"form-data": "^4.0.0",
+	gts: "^3.1.0",
+	jsdoc: "^3.6.2",
+	"jsdoc-fresh": "^2.0.0",
+	"jsdoc-region-tag": "^2.0.0",
+	linkinator: "^4.0.0",
+	mocha: "^9.2.2",
+	mockery: "^2.1.0",
+	nock: "~13.2.0",
+	"node-fetch": "^2.6.7",
+	proxyquire: "^2.1.3",
+	sinon: "^14.0.0",
+	tmp: "^0.2.0",
+	typescript: "^4.6.4",
+	yargs: "^17.3.1"
+};
+var require$$11 = {
+	name: name,
+	description: description,
+	version: version,
+	license: license,
+	author: author,
+	engines: engines,
+	repository: repository,
+	main: main$1,
+	types: types,
+	files: files,
+	keywords: keywords,
+	scripts: scripts,
+	dependencies: dependencies,
+	devDependencies: devDependencies
+};
+
 var readable = {exports: {}};
 
-var stream$3 = {exports: {}};
+var stream$2 = {exports: {}};
 
 var hasRequiredStream;
 
 function requireStream () {
-	if (hasRequiredStream) return stream$3.exports;
+	if (hasRequiredStream) return stream$2.exports;
 	hasRequiredStream = 1;
 	(function (module) {
-		module.exports = require$$0__default$4["default"];
-} (stream$3));
-	return stream$3.exports;
+		module.exports = require$$0__default$6["default"];
+} (stream$2));
+	return stream$2.exports;
 }
 
 var buffer_list;
@@ -142917,7 +143652,7 @@ function requireBuffer_list () {
 
 	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-	var _require = require$$0__default$5["default"],
+	var _require = require$$0__default$7["default"],
 	    Buffer = _require.Buffer;
 
 	var _require2 = require$$4__default["default"],
@@ -143504,7 +144239,7 @@ function require_stream_writable () {
 	/*</replacement>*/
 
 
-	var Buffer = require$$0__default$5["default"].Buffer;
+	var Buffer = require$$0__default$7["default"].Buffer;
 
 	var OurUint8Array = commonjsGlobal.Uint8Array || function () {};
 
@@ -144671,7 +145406,7 @@ function require_stream_readable () {
 	Readable.ReadableState = ReadableState;
 	/*<replacement>*/
 
-	require$$0__default$3["default"].EventEmitter;
+	require$$0__default$2["default"].EventEmitter;
 
 	var EElistenerCount = function EElistenerCount(emitter, type) {
 	  return emitter.listeners(type).length;
@@ -144685,7 +145420,7 @@ function require_stream_readable () {
 	/*</replacement>*/
 
 
-	var Buffer = require$$0__default$5["default"].Buffer;
+	var Buffer = require$$0__default$7["default"].Buffer;
 
 	var OurUint8Array = commonjsGlobal.Uint8Array || function () {};
 
@@ -146042,7 +146777,7 @@ function requirePipeline () {
 }
 
 (function (module, exports) {
-	var Stream = require$$0__default$4["default"];
+	var Stream = require$$0__default$6["default"];
 	if (process.env.READABLE_STREAM === 'disable' && Stream) {
 	  module.exports = Stream.Readable;
 	  Object.assign(module.exports, Stream);
@@ -146156,7 +146891,7 @@ function requireOnce () {
 
 var once$1 = requireOnce();
 
-var noop$3 = function() {};
+var noop$2 = function() {};
 
 var isRequest$1 = function(stream) {
 	return stream.setHeader && typeof stream.abort === 'function';
@@ -146170,7 +146905,7 @@ var eos$2 = function(stream, opts, callback) {
 	if (typeof opts === 'function') return eos$2(stream, null, opts);
 	if (!opts) opts = {};
 
-	callback = once$1(callback || noop$3);
+	callback = once$1(callback || noop$2);
 
 	var ws = stream._writableState;
 	var rs = stream._readableState;
@@ -146270,7 +147005,7 @@ function getStateLength (state) {
   return state.length
 }
 
-var stream$2 = readable.exports;
+var stream$1 = readable.exports;
 var eos$1 = endOfStream;
 var inherits$1 = requireInherits();
 var shift = streamShift;
@@ -146303,15 +147038,15 @@ var end = function(ws, fn) {
   fn();
 };
 
-var noop$2 = function() {};
+var noop$1 = function() {};
 
 var toStreams2 = function(rs) {
-  return new (stream$2.Readable)({objectMode:true, highWaterMark:16}).wrap(rs)
+  return new (stream$1.Readable)({objectMode:true, highWaterMark:16}).wrap(rs)
 };
 
 var Duplexify$1 = function(writable, readable, opts) {
   if (!(this instanceof Duplexify$1)) return new Duplexify$1(writable, readable, opts)
-  stream$2.Duplex.call(this, opts);
+  stream$1.Duplex.call(this, opts);
 
   this._writable = null;
   this._readable = null;
@@ -146334,7 +147069,7 @@ var Duplexify$1 = function(writable, readable, opts) {
   if (readable) this.setReadable(readable);
 };
 
-inherits$1(Duplexify$1, stream$2.Duplex);
+inherits$1(Duplexify$1, stream$1.Duplex);
 
 Duplexify$1.obj = function(writable, readable, opts) {
   if (!opts) opts = {};
@@ -146448,7 +147183,7 @@ Duplexify$1.prototype._forward = function() {
 };
 
 Duplexify$1.prototype.destroy = function(err, cb) {
-  if (!cb) cb = noop$2;
+  if (!cb) cb = noop$1;
   if (this.destroyed) return cb(null)
   this.destroyed = true;
 
@@ -146504,626 +147239,1015 @@ Duplexify$1.prototype.end = function(data, enc, cb) {
   this._ended = true;
   if (data) this.write(data);
   if (!this._writableState.ending && !this._writableState.destroyed) this.write(SIGNAL_FLUSH);
-  return stream$2.Writable.prototype.end.call(this, cb)
+  return stream$1.Writable.prototype.end.call(this, cb)
 };
 
-var duplexify$1 = Duplexify$1;
+var duplexify = Duplexify$1;
 
-/*!
- * Copyright 2022 Google LLC. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-Object.defineProperty(util$9, "__esModule", { value: true });
-util$9.util = util$9.Util = util$9.PartialFailureError = util$9.ApiError = void 0;
-/*!
- * @module common/util
- */
-const projectify_1 = src$9;
-const ent = ent$1;
-const extend$2 = extend$4;
-const google_auth_library_1 = src$8;
-const retryRequest = retryRequest$2.exports;
-const stream_1$1 = require$$0__default$4["default"];
-const teeny_request_1 = src$1;
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const duplexify = duplexify$1;
-const requestDefaults = {
-    timeout: 60000,
-    gzip: true,
-    forever: true,
-    pool: {
-        maxSockets: Infinity,
-    },
-};
-/**
- * Default behavior: Automatically retry retriable server errors.
- *
- * @const {boolean}
- * @private
- */
-const AUTO_RETRY_DEFAULT = true;
-/**
- * Default behavior: Only attempt to retry retriable errors 3 times.
- *
- * @const {number}
- * @private
- */
-const MAX_RETRY_DEFAULT = 3;
-/**
- * Custom error type for API errors.
- *
- * @param {object} errorBody - Error object.
- */
-class ApiError extends Error {
-    constructor(errorBodyOrMessage) {
-        super();
-        if (typeof errorBodyOrMessage !== 'object') {
-            this.message = errorBodyOrMessage || '';
-            return;
-        }
-        const errorBody = errorBodyOrMessage;
-        this.code = errorBody.code;
-        this.errors = errorBody.errors;
-        this.response = errorBody.response;
-        try {
-            this.errors = JSON.parse(this.response.body).error.errors;
-        }
-        catch (e) {
-            this.errors = errorBody.errors;
-        }
-        this.message = ApiError.createMultiErrorMessage(errorBody, this.errors);
-        Error.captureStackTrace(this);
-    }
-    /**
-     * Pieces together an error message by combining all unique error messages
-     * returned from a single GoogleError
-     *
-     * @private
-     *
-     * @param {GoogleErrorBody} err The original error.
-     * @param {GoogleInnerError[]} [errors] Inner errors, if any.
-     * @returns {string}
-     */
-    static createMultiErrorMessage(err, errors) {
-        const messages = new Set();
-        if (err.message) {
-            messages.add(err.message);
-        }
-        if (errors && errors.length) {
-            errors.forEach(({ message }) => messages.add(message));
-        }
-        else if (err.response && err.response.body) {
-            messages.add(ent.decode(err.response.body.toString()));
-        }
-        else if (!err.message) {
-            messages.add('A failure occurred during this request.');
-        }
-        let messageArr = Array.from(messages);
-        if (messageArr.length > 1) {
-            messageArr = messageArr.map((message, i) => `    ${i + 1}. ${message}`);
-            messageArr.unshift('Multiple errors occurred during the request. Please see the `errors` array for complete details.\n');
-            messageArr.push('\n');
-        }
-        return messageArr.join('\n');
-    }
+var hasRequiredUtil;
+
+function requireUtil () {
+	if (hasRequiredUtil) return util$7;
+	hasRequiredUtil = 1;
+	/*!
+	 * Copyright 2022 Google LLC. All Rights Reserved.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 *      http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 */
+	Object.defineProperty(util$7, "__esModule", { value: true });
+	util$7.util = util$7.Util = util$7.PartialFailureError = util$7.ApiError = void 0;
+	/*!
+	 * @module common/util
+	 */
+	const projectify_1 = src$b;
+	const ent$1 = ent;
+	const extend = extend$2;
+	const google_auth_library_1 = src$a;
+	const retryRequest = retryRequest$1.exports;
+	const stream_1 = require$$0__default$6["default"];
+	const teeny_request_1 = src$2;
+	const uuid = dist$3;
+	const service_1 = requireService();
+	const packageJson = require$$11;
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	const duplexify$1 = duplexify;
+	const requestDefaults = {
+	    timeout: 60000,
+	    gzip: true,
+	    forever: true,
+	    pool: {
+	        maxSockets: Infinity,
+	    },
+	};
+	/**
+	 * Default behavior: Automatically retry retriable server errors.
+	 *
+	 * @const {boolean}
+	 * @private
+	 */
+	const AUTO_RETRY_DEFAULT = true;
+	/**
+	 * Default behavior: Only attempt to retry retriable errors 3 times.
+	 *
+	 * @const {number}
+	 * @private
+	 */
+	const MAX_RETRY_DEFAULT = 3;
+	/**
+	 * Custom error type for API errors.
+	 *
+	 * @param {object} errorBody - Error object.
+	 */
+	class ApiError extends Error {
+	    constructor(errorBodyOrMessage) {
+	        super();
+	        if (typeof errorBodyOrMessage !== 'object') {
+	            this.message = errorBodyOrMessage || '';
+	            return;
+	        }
+	        const errorBody = errorBodyOrMessage;
+	        this.code = errorBody.code;
+	        this.errors = errorBody.errors;
+	        this.response = errorBody.response;
+	        try {
+	            this.errors = JSON.parse(this.response.body).error.errors;
+	        }
+	        catch (e) {
+	            this.errors = errorBody.errors;
+	        }
+	        this.message = ApiError.createMultiErrorMessage(errorBody, this.errors);
+	        Error.captureStackTrace(this);
+	    }
+	    /**
+	     * Pieces together an error message by combining all unique error messages
+	     * returned from a single GoogleError
+	     *
+	     * @private
+	     *
+	     * @param {GoogleErrorBody} err The original error.
+	     * @param {GoogleInnerError[]} [errors] Inner errors, if any.
+	     * @returns {string}
+	     */
+	    static createMultiErrorMessage(err, errors) {
+	        const messages = new Set();
+	        if (err.message) {
+	            messages.add(err.message);
+	        }
+	        if (errors && errors.length) {
+	            errors.forEach(({ message }) => messages.add(message));
+	        }
+	        else if (err.response && err.response.body) {
+	            messages.add(ent$1.decode(err.response.body.toString()));
+	        }
+	        else if (!err.message) {
+	            messages.add('A failure occurred during this request.');
+	        }
+	        let messageArr = Array.from(messages);
+	        if (messageArr.length > 1) {
+	            messageArr = messageArr.map((message, i) => `    ${i + 1}. ${message}`);
+	            messageArr.unshift('Multiple errors occurred during the request. Please see the `errors` array for complete details.\n');
+	            messageArr.push('\n');
+	        }
+	        return messageArr.join('\n');
+	    }
+	}
+	util$7.ApiError = ApiError;
+	/**
+	 * Custom error type for partial errors returned from the API.
+	 *
+	 * @param {object} b - Error object.
+	 */
+	class PartialFailureError extends Error {
+	    constructor(b) {
+	        super();
+	        const errorObject = b;
+	        this.errors = errorObject.errors;
+	        this.name = 'PartialFailureError';
+	        this.response = errorObject.response;
+	        this.message = ApiError.createMultiErrorMessage(errorObject, this.errors);
+	    }
+	}
+	util$7.PartialFailureError = PartialFailureError;
+	class Util {
+	    constructor() {
+	        this.ApiError = ApiError;
+	        this.PartialFailureError = PartialFailureError;
+	    }
+	    /**
+	     * No op.
+	     *
+	     * @example
+	     * function doSomething(callback) {
+	     *   callback = callback || noop;
+	     * }
+	     */
+	    noop() { }
+	    /**
+	     * Uniformly process an API response.
+	     *
+	     * @param {*} err - Error value.
+	     * @param {*} resp - Response value.
+	     * @param {*} body - Body value.
+	     * @param {function} callback - The callback function.
+	     */
+	    handleResp(err, resp, body, callback) {
+	        callback = callback || util.noop;
+	        const parsedResp = extend(true, { err: err || null }, resp && util.parseHttpRespMessage(resp), body && util.parseHttpRespBody(body));
+	        // Assign the parsed body to resp.body, even if { json: false } was passed
+	        // as a request option.
+	        // We assume that nobody uses the previously unparsed value of resp.body.
+	        if (!parsedResp.err && resp && typeof parsedResp.body === 'object') {
+	            parsedResp.resp.body = parsedResp.body;
+	        }
+	        if (parsedResp.err && resp) {
+	            parsedResp.err.response = resp;
+	        }
+	        callback(parsedResp.err, parsedResp.body, parsedResp.resp);
+	    }
+	    /**
+	     * Sniff an incoming HTTP response message for errors.
+	     *
+	     * @param {object} httpRespMessage - An incoming HTTP response message from `request`.
+	     * @return {object} parsedHttpRespMessage - The parsed response.
+	     * @param {?error} parsedHttpRespMessage.err - An error detected.
+	     * @param {object} parsedHttpRespMessage.resp - The original response object.
+	     */
+	    parseHttpRespMessage(httpRespMessage) {
+	        const parsedHttpRespMessage = {
+	            resp: httpRespMessage,
+	        };
+	        if (httpRespMessage.statusCode < 200 || httpRespMessage.statusCode > 299) {
+	            // Unknown error. Format according to ApiError standard.
+	            parsedHttpRespMessage.err = new ApiError({
+	                errors: new Array(),
+	                code: httpRespMessage.statusCode,
+	                message: httpRespMessage.statusMessage,
+	                response: httpRespMessage,
+	            });
+	        }
+	        return parsedHttpRespMessage;
+	    }
+	    /**
+	     * Parse the response body from an HTTP request.
+	     *
+	     * @param {object} body - The response body.
+	     * @return {object} parsedHttpRespMessage - The parsed response.
+	     * @param {?error} parsedHttpRespMessage.err - An error detected.
+	     * @param {object} parsedHttpRespMessage.body - The original body value provided
+	     *     will try to be JSON.parse'd. If it's successful, the parsed value will
+	     * be returned here, otherwise the original value and an error will be returned.
+	     */
+	    parseHttpRespBody(body) {
+	        const parsedHttpRespBody = {
+	            body,
+	        };
+	        if (typeof body === 'string') {
+	            try {
+	                parsedHttpRespBody.body = JSON.parse(body);
+	            }
+	            catch (err) {
+	                parsedHttpRespBody.body = body;
+	            }
+	        }
+	        if (parsedHttpRespBody.body && parsedHttpRespBody.body.error) {
+	            // Error from JSON API.
+	            parsedHttpRespBody.err = new ApiError(parsedHttpRespBody.body.error);
+	        }
+	        return parsedHttpRespBody;
+	    }
+	    /**
+	     * Take a Duplexify stream, fetch an authenticated connection header, and
+	     * create an outgoing writable stream.
+	     *
+	     * @param {Duplexify} dup - Duplexify stream.
+	     * @param {object} options - Configuration object.
+	     * @param {module:common/connection} options.connection - A connection instance used to get a token with and send the request through.
+	     * @param {object} options.metadata - Metadata to send at the head of the request.
+	     * @param {object} options.request - Request object, in the format of a standard Node.js http.request() object.
+	     * @param {string=} options.request.method - Default: "POST".
+	     * @param {string=} options.request.qs.uploadType - Default: "multipart".
+	     * @param {string=} options.streamContentType - Default: "application/octet-stream".
+	     * @param {function} onComplete - Callback, executed after the writable Request stream has completed.
+	     */
+	    makeWritableStream(dup, options, onComplete) {
+	        onComplete = onComplete || util.noop;
+	        const writeStream = new ProgressStream();
+	        writeStream.on('progress', evt => dup.emit('progress', evt));
+	        dup.setWritable(writeStream);
+	        const defaultReqOpts = {
+	            method: 'POST',
+	            qs: {
+	                uploadType: 'multipart',
+	            },
+	            timeout: 0,
+	            maxRetries: 0,
+	        };
+	        const metadata = options.metadata || {};
+	        const reqOpts = extend(true, defaultReqOpts, options.request, {
+	            multipart: [
+	                {
+	                    'Content-Type': 'application/json',
+	                    body: JSON.stringify(metadata),
+	                },
+	                {
+	                    'Content-Type': metadata.contentType || 'application/octet-stream',
+	                    body: writeStream,
+	                },
+	            ],
+	        });
+	        options.makeAuthenticatedRequest(reqOpts, {
+	            onAuthenticated(err, authenticatedReqOpts) {
+	                if (err) {
+	                    dup.destroy(err);
+	                    return;
+	                }
+	                requestDefaults.headers = util._getDefaultHeaders();
+	                const request = teeny_request_1.teenyRequest.defaults(requestDefaults);
+	                request(authenticatedReqOpts, (err, resp, body) => {
+	                    util.handleResp(err, resp, body, (err, data) => {
+	                        if (err) {
+	                            dup.destroy(err);
+	                            return;
+	                        }
+	                        dup.emit('response', resp);
+	                        onComplete(data);
+	                    });
+	                });
+	            },
+	        });
+	    }
+	    /**
+	     * Returns true if the API request should be retried, given the error that was
+	     * given the first time the request was attempted. This is used for rate limit
+	     * related errors as well as intermittent server errors.
+	     *
+	     * @param {error} err - The API error to check if it is appropriate to retry.
+	     * @return {boolean} True if the API request should be retried, false otherwise.
+	     */
+	    shouldRetryRequest(err) {
+	        if (err) {
+	            if ([408, 429, 500, 502, 503, 504].indexOf(err.code) !== -1) {
+	                return true;
+	            }
+	            if (err.errors) {
+	                for (const e of err.errors) {
+	                    const reason = e.reason;
+	                    if (reason === 'rateLimitExceeded') {
+	                        return true;
+	                    }
+	                    if (reason === 'userRateLimitExceeded') {
+	                        return true;
+	                    }
+	                    if (reason && reason.includes('EAI_AGAIN')) {
+	                        return true;
+	                    }
+	                }
+	            }
+	        }
+	        return false;
+	    }
+	    /**
+	     * Get a function for making authenticated requests.
+	     *
+	     * @param {object} config - Configuration object.
+	     * @param {boolean=} config.autoRetry - Automatically retry requests if the
+	     *     response is related to rate limits or certain intermittent server
+	     * errors. We will exponentially backoff subsequent requests by default.
+	     * (default: true)
+	     * @param {object=} config.credentials - Credentials object.
+	     * @param {boolean=} config.customEndpoint - If true, just return the provided request options. Default: false.
+	     * @param {boolean=} config.useAuthWithCustomEndpoint - If true, will authenticate when using a custom endpoint. Default: false.
+	     * @param {string=} config.email - Account email address, required for PEM/P12 usage.
+	     * @param {number=} config.maxRetries - Maximum number of automatic retries attempted before returning the error. (default: 3)
+	     * @param {string=} config.keyFile - Path to a .json, .pem, or .p12 keyfile.
+	     * @param {array} config.scopes - Array of scopes required for the API.
+	     */
+	    makeAuthenticatedRequestFactory(config) {
+	        const googleAutoAuthConfig = extend({}, config);
+	        if (googleAutoAuthConfig.projectId === service_1.DEFAULT_PROJECT_ID_TOKEN) {
+	            delete googleAutoAuthConfig.projectId;
+	        }
+	        let authClient;
+	        if (googleAutoAuthConfig.authClient instanceof google_auth_library_1.GoogleAuth) {
+	            // Use an existing `GoogleAuth`
+	            authClient = googleAutoAuthConfig.authClient;
+	        }
+	        else {
+	            // Pass an `AuthClient` to `GoogleAuth`, if available
+	            const config = {
+	                ...googleAutoAuthConfig,
+	                authClient: googleAutoAuthConfig.authClient,
+	            };
+	            authClient = new google_auth_library_1.GoogleAuth(config);
+	        }
+	        function makeAuthenticatedRequest(reqOpts, optionsOrCallback) {
+	            let stream;
+	            let projectId;
+	            const reqConfig = extend({}, config);
+	            let activeRequest_;
+	            if (!optionsOrCallback) {
+	                stream = duplexify$1();
+	                reqConfig.stream = stream;
+	            }
+	            const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : undefined;
+	            const callback = typeof optionsOrCallback === 'function' ? optionsOrCallback : undefined;
+	            async function setProjectId() {
+	                projectId = await authClient.getProjectId();
+	            }
+	            const onAuthenticated = async (err, authenticatedReqOpts) => {
+	                const authLibraryError = err;
+	                const autoAuthFailed = err &&
+	                    err.message.indexOf('Could not load the default credentials') > -1;
+	                if (autoAuthFailed) {
+	                    // Even though authentication failed, the API might not actually
+	                    // care.
+	                    authenticatedReqOpts = reqOpts;
+	                }
+	                if (!err || autoAuthFailed) {
+	                    try {
+	                        // Try with existing `projectId` value
+	                        authenticatedReqOpts = util.decorateRequest(authenticatedReqOpts, projectId);
+	                        err = null;
+	                    }
+	                    catch (e) {
+	                        if (e instanceof projectify_1.MissingProjectIdError) {
+	                            // A `projectId` was required, but we don't have one.
+	                            try {
+	                                // Attempt to get the `projectId`
+	                                await setProjectId();
+	                                authenticatedReqOpts = util.decorateRequest(authenticatedReqOpts, projectId);
+	                                err = null;
+	                            }
+	                            catch (e) {
+	                                // Re-use the "Could not load the default credentials error" if
+	                                // auto auth failed.
+	                                err = err || e;
+	                            }
+	                        }
+	                        else {
+	                            // Some other error unrelated to missing `projectId`
+	                            err = err || e;
+	                        }
+	                    }
+	                }
+	                if (err) {
+	                    if (stream) {
+	                        stream.destroy(err);
+	                    }
+	                    else {
+	                        const fn = options && options.onAuthenticated
+	                            ? options.onAuthenticated
+	                            : callback;
+	                        fn(err);
+	                    }
+	                    return;
+	                }
+	                if (options && options.onAuthenticated) {
+	                    options.onAuthenticated(null, authenticatedReqOpts);
+	                }
+	                else {
+	                    activeRequest_ = util.makeRequest(authenticatedReqOpts, reqConfig, (apiResponseError, ...params) => {
+	                        if (apiResponseError &&
+	                            apiResponseError.code === 401 &&
+	                            authLibraryError) {
+	                            // Re-use the "Could not load the default credentials error" if
+	                            // the API request failed due to missing credentials.
+	                            apiResponseError = authLibraryError;
+	                        }
+	                        callback(apiResponseError, ...params);
+	                    });
+	                }
+	            };
+	            const prepareRequest = async () => {
+	                try {
+	                    const getProjectId = async () => {
+	                        if (config.projectId &&
+	                            config.projectId !== service_1.DEFAULT_PROJECT_ID_TOKEN) {
+	                            // The user provided a project ID. We don't need to check with the
+	                            // auth client, it could be incorrect.
+	                            return config.projectId;
+	                        }
+	                        if (config.projectIdRequired === false) {
+	                            // A projectId is not required. Return the default.
+	                            return service_1.DEFAULT_PROJECT_ID_TOKEN;
+	                        }
+	                        return setProjectId();
+	                    };
+	                    const authorizeRequest = async () => {
+	                        if (reqConfig.customEndpoint &&
+	                            !reqConfig.useAuthWithCustomEndpoint) {
+	                            // Using a custom API override. Do not use `google-auth-library` for
+	                            // authentication. (ex: connecting to a local Datastore server)
+	                            return reqOpts;
+	                        }
+	                        else {
+	                            return authClient.authorizeRequest(reqOpts);
+	                        }
+	                    };
+	                    const [_projectId, authorizedReqOpts] = await Promise.all([
+	                        getProjectId(),
+	                        authorizeRequest(),
+	                    ]);
+	                    if (_projectId) {
+	                        projectId = _projectId;
+	                    }
+	                    return onAuthenticated(null, authorizedReqOpts);
+	                }
+	                catch (e) {
+	                    return onAuthenticated(e);
+	                }
+	            };
+	            prepareRequest();
+	            if (stream) {
+	                return stream;
+	            }
+	            return {
+	                abort() {
+	                    setImmediate(() => {
+	                        if (activeRequest_) {
+	                            activeRequest_.abort();
+	                            activeRequest_ = null;
+	                        }
+	                    });
+	                },
+	            };
+	        }
+	        const mar = makeAuthenticatedRequest;
+	        mar.getCredentials = authClient.getCredentials.bind(authClient);
+	        mar.authClient = authClient;
+	        return mar;
+	    }
+	    /**
+	     * Make a request through the `retryRequest` module with built-in error
+	     * handling and exponential back off.
+	     *
+	     * @param {object} reqOpts - Request options in the format `request` expects.
+	     * @param {object=} config - Configuration object.
+	     * @param {boolean=} config.autoRetry - Automatically retry requests if the
+	     *     response is related to rate limits or certain intermittent server
+	     * errors. We will exponentially backoff subsequent requests by default.
+	     * (default: true)
+	     * @param {number=} config.maxRetries - Maximum number of automatic retries
+	     *     attempted before returning the error. (default: 3)
+	     * @param {object=} config.request - HTTP module for request calls.
+	     * @param {function} callback - The callback function.
+	     */
+	    makeRequest(reqOpts, config, callback) {
+	        var _a, _b, _c, _d, _e;
+	        let autoRetryValue = AUTO_RETRY_DEFAULT;
+	        if (config.autoRetry !== undefined) {
+	            autoRetryValue = config.autoRetry;
+	        }
+	        else if (((_a = config.retryOptions) === null || _a === void 0 ? void 0 : _a.autoRetry) !== undefined) {
+	            autoRetryValue = config.retryOptions.autoRetry;
+	        }
+	        let maxRetryValue = MAX_RETRY_DEFAULT;
+	        if (config.maxRetries) {
+	            maxRetryValue = config.maxRetries;
+	        }
+	        else if ((_b = config.retryOptions) === null || _b === void 0 ? void 0 : _b.maxRetries) {
+	            maxRetryValue = config.retryOptions.maxRetries;
+	        }
+	        requestDefaults.headers = this._getDefaultHeaders();
+	        const options = {
+	            request: teeny_request_1.teenyRequest.defaults(requestDefaults),
+	            retries: autoRetryValue !== false ? maxRetryValue : 0,
+	            noResponseRetries: autoRetryValue !== false ? maxRetryValue : 0,
+	            shouldRetryFn(httpRespMessage) {
+	                var _a, _b;
+	                const err = util.parseHttpRespMessage(httpRespMessage).err;
+	                if ((_a = config.retryOptions) === null || _a === void 0 ? void 0 : _a.retryableErrorFn) {
+	                    return err && ((_b = config.retryOptions) === null || _b === void 0 ? void 0 : _b.retryableErrorFn(err));
+	                }
+	                return err && util.shouldRetryRequest(err);
+	            },
+	            maxRetryDelay: (_c = config.retryOptions) === null || _c === void 0 ? void 0 : _c.maxRetryDelay,
+	            retryDelayMultiplier: (_d = config.retryOptions) === null || _d === void 0 ? void 0 : _d.retryDelayMultiplier,
+	            totalTimeout: (_e = config.retryOptions) === null || _e === void 0 ? void 0 : _e.totalTimeout,
+	        };
+	        if (typeof reqOpts.maxRetries === 'number') {
+	            options.retries = reqOpts.maxRetries;
+	        }
+	        if (!config.stream) {
+	            return retryRequest(reqOpts, options, 
+	            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+	            (err, response, body) => {
+	                util.handleResp(err, response, body, callback);
+	            });
+	        }
+	        const dup = config.stream;
+	        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+	        let requestStream;
+	        const isGetRequest = (reqOpts.method || 'GET').toUpperCase() === 'GET';
+	        if (isGetRequest) {
+	            requestStream = retryRequest(reqOpts, options);
+	            dup.setReadable(requestStream);
+	        }
+	        else {
+	            // Streaming writable HTTP requests cannot be retried.
+	            requestStream = options.request(reqOpts);
+	            dup.setWritable(requestStream);
+	        }
+	        // Replay the Request events back to the stream.
+	        requestStream
+	            .on('error', dup.destroy.bind(dup))
+	            .on('response', dup.emit.bind(dup, 'response'))
+	            .on('complete', dup.emit.bind(dup, 'complete'));
+	        dup.abort = requestStream.abort;
+	        return dup;
+	    }
+	    /**
+	     * Decorate the options about to be made in a request.
+	     *
+	     * @param {object} reqOpts - The options to be passed to `request`.
+	     * @param {string} projectId - The project ID.
+	     * @return {object} reqOpts - The decorated reqOpts.
+	     */
+	    decorateRequest(reqOpts, projectId) {
+	        delete reqOpts.autoPaginate;
+	        delete reqOpts.autoPaginateVal;
+	        delete reqOpts.objectMode;
+	        if (reqOpts.qs !== null && typeof reqOpts.qs === 'object') {
+	            delete reqOpts.qs.autoPaginate;
+	            delete reqOpts.qs.autoPaginateVal;
+	            reqOpts.qs = (0, projectify_1.replaceProjectIdToken)(reqOpts.qs, projectId);
+	        }
+	        if (Array.isArray(reqOpts.multipart)) {
+	            reqOpts.multipart = reqOpts.multipart.map(part => {
+	                return (0, projectify_1.replaceProjectIdToken)(part, projectId);
+	            });
+	        }
+	        if (reqOpts.json !== null && typeof reqOpts.json === 'object') {
+	            delete reqOpts.json.autoPaginate;
+	            delete reqOpts.json.autoPaginateVal;
+	            reqOpts.json = (0, projectify_1.replaceProjectIdToken)(reqOpts.json, projectId);
+	        }
+	        reqOpts.uri = (0, projectify_1.replaceProjectIdToken)(reqOpts.uri, projectId);
+	        return reqOpts;
+	    }
+	    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+	    isCustomType(unknown, module) {
+	        function getConstructorName(obj) {
+	            return obj.constructor && obj.constructor.name.toLowerCase();
+	        }
+	        const moduleNameParts = module.split('/');
+	        const parentModuleName = moduleNameParts[0] && moduleNameParts[0].toLowerCase();
+	        const subModuleName = moduleNameParts[1] && moduleNameParts[1].toLowerCase();
+	        if (subModuleName && getConstructorName(unknown) !== subModuleName) {
+	            return false;
+	        }
+	        let walkingModule = unknown;
+	        // eslint-disable-next-line no-constant-condition
+	        while (true) {
+	            if (getConstructorName(walkingModule) === parentModuleName) {
+	                return true;
+	            }
+	            walkingModule = walkingModule.parent;
+	            if (!walkingModule) {
+	                return false;
+	            }
+	        }
+	    }
+	    /**
+	     * Create a properly-formatted User-Agent string from a package.json file.
+	     *
+	     * @param {object} packageJson - A module's package.json file.
+	     * @return {string} userAgent - The formatted User-Agent string.
+	     */
+	    getUserAgentFromPackageJson(packageJson) {
+	        const hyphenatedPackageName = packageJson.name
+	            .replace('@google-cloud', 'gcloud-node') // For legacy purposes.
+	            .replace('/', '-'); // For UA spec-compliance purposes.
+	        return hyphenatedPackageName + '/' + packageJson.version;
+	    }
+	    /**
+	     * Given two parameters, figure out if this is either:
+	     *  - Just a callback function
+	     *  - An options object, and then a callback function
+	     * @param optionsOrCallback An options object or callback.
+	     * @param cb A potentially undefined callback.
+	     */
+	    maybeOptionsOrCallback(optionsOrCallback, cb) {
+	        return typeof optionsOrCallback === 'function'
+	            ? [{}, optionsOrCallback]
+	            : [optionsOrCallback, cb];
+	    }
+	    _getDefaultHeaders() {
+	        return {
+	            'User-Agent': util.getUserAgentFromPackageJson(packageJson),
+	            'x-goog-api-client': `gl-node/${process.versions.node} gccl/${packageJson.version} gccl-invocation-id/${uuid.v4()}`,
+	        };
+	    }
+	}
+	util$7.Util = Util;
+	/**
+	 * Basic Passthrough Stream that records the number of bytes read
+	 * every time the cursor is moved.
+	 */
+	class ProgressStream extends stream_1.Transform {
+	    constructor() {
+	        super(...arguments);
+	        this.bytesRead = 0;
+	    }
+	    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+	    _transform(chunk, encoding, callback) {
+	        this.bytesRead += chunk.length;
+	        this.emit('progress', { bytesWritten: this.bytesRead, contentLength: '*' });
+	        this.push(chunk);
+	        callback();
+	    }
+	}
+	const util = new Util();
+	util$7.util = util;
+	
+	return util$7;
 }
-util$9.ApiError = ApiError;
-/**
- * Custom error type for partial errors returned from the API.
- *
- * @param {object} b - Error object.
- */
-class PartialFailureError extends Error {
-    constructor(b) {
-        super();
-        const errorObject = b;
-        this.errors = errorObject.errors;
-        this.name = 'PartialFailureError';
-        this.response = errorObject.response;
-        this.message = ApiError.createMultiErrorMessage(errorObject, this.errors);
-    }
+
+var hasRequiredService;
+
+function requireService () {
+	if (hasRequiredService) return service;
+	hasRequiredService = 1;
+	(function (exports) {
+		Object.defineProperty(exports, "__esModule", { value: true });
+		exports.Service = exports.DEFAULT_PROJECT_ID_TOKEN = void 0;
+		/*!
+		 * Copyright 2022 Google LLC. All Rights Reserved.
+		 *
+		 * Licensed under the Apache License, Version 2.0 (the "License");
+		 * you may not use this file except in compliance with the License.
+		 * You may obtain a copy of the License at
+		 *
+		 *      http://www.apache.org/licenses/LICENSE-2.0
+		 *
+		 * Unless required by applicable law or agreed to in writing, software
+		 * distributed under the License is distributed on an "AS IS" BASIS,
+		 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+		 * See the License for the specific language governing permissions and
+		 * limitations under the License.
+		 */
+		const arrify = arrify_1;
+		const extend = extend$2;
+		const uuid = dist$3;
+		const util_1 = requireUtil();
+		exports.DEFAULT_PROJECT_ID_TOKEN = '{{projectId}}';
+		class Service {
+		    /**
+		     * Service is a base class, meant to be inherited from by a "service," like
+		     * BigQuery or Storage.
+		     *
+		     * This handles making authenticated requests by exposing a `makeReq_`
+		     * function.
+		     *
+		     * @constructor
+		     * @alias module:common/service
+		     *
+		     * @param {object} config - Configuration object.
+		     * @param {string} config.baseUrl - The base URL to make API requests to.
+		     * @param {string[]} config.scopes - The scopes required for the request.
+		     * @param {object=} options - [Configuration object](#/docs).
+		     */
+		    constructor(config, options = {}) {
+		        this.baseUrl = config.baseUrl;
+		        this.apiEndpoint = config.apiEndpoint;
+		        this.timeout = options.timeout;
+		        this.globalInterceptors = arrify(options.interceptors_);
+		        this.interceptors = [];
+		        this.packageJson = config.packageJson;
+		        this.projectId = options.projectId || exports.DEFAULT_PROJECT_ID_TOKEN;
+		        this.projectIdRequired = config.projectIdRequired !== false;
+		        this.providedUserAgent = options.userAgent;
+		        const reqCfg = extend({}, config, {
+		            projectIdRequired: this.projectIdRequired,
+		            projectId: this.projectId,
+		            authClient: options.authClient,
+		            credentials: options.credentials,
+		            keyFile: options.keyFilename,
+		            email: options.email,
+		            token: options.token,
+		        });
+		        this.makeAuthenticatedRequest =
+		            util_1.util.makeAuthenticatedRequestFactory(reqCfg);
+		        this.authClient = this.makeAuthenticatedRequest.authClient;
+		        this.getCredentials = this.makeAuthenticatedRequest.getCredentials;
+		        const isCloudFunctionEnv = !!process.env.FUNCTION_NAME;
+		        if (isCloudFunctionEnv) {
+		            this.interceptors.push({
+		                request(reqOpts) {
+		                    reqOpts.forever = false;
+		                    return reqOpts;
+		                },
+		            });
+		        }
+		    }
+		    /**
+		     * Return the user's custom request interceptors.
+		     */
+		    getRequestInterceptors() {
+		        // Interceptors should be returned in the order they were assigned.
+		        return [].slice
+		            .call(this.globalInterceptors)
+		            .concat(this.interceptors)
+		            .filter(interceptor => typeof interceptor.request === 'function')
+		            .map(interceptor => interceptor.request);
+		    }
+		    getProjectId(callback) {
+		        if (!callback) {
+		            return this.getProjectIdAsync();
+		        }
+		        this.getProjectIdAsync().then(p => callback(null, p), callback);
+		    }
+		    async getProjectIdAsync() {
+		        const projectId = await this.authClient.getProjectId();
+		        if (this.projectId === exports.DEFAULT_PROJECT_ID_TOKEN && projectId) {
+		            this.projectId = projectId;
+		        }
+		        return this.projectId;
+		    }
+		    request_(reqOpts, callback) {
+		        reqOpts = extend(true, {}, reqOpts, { timeout: this.timeout });
+		        const isAbsoluteUrl = reqOpts.uri.indexOf('http') === 0;
+		        const uriComponents = [this.baseUrl];
+		        if (this.projectIdRequired) {
+		            if (reqOpts.projectId) {
+		                uriComponents.push('projects');
+		                uriComponents.push(reqOpts.projectId);
+		            }
+		            else {
+		                uriComponents.push('projects');
+		                uriComponents.push(this.projectId);
+		            }
+		        }
+		        uriComponents.push(reqOpts.uri);
+		        if (isAbsoluteUrl) {
+		            uriComponents.splice(0, uriComponents.indexOf(reqOpts.uri));
+		        }
+		        reqOpts.uri = uriComponents
+		            .map(uriComponent => {
+		            const trimSlashesRegex = /^\/*|\/*$/g;
+		            return uriComponent.replace(trimSlashesRegex, '');
+		        })
+		            .join('/')
+		            // Some URIs have colon separators.
+		            // Bad: https://.../projects/:list
+		            // Good: https://.../projects:list
+		            .replace(/\/:/g, ':');
+		        const requestInterceptors = this.getRequestInterceptors();
+		        arrify(reqOpts.interceptors_).forEach(interceptor => {
+		            if (typeof interceptor.request === 'function') {
+		                requestInterceptors.push(interceptor.request);
+		            }
+		        });
+		        requestInterceptors.forEach(requestInterceptor => {
+		            reqOpts = requestInterceptor(reqOpts);
+		        });
+		        delete reqOpts.interceptors_;
+		        const pkg = this.packageJson;
+		        let userAgent = util_1.util.getUserAgentFromPackageJson(pkg);
+		        if (this.providedUserAgent) {
+		            userAgent = `${this.providedUserAgent} ${userAgent}`;
+		        }
+		        reqOpts.headers = extend({}, reqOpts.headers, {
+		            'User-Agent': userAgent,
+		            'x-goog-api-client': `gl-node/${process.versions.node} gccl/${pkg.version} gccl-invocation-id/${uuid.v4()}`,
+		        });
+		        if (reqOpts.shouldReturnStream) {
+		            return this.makeAuthenticatedRequest(reqOpts);
+		        }
+		        else {
+		            this.makeAuthenticatedRequest(reqOpts, callback);
+		        }
+		    }
+		    /**
+		     * Make an authenticated API request.
+		     *
+		     * @param {object} reqOpts - Request options that are passed to `request`.
+		     * @param {string} reqOpts.uri - A URI relative to the baseUrl.
+		     * @param {function} callback - The callback function passed to `request`.
+		     */
+		    request(reqOpts, callback) {
+		        Service.prototype.request_.call(this, reqOpts, callback);
+		    }
+		    /**
+		     * Make an authenticated API request.
+		     *
+		     * @param {object} reqOpts - Request options that are passed to `request`.
+		     * @param {string} reqOpts.uri - A URI relative to the baseUrl.
+		     */
+		    requestStream(reqOpts) {
+		        const opts = extend(true, reqOpts, { shouldReturnStream: true });
+		        return Service.prototype.request_.call(this, opts);
+		    }
+		}
+		exports.Service = Service;
+		
+} (service));
+	return service;
 }
-util$9.PartialFailureError = PartialFailureError;
-class Util {
-    constructor() {
-        this.ApiError = ApiError;
-        this.PartialFailureError = PartialFailureError;
-    }
-    /**
-     * No op.
-     *
-     * @example
-     * function doSomething(callback) {
-     *   callback = callback || noop;
-     * }
-     */
-    noop() { }
-    /**
-     * Uniformly process an API response.
-     *
-     * @param {*} err - Error value.
-     * @param {*} resp - Response value.
-     * @param {*} body - Body value.
-     * @param {function} callback - The callback function.
-     */
-    handleResp(err, resp, body, callback) {
-        callback = callback || util$3.noop;
-        const parsedResp = extend$2(true, { err: err || null }, resp && util$3.parseHttpRespMessage(resp), body && util$3.parseHttpRespBody(body));
-        // Assign the parsed body to resp.body, even if { json: false } was passed
-        // as a request option.
-        // We assume that nobody uses the previously unparsed value of resp.body.
-        if (!parsedResp.err && resp && typeof parsedResp.body === 'object') {
-            parsedResp.resp.body = parsedResp.body;
-        }
-        if (parsedResp.err && resp) {
-            parsedResp.err.response = resp;
-        }
-        callback(parsedResp.err, parsedResp.body, parsedResp.resp);
-    }
-    /**
-     * Sniff an incoming HTTP response message for errors.
-     *
-     * @param {object} httpRespMessage - An incoming HTTP response message from `request`.
-     * @return {object} parsedHttpRespMessage - The parsed response.
-     * @param {?error} parsedHttpRespMessage.err - An error detected.
-     * @param {object} parsedHttpRespMessage.resp - The original response object.
-     */
-    parseHttpRespMessage(httpRespMessage) {
-        const parsedHttpRespMessage = {
-            resp: httpRespMessage,
-        };
-        if (httpRespMessage.statusCode < 200 || httpRespMessage.statusCode > 299) {
-            // Unknown error. Format according to ApiError standard.
-            parsedHttpRespMessage.err = new ApiError({
-                errors: new Array(),
-                code: httpRespMessage.statusCode,
-                message: httpRespMessage.statusMessage,
-                response: httpRespMessage,
-            });
-        }
-        return parsedHttpRespMessage;
-    }
-    /**
-     * Parse the response body from an HTTP request.
-     *
-     * @param {object} body - The response body.
-     * @return {object} parsedHttpRespMessage - The parsed response.
-     * @param {?error} parsedHttpRespMessage.err - An error detected.
-     * @param {object} parsedHttpRespMessage.body - The original body value provided
-     *     will try to be JSON.parse'd. If it's successful, the parsed value will
-     * be returned here, otherwise the original value and an error will be returned.
-     */
-    parseHttpRespBody(body) {
-        const parsedHttpRespBody = {
-            body,
-        };
-        if (typeof body === 'string') {
-            try {
-                parsedHttpRespBody.body = JSON.parse(body);
-            }
-            catch (err) {
-                parsedHttpRespBody.body = body;
-            }
-        }
-        if (parsedHttpRespBody.body && parsedHttpRespBody.body.error) {
-            // Error from JSON API.
-            parsedHttpRespBody.err = new ApiError(parsedHttpRespBody.body.error);
-        }
-        return parsedHttpRespBody;
-    }
-    /**
-     * Take a Duplexify stream, fetch an authenticated connection header, and
-     * create an outgoing writable stream.
-     *
-     * @param {Duplexify} dup - Duplexify stream.
-     * @param {object} options - Configuration object.
-     * @param {module:common/connection} options.connection - A connection instance used to get a token with and send the request through.
-     * @param {object} options.metadata - Metadata to send at the head of the request.
-     * @param {object} options.request - Request object, in the format of a standard Node.js http.request() object.
-     * @param {string=} options.request.method - Default: "POST".
-     * @param {string=} options.request.qs.uploadType - Default: "multipart".
-     * @param {string=} options.streamContentType - Default: "application/octet-stream".
-     * @param {function} onComplete - Callback, executed after the writable Request stream has completed.
-     */
-    makeWritableStream(dup, options, onComplete) {
-        onComplete = onComplete || util$3.noop;
-        const writeStream = new ProgressStream();
-        writeStream.on('progress', evt => dup.emit('progress', evt));
-        dup.setWritable(writeStream);
-        const defaultReqOpts = {
-            method: 'POST',
-            qs: {
-                uploadType: 'multipart',
-            },
-            timeout: 0,
-            maxRetries: 0,
-        };
-        const metadata = options.metadata || {};
-        const reqOpts = extend$2(true, defaultReqOpts, options.request, {
-            multipart: [
-                {
-                    'Content-Type': 'application/json',
-                    body: JSON.stringify(metadata),
-                },
-                {
-                    'Content-Type': metadata.contentType || 'application/octet-stream',
-                    body: writeStream,
-                },
-            ],
-        });
-        options.makeAuthenticatedRequest(reqOpts, {
-            onAuthenticated(err, authenticatedReqOpts) {
-                if (err) {
-                    dup.destroy(err);
-                    return;
-                }
-                const request = teeny_request_1.teenyRequest.defaults(requestDefaults);
-                request(authenticatedReqOpts, (err, resp, body) => {
-                    util$3.handleResp(err, resp, body, (err, data) => {
-                        if (err) {
-                            dup.destroy(err);
-                            return;
-                        }
-                        dup.emit('response', resp);
-                        onComplete(data);
-                    });
-                });
-            },
-        });
-    }
-    /**
-     * Returns true if the API request should be retried, given the error that was
-     * given the first time the request was attempted. This is used for rate limit
-     * related errors as well as intermittent server errors.
-     *
-     * @param {error} err - The API error to check if it is appropriate to retry.
-     * @return {boolean} True if the API request should be retried, false otherwise.
-     */
-    shouldRetryRequest(err) {
-        if (err) {
-            if ([408, 429, 500, 502, 503, 504].indexOf(err.code) !== -1) {
-                return true;
-            }
-            if (err.errors) {
-                for (const e of err.errors) {
-                    const reason = e.reason;
-                    if (reason === 'rateLimitExceeded') {
-                        return true;
-                    }
-                    if (reason === 'userRateLimitExceeded') {
-                        return true;
-                    }
-                    if (reason && reason.includes('EAI_AGAIN')) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-    /**
-     * Get a function for making authenticated requests.
-     *
-     * @param {object} config - Configuration object.
-     * @param {boolean=} config.autoRetry - Automatically retry requests if the
-     *     response is related to rate limits or certain intermittent server
-     * errors. We will exponentially backoff subsequent requests by default.
-     * (default: true)
-     * @param {object=} config.credentials - Credentials object.
-     * @param {boolean=} config.customEndpoint - If true, just return the provided request options. Default: false.
-     * @param {boolean=} config.useAuthWithCustomEndpoint - If true, will authenticate when using a custom endpoint. Default: false.
-     * @param {string=} config.email - Account email address, required for PEM/P12 usage.
-     * @param {number=} config.maxRetries - Maximum number of automatic retries attempted before returning the error. (default: 3)
-     * @param {string=} config.keyFile - Path to a .json, .pem, or .p12 keyfile.
-     * @param {array} config.scopes - Array of scopes required for the API.
-     */
-    makeAuthenticatedRequestFactory(config) {
-        const googleAutoAuthConfig = extend$2({}, config);
-        if (googleAutoAuthConfig.projectId === '{{projectId}}') {
-            delete googleAutoAuthConfig.projectId;
-        }
-        let authClient;
-        if (googleAutoAuthConfig.authClient instanceof google_auth_library_1.GoogleAuth) {
-            // Use an existing `GoogleAuth`
-            authClient = googleAutoAuthConfig.authClient;
-        }
-        else {
-            // Pass an `AuthClient` to `GoogleAuth`, if available
-            const config = {
-                ...googleAutoAuthConfig,
-                authClient: googleAutoAuthConfig.authClient,
-            };
-            authClient = new google_auth_library_1.GoogleAuth(config);
-        }
-        function makeAuthenticatedRequest(reqOpts, optionsOrCallback) {
-            let stream;
-            let projectId;
-            const reqConfig = extend$2({}, config);
-            let activeRequest_;
-            if (!optionsOrCallback) {
-                stream = duplexify();
-                reqConfig.stream = stream;
-            }
-            const options = typeof optionsOrCallback === 'object' ? optionsOrCallback : undefined;
-            const callback = typeof optionsOrCallback === 'function' ? optionsOrCallback : undefined;
-            const onAuthenticated = (err, authenticatedReqOpts) => {
-                const authLibraryError = err;
-                const autoAuthFailed = err &&
-                    err.message.indexOf('Could not load the default credentials') > -1;
-                if (autoAuthFailed) {
-                    // Even though authentication failed, the API might not actually
-                    // care.
-                    authenticatedReqOpts = reqOpts;
-                }
-                if (!err || autoAuthFailed) {
-                    try {
-                        authenticatedReqOpts = util$3.decorateRequest(authenticatedReqOpts, projectId);
-                        err = null;
-                    }
-                    catch (e) {
-                        // A projectId was required, but we don't have one.
-                        // Re-use the "Could not load the default credentials error" if
-                        // auto auth failed.
-                        err = err || e;
-                    }
-                }
-                if (err) {
-                    if (stream) {
-                        stream.destroy(err);
-                    }
-                    else {
-                        const fn = options && options.onAuthenticated
-                            ? options.onAuthenticated
-                            : callback;
-                        fn(err);
-                    }
-                    return;
-                }
-                if (options && options.onAuthenticated) {
-                    options.onAuthenticated(null, authenticatedReqOpts);
-                }
-                else {
-                    activeRequest_ = util$3.makeRequest(authenticatedReqOpts, reqConfig, (apiResponseError, ...params) => {
-                        if (apiResponseError &&
-                            apiResponseError.code === 401 &&
-                            authLibraryError) {
-                            // Re-use the "Could not load the default credentials error" if
-                            // the API request failed due to missing credentials.
-                            apiResponseError = authLibraryError;
-                        }
-                        callback(apiResponseError, ...params);
-                    });
-                }
-            };
-            Promise.all([
-                config.projectId && config.projectId !== '{{projectId}}'
-                    ? // The user provided a project ID. We don't need to check with the
-                        // auth client, it could be incorrect.
-                        new Promise(resolve => resolve(config.projectId))
-                    : authClient.getProjectId(),
-                reqConfig.customEndpoint && reqConfig.useAuthWithCustomEndpoint !== true
-                    ? // Using a custom API override. Do not use `google-auth-library` for
-                        // authentication. (ex: connecting to a local Datastore server)
-                        new Promise(resolve => resolve(reqOpts))
-                    : authClient.authorizeRequest(reqOpts),
-            ])
-                .then(([_projectId, authorizedReqOpts]) => {
-                projectId = _projectId;
-                onAuthenticated(null, authorizedReqOpts);
-            })
-                .catch(onAuthenticated);
-            if (stream) {
-                return stream;
-            }
-            return {
-                abort() {
-                    setImmediate(() => {
-                        if (activeRequest_) {
-                            activeRequest_.abort();
-                            activeRequest_ = null;
-                        }
-                    });
-                },
-            };
-        }
-        const mar = makeAuthenticatedRequest;
-        mar.getCredentials = authClient.getCredentials.bind(authClient);
-        mar.authClient = authClient;
-        return mar;
-    }
-    /**
-     * Make a request through the `retryRequest` module with built-in error
-     * handling and exponential back off.
-     *
-     * @param {object} reqOpts - Request options in the format `request` expects.
-     * @param {object=} config - Configuration object.
-     * @param {boolean=} config.autoRetry - Automatically retry requests if the
-     *     response is related to rate limits or certain intermittent server
-     * errors. We will exponentially backoff subsequent requests by default.
-     * (default: true)
-     * @param {number=} config.maxRetries - Maximum number of automatic retries
-     *     attempted before returning the error. (default: 3)
-     * @param {object=} config.request - HTTP module for request calls.
-     * @param {function} callback - The callback function.
-     */
-    makeRequest(reqOpts, config, callback) {
-        var _a, _b, _c, _d, _e, _f, _g;
-        let autoRetryValue = AUTO_RETRY_DEFAULT;
-        if (config.autoRetry !== undefined &&
-            ((_a = config.retryOptions) === null || _a === void 0 ? void 0 : _a.autoRetry) !== undefined) {
-            throw new ApiError('autoRetry is deprecated. Use retryOptions.autoRetry instead.');
-        }
-        else if (config.autoRetry !== undefined) {
-            autoRetryValue = config.autoRetry;
-        }
-        else if (((_b = config.retryOptions) === null || _b === void 0 ? void 0 : _b.autoRetry) !== undefined) {
-            autoRetryValue = config.retryOptions.autoRetry;
-        }
-        let maxRetryValue = MAX_RETRY_DEFAULT;
-        if (config.maxRetries && ((_c = config.retryOptions) === null || _c === void 0 ? void 0 : _c.maxRetries)) {
-            throw new ApiError('maxRetries is deprecated. Use retryOptions.maxRetries instead.');
-        }
-        else if (config.maxRetries) {
-            maxRetryValue = config.maxRetries;
-        }
-        else if ((_d = config.retryOptions) === null || _d === void 0 ? void 0 : _d.maxRetries) {
-            maxRetryValue = config.retryOptions.maxRetries;
-        }
-        const options = {
-            request: teeny_request_1.teenyRequest.defaults(requestDefaults),
-            retries: autoRetryValue !== false ? maxRetryValue : 0,
-            noResponseRetries: autoRetryValue !== false ? maxRetryValue : 0,
-            shouldRetryFn(httpRespMessage) {
-                var _a, _b;
-                const err = util$3.parseHttpRespMessage(httpRespMessage).err;
-                if ((_a = config.retryOptions) === null || _a === void 0 ? void 0 : _a.retryableErrorFn) {
-                    return err && ((_b = config.retryOptions) === null || _b === void 0 ? void 0 : _b.retryableErrorFn(err));
-                }
-                return err && util$3.shouldRetryRequest(err);
-            },
-            maxRetryDelay: (_e = config.retryOptions) === null || _e === void 0 ? void 0 : _e.maxRetryDelay,
-            retryDelayMultiplier: (_f = config.retryOptions) === null || _f === void 0 ? void 0 : _f.retryDelayMultiplier,
-            totalTimeout: (_g = config.retryOptions) === null || _g === void 0 ? void 0 : _g.totalTimeout,
-        };
-        if (typeof reqOpts.maxRetries === 'number') {
-            options.retries = reqOpts.maxRetries;
-        }
-        if (!config.stream) {
-            return retryRequest(reqOpts, options, 
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (err, response, body) => {
-                util$3.handleResp(err, response, body, callback);
-            });
-        }
-        const dup = config.stream;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let requestStream;
-        const isGetRequest = (reqOpts.method || 'GET').toUpperCase() === 'GET';
-        if (isGetRequest) {
-            requestStream = retryRequest(reqOpts, options);
-            dup.setReadable(requestStream);
-        }
-        else {
-            // Streaming writable HTTP requests cannot be retried.
-            requestStream = options.request(reqOpts);
-            dup.setWritable(requestStream);
-        }
-        // Replay the Request events back to the stream.
-        requestStream
-            .on('error', dup.destroy.bind(dup))
-            .on('response', dup.emit.bind(dup, 'response'))
-            .on('complete', dup.emit.bind(dup, 'complete'));
-        dup.abort = requestStream.abort;
-        return dup;
-    }
-    /**
-     * Decorate the options about to be made in a request.
-     *
-     * @param {object} reqOpts - The options to be passed to `request`.
-     * @param {string} projectId - The project ID.
-     * @return {object} reqOpts - The decorated reqOpts.
-     */
-    decorateRequest(reqOpts, projectId) {
-        delete reqOpts.autoPaginate;
-        delete reqOpts.autoPaginateVal;
-        delete reqOpts.objectMode;
-        if (reqOpts.qs !== null && typeof reqOpts.qs === 'object') {
-            delete reqOpts.qs.autoPaginate;
-            delete reqOpts.qs.autoPaginateVal;
-            reqOpts.qs = projectify_1.replaceProjectIdToken(reqOpts.qs, projectId);
-        }
-        if (Array.isArray(reqOpts.multipart)) {
-            reqOpts.multipart = reqOpts.multipart.map(part => {
-                return projectify_1.replaceProjectIdToken(part, projectId);
-            });
-        }
-        if (reqOpts.json !== null && typeof reqOpts.json === 'object') {
-            delete reqOpts.json.autoPaginate;
-            delete reqOpts.json.autoPaginateVal;
-            reqOpts.json = projectify_1.replaceProjectIdToken(reqOpts.json, projectId);
-        }
-        reqOpts.uri = projectify_1.replaceProjectIdToken(reqOpts.uri, projectId);
-        return reqOpts;
-    }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    isCustomType(unknown, module) {
-        function getConstructorName(obj) {
-            return obj.constructor && obj.constructor.name.toLowerCase();
-        }
-        const moduleNameParts = module.split('/');
-        const parentModuleName = moduleNameParts[0] && moduleNameParts[0].toLowerCase();
-        const subModuleName = moduleNameParts[1] && moduleNameParts[1].toLowerCase();
-        if (subModuleName && getConstructorName(unknown) !== subModuleName) {
-            return false;
-        }
-        let walkingModule = unknown;
-        // eslint-disable-next-line no-constant-condition
-        while (true) {
-            if (getConstructorName(walkingModule) === parentModuleName) {
-                return true;
-            }
-            walkingModule = walkingModule.parent;
-            if (!walkingModule) {
-                return false;
-            }
-        }
-    }
-    /**
-     * Create a properly-formatted User-Agent string from a package.json file.
-     *
-     * @param {object} packageJson - A module's package.json file.
-     * @return {string} userAgent - The formatted User-Agent string.
-     */
-    getUserAgentFromPackageJson(packageJson) {
-        const hyphenatedPackageName = packageJson.name
-            .replace('@google-cloud', 'gcloud-node') // For legacy purposes.
-            .replace('/', '-'); // For UA spec-compliance purposes.
-        return hyphenatedPackageName + '/' + packageJson.version;
-    }
-    /**
-     * Given two parameters, figure out if this is either:
-     *  - Just a callback function
-     *  - An options object, and then a callback function
-     * @param optionsOrCallback An options object or callback.
-     * @param cb A potentially undefined callback.
-     */
-    maybeOptionsOrCallback(optionsOrCallback, cb) {
-        return typeof optionsOrCallback === 'function'
-            ? [{}, optionsOrCallback]
-            : [optionsOrCallback, cb];
-    }
-}
-util$9.Util = Util;
-/**
- * Basic Passthrough Stream that records the number of bytes read
- * every time the cursor is moved.
- */
-class ProgressStream extends stream_1$1.Transform {
-    constructor() {
-        super(...arguments);
-        this.bytesRead = 0;
-    }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    _transform(chunk, encoding, callback) {
-        this.bytesRead += chunk.length;
-        this.emit('progress', { bytesWritten: this.bytesRead, contentLength: '*' });
-        this.push(chunk);
-        callback();
-    }
-}
-const util$3 = new Util();
-util$9.util = util$3;
+
+var serviceObject = {};
+
+var src$1 = {};
+
+(function (exports) {
+	/* eslint-disable prefer-rest-params */
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.callbackifyAll = exports.callbackify = exports.promisifyAll = exports.promisify = void 0;
+	/**
+	 * Wraps a callback style function to conditionally return a promise.
+	 *
+	 * @param {function} originalMethod - The method to promisify.
+	 * @param {object=} options - Promise options.
+	 * @param {boolean} options.singular - Resolve the promise with single arg instead of an array.
+	 * @return {function} wrapped
+	 */
+	function promisify(originalMethod, options) {
+	    if (originalMethod.promisified_) {
+	        return originalMethod;
+	    }
+	    options = options || {};
+	    const slice = Array.prototype.slice;
+	    // tslint:disable-next-line:no-any
+	    const wrapper = function () {
+	        let last;
+	        for (last = arguments.length - 1; last >= 0; last--) {
+	            const arg = arguments[last];
+	            if (typeof arg === 'undefined') {
+	                continue; // skip trailing undefined.
+	            }
+	            if (typeof arg !== 'function') {
+	                break; // non-callback last argument found.
+	            }
+	            return originalMethod.apply(this, arguments);
+	        }
+	        // peel trailing undefined.
+	        const args = slice.call(arguments, 0, last + 1);
+	        // tslint:disable-next-line:variable-name
+	        let PromiseCtor = Promise;
+	        // Because dedupe will likely create a single install of
+	        // @google-cloud/common to be shared amongst all modules, we need to
+	        // localize it at the Service level.
+	        if (this && this.Promise) {
+	            PromiseCtor = this.Promise;
+	        }
+	        return new PromiseCtor((resolve, reject) => {
+	            // tslint:disable-next-line:no-any
+	            args.push((...args) => {
+	                const callbackArgs = slice.call(args);
+	                const err = callbackArgs.shift();
+	                if (err) {
+	                    return reject(err);
+	                }
+	                if (options.singular && callbackArgs.length === 1) {
+	                    resolve(callbackArgs[0]);
+	                }
+	                else {
+	                    resolve(callbackArgs);
+	                }
+	            });
+	            originalMethod.apply(this, args);
+	        });
+	    };
+	    wrapper.promisified_ = true;
+	    return wrapper;
+	}
+	exports.promisify = promisify;
+	/**
+	 * Promisifies certain Class methods. This will not promisify private or
+	 * streaming methods.
+	 *
+	 * @param {module:common/service} Class - Service class.
+	 * @param {object=} options - Configuration object.
+	 */
+	// tslint:disable-next-line:variable-name
+	function promisifyAll(Class, options) {
+	    const exclude = (options && options.exclude) || [];
+	    const ownPropertyNames = Object.getOwnPropertyNames(Class.prototype);
+	    const methods = ownPropertyNames.filter(methodName => {
+	        // clang-format off
+	        return (!exclude.includes(methodName) &&
+	            typeof Class.prototype[methodName] === 'function' && // is it a function?
+	            !/(^_|(Stream|_)|promise$)|^constructor$/.test(methodName) // is it promisable?
+	        );
+	        // clang-format on
+	    });
+	    methods.forEach(methodName => {
+	        const originalMethod = Class.prototype[methodName];
+	        if (!originalMethod.promisified_) {
+	            Class.prototype[methodName] = exports.promisify(originalMethod, options);
+	        }
+	    });
+	}
+	exports.promisifyAll = promisifyAll;
+	/**
+	 * Wraps a promisy type function to conditionally call a callback function.
+	 *
+	 * @param {function} originalMethod - The method to callbackify.
+	 * @param {object=} options - Callback options.
+	 * @param {boolean} options.singular - Pass to the callback a single arg instead of an array.
+	 * @return {function} wrapped
+	 */
+	function callbackify(originalMethod) {
+	    if (originalMethod.callbackified_) {
+	        return originalMethod;
+	    }
+	    // tslint:disable-next-line:no-any
+	    const wrapper = function () {
+	        if (typeof arguments[arguments.length - 1] !== 'function') {
+	            return originalMethod.apply(this, arguments);
+	        }
+	        const cb = Array.prototype.pop.call(arguments);
+	        originalMethod.apply(this, arguments).then(
+	        // tslint:disable-next-line:no-any
+	        (res) => {
+	            res = Array.isArray(res) ? res : [res];
+	            cb(null, ...res);
+	        }, (err) => cb(err));
+	    };
+	    wrapper.callbackified_ = true;
+	    return wrapper;
+	}
+	exports.callbackify = callbackify;
+	/**
+	 * Callbackifies certain Class methods. This will not callbackify private or
+	 * streaming methods.
+	 *
+	 * @param {module:common/service} Class - Service class.
+	 * @param {object=} options - Configuration object.
+	 */
+	function callbackifyAll(
+	// tslint:disable-next-line:variable-name
+	Class, options) {
+	    const exclude = (options && options.exclude) || [];
+	    const ownPropertyNames = Object.getOwnPropertyNames(Class.prototype);
+	    const methods = ownPropertyNames.filter(methodName => {
+	        // clang-format off
+	        return (!exclude.includes(methodName) &&
+	            typeof Class.prototype[methodName] === 'function' && // is it a function?
+	            !/^_|(Stream|_)|^constructor$/.test(methodName) // is it callbackifyable?
+	        );
+	        // clang-format on
+	    });
+	    methods.forEach(methodName => {
+	        const originalMethod = Class.prototype[methodName];
+	        if (!originalMethod.callbackified_) {
+	            Class.prototype[methodName] = exports.callbackify(originalMethod);
+	        }
+	    });
+	}
+	exports.callbackifyAll = callbackifyAll;
+	
+} (src$1));
 
 Object.defineProperty(serviceObject, "__esModule", { value: true });
 serviceObject.ServiceObject = void 0;
@@ -147142,11 +148266,11 @@ serviceObject.ServiceObject = void 0;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const promisify_1$3 = src$a;
-const arrify$2 = arrify_1;
-const events_1 = require$$0__default$3["default"];
-const extend$1 = extend$4;
-const util_1$3 = util$9;
+const promisify_1$3 = src$1;
+const arrify$1 = arrify_1;
+const events_1 = require$$0__default$2["default"];
+const extend = extend$2;
+const util_1$1 = requireUtil();
 /**
  * ServiceObject is a base class, meant to be inherited from by a "service
  * object," like a BigQuery dataset or Storage bucket.
@@ -147187,7 +148311,6 @@ class ServiceObject extends events_1.EventEmitter {
         this.createMethod = config.createMethod;
         this.methods = config.methods || {};
         this.interceptors = [];
-        this.pollIntervalMs = config.pollIntervalMs;
         this.projectId = config.projectId;
         if (config.methods) {
             // This filters the ServiceObject instance (e.g. a "File") to only have
@@ -147244,11 +148367,11 @@ class ServiceObject extends events_1.EventEmitter {
         this.createMethod.apply(null, args);
     }
     delete(optionsOrCallback, cb) {
-        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$1.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const ignoreNotFound = options.ignoreNotFound;
         delete options.ignoreNotFound;
         const methodConfig = (typeof this.methods.delete === 'object' && this.methods.delete) || {};
-        const reqOpts = extend$1(true, {
+        const reqOpts = extend(true, {
             method: 'DELETE',
             uri: '',
         }, methodConfig.reqOpts, {
@@ -147267,7 +148390,7 @@ class ServiceObject extends events_1.EventEmitter {
         });
     }
     exists(optionsOrCallback, cb) {
-        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$1.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         this.get(options, err => {
             if (err) {
                 if (err.code === 404) {
@@ -147284,7 +148407,7 @@ class ServiceObject extends events_1.EventEmitter {
     get(optionsOrCallback, cb) {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const self = this;
-        const [opts, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [opts, callback] = util_1$1.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const options = Object.assign({}, opts);
         const autoCreate = options.autoCreate && typeof this.create === 'function';
         delete options.autoCreate;
@@ -147317,11 +148440,11 @@ class ServiceObject extends events_1.EventEmitter {
         });
     }
     getMetadata(optionsOrCallback, cb) {
-        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$1.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const methodConfig = (typeof this.methods.getMetadata === 'object' &&
             this.methods.getMetadata) ||
             {};
-        const reqOpts = extend$1(true, {
+        const reqOpts = extend(true, {
             uri: '',
         }, methodConfig.reqOpts, {
             qs: options,
@@ -147344,11 +148467,11 @@ class ServiceObject extends events_1.EventEmitter {
         return this.parent.getRequestInterceptors().concat(localInterceptors);
     }
     setMetadata(metadata, optionsOrCallback, cb) {
-        const [options, callback] = util_1$3.util.maybeOptionsOrCallback(optionsOrCallback, cb);
+        const [options, callback] = util_1$1.util.maybeOptionsOrCallback(optionsOrCallback, cb);
         const methodConfig = (typeof this.methods.setMetadata === 'object' &&
             this.methods.setMetadata) ||
             {};
-        const reqOpts = extend$1(true, {}, {
+        const reqOpts = extend(true, {}, {
             method: 'PATCH',
             uri: '',
         }, methodConfig.reqOpts, {
@@ -147363,7 +148486,7 @@ class ServiceObject extends events_1.EventEmitter {
         });
     }
     request_(reqOpts, callback) {
-        reqOpts = extend$1(true, {}, reqOpts);
+        reqOpts = extend(true, {}, reqOpts);
         if (this.projectId) {
             reqOpts.projectId = this.projectId;
         }
@@ -147379,7 +148502,7 @@ class ServiceObject extends events_1.EventEmitter {
             return uriComponent.replace(trimSlashesRegex, '');
         })
             .join('/');
-        const childInterceptors = arrify$2(reqOpts.interceptors_);
+        const childInterceptors = arrify$1(reqOpts.interceptors_);
         const localInterceptors = [].slice.call(this.interceptors);
         reqOpts.interceptors_ = childInterceptors.concat(localInterceptors);
         if (reqOpts.shouldReturnStream) {
@@ -147397,340 +148520,21 @@ class ServiceObject extends events_1.EventEmitter {
      * @param {string} reqOpts.uri - A URI relative to the baseUrl.
      */
     requestStream(reqOpts) {
-        const opts = extend$1(true, reqOpts, { shouldReturnStream: true });
+        const opts = extend(true, reqOpts, { shouldReturnStream: true });
         return this.request_(opts);
     }
 }
 serviceObject.ServiceObject = ServiceObject;
-promisify_1$3.promisifyAll(ServiceObject, { exclude: ['getRequestInterceptors'] });
-
-Object.defineProperty(operation, "__esModule", { value: true });
-operation.Operation = void 0;
-/*!
- * Copyright 2022 Google LLC. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const service_object_1 = serviceObject;
-const util_1$2 = require$$4__default["default"];
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-class Operation extends service_object_1.ServiceObject {
-    /**
-     * An Operation object allows you to interact with APIs that take longer to
-     * process things.
-     *
-     * @constructor
-     * @alias module:common/operation
-     *
-     * @param {object} config - Configuration object.
-     * @param {module:common/service|module:common/serviceObject|module:common/grpcService|module:common/grpcServiceObject} config.parent - The parent object.
-     */
-    constructor(config) {
-        const methods = {
-            /**
-             * Checks to see if an operation exists.
-             */
-            exists: true,
-            /**
-             * Retrieves the operation.
-             */
-            get: true,
-            /**
-             * Retrieves metadata for the operation.
-             */
-            getMetadata: {
-                reqOpts: {
-                    name: config.id,
-                },
-            },
-        };
-        config = Object.assign({
-            baseUrl: '',
-        }, config);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        config.methods = (config.methods || methods);
-        super(config);
-        this.completeListeners = 0;
-        this.hasActiveListeners = false;
-        this.listenForEvents_();
-    }
-    /**
-     * Wraps the `complete` and `error` events in a Promise.
-     *
-     * @return {Promise}
-     */
-    promise() {
-        return new Promise((resolve, reject) => {
-            this.on('error', reject).on('complete', (metadata) => {
-                resolve([metadata]);
-            });
-        });
-    }
-    /**
-     * Begin listening for events on the operation. This method keeps track of how
-     * many "complete" listeners are registered and removed, making sure polling
-     * is handled automatically.
-     *
-     * As long as there is one active "complete" listener, the connection is open.
-     * When there are no more listeners, the polling stops.
-     *
-     * @private
-     */
-    listenForEvents_() {
-        this.on('newListener', (event) => {
-            if (event === 'complete') {
-                this.completeListeners++;
-                if (!this.hasActiveListeners) {
-                    this.hasActiveListeners = true;
-                    this.startPolling_();
-                }
-            }
-        });
-        this.on('removeListener', (event) => {
-            if (event === 'complete' && --this.completeListeners === 0) {
-                this.hasActiveListeners = false;
-            }
-        });
-    }
-    /**
-     * Poll for a status update. Returns null for an incomplete
-     * status, and metadata for a complete status.
-     *
-     * @private
-     */
-    poll_(callback) {
-        this.getMetadata((err, body) => {
-            if (err || body.error) {
-                callback(err || body.error);
-                return;
-            }
-            if (!body.done) {
-                callback(null);
-                return;
-            }
-            callback(null, body);
-        });
-    }
-    /**
-     * Poll `getMetadata` to check the operation's status. This runs a loop to
-     * ping the API on an interval.
-     *
-     * Note: This method is automatically called once a "complete" event handler
-     * is registered on the operation.
-     *
-     * @private
-     */
-    async startPolling_() {
-        if (!this.hasActiveListeners) {
-            return;
-        }
-        try {
-            const metadata = await util_1$2.promisify(this.poll_.bind(this))();
-            if (!metadata) {
-                setTimeout(this.startPolling_.bind(this), this.pollIntervalMs || 500);
-                return;
-            }
-            this.emit('complete', metadata);
-        }
-        catch (err) {
-            this.emit('error', err);
-        }
-    }
-}
-operation.Operation = Operation;
-
-var service = {};
-
-Object.defineProperty(service, "__esModule", { value: true });
-service.Service = void 0;
-/*!
- * Copyright 2022 Google LLC. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const arrify$1 = arrify_1;
-const extend = extend$4;
-const util_1$1 = util$9;
-const PROJECT_ID_TOKEN = '{{projectId}}';
-class Service {
-    /**
-     * Service is a base class, meant to be inherited from by a "service," like
-     * BigQuery or Storage.
-     *
-     * This handles making authenticated requests by exposing a `makeReq_`
-     * function.
-     *
-     * @constructor
-     * @alias module:common/service
-     *
-     * @param {object} config - Configuration object.
-     * @param {string} config.baseUrl - The base URL to make API requests to.
-     * @param {string[]} config.scopes - The scopes required for the request.
-     * @param {object=} options - [Configuration object](#/docs).
-     */
-    constructor(config, options = {}) {
-        this.baseUrl = config.baseUrl;
-        this.apiEndpoint = config.apiEndpoint;
-        this.timeout = options.timeout;
-        this.globalInterceptors = arrify$1(options.interceptors_);
-        this.interceptors = [];
-        this.packageJson = config.packageJson;
-        this.projectId = options.projectId || PROJECT_ID_TOKEN;
-        this.projectIdRequired = config.projectIdRequired !== false;
-        this.providedUserAgent = options.userAgent;
-        const reqCfg = extend({}, config, {
-            projectIdRequired: this.projectIdRequired,
-            projectId: this.projectId,
-            authClient: options.authClient,
-            credentials: options.credentials,
-            keyFile: options.keyFilename,
-            email: options.email,
-            token: options.token,
-        });
-        this.makeAuthenticatedRequest =
-            util_1$1.util.makeAuthenticatedRequestFactory(reqCfg);
-        this.authClient = this.makeAuthenticatedRequest.authClient;
-        this.getCredentials = this.makeAuthenticatedRequest.getCredentials;
-        const isCloudFunctionEnv = !!process.env.FUNCTION_NAME;
-        if (isCloudFunctionEnv) {
-            this.interceptors.push({
-                request(reqOpts) {
-                    reqOpts.forever = false;
-                    return reqOpts;
-                },
-            });
-        }
-    }
-    /**
-     * Return the user's custom request interceptors.
-     */
-    getRequestInterceptors() {
-        // Interceptors should be returned in the order they were assigned.
-        return [].slice
-            .call(this.globalInterceptors)
-            .concat(this.interceptors)
-            .filter(interceptor => typeof interceptor.request === 'function')
-            .map(interceptor => interceptor.request);
-    }
-    getProjectId(callback) {
-        if (!callback) {
-            return this.getProjectIdAsync();
-        }
-        this.getProjectIdAsync().then(p => callback(null, p), callback);
-    }
-    async getProjectIdAsync() {
-        const projectId = await this.authClient.getProjectId();
-        if (this.projectId === PROJECT_ID_TOKEN && projectId) {
-            this.projectId = projectId;
-        }
-        return this.projectId;
-    }
-    request_(reqOpts, callback) {
-        reqOpts = extend(true, {}, reqOpts, { timeout: this.timeout });
-        const isAbsoluteUrl = reqOpts.uri.indexOf('http') === 0;
-        const uriComponents = [this.baseUrl];
-        if (this.projectIdRequired) {
-            if (reqOpts.projectId) {
-                uriComponents.push('projects');
-                uriComponents.push(reqOpts.projectId);
-            }
-            else {
-                uriComponents.push('projects');
-                uriComponents.push(this.projectId);
-            }
-        }
-        uriComponents.push(reqOpts.uri);
-        if (isAbsoluteUrl) {
-            uriComponents.splice(0, uriComponents.indexOf(reqOpts.uri));
-        }
-        reqOpts.uri = uriComponents
-            .map(uriComponent => {
-            const trimSlashesRegex = /^\/*|\/*$/g;
-            return uriComponent.replace(trimSlashesRegex, '');
-        })
-            .join('/')
-            // Some URIs have colon separators.
-            // Bad: https://.../projects/:list
-            // Good: https://.../projects:list
-            .replace(/\/:/g, ':');
-        const requestInterceptors = this.getRequestInterceptors();
-        arrify$1(reqOpts.interceptors_).forEach(interceptor => {
-            if (typeof interceptor.request === 'function') {
-                requestInterceptors.push(interceptor.request);
-            }
-        });
-        requestInterceptors.forEach(requestInterceptor => {
-            reqOpts = requestInterceptor(reqOpts);
-        });
-        delete reqOpts.interceptors_;
-        const pkg = this.packageJson;
-        let userAgent = util_1$1.util.getUserAgentFromPackageJson(pkg);
-        if (this.providedUserAgent) {
-            userAgent = `${this.providedUserAgent} ${userAgent}`;
-        }
-        reqOpts.headers = extend({}, reqOpts.headers, {
-            'User-Agent': userAgent,
-            'x-goog-api-client': `gl-node/${process.versions.node} gccl/${pkg.version}`,
-        });
-        if (reqOpts.shouldReturnStream) {
-            return this.makeAuthenticatedRequest(reqOpts);
-        }
-        else {
-            this.makeAuthenticatedRequest(reqOpts, callback);
-        }
-    }
-    /**
-     * Make an authenticated API request.
-     *
-     * @param {object} reqOpts - Request options that are passed to `request`.
-     * @param {string} reqOpts.uri - A URI relative to the baseUrl.
-     * @param {function} callback - The callback function passed to `request`.
-     */
-    request(reqOpts, callback) {
-        Service.prototype.request_.call(this, reqOpts, callback);
-    }
-    /**
-     * Make an authenticated API request.
-     *
-     * @param {object} reqOpts - Request options that are passed to `request`.
-     * @param {string} reqOpts.uri - A URI relative to the baseUrl.
-     */
-    requestStream(reqOpts) {
-        const opts = extend(true, reqOpts, { shouldReturnStream: true });
-        return Service.prototype.request_.call(this, opts);
-    }
-}
-service.Service = Service;
+(0, promisify_1$3.promisifyAll)(ServiceObject, { exclude: ['getRequestInterceptors'] });
 
 (function (exports) {
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var operation_1 = operation;
-	Object.defineProperty(exports, "Operation", { enumerable: true, get: function () { return operation_1.Operation; } });
-	var service_1 = service;
+	exports.util = exports.ApiError = exports.ServiceObject = exports.Service = void 0;
+	var service_1 = requireService();
 	Object.defineProperty(exports, "Service", { enumerable: true, get: function () { return service_1.Service; } });
 	var service_object_1 = serviceObject;
 	Object.defineProperty(exports, "ServiceObject", { enumerable: true, get: function () { return service_object_1.ServiceObject; } });
-	var util_1 = util$9;
+	var util_1 = requireUtil();
 	Object.defineProperty(exports, "ApiError", { enumerable: true, get: function () { return util_1.ApiError; } });
 	Object.defineProperty(exports, "util", { enumerable: true, get: function () { return util_1.util; } });
 	
@@ -147757,8 +148561,8 @@ var resourceStream = {};
  */
 Object.defineProperty(resourceStream, "__esModule", { value: true });
 resourceStream.ResourceStream = void 0;
-const stream_1 = require$$0__default$4["default"];
-class ResourceStream extends stream_1.Transform {
+const stream_1$1 = require$$0__default$6["default"];
+class ResourceStream extends stream_1$1.Transform {
     constructor(args, requestFn) {
         const options = Object.assign({ objectMode: true }, args.streamOptions);
         super(options);
@@ -147841,7 +148645,7 @@ resourceStream.ResourceStream = ResourceStream;
 	 * @module common/paginator
 	 */
 	const arrify = arrify_1;
-	const extend = extend$4;
+	const extend = extend$2;
 	const resource_stream_1 = resourceStream;
 	Object.defineProperty(exports, "ResourceStream", { enumerable: true, get: function () { return resource_stream_1.ResourceStream; } });
 	/*! Developer Documentation
@@ -158764,7 +159568,7 @@ var require$$0$1 = {
 	 */
 
 	var db = mimeDb.exports;
-	var extname = require$$1__default$2["default"].extname;
+	var extname = require$$0__default$4["default"].extname;
 
 	/**
 	 * Module variables.
@@ -159079,9 +159883,9 @@ const pLimit = concurrency => {
 
 var pLimit_1 = pLimit;
 
-var retry$3 = {exports: {}};
+var retry$2 = {exports: {}};
 
-var retry$2 = {};
+var retry$1 = {};
 
 function RetryOperation(timeouts, options) {
   // Compatibility for the old (timeouts, retryForever) signature
@@ -159347,16 +160151,16 @@ RetryOperation.prototype.mainError = function() {
 	    obj[method].options = options;
 	  }
 	};
-} (retry$2));
+} (retry$1));
 
 (function (module) {
-	module.exports = retry$2;
-} (retry$3));
+	module.exports = retry$1;
+} (retry$2));
 
 // Packages
-var retrier = retry$3.exports;
+var retrier = retry$2.exports;
 
-function retry$1(fn, opts) {
+function retry(fn, opts) {
   function run(resolve, reject) {
     var options = opts || {};
     var op;
@@ -159413,28 +160217,155 @@ function retry$1(fn, opts) {
   return new Promise(run);
 }
 
-var lib = retry$1;
+var lib = retry;
 
-var snakeize = function walk (obj) {
-    if (!obj || typeof obj !== 'object') return obj;
-    if (isDate(obj) || isRegex(obj)) return obj;
-    if (Array.isArray(obj)) return obj.map(walk);
-    return Object.keys(obj).reduce(function (acc, key) {
-        var camel = key[0].toLowerCase() + key.slice(1).replace(/([A-Z]+)/g, function (m, x) {
-            return '_' + x.toLowerCase();
-        });
-        acc[camel] = walk(obj[key]);
-        return acc;
-    }, {});
-};
+var util$1 = {};
 
-var isDate = function (obj) {
-    return Object.prototype.toString.call(obj) === '[object Date]';
-};
-
-var isRegex = function (obj) {
-    return Object.prototype.toString.call(obj) === '[object RegExp]';
-};
+// Copyright 2019 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+Object.defineProperty(util$1, "__esModule", { value: true });
+util$1.formatAsUTCISO = util$1.convertObjKeysToSnakeCase = util$1.unicodeJSONStringify = util$1.objectKeyToLowercase = util$1.qsStringify = util$1.encodeURI = util$1.fixedEncodeURIComponent = util$1.objectEntries = util$1.normalize = void 0;
+const querystring = require$$0__default$9["default"];
+function normalize(optionsOrCallback, cb) {
+    const options = (typeof optionsOrCallback === 'object' ? optionsOrCallback : {});
+    const callback = (typeof optionsOrCallback === 'function' ? optionsOrCallback : cb);
+    return { options, callback };
+}
+util$1.normalize = normalize;
+/**
+ * Flatten an object into an Array of arrays, [[key, value], ..].
+ * Implements Object.entries() for Node.js <8
+ * @internal
+ */
+function objectEntries(obj) {
+    return Object.keys(obj).map(key => [key, obj[key]]);
+}
+util$1.objectEntries = objectEntries;
+/**
+ * Encode `str` with encodeURIComponent, plus these
+ * reserved characters: `! * ' ( )`.
+ *
+ * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent| MDN: fixedEncodeURIComponent}
+ *
+ * @param {string} str The URI component to encode.
+ * @return {string} The encoded string.
+ */
+function fixedEncodeURIComponent(str) {
+    return encodeURIComponent(str).replace(/[!'()*]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase());
+}
+util$1.fixedEncodeURIComponent = fixedEncodeURIComponent;
+/**
+ * URI encode `uri` for generating signed URLs, using fixedEncodeURIComponent.
+ *
+ * Encode every byte except `A-Z a-Z 0-9 ~ - . _`.
+ *
+ * @param {string} uri The URI to encode.
+ * @param [boolean=false] encodeSlash If `true`, the "/" character is not encoded.
+ * @return {string} The encoded string.
+ */
+function encodeURI(uri, encodeSlash) {
+    // Split the string by `/`, and conditionally rejoin them with either
+    // %2F if encodeSlash is `true`, or '/' if `false`.
+    return uri
+        .split('/')
+        .map(fixedEncodeURIComponent)
+        .join(encodeSlash ? '%2F' : '/');
+}
+util$1.encodeURI = encodeURI;
+/**
+ * Serialize an object to a URL query string using util.encodeURI(uri, true).
+ * @param {string} url The object to serialize.
+ * @return {string} Serialized string.
+ */
+function qsStringify(qs) {
+    return querystring.stringify(qs, '&', '=', {
+        encodeURIComponent: (component) => encodeURI(component, true),
+    });
+}
+util$1.qsStringify = qsStringify;
+function objectKeyToLowercase(object) {
+    const newObj = {};
+    for (let key of Object.keys(object)) {
+        const value = object[key];
+        key = key.toLowerCase();
+        newObj[key] = value;
+    }
+    return newObj;
+}
+util$1.objectKeyToLowercase = objectKeyToLowercase;
+/**
+ * JSON encode str, with unicode \u+ representation.
+ * @param {object} obj The object to encode.
+ * @return {string} Serialized string.
+ */
+function unicodeJSONStringify(obj) {
+    return JSON.stringify(obj).replace(/[\u0080-\uFFFF]/g, (char) => '\\u' + ('0000' + char.charCodeAt(0).toString(16)).slice(-4));
+}
+util$1.unicodeJSONStringify = unicodeJSONStringify;
+/**
+ * Converts the given objects keys to snake_case
+ * @param {object} obj object to convert keys to snake case.
+ * @returns {object} object with keys converted to snake case.
+ */
+function convertObjKeysToSnakeCase(obj) {
+    if (obj instanceof Date || obj instanceof RegExp) {
+        return obj;
+    }
+    if (Array.isArray(obj)) {
+        return obj.map(convertObjKeysToSnakeCase);
+    }
+    if (obj instanceof Object) {
+        return Object.keys(obj).reduce((acc, cur) => {
+            const s = cur[0].toLocaleLowerCase() +
+                cur.slice(1).replace(/([A-Z]+)/g, (match, p1) => {
+                    return `_${p1.toLowerCase()}`;
+                });
+            acc[s] = convertObjKeysToSnakeCase(obj[cur]);
+            return acc;
+        }, Object());
+    }
+    return obj;
+}
+util$1.convertObjKeysToSnakeCase = convertObjKeysToSnakeCase;
+/**
+ * Formats the provided date object as a UTC ISO string.
+ * @param {Date} dateTimeToFormat date object to be formatted.
+ * @param {boolean} includeTime flag to include hours, minutes, seconds in output.
+ * @param {string} dateDelimiter delimiter between date components.
+ * @param {string} timeDelimiter delimiter between time components.
+ * @returns {string} UTC ISO format of provided date obect.
+ */
+function formatAsUTCISO(dateTimeToFormat, includeTime = false, dateDelimiter = '', timeDelimiter = '') {
+    const year = dateTimeToFormat.getUTCFullYear();
+    const month = dateTimeToFormat.getUTCMonth() + 1;
+    const day = dateTimeToFormat.getUTCDate();
+    const hour = dateTimeToFormat.getUTCHours();
+    const minute = dateTimeToFormat.getUTCMinutes();
+    const second = dateTimeToFormat.getUTCSeconds();
+    let resultString = `${year.toString().padStart(4, '0')}${dateDelimiter}${month
+        .toString()
+        .padStart(2, '0')}${dateDelimiter}${day.toString().padStart(2, '0')}`;
+    if (includeTime) {
+        resultString = `${resultString}T${hour
+            .toString()
+            .padStart(2, '0')}${timeDelimiter}${minute
+            .toString()
+            .padStart(2, '0')}${timeDelimiter}${second.toString().padStart(2, '0')}Z`;
+    }
+    return resultString;
+}
+util$1.formatAsUTCISO = formatAsUTCISO;
 
 var acl = {};
 
@@ -159453,7 +160384,7 @@ var acl = {};
 // limitations under the License.
 Object.defineProperty(acl, "__esModule", { value: true });
 acl.AclRoleAccessorMethods = acl.Acl = void 0;
-const promisify_1$2 = src$a;
+const promisify_1$2 = src$1;
 const arrify = arrify_1;
 /**
  * Attach functionality to a {@link Storage.acl} instance. This will add an
@@ -160152,7 +161083,7 @@ acl.Acl = Acl;
  * All async methods (except for streams) will return a Promise in the event
  * that a callback is omitted.
  */
-promisify_1$2.promisifyAll(Acl, {
+(0, promisify_1$2.promisifyAll)(Acl, {
     exclude: ['request'],
 });
 
@@ -160214,745 +161145,6 @@ function compressible (type) {
   // fallback to regexp or unknown
   return COMPRESSIBLE_TYPE_REGEXP.test(mime) || undefined
 }
-
-var getStream$1 = {exports: {}};
-
-const {PassThrough: PassThroughStream} = require$$0__default$4["default"];
-
-var bufferStream$1 = options => {
-	options = {...options};
-
-	const {array} = options;
-	let {encoding} = options;
-	const isBuffer = encoding === 'buffer';
-	let objectMode = false;
-
-	if (array) {
-		objectMode = !(encoding || isBuffer);
-	} else {
-		encoding = encoding || 'utf8';
-	}
-
-	if (isBuffer) {
-		encoding = null;
-	}
-
-	const stream = new PassThroughStream({objectMode});
-
-	if (encoding) {
-		stream.setEncoding(encoding);
-	}
-
-	let length = 0;
-	const chunks = [];
-
-	stream.on('data', chunk => {
-		chunks.push(chunk);
-
-		if (objectMode) {
-			length = chunks.length;
-		} else {
-			length += chunk.length;
-		}
-	});
-
-	stream.getBufferedValue = () => {
-		if (array) {
-			return chunks;
-		}
-
-		return isBuffer ? Buffer.concat(chunks, length) : chunks.join('');
-	};
-
-	stream.getBufferedLength = () => length;
-
-	return stream;
-};
-
-const {constants: BufferConstants} = require$$0__default$5["default"];
-const stream$1 = require$$0__default$4["default"];
-const {promisify: promisify$2} = require$$4__default["default"];
-const bufferStream = bufferStream$1;
-
-const streamPipelinePromisified = promisify$2(stream$1.pipeline);
-
-class MaxBufferError extends Error {
-	constructor() {
-		super('maxBuffer exceeded');
-		this.name = 'MaxBufferError';
-	}
-}
-
-async function getStream(inputStream, options) {
-	if (!inputStream) {
-		throw new Error('Expected a stream');
-	}
-
-	options = {
-		maxBuffer: Infinity,
-		...options
-	};
-
-	const {maxBuffer} = options;
-	const stream = bufferStream(options);
-
-	await new Promise((resolve, reject) => {
-		const rejectPromise = error => {
-			// Don't retrieve an oversized buffer.
-			if (error && stream.getBufferedLength() <= BufferConstants.MAX_LENGTH) {
-				error.bufferedData = stream.getBufferedValue();
-			}
-
-			reject(error);
-		};
-
-		(async () => {
-			try {
-				await streamPipelinePromisified(inputStream, stream);
-				resolve();
-			} catch (error) {
-				rejectPromise(error);
-			}
-		})();
-
-		stream.on('data', () => {
-			if (stream.getBufferedLength() > maxBuffer) {
-				rejectPromise(new MaxBufferError());
-			}
-		});
-	});
-
-	return stream.getBufferedValue();
-}
-
-getStream$1.exports = getStream;
-getStream$1.exports.buffer = (stream, options) => getStream(stream, {...options, encoding: 'buffer'});
-getStream$1.exports.array = (stream, options) => getStream(stream, {...options, array: true});
-getStream$1.exports.MaxBufferError = MaxBufferError;
-
-var dateAndTime = {exports: {}};
-
-(function (module, exports) {
-	(function (global, factory) {
-	    module.exports = factory() ;
-	})(commonjsGlobal, (function () {
-	    /**
-	     * @preserve date-and-time (c) KNOWLEDGECODE | MIT
-	     */
-
-	    var locales = {},
-	        plugins = {},
-	        lang = 'en',
-	        _res = {
-	            MMMM: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-	            MMM: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-	            dddd: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-	            ddd: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-	            dd: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	            A: ['AM', 'PM']
-	        },
-	        _formatter = {
-	            YYYY: function (d/*, formatString*/) { return ('000' + d.getFullYear()).slice(-4); },
-	            YY: function (d/*, formatString*/) { return ('0' + d.getFullYear()).slice(-2); },
-	            Y: function (d/*, formatString*/) { return '' + d.getFullYear(); },
-	            MMMM: function (d/*, formatString*/) { return this.res.MMMM[d.getMonth()]; },
-	            MMM: function (d/*, formatString*/) { return this.res.MMM[d.getMonth()]; },
-	            MM: function (d/*, formatString*/) { return ('0' + (d.getMonth() + 1)).slice(-2); },
-	            M: function (d/*, formatString*/) { return '' + (d.getMonth() + 1); },
-	            DD: function (d/*, formatString*/) { return ('0' + d.getDate()).slice(-2); },
-	            D: function (d/*, formatString*/) { return '' + d.getDate(); },
-	            HH: function (d/*, formatString*/) { return ('0' + d.getHours()).slice(-2); },
-	            H: function (d/*, formatString*/) { return '' + d.getHours(); },
-	            A: function (d/*, formatString*/) { return this.res.A[d.getHours() > 11 | 0]; },
-	            hh: function (d/*, formatString*/) { return ('0' + (d.getHours() % 12 || 12)).slice(-2); },
-	            h: function (d/*, formatString*/) { return '' + (d.getHours() % 12 || 12); },
-	            mm: function (d/*, formatString*/) { return ('0' + d.getMinutes()).slice(-2); },
-	            m: function (d/*, formatString*/) { return '' + d.getMinutes(); },
-	            ss: function (d/*, formatString*/) { return ('0' + d.getSeconds()).slice(-2); },
-	            s: function (d/*, formatString*/) { return '' + d.getSeconds(); },
-	            SSS: function (d/*, formatString*/) { return ('00' + d.getMilliseconds()).slice(-3); },
-	            SS: function (d/*, formatString*/) { return ('0' + (d.getMilliseconds() / 10 | 0)).slice(-2); },
-	            S: function (d/*, formatString*/) { return '' + (d.getMilliseconds() / 100 | 0); },
-	            dddd: function (d/*, formatString*/) { return this.res.dddd[d.getDay()]; },
-	            ddd: function (d/*, formatString*/) { return this.res.ddd[d.getDay()]; },
-	            dd: function (d/*, formatString*/) { return this.res.dd[d.getDay()]; },
-	            Z: function (d/*, formatString*/) {
-	                var offset = d.getTimezoneOffset() / 0.6 | 0;
-	                return (offset > 0 ? '-' : '+') + ('000' + Math.abs(offset - (offset % 100 * 0.4 | 0))).slice(-4);
-	            },
-	            ZZ: function (d/*, formatString*/) {
-	                var offset = d.getTimezoneOffset();
-	                var mod = Math.abs(offset);
-	                return (offset > 0 ? '-' : '+') + ('0' + (mod / 60 | 0)).slice(-2) + ':' + ('0' + mod % 60).slice(-2);
-	            },
-	            post: function (str) { return str; },
-	            res: _res
-	        },
-	        _parser = {
-	            YYYY: function (str/*, formatString */) { return this.exec(/^\d{4}/, str); },
-	            Y: function (str/*, formatString */) { return this.exec(/^\d{1,4}/, str); },
-	            MMMM: function (str/*, formatString */) {
-	                var result = this.find(this.res.MMMM, str);
-	                result.value++;
-	                return result;
-	            },
-	            MMM: function (str/*, formatString */) {
-	                var result = this.find(this.res.MMM, str);
-	                result.value++;
-	                return result;
-	            },
-	            MM: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
-	            M: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
-	            DD: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
-	            D: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
-	            HH: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
-	            H: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
-	            A: function (str/*, formatString */) { return this.find(this.res.A, str); },
-	            hh: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
-	            h: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
-	            mm: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
-	            m: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
-	            ss: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
-	            s: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
-	            SSS: function (str/*, formatString */) { return this.exec(/^\d{1,3}/, str); },
-	            SS: function (str/*, formatString */) {
-	                var result = this.exec(/^\d\d?/, str);
-	                result.value *= 10;
-	                return result;
-	            },
-	            S: function (str/*, formatString */) {
-	                var result = this.exec(/^\d/, str);
-	                result.value *= 100;
-	                return result;
-	            },
-	            Z: function (str/*, formatString */) {
-	                var result = this.exec(/^[\+-]\d{2}[0-5]\d/, str);
-	                result.value = (result.value / 100 | 0) * -60 - result.value % 100;
-	                return result;
-	            },
-	            ZZ: function (str/*, formatString */) {
-	                var arr = /^([\+-])(\d{2}):([0-5]\d)/.exec(str) || ['', '', '', ''];
-	                return { value: 0 - ((arr[1] + arr[2] | 0) * 60 + (arr[1] + arr[3] | 0)), length: arr[0].length };
-	            },
-	            h12: function (h, a) { return (h === 12 ? 0 : h) + a * 12; },
-	            exec: function (re, str) {
-	                var result = (re.exec(str) || [''])[0];
-	                return { value: result | 0, length: result.length };
-	            },
-	            find: function (array, str) {
-	                var index = -1, length = 0;
-
-	                for (var i = 0, len = array.length, item; i < len; i++) {
-	                    item = array[i];
-	                    if (!str.indexOf(item) && item.length > length) {
-	                        index = i;
-	                        length = item.length;
-	                    }
-	                }
-	                return { value: index, length: length };
-	            },
-	            pre: function (str) { return str; },
-	            res: _res
-	        },
-	        extend = function (base, props, override, res) {
-	            var obj = {}, key;
-
-	            for (key in base) {
-	                obj[key] = base[key];
-	            }
-	            for (key in props || {}) {
-	                if (!(!!override ^ !!obj[key])) {
-	                    obj[key] = props[key];
-	                }
-	            }
-	            if (res) {
-	                obj.res = res;
-	            }
-	            return obj;
-	        },
-	        proto = {
-	            _formatter: _formatter,
-	            _parser: _parser
-	        },
-	        localized_proto,
-	        date;
-
-	    /**
-	     * Compiling format strings
-	     * @param {string} formatString - A format string
-	     * @returns {Array.<string>} A compiled object
-	     */
-	    proto.compile = function (formatString) {
-	        var re = /\[([^\[\]]|\[[^\[\]]*])*]|([A-Za-z])\2+|\.{3}|./g, keys, pattern = [formatString];
-
-	        while ((keys = re.exec(formatString))) {
-	            pattern[pattern.length] = keys[0];
-	        }
-	        return pattern;
-	    };
-
-	    /**
-	     * Formatting date and time objects (Date -> String)
-	     * @param {Date} dateObj - A Date object
-	     * @param {string|Array.<string>} arg - A format string or its compiled object
-	     * @param {boolean} [utc] - Output as UTC
-	     * @returns {string} A formatted string
-	     */
-	    proto.format = function (dateObj, arg, utc) {
-	        var ctx = this || date, pattern = typeof arg === 'string' ? ctx.compile(arg) : arg,
-	            offset = dateObj.getTimezoneOffset(),
-	            d = ctx.addMinutes(dateObj, utc ? offset : 0),
-	            formatter = ctx._formatter, str = '';
-
-	        d.getTimezoneOffset = function () { return utc ? 0 : offset; };
-	        for (var i = 1, len = pattern.length, token; i < len; i++) {
-	            token = pattern[i];
-	            str += formatter[token] ? formatter.post(formatter[token](d, pattern[0])) : token.replace(/\[(.*)]/, '$1');
-	        }
-	        return str;
-	    };
-
-	    /**
-	     * Pre-parsing date and time strings
-	     * @param {string} dateString - A date and time string
-	     * @param {string|Array.<string>} arg - A format string or its compiled object
-	     * @param {boolean} [utc] - Input as UTC
-	     * @returns {Object} A pre-parsed result object
-	     */
-	    proto.preparse = function (dateString, arg) {
-	        var ctx = this || date, pattern = typeof arg === 'string' ? ctx.compile(arg) : arg,
-	            dt = { Y: 1970, M: 1, D: 1, H: 0, A: 0, h: 0, m: 0, s: 0, S: 0, Z: 0, _index: 0, _length: 0, _match: 0 },
-	            comment = /\[(.*)]/, parser = ctx._parser, offset = 0;
-
-	        dateString = parser.pre(dateString);
-	        for (var i = 1, len = pattern.length, token, result; i < len; i++) {
-	            token = pattern[i];
-	            if (parser[token]) {
-	                result = parser[token](dateString.slice(offset), pattern[0]);
-	                if (!result.length) {
-	                    break;
-	                }
-	                offset += result.length;
-	                dt[result.token || token.charAt(0)] = result.value;
-	                dt._match++;
-	            } else if (token === dateString.charAt(offset) || token === ' ') {
-	                offset++;
-	            } else if (comment.test(token) && !dateString.slice(offset).indexOf(comment.exec(token)[1])) {
-	                offset += token.length - 2;
-	            } else if (token === '...') {
-	                offset = dateString.length;
-	                break;
-	            } else {
-	                break;
-	            }
-	        }
-	        dt.H = dt.H || parser.h12(dt.h, dt.A);
-	        dt._index = offset;
-	        dt._length = dateString.length;
-	        return dt;
-	    };
-
-	    /**
-	     * Parsing of date and time string (String -> Date)
-	     * @param {string} dateString - A date-time string
-	     * @param {string|Array.<string>} arg - A format string or its compiled object
-	     * @param {boolean} [utc] - Input as UTC
-	     * @returns {Date} A Date object
-	     */
-	    proto.parse = function (dateString, arg, utc) {
-	        var ctx = this || date, pattern = typeof arg === 'string' ? ctx.compile(arg) : arg,
-	            dt = ctx.preparse(dateString, pattern);
-
-	        if (ctx.isValid(dt)) {
-	            dt.M -= dt.Y < 100 ? 22801 : 1; // 22801 = 1900 * 12 + 1
-	            if (utc || ~ctx._parser.find(pattern, 'ZZ').value) {
-	                return new Date(Date.UTC(dt.Y, dt.M, dt.D, dt.H, dt.m + dt.Z, dt.s, dt.S));
-	            }
-	            return new Date(dt.Y, dt.M, dt.D, dt.H, dt.m, dt.s, dt.S);
-	        }
-	        return new Date(NaN);
-	    };
-
-	    /**
-	     * Date and time string validation
-	     * @param {Object|string} arg1 - A pre-parsed result object or a date and time string
-	     * @param {string|Array.<string>} [arg2] - A format string or its compiled object
-	     * @returns {boolean} Whether the date and time string is a valid date and time
-	     */
-	    proto.isValid = function (arg1, arg2) {
-	        var ctx = this || date, dt = typeof arg1 === 'string' ? ctx.preparse(arg1, arg2) : arg1,
-	            last = [31, 28 + ctx.isLeapYear(dt.Y) | 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][dt.M - 1];
-
-	        return !(
-	            dt._index < 1 || dt._length < 1 || dt._index - dt._length || dt._match < 1 ||
-	            dt.Y < 1 || dt.Y > 9999 || dt.M < 1 || dt.M > 12 || dt.D < 1 || dt.D > last ||
-	            dt.H < 0 || dt.H > 23 || dt.m < 0 || dt.m > 59 || dt.s < 0 || dt.s > 59 || dt.S < 0 || dt.S > 999 ||
-	            dt.Z < -840 || dt.Z > 720
-	        );
-	    };
-
-	    /**
-	     * Format transformation of date and time string (String -> String)
-	     * @param {string} dateString - A date and time string
-	     * @param {string|Array.<string>} arg1 - A format string or its compiled object before transformation
-	     * @param {string|Array.<string>} arg2 - A format string or its compiled object after transformation
-	     * @param {boolean} [utc] - Output as UTC
-	     * @returns {string} A formatted string
-	     */
-	    proto.transform = function (dateString, arg1, arg2, utc) {
-	        const ctx = this || date;
-	        return ctx.format(ctx.parse(dateString, arg1), arg2, utc);
-	    };
-
-	    /**
-	     * Adding years
-	     * @param {Date} dateObj - A Date object
-	     * @param {number} years - Number of years to add
-	     * @returns {Date} The Date object after adding the value
-	     */
-	    proto.addYears = function (dateObj, years) {
-	        return (this || date).addMonths(dateObj, years * 12);
-	    };
-
-	    /**
-	     * Adding months
-	     * @param {Date} dateObj - A Date object
-	     * @param {number} months - Number of months to add
-	     * @returns {Date} The Date object after adding the value
-	     */
-	    proto.addMonths = function (dateObj, months) {
-	        var d = new Date(dateObj.getTime());
-
-	        d.setMonth(d.getMonth() + months);
-	        return d;
-	    };
-
-	    /**
-	     * Adding days
-	     * @param {Date} dateObj - A Date object
-	     * @param {number} days - Number of days to add
-	     * @returns {Date} The Date object after adding the value
-	     */
-	    proto.addDays = function (dateObj, days) {
-	        var d = new Date(dateObj.getTime());
-
-	        d.setDate(d.getDate() + days);
-	        return d;
-	    };
-
-	    /**
-	     * Adding hours
-	     * @param {Date} dateObj - A Date object
-	     * @param {number} hours - Number of hours to add
-	     * @returns {Date} The Date object after adding the value
-	     */
-	    proto.addHours = function (dateObj, hours) {
-	        return (this || date).addMinutes(dateObj, hours * 60);
-	    };
-
-	    /**
-	     * Adding minutes
-	     * @param {Date} dateObj - A Date object
-	     * @param {number} minutes - Number of minutes to add
-	     * @returns {Date} The Date object after adding the value
-	     */
-	    proto.addMinutes = function (dateObj, minutes) {
-	        return (this || date).addSeconds(dateObj, minutes * 60);
-	    };
-
-	    /**
-	     * Adding seconds
-	     * @param {Date} dateObj - A Date object
-	     * @param {number} seconds - Number of seconds to add
-	     * @returns {Date} The Date object after adding the value
-	     */
-	    proto.addSeconds = function (dateObj, seconds) {
-	        return (this || date).addMilliseconds(dateObj, seconds * 1000);
-	    };
-
-	    /**
-	     * Adding milliseconds
-	     * @param {Date} dateObj - A Date object
-	     * @param {number} milliseconds - Number of milliseconds to add
-	     * @returns {Date} The Date object after adding the value
-	     */
-	    proto.addMilliseconds = function (dateObj, milliseconds) {
-	        return new Date(dateObj.getTime() + milliseconds);
-	    };
-
-	    /**
-	     * Subtracting two dates (date1 - date2)
-	     * @param {Date} date1 - A Date object
-	     * @param {Date} date2 - A Date object
-	     * @returns {Object} The result object of subtracting date2 from date1
-	     */
-	    proto.subtract = function (date1, date2) {
-	        var delta = date1.getTime() - date2.getTime();
-
-	        return {
-	            toMilliseconds: function () {
-	                return delta;
-	            },
-	            toSeconds: function () {
-	                return delta / 1000;
-	            },
-	            toMinutes: function () {
-	                return delta / 60000;
-	            },
-	            toHours: function () {
-	                return delta / 3600000;
-	            },
-	            toDays: function () {
-	                return delta / 86400000;
-	            }
-	        };
-	    };
-
-	    /**
-	     * Whether a year is a leap year
-	     * @param {number} y - A year to check
-	     * @returns {boolean} Whether the year is a leap year
-	     */
-	    proto.isLeapYear = function (y) {
-	        return (!(y % 4) && !!(y % 100)) || !(y % 400);
-	    };
-
-	    /**
-	     * Comparison of two dates
-	     * @param {Date} date1 - A Date object
-	     * @param {Date} date2 - A Date object
-	     * @returns {boolean} Whether the two dates are the same day (time is ignored)
-	     */
-	    proto.isSameDay = function (date1, date2) {
-	        return date1.toDateString() === date2.toDateString();
-	    };
-
-	    /**
-	     * Definition of new locale
-	     * @param {string} code - A language code
-	     * @param {Function} locale - A locale installer
-	     * @returns {void}
-	     */
-	    proto.locale = function (code, locale) {
-	        if (!locales[code]) {
-	            locales[code] = locale;
-	        }
-	    };
-
-	    /**
-	     * Definition of new plugin
-	     * @param {string} name - A plugin name
-	     * @param {Function} plugin - A plugin installer
-	     * @returns {void}
-	     */
-	    proto.plugin = function (name, plugin) {
-	        if (!plugins[name]) {
-	            plugins[name] = plugin;
-	        }
-	    };
-
-	    localized_proto = extend(proto);
-	    date = extend(proto);
-
-	    /**
-	     * Changing locales
-	     * @param {Function|string} [locale] - A locale installer or language code
-	     * @returns {string} The current language code
-	     */
-	    date.locale = function (locale) {
-	        var install = typeof locale === 'function' ? locale : date.locale[locale];
-
-	        if (!install) {
-	            return lang;
-	        }
-	        lang = install(proto);
-
-	        var extension = locales[lang] || {};
-	        var res = extend(_res, extension.res, true);
-	        var formatter = extend(_formatter, extension.formatter, true, res);
-	        var parser = extend(_parser, extension.parser, true, res);
-
-	        date._formatter = localized_proto._formatter = formatter;
-	        date._parser = localized_proto._parser = parser;
-
-	        for (var plugin in plugins) {
-	            date.extend(plugins[plugin]);
-	        }
-
-	        return lang;
-	    };
-
-	    /**
-	     * Functional extension
-	     * @param {Object} extension - An extension object
-	     * @returns {void}
-	     */
-	    date.extend = function (extension) {
-	        var res = extend(date._parser.res, extension.res);
-	        var extender = extension.extender || {};
-
-	        date._formatter = extend(date._formatter, extension.formatter, false, res);
-	        date._parser = extend(date._parser, extension.parser, false, res);
-
-	        for (var key in extender) {
-	            if (!date[key]) {
-	                date[key] = extender[key];
-	            }
-	        }
-	    };
-
-	    /**
-	     * Importing plugins
-	     * @param {Function|string} plugin - A plugin installer or plugin name
-	     * @returns {void}
-	     */
-	    date.plugin = function (plugin) {
-	        var install = typeof plugin === 'function' ? plugin : date.plugin[plugin];
-
-	        if (install) {
-	            date.extend(plugins[install(proto, localized_proto)] || {});
-	        }
-	    };
-
-	    var date$1 = date;
-
-	    return date$1;
-
-	}));
-} (dateAndTime));
-
-var crc32c;
-var hasRequiredCrc32c;
-
-function requireCrc32c () {
-	if (hasRequiredCrc32c) return crc32c;
-	hasRequiredCrc32c = 1;
-
-	var kCRCTable = new Int32Array([
-	  0x00000000, 0xf26b8303, 0xe13b70f7, 0x1350f3f4,
-	  0xc79a971f, 0x35f1141c, 0x26a1e7e8, 0xd4ca64eb,
-	  0x8ad958cf, 0x78b2dbcc, 0x6be22838, 0x9989ab3b,
-	  0x4d43cfd0, 0xbf284cd3, 0xac78bf27, 0x5e133c24,
-	  0x105ec76f, 0xe235446c, 0xf165b798, 0x030e349b,
-	  0xd7c45070, 0x25afd373, 0x36ff2087, 0xc494a384,
-	  0x9a879fa0, 0x68ec1ca3, 0x7bbcef57, 0x89d76c54,
-	  0x5d1d08bf, 0xaf768bbc, 0xbc267848, 0x4e4dfb4b,
-	  0x20bd8ede, 0xd2d60ddd, 0xc186fe29, 0x33ed7d2a,
-	  0xe72719c1, 0x154c9ac2, 0x061c6936, 0xf477ea35,
-	  0xaa64d611, 0x580f5512, 0x4b5fa6e6, 0xb93425e5,
-	  0x6dfe410e, 0x9f95c20d, 0x8cc531f9, 0x7eaeb2fa,
-	  0x30e349b1, 0xc288cab2, 0xd1d83946, 0x23b3ba45,
-	  0xf779deae, 0x05125dad, 0x1642ae59, 0xe4292d5a,
-	  0xba3a117e, 0x4851927d, 0x5b016189, 0xa96ae28a,
-	  0x7da08661, 0x8fcb0562, 0x9c9bf696, 0x6ef07595,
-	  0x417b1dbc, 0xb3109ebf, 0xa0406d4b, 0x522bee48,
-	  0x86e18aa3, 0x748a09a0, 0x67dafa54, 0x95b17957,
-	  0xcba24573, 0x39c9c670, 0x2a993584, 0xd8f2b687,
-	  0x0c38d26c, 0xfe53516f, 0xed03a29b, 0x1f682198,
-	  0x5125dad3, 0xa34e59d0, 0xb01eaa24, 0x42752927,
-	  0x96bf4dcc, 0x64d4cecf, 0x77843d3b, 0x85efbe38,
-	  0xdbfc821c, 0x2997011f, 0x3ac7f2eb, 0xc8ac71e8,
-	  0x1c661503, 0xee0d9600, 0xfd5d65f4, 0x0f36e6f7,
-	  0x61c69362, 0x93ad1061, 0x80fde395, 0x72966096,
-	  0xa65c047d, 0x5437877e, 0x4767748a, 0xb50cf789,
-	  0xeb1fcbad, 0x197448ae, 0x0a24bb5a, 0xf84f3859,
-	  0x2c855cb2, 0xdeeedfb1, 0xcdbe2c45, 0x3fd5af46,
-	  0x7198540d, 0x83f3d70e, 0x90a324fa, 0x62c8a7f9,
-	  0xb602c312, 0x44694011, 0x5739b3e5, 0xa55230e6,
-	  0xfb410cc2, 0x092a8fc1, 0x1a7a7c35, 0xe811ff36,
-	  0x3cdb9bdd, 0xceb018de, 0xdde0eb2a, 0x2f8b6829,
-	  0x82f63b78, 0x709db87b, 0x63cd4b8f, 0x91a6c88c,
-	  0x456cac67, 0xb7072f64, 0xa457dc90, 0x563c5f93,
-	  0x082f63b7, 0xfa44e0b4, 0xe9141340, 0x1b7f9043,
-	  0xcfb5f4a8, 0x3dde77ab, 0x2e8e845f, 0xdce5075c,
-	  0x92a8fc17, 0x60c37f14, 0x73938ce0, 0x81f80fe3,
-	  0x55326b08, 0xa759e80b, 0xb4091bff, 0x466298fc,
-	  0x1871a4d8, 0xea1a27db, 0xf94ad42f, 0x0b21572c,
-	  0xdfeb33c7, 0x2d80b0c4, 0x3ed04330, 0xccbbc033,
-	  0xa24bb5a6, 0x502036a5, 0x4370c551, 0xb11b4652,
-	  0x65d122b9, 0x97baa1ba, 0x84ea524e, 0x7681d14d,
-	  0x2892ed69, 0xdaf96e6a, 0xc9a99d9e, 0x3bc21e9d,
-	  0xef087a76, 0x1d63f975, 0x0e330a81, 0xfc588982,
-	  0xb21572c9, 0x407ef1ca, 0x532e023e, 0xa145813d,
-	  0x758fe5d6, 0x87e466d5, 0x94b49521, 0x66df1622,
-	  0x38cc2a06, 0xcaa7a905, 0xd9f75af1, 0x2b9cd9f2,
-	  0xff56bd19, 0x0d3d3e1a, 0x1e6dcdee, 0xec064eed,
-	  0xc38d26c4, 0x31e6a5c7, 0x22b65633, 0xd0ddd530,
-	  0x0417b1db, 0xf67c32d8, 0xe52cc12c, 0x1747422f,
-	  0x49547e0b, 0xbb3ffd08, 0xa86f0efc, 0x5a048dff,
-	  0x8ecee914, 0x7ca56a17, 0x6ff599e3, 0x9d9e1ae0,
-	  0xd3d3e1ab, 0x21b862a8, 0x32e8915c, 0xc083125f,
-	  0x144976b4, 0xe622f5b7, 0xf5720643, 0x07198540,
-	  0x590ab964, 0xab613a67, 0xb831c993, 0x4a5a4a90,
-	  0x9e902e7b, 0x6cfbad78, 0x7fab5e8c, 0x8dc0dd8f,
-	  0xe330a81a, 0x115b2b19, 0x020bd8ed, 0xf0605bee,
-	  0x24aa3f05, 0xd6c1bc06, 0xc5914ff2, 0x37faccf1,
-	  0x69e9f0d5, 0x9b8273d6, 0x88d28022, 0x7ab90321,
-	  0xae7367ca, 0x5c18e4c9, 0x4f48173d, 0xbd23943e,
-	  0xf36e6f75, 0x0105ec76, 0x12551f82, 0xe03e9c81,
-	  0x34f4f86a, 0xc69f7b69, 0xd5cf889d, 0x27a40b9e,
-	  0x79b737ba, 0x8bdcb4b9, 0x988c474d, 0x6ae7c44e,
-	  0xbe2da0a5, 0x4c4623a6, 0x5f16d052, 0xad7d5351
-	]);
-
-	crc32c = {
-	  calculate: function (buf, initial) {
-	    if (!Buffer.isBuffer(buf)) buf = Buffer.from(buf);
-
-	    var crc = (initial | 0) ^ -1;
-	    for (var i = 0; i < buf.length; i++)
-	      crc = kCRCTable[(crc ^ buf[i]) & 0xff] ^ (crc >>> 8);
-
-	    return (crc ^ -1) >>> 0
-	  }
-	};
-	return crc32c;
-}
-
-var crc;
-try {
-  crc = require('fast-crc32c');
-} catch (e) {
-  crc = requireCrc32c();
-}
-
-var crypto$3 = require$$0__default$9["default"];
-var { PassThrough } = require$$0__default$4["default"];
-
-var hashStreamValidation = function (cfg) {
-  cfg = cfg || {};
-
-  var crc32c = cfg.crc32c !== false;
-  var md5 = cfg.md5 !== false;
-
-  var hashes = {};
-  if (md5) hashes.md5 = crypto$3.createHash('md5');
-
-  var onData = function (chunk, enc, done) {
-    if (crc32c) hashes.crc32c = crc.calculate(chunk, hashes.crc32c || 0);
-    if (md5) hashes.md5.update(chunk);
-
-    done(null, chunk);
-  };
-
-  var onFlush = function (done) {
-    if (crc32c) hashes.crc32c = Buffer.from([hashes.crc32c]).toString('base64');
-    if (md5) hashes.md5 = hashes.md5.digest('base64');
-
-    done();
-  };
-
-  var validationStream = new PassThrough({
-    transform: onData,
-    flush: onFlush
-  });
-
-  validationStream.test = function (algo, sum) {
-    return hashes[algo] === sum
-  };
-
-  return validationStream
-};
 
 /**
  * @param typeMap [Object] Map of MIME type -> Array[extensions]
@@ -161061,9 +161253,9 @@ var pumpify = {exports: {}};
 
 var once = requireOnce();
 var eos = endOfStream;
-var fs$7 = require$$0__default$1["default"]; // we only need fs to get the ReadStream and WriteStream prototypes
+var fs$3 = require$$0__default$1["default"]; // we only need fs to get the ReadStream and WriteStream prototypes
 
-var noop$1 = function () {};
+var noop = function () {};
 var ancient = /^v?\.0/.test(process.version);
 
 var isFn = function (fn) {
@@ -161072,8 +161264,8 @@ var isFn = function (fn) {
 
 var isFS = function (stream) {
   if (!ancient) return false // newer node version do not need to care about fs is a special way
-  if (!fs$7) return false // browser
-  return (stream instanceof (fs$7.ReadStream || noop$1) || stream instanceof (fs$7.WriteStream || noop$1)) && isFn(stream.close)
+  if (!fs$3) return false // browser
+  return (stream instanceof (fs$3.ReadStream || noop) || stream instanceof (fs$3.WriteStream || noop)) && isFn(stream.close)
 };
 
 var isRequest = function (stream) {
@@ -161100,7 +161292,7 @@ var destroyer = function (stream, reading, writing, callback) {
     if (destroyed) return
     destroyed = true;
 
-    if (isFS(stream)) return stream.close(noop$1) // use close for fs streams to avoid fd leaks
+    if (isFS(stream)) return stream.close(noop) // use close for fs streams to avoid fd leaks
     if (isRequest(stream)) return stream.abort() // request.destroy just do .end - .abort is what we want
 
     if (isFn(stream.destroy)) return stream.destroy()
@@ -161119,7 +161311,7 @@ var pipe = function (from, to) {
 
 var pump$1 = function () {
   var streams = Array.prototype.slice.call(arguments);
-  var callback = isFn(streams[streams.length - 1] || noop$1) && streams.pop() || noop$1;
+  var callback = isFn(streams[streams.length - 1] || noop) && streams.pop() || noop;
 
   if (Array.isArray(streams[0])) streams = streams[0];
   if (streams.length < 2) throw new Error('pump requires two streams per minimum')
@@ -161144,7 +161336,7 @@ var pump_1 = pump$1;
 
 var pump = pump_1;
 var inherits = requireInherits();
-var Duplexify = duplexify$1;
+var Duplexify = duplexify;
 
 var toArray = function(args) {
   if (!args.length) return []
@@ -161203,7 +161395,7 @@ pumpify.exports = define({autoDestroy:false, destroy:false});
 pumpify.exports.obj = define({autoDestroy: false, destroy:false, objectMode:true, highWaterMark:16});
 pumpify.exports.ctor = define;
 
-var gcsResumableUpload = {};
+var resumableUpload = {};
 
 /**
  * @author Toru Nagashima <https://github.com/mysticatea>
@@ -162137,7 +162329,7 @@ class AbortController {
      * Initialize this controller.
      */
     constructor() {
-        signals$2.set(this, createAbortSignal());
+        signals.set(this, createAbortSignal());
     }
     /**
      * Returns the `AbortSignal` object associated with this object.
@@ -162155,12 +162347,12 @@ class AbortController {
 /**
  * Associated signals.
  */
-const signals$2 = new WeakMap();
+const signals = new WeakMap();
 /**
  * Get the associated signal of a given controller.
  */
 function getSignal(controller) {
-    const signal = signals$2.get(controller);
+    const signal = signals.get(controller);
     if (signal == null) {
         throw new TypeError(`Expected 'this' to be an 'AbortController' object, but got ${controller === null ? "null" : typeof controller}`);
     }
@@ -162187,3727 +162379,6 @@ var abortController = /*#__PURE__*/Object.freeze({
 
 var require$$0 = /*@__PURE__*/getAugmentedNamespace(abortController);
 
-var constants$1 = require$$0__default$b["default"];
-
-var origCwd = process.cwd;
-var cwd = null;
-
-var platform = process.env.GRACEFUL_FS_PLATFORM || process.platform;
-
-process.cwd = function() {
-  if (!cwd)
-    cwd = origCwd.call(process);
-  return cwd
-};
-try {
-  process.cwd();
-} catch (er) {}
-
-// This check is needed until node.js 12 is required
-if (typeof process.chdir === 'function') {
-  var chdir = process.chdir;
-  process.chdir = function (d) {
-    cwd = null;
-    chdir.call(process, d);
-  };
-  if (Object.setPrototypeOf) Object.setPrototypeOf(process.chdir, chdir);
-}
-
-var polyfills$1 = patch$2;
-
-function patch$2 (fs) {
-  // (re-)implement some things that are known busted or missing.
-
-  // lchmod, broken prior to 0.6.2
-  // back-port the fix here.
-  if (constants$1.hasOwnProperty('O_SYMLINK') &&
-      process.version.match(/^v0\.6\.[0-2]|^v0\.5\./)) {
-    patchLchmod(fs);
-  }
-
-  // lutimes implementation, or no-op
-  if (!fs.lutimes) {
-    patchLutimes(fs);
-  }
-
-  // https://github.com/isaacs/node-graceful-fs/issues/4
-  // Chown should not fail on einval or eperm if non-root.
-  // It should not fail on enosys ever, as this just indicates
-  // that a fs doesn't support the intended operation.
-
-  fs.chown = chownFix(fs.chown);
-  fs.fchown = chownFix(fs.fchown);
-  fs.lchown = chownFix(fs.lchown);
-
-  fs.chmod = chmodFix(fs.chmod);
-  fs.fchmod = chmodFix(fs.fchmod);
-  fs.lchmod = chmodFix(fs.lchmod);
-
-  fs.chownSync = chownFixSync(fs.chownSync);
-  fs.fchownSync = chownFixSync(fs.fchownSync);
-  fs.lchownSync = chownFixSync(fs.lchownSync);
-
-  fs.chmodSync = chmodFixSync(fs.chmodSync);
-  fs.fchmodSync = chmodFixSync(fs.fchmodSync);
-  fs.lchmodSync = chmodFixSync(fs.lchmodSync);
-
-  fs.stat = statFix(fs.stat);
-  fs.fstat = statFix(fs.fstat);
-  fs.lstat = statFix(fs.lstat);
-
-  fs.statSync = statFixSync(fs.statSync);
-  fs.fstatSync = statFixSync(fs.fstatSync);
-  fs.lstatSync = statFixSync(fs.lstatSync);
-
-  // if lchmod/lchown do not exist, then make them no-ops
-  if (!fs.lchmod) {
-    fs.lchmod = function (path, mode, cb) {
-      if (cb) process.nextTick(cb);
-    };
-    fs.lchmodSync = function () {};
-  }
-  if (!fs.lchown) {
-    fs.lchown = function (path, uid, gid, cb) {
-      if (cb) process.nextTick(cb);
-    };
-    fs.lchownSync = function () {};
-  }
-
-  // on Windows, A/V software can lock the directory, causing this
-  // to fail with an EACCES or EPERM if the directory contains newly
-  // created files.  Try again on failure, for up to 60 seconds.
-
-  // Set the timeout this long because some Windows Anti-Virus, such as Parity
-  // bit9, may lock files for up to a minute, causing npm package install
-  // failures. Also, take care to yield the scheduler. Windows scheduling gives
-  // CPU to a busy looping process, which can cause the program causing the lock
-  // contention to be starved of CPU by node, so the contention doesn't resolve.
-  if (platform === "win32") {
-    fs.rename = (function (fs$rename) { return function (from, to, cb) {
-      var start = Date.now();
-      var backoff = 0;
-      fs$rename(from, to, function CB (er) {
-        if (er
-            && (er.code === "EACCES" || er.code === "EPERM")
-            && Date.now() - start < 60000) {
-          setTimeout(function() {
-            fs.stat(to, function (stater, st) {
-              if (stater && stater.code === "ENOENT")
-                fs$rename(from, to, CB);
-              else
-                cb(er);
-            });
-          }, backoff);
-          if (backoff < 100)
-            backoff += 10;
-          return;
-        }
-        if (cb) cb(er);
-      });
-    }})(fs.rename);
-  }
-
-  // if read() returns EAGAIN, then just try it again.
-  fs.read = (function (fs$read) {
-    function read (fd, buffer, offset, length, position, callback_) {
-      var callback;
-      if (callback_ && typeof callback_ === 'function') {
-        var eagCounter = 0;
-        callback = function (er, _, __) {
-          if (er && er.code === 'EAGAIN' && eagCounter < 10) {
-            eagCounter ++;
-            return fs$read.call(fs, fd, buffer, offset, length, position, callback)
-          }
-          callback_.apply(this, arguments);
-        };
-      }
-      return fs$read.call(fs, fd, buffer, offset, length, position, callback)
-    }
-
-    // This ensures `util.promisify` works as it does for native `fs.read`.
-    if (Object.setPrototypeOf) Object.setPrototypeOf(read, fs$read);
-    return read
-  })(fs.read);
-
-  fs.readSync = (function (fs$readSync) { return function (fd, buffer, offset, length, position) {
-    var eagCounter = 0;
-    while (true) {
-      try {
-        return fs$readSync.call(fs, fd, buffer, offset, length, position)
-      } catch (er) {
-        if (er.code === 'EAGAIN' && eagCounter < 10) {
-          eagCounter ++;
-          continue
-        }
-        throw er
-      }
-    }
-  }})(fs.readSync);
-
-  function patchLchmod (fs) {
-    fs.lchmod = function (path, mode, callback) {
-      fs.open( path
-             , constants$1.O_WRONLY | constants$1.O_SYMLINK
-             , mode
-             , function (err, fd) {
-        if (err) {
-          if (callback) callback(err);
-          return
-        }
-        // prefer to return the chmod error, if one occurs,
-        // but still try to close, and report closing errors if they occur.
-        fs.fchmod(fd, mode, function (err) {
-          fs.close(fd, function(err2) {
-            if (callback) callback(err || err2);
-          });
-        });
-      });
-    };
-
-    fs.lchmodSync = function (path, mode) {
-      var fd = fs.openSync(path, constants$1.O_WRONLY | constants$1.O_SYMLINK, mode);
-
-      // prefer to return the chmod error, if one occurs,
-      // but still try to close, and report closing errors if they occur.
-      var threw = true;
-      var ret;
-      try {
-        ret = fs.fchmodSync(fd, mode);
-        threw = false;
-      } finally {
-        if (threw) {
-          try {
-            fs.closeSync(fd);
-          } catch (er) {}
-        } else {
-          fs.closeSync(fd);
-        }
-      }
-      return ret
-    };
-  }
-
-  function patchLutimes (fs) {
-    if (constants$1.hasOwnProperty("O_SYMLINK")) {
-      fs.lutimes = function (path, at, mt, cb) {
-        fs.open(path, constants$1.O_SYMLINK, function (er, fd) {
-          if (er) {
-            if (cb) cb(er);
-            return
-          }
-          fs.futimes(fd, at, mt, function (er) {
-            fs.close(fd, function (er2) {
-              if (cb) cb(er || er2);
-            });
-          });
-        });
-      };
-
-      fs.lutimesSync = function (path, at, mt) {
-        var fd = fs.openSync(path, constants$1.O_SYMLINK);
-        var ret;
-        var threw = true;
-        try {
-          ret = fs.futimesSync(fd, at, mt);
-          threw = false;
-        } finally {
-          if (threw) {
-            try {
-              fs.closeSync(fd);
-            } catch (er) {}
-          } else {
-            fs.closeSync(fd);
-          }
-        }
-        return ret
-      };
-
-    } else {
-      fs.lutimes = function (_a, _b, _c, cb) { if (cb) process.nextTick(cb); };
-      fs.lutimesSync = function () {};
-    }
-  }
-
-  function chmodFix (orig) {
-    if (!orig) return orig
-    return function (target, mode, cb) {
-      return orig.call(fs, target, mode, function (er) {
-        if (chownErOk(er)) er = null;
-        if (cb) cb.apply(this, arguments);
-      })
-    }
-  }
-
-  function chmodFixSync (orig) {
-    if (!orig) return orig
-    return function (target, mode) {
-      try {
-        return orig.call(fs, target, mode)
-      } catch (er) {
-        if (!chownErOk(er)) throw er
-      }
-    }
-  }
-
-
-  function chownFix (orig) {
-    if (!orig) return orig
-    return function (target, uid, gid, cb) {
-      return orig.call(fs, target, uid, gid, function (er) {
-        if (chownErOk(er)) er = null;
-        if (cb) cb.apply(this, arguments);
-      })
-    }
-  }
-
-  function chownFixSync (orig) {
-    if (!orig) return orig
-    return function (target, uid, gid) {
-      try {
-        return orig.call(fs, target, uid, gid)
-      } catch (er) {
-        if (!chownErOk(er)) throw er
-      }
-    }
-  }
-
-  function statFix (orig) {
-    if (!orig) return orig
-    // Older versions of Node erroneously returned signed integers for
-    // uid + gid.
-    return function (target, options, cb) {
-      if (typeof options === 'function') {
-        cb = options;
-        options = null;
-      }
-      function callback (er, stats) {
-        if (stats) {
-          if (stats.uid < 0) stats.uid += 0x100000000;
-          if (stats.gid < 0) stats.gid += 0x100000000;
-        }
-        if (cb) cb.apply(this, arguments);
-      }
-      return options ? orig.call(fs, target, options, callback)
-        : orig.call(fs, target, callback)
-    }
-  }
-
-  function statFixSync (orig) {
-    if (!orig) return orig
-    // Older versions of Node erroneously returned signed integers for
-    // uid + gid.
-    return function (target, options) {
-      var stats = options ? orig.call(fs, target, options)
-        : orig.call(fs, target);
-      if (stats) {
-        if (stats.uid < 0) stats.uid += 0x100000000;
-        if (stats.gid < 0) stats.gid += 0x100000000;
-      }
-      return stats;
-    }
-  }
-
-  // ENOSYS means that the fs doesn't support the op. Just ignore
-  // that, because it doesn't matter.
-  //
-  // if there's no getuid, or if getuid() is something other
-  // than 0, and the error is EINVAL or EPERM, then just ignore
-  // it.
-  //
-  // This specific case is a silent failure in cp, install, tar,
-  // and most other unix tools that manage permissions.
-  //
-  // When running as root, or if other types of errors are
-  // encountered, then it's strict.
-  function chownErOk (er) {
-    if (!er)
-      return true
-
-    if (er.code === "ENOSYS")
-      return true
-
-    var nonroot = !process.getuid || process.getuid() !== 0;
-    if (nonroot) {
-      if (er.code === "EINVAL" || er.code === "EPERM")
-        return true
-    }
-
-    return false
-  }
-}
-
-var Stream = require$$0__default$4["default"].Stream;
-
-var legacyStreams = legacy$1;
-
-function legacy$1 (fs) {
-  return {
-    ReadStream: ReadStream,
-    WriteStream: WriteStream
-  }
-
-  function ReadStream (path, options) {
-    if (!(this instanceof ReadStream)) return new ReadStream(path, options);
-
-    Stream.call(this);
-
-    var self = this;
-
-    this.path = path;
-    this.fd = null;
-    this.readable = true;
-    this.paused = false;
-
-    this.flags = 'r';
-    this.mode = 438; /*=0666*/
-    this.bufferSize = 64 * 1024;
-
-    options = options || {};
-
-    // Mixin options into this
-    var keys = Object.keys(options);
-    for (var index = 0, length = keys.length; index < length; index++) {
-      var key = keys[index];
-      this[key] = options[key];
-    }
-
-    if (this.encoding) this.setEncoding(this.encoding);
-
-    if (this.start !== undefined) {
-      if ('number' !== typeof this.start) {
-        throw TypeError('start must be a Number');
-      }
-      if (this.end === undefined) {
-        this.end = Infinity;
-      } else if ('number' !== typeof this.end) {
-        throw TypeError('end must be a Number');
-      }
-
-      if (this.start > this.end) {
-        throw new Error('start must be <= end');
-      }
-
-      this.pos = this.start;
-    }
-
-    if (this.fd !== null) {
-      process.nextTick(function() {
-        self._read();
-      });
-      return;
-    }
-
-    fs.open(this.path, this.flags, this.mode, function (err, fd) {
-      if (err) {
-        self.emit('error', err);
-        self.readable = false;
-        return;
-      }
-
-      self.fd = fd;
-      self.emit('open', fd);
-      self._read();
-    });
-  }
-
-  function WriteStream (path, options) {
-    if (!(this instanceof WriteStream)) return new WriteStream(path, options);
-
-    Stream.call(this);
-
-    this.path = path;
-    this.fd = null;
-    this.writable = true;
-
-    this.flags = 'w';
-    this.encoding = 'binary';
-    this.mode = 438; /*=0666*/
-    this.bytesWritten = 0;
-
-    options = options || {};
-
-    // Mixin options into this
-    var keys = Object.keys(options);
-    for (var index = 0, length = keys.length; index < length; index++) {
-      var key = keys[index];
-      this[key] = options[key];
-    }
-
-    if (this.start !== undefined) {
-      if ('number' !== typeof this.start) {
-        throw TypeError('start must be a Number');
-      }
-      if (this.start < 0) {
-        throw new Error('start must be >= zero');
-      }
-
-      this.pos = this.start;
-    }
-
-    this.busy = false;
-    this._queue = [];
-
-    if (this.fd === null) {
-      this._open = fs.open;
-      this._queue.push([this._open, this.path, this.flags, this.mode, undefined]);
-      this.flush();
-    }
-  }
-}
-
-var clone_1 = clone$1;
-
-var getPrototypeOf = Object.getPrototypeOf || function (obj) {
-  return obj.__proto__
-};
-
-function clone$1 (obj) {
-  if (obj === null || typeof obj !== 'object')
-    return obj
-
-  if (obj instanceof Object)
-    var copy = { __proto__: getPrototypeOf(obj) };
-  else
-    var copy = Object.create(null);
-
-  Object.getOwnPropertyNames(obj).forEach(function (key) {
-    Object.defineProperty(copy, key, Object.getOwnPropertyDescriptor(obj, key));
-  });
-
-  return copy
-}
-
-var fs$6 = require$$0__default$1["default"];
-var polyfills = polyfills$1;
-var legacy = legacyStreams;
-var clone = clone_1;
-
-var util$2 = require$$4__default["default"];
-
-/* istanbul ignore next - node 0.x polyfill */
-var gracefulQueue;
-var previousSymbol;
-
-/* istanbul ignore else - node 0.x polyfill */
-if (typeof Symbol === 'function' && typeof Symbol.for === 'function') {
-  gracefulQueue = Symbol.for('graceful-fs.queue');
-  // This is used in testing by future versions
-  previousSymbol = Symbol.for('graceful-fs.previous');
-} else {
-  gracefulQueue = '___graceful-fs.queue';
-  previousSymbol = '___graceful-fs.previous';
-}
-
-function noop () {}
-
-function publishQueue(context, queue) {
-  Object.defineProperty(context, gracefulQueue, {
-    get: function() {
-      return queue
-    }
-  });
-}
-
-var debug$2 = noop;
-if (util$2.debuglog)
-  debug$2 = util$2.debuglog('gfs4');
-else if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || ''))
-  debug$2 = function() {
-    var m = util$2.format.apply(util$2, arguments);
-    m = 'GFS4: ' + m.split(/\n/).join('\nGFS4: ');
-    console.error(m);
-  };
-
-// Once time initialization
-if (!fs$6[gracefulQueue]) {
-  // This queue can be shared by multiple loaded instances
-  var queue = commonjsGlobal[gracefulQueue] || [];
-  publishQueue(fs$6, queue);
-
-  // Patch fs.close/closeSync to shared queue version, because we need
-  // to retry() whenever a close happens *anywhere* in the program.
-  // This is essential when multiple graceful-fs instances are
-  // in play at the same time.
-  fs$6.close = (function (fs$close) {
-    function close (fd, cb) {
-      return fs$close.call(fs$6, fd, function (err) {
-        // This function uses the graceful-fs shared queue
-        if (!err) {
-          resetQueue();
-        }
-
-        if (typeof cb === 'function')
-          cb.apply(this, arguments);
-      })
-    }
-
-    Object.defineProperty(close, previousSymbol, {
-      value: fs$close
-    });
-    return close
-  })(fs$6.close);
-
-  fs$6.closeSync = (function (fs$closeSync) {
-    function closeSync (fd) {
-      // This function uses the graceful-fs shared queue
-      fs$closeSync.apply(fs$6, arguments);
-      resetQueue();
-    }
-
-    Object.defineProperty(closeSync, previousSymbol, {
-      value: fs$closeSync
-    });
-    return closeSync
-  })(fs$6.closeSync);
-
-  if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || '')) {
-    process.on('exit', function() {
-      debug$2(fs$6[gracefulQueue]);
-      require$$0__default$7["default"].equal(fs$6[gracefulQueue].length, 0);
-    });
-  }
-}
-
-if (!commonjsGlobal[gracefulQueue]) {
-  publishQueue(commonjsGlobal, fs$6[gracefulQueue]);
-}
-
-var gracefulFs = patch$1(clone(fs$6));
-if (process.env.TEST_GRACEFUL_FS_GLOBAL_PATCH && !fs$6.__patched) {
-    gracefulFs = patch$1(fs$6);
-    fs$6.__patched = true;
-}
-
-function patch$1 (fs) {
-  // Everything that references the open() function needs to be in here
-  polyfills(fs);
-  fs.gracefulify = patch$1;
-
-  fs.createReadStream = createReadStream;
-  fs.createWriteStream = createWriteStream;
-  var fs$readFile = fs.readFile;
-  fs.readFile = readFile;
-  function readFile (path, options, cb) {
-    if (typeof options === 'function')
-      cb = options, options = null;
-
-    return go$readFile(path, options, cb)
-
-    function go$readFile (path, options, cb, startTime) {
-      return fs$readFile(path, options, function (err) {
-        if (err && (err.code === 'EMFILE' || err.code === 'ENFILE'))
-          enqueue([go$readFile, [path, options, cb], err, startTime || Date.now(), Date.now()]);
-        else {
-          if (typeof cb === 'function')
-            cb.apply(this, arguments);
-        }
-      })
-    }
-  }
-
-  var fs$writeFile = fs.writeFile;
-  fs.writeFile = writeFile;
-  function writeFile (path, data, options, cb) {
-    if (typeof options === 'function')
-      cb = options, options = null;
-
-    return go$writeFile(path, data, options, cb)
-
-    function go$writeFile (path, data, options, cb, startTime) {
-      return fs$writeFile(path, data, options, function (err) {
-        if (err && (err.code === 'EMFILE' || err.code === 'ENFILE'))
-          enqueue([go$writeFile, [path, data, options, cb], err, startTime || Date.now(), Date.now()]);
-        else {
-          if (typeof cb === 'function')
-            cb.apply(this, arguments);
-        }
-      })
-    }
-  }
-
-  var fs$appendFile = fs.appendFile;
-  if (fs$appendFile)
-    fs.appendFile = appendFile;
-  function appendFile (path, data, options, cb) {
-    if (typeof options === 'function')
-      cb = options, options = null;
-
-    return go$appendFile(path, data, options, cb)
-
-    function go$appendFile (path, data, options, cb, startTime) {
-      return fs$appendFile(path, data, options, function (err) {
-        if (err && (err.code === 'EMFILE' || err.code === 'ENFILE'))
-          enqueue([go$appendFile, [path, data, options, cb], err, startTime || Date.now(), Date.now()]);
-        else {
-          if (typeof cb === 'function')
-            cb.apply(this, arguments);
-        }
-      })
-    }
-  }
-
-  var fs$copyFile = fs.copyFile;
-  if (fs$copyFile)
-    fs.copyFile = copyFile;
-  function copyFile (src, dest, flags, cb) {
-    if (typeof flags === 'function') {
-      cb = flags;
-      flags = 0;
-    }
-    return go$copyFile(src, dest, flags, cb)
-
-    function go$copyFile (src, dest, flags, cb, startTime) {
-      return fs$copyFile(src, dest, flags, function (err) {
-        if (err && (err.code === 'EMFILE' || err.code === 'ENFILE'))
-          enqueue([go$copyFile, [src, dest, flags, cb], err, startTime || Date.now(), Date.now()]);
-        else {
-          if (typeof cb === 'function')
-            cb.apply(this, arguments);
-        }
-      })
-    }
-  }
-
-  var fs$readdir = fs.readdir;
-  fs.readdir = readdir;
-  function readdir (path, options, cb) {
-    if (typeof options === 'function')
-      cb = options, options = null;
-
-    return go$readdir(path, options, cb)
-
-    function go$readdir (path, options, cb, startTime) {
-      return fs$readdir(path, options, function (err, files) {
-        if (err && (err.code === 'EMFILE' || err.code === 'ENFILE'))
-          enqueue([go$readdir, [path, options, cb], err, startTime || Date.now(), Date.now()]);
-        else {
-          if (files && files.sort)
-            files.sort();
-
-          if (typeof cb === 'function')
-            cb.call(this, err, files);
-        }
-      })
-    }
-  }
-
-  if (process.version.substr(0, 4) === 'v0.8') {
-    var legStreams = legacy(fs);
-    ReadStream = legStreams.ReadStream;
-    WriteStream = legStreams.WriteStream;
-  }
-
-  var fs$ReadStream = fs.ReadStream;
-  if (fs$ReadStream) {
-    ReadStream.prototype = Object.create(fs$ReadStream.prototype);
-    ReadStream.prototype.open = ReadStream$open;
-  }
-
-  var fs$WriteStream = fs.WriteStream;
-  if (fs$WriteStream) {
-    WriteStream.prototype = Object.create(fs$WriteStream.prototype);
-    WriteStream.prototype.open = WriteStream$open;
-  }
-
-  Object.defineProperty(fs, 'ReadStream', {
-    get: function () {
-      return ReadStream
-    },
-    set: function (val) {
-      ReadStream = val;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(fs, 'WriteStream', {
-    get: function () {
-      return WriteStream
-    },
-    set: function (val) {
-      WriteStream = val;
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  // legacy names
-  var FileReadStream = ReadStream;
-  Object.defineProperty(fs, 'FileReadStream', {
-    get: function () {
-      return FileReadStream
-    },
-    set: function (val) {
-      FileReadStream = val;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  var FileWriteStream = WriteStream;
-  Object.defineProperty(fs, 'FileWriteStream', {
-    get: function () {
-      return FileWriteStream
-    },
-    set: function (val) {
-      FileWriteStream = val;
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  function ReadStream (path, options) {
-    if (this instanceof ReadStream)
-      return fs$ReadStream.apply(this, arguments), this
-    else
-      return ReadStream.apply(Object.create(ReadStream.prototype), arguments)
-  }
-
-  function ReadStream$open () {
-    var that = this;
-    open(that.path, that.flags, that.mode, function (err, fd) {
-      if (err) {
-        if (that.autoClose)
-          that.destroy();
-
-        that.emit('error', err);
-      } else {
-        that.fd = fd;
-        that.emit('open', fd);
-        that.read();
-      }
-    });
-  }
-
-  function WriteStream (path, options) {
-    if (this instanceof WriteStream)
-      return fs$WriteStream.apply(this, arguments), this
-    else
-      return WriteStream.apply(Object.create(WriteStream.prototype), arguments)
-  }
-
-  function WriteStream$open () {
-    var that = this;
-    open(that.path, that.flags, that.mode, function (err, fd) {
-      if (err) {
-        that.destroy();
-        that.emit('error', err);
-      } else {
-        that.fd = fd;
-        that.emit('open', fd);
-      }
-    });
-  }
-
-  function createReadStream (path, options) {
-    return new fs.ReadStream(path, options)
-  }
-
-  function createWriteStream (path, options) {
-    return new fs.WriteStream(path, options)
-  }
-
-  var fs$open = fs.open;
-  fs.open = open;
-  function open (path, flags, mode, cb) {
-    if (typeof mode === 'function')
-      cb = mode, mode = null;
-
-    return go$open(path, flags, mode, cb)
-
-    function go$open (path, flags, mode, cb, startTime) {
-      return fs$open(path, flags, mode, function (err, fd) {
-        if (err && (err.code === 'EMFILE' || err.code === 'ENFILE'))
-          enqueue([go$open, [path, flags, mode, cb], err, startTime || Date.now(), Date.now()]);
-        else {
-          if (typeof cb === 'function')
-            cb.apply(this, arguments);
-        }
-      })
-    }
-  }
-
-  return fs
-}
-
-function enqueue (elem) {
-  debug$2('ENQUEUE', elem[0].name, elem[1]);
-  fs$6[gracefulQueue].push(elem);
-  retry();
-}
-
-// keep track of the timeout between retry() calls
-var retryTimer;
-
-// reset the startTime and lastTime to now
-// this resets the start of the 60 second overall timeout as well as the
-// delay between attempts so that we'll retry these jobs sooner
-function resetQueue () {
-  var now = Date.now();
-  for (var i = 0; i < fs$6[gracefulQueue].length; ++i) {
-    // entries that are only a length of 2 are from an older version, don't
-    // bother modifying those since they'll be retried anyway.
-    if (fs$6[gracefulQueue][i].length > 2) {
-      fs$6[gracefulQueue][i][3] = now; // startTime
-      fs$6[gracefulQueue][i][4] = now; // lastTime
-    }
-  }
-  // call retry to make sure we're actively processing the queue
-  retry();
-}
-
-function retry () {
-  // clear the timer and remove it to help prevent unintended concurrency
-  clearTimeout(retryTimer);
-  retryTimer = undefined;
-
-  if (fs$6[gracefulQueue].length === 0)
-    return
-
-  var elem = fs$6[gracefulQueue].shift();
-  var fn = elem[0];
-  var args = elem[1];
-  // these items may be unset if they were added by an older graceful-fs
-  var err = elem[2];
-  var startTime = elem[3];
-  var lastTime = elem[4];
-
-  // if we don't have a startTime we have no way of knowing if we've waited
-  // long enough, so go ahead and retry this item now
-  if (startTime === undefined) {
-    debug$2('RETRY', fn.name, args);
-    fn.apply(null, args);
-  } else if (Date.now() - startTime >= 60000) {
-    // it's been more than 60 seconds total, bail now
-    debug$2('TIMEOUT', fn.name, args);
-    var cb = args.pop();
-    if (typeof cb === 'function')
-      cb.call(null, err);
-  } else {
-    // the amount of time between the last attempt and right now
-    var sinceAttempt = Date.now() - lastTime;
-    // the amount of time between when we first tried, and when we last tried
-    // rounded up to at least 1
-    var sinceStart = Math.max(lastTime - startTime, 1);
-    // backoff. wait longer than the total time we've been retrying, but only
-    // up to a maximum of 100ms
-    var desiredDelay = Math.min(sinceStart * 1.2, 100);
-    // it's been long enough since the last retry, do it again
-    if (sinceAttempt >= desiredDelay) {
-      debug$2('RETRY', fn.name, args);
-      fn.apply(null, args.concat([startTime]));
-    } else {
-      // if we can't do this job yet, push it to the end of the queue
-      // and let the next iteration check again
-      fs$6[gracefulQueue].push(elem);
-    }
-  }
-
-  // schedule our next run if one isn't already scheduled
-  if (retryTimer === undefined) {
-    retryTimer = setTimeout(retry, 0);
-  }
-}
-
-var makeDir$2 = {exports: {}};
-
-var semver$3 = {exports: {}};
-
-(function (module, exports) {
-	exports = module.exports = SemVer;
-
-	var debug;
-	/* istanbul ignore next */
-	if (typeof process === 'object' &&
-	    process.env &&
-	    process.env.NODE_DEBUG &&
-	    /\bsemver\b/i.test(process.env.NODE_DEBUG)) {
-	  debug = function () {
-	    var args = Array.prototype.slice.call(arguments, 0);
-	    args.unshift('SEMVER');
-	    console.log.apply(console, args);
-	  };
-	} else {
-	  debug = function () {};
-	}
-
-	// Note: this is the semver.org version of the spec that it implements
-	// Not necessarily the package version of this code.
-	exports.SEMVER_SPEC_VERSION = '2.0.0';
-
-	var MAX_LENGTH = 256;
-	var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER ||
-	  /* istanbul ignore next */ 9007199254740991;
-
-	// Max safe segment length for coercion.
-	var MAX_SAFE_COMPONENT_LENGTH = 16;
-
-	// The actual regexps go on exports.re
-	var re = exports.re = [];
-	var src = exports.src = [];
-	var t = exports.tokens = {};
-	var R = 0;
-
-	function tok (n) {
-	  t[n] = R++;
-	}
-
-	// The following Regular Expressions can be used for tokenizing,
-	// validating, and parsing SemVer version strings.
-
-	// ## Numeric Identifier
-	// A single `0`, or a non-zero digit followed by zero or more digits.
-
-	tok('NUMERICIDENTIFIER');
-	src[t.NUMERICIDENTIFIER] = '0|[1-9]\\d*';
-	tok('NUMERICIDENTIFIERLOOSE');
-	src[t.NUMERICIDENTIFIERLOOSE] = '[0-9]+';
-
-	// ## Non-numeric Identifier
-	// Zero or more digits, followed by a letter or hyphen, and then zero or
-	// more letters, digits, or hyphens.
-
-	tok('NONNUMERICIDENTIFIER');
-	src[t.NONNUMERICIDENTIFIER] = '\\d*[a-zA-Z-][a-zA-Z0-9-]*';
-
-	// ## Main Version
-	// Three dot-separated numeric identifiers.
-
-	tok('MAINVERSION');
-	src[t.MAINVERSION] = '(' + src[t.NUMERICIDENTIFIER] + ')\\.' +
-	                   '(' + src[t.NUMERICIDENTIFIER] + ')\\.' +
-	                   '(' + src[t.NUMERICIDENTIFIER] + ')';
-
-	tok('MAINVERSIONLOOSE');
-	src[t.MAINVERSIONLOOSE] = '(' + src[t.NUMERICIDENTIFIERLOOSE] + ')\\.' +
-	                        '(' + src[t.NUMERICIDENTIFIERLOOSE] + ')\\.' +
-	                        '(' + src[t.NUMERICIDENTIFIERLOOSE] + ')';
-
-	// ## Pre-release Version Identifier
-	// A numeric identifier, or a non-numeric identifier.
-
-	tok('PRERELEASEIDENTIFIER');
-	src[t.PRERELEASEIDENTIFIER] = '(?:' + src[t.NUMERICIDENTIFIER] +
-	                            '|' + src[t.NONNUMERICIDENTIFIER] + ')';
-
-	tok('PRERELEASEIDENTIFIERLOOSE');
-	src[t.PRERELEASEIDENTIFIERLOOSE] = '(?:' + src[t.NUMERICIDENTIFIERLOOSE] +
-	                                 '|' + src[t.NONNUMERICIDENTIFIER] + ')';
-
-	// ## Pre-release Version
-	// Hyphen, followed by one or more dot-separated pre-release version
-	// identifiers.
-
-	tok('PRERELEASE');
-	src[t.PRERELEASE] = '(?:-(' + src[t.PRERELEASEIDENTIFIER] +
-	                  '(?:\\.' + src[t.PRERELEASEIDENTIFIER] + ')*))';
-
-	tok('PRERELEASELOOSE');
-	src[t.PRERELEASELOOSE] = '(?:-?(' + src[t.PRERELEASEIDENTIFIERLOOSE] +
-	                       '(?:\\.' + src[t.PRERELEASEIDENTIFIERLOOSE] + ')*))';
-
-	// ## Build Metadata Identifier
-	// Any combination of digits, letters, or hyphens.
-
-	tok('BUILDIDENTIFIER');
-	src[t.BUILDIDENTIFIER] = '[0-9A-Za-z-]+';
-
-	// ## Build Metadata
-	// Plus sign, followed by one or more period-separated build metadata
-	// identifiers.
-
-	tok('BUILD');
-	src[t.BUILD] = '(?:\\+(' + src[t.BUILDIDENTIFIER] +
-	             '(?:\\.' + src[t.BUILDIDENTIFIER] + ')*))';
-
-	// ## Full Version String
-	// A main version, followed optionally by a pre-release version and
-	// build metadata.
-
-	// Note that the only major, minor, patch, and pre-release sections of
-	// the version string are capturing groups.  The build metadata is not a
-	// capturing group, because it should not ever be used in version
-	// comparison.
-
-	tok('FULL');
-	tok('FULLPLAIN');
-	src[t.FULLPLAIN] = 'v?' + src[t.MAINVERSION] +
-	                  src[t.PRERELEASE] + '?' +
-	                  src[t.BUILD] + '?';
-
-	src[t.FULL] = '^' + src[t.FULLPLAIN] + '$';
-
-	// like full, but allows v1.2.3 and =1.2.3, which people do sometimes.
-	// also, 1.0.0alpha1 (prerelease without the hyphen) which is pretty
-	// common in the npm registry.
-	tok('LOOSEPLAIN');
-	src[t.LOOSEPLAIN] = '[v=\\s]*' + src[t.MAINVERSIONLOOSE] +
-	                  src[t.PRERELEASELOOSE] + '?' +
-	                  src[t.BUILD] + '?';
-
-	tok('LOOSE');
-	src[t.LOOSE] = '^' + src[t.LOOSEPLAIN] + '$';
-
-	tok('GTLT');
-	src[t.GTLT] = '((?:<|>)?=?)';
-
-	// Something like "2.*" or "1.2.x".
-	// Note that "x.x" is a valid xRange identifer, meaning "any version"
-	// Only the first item is strictly required.
-	tok('XRANGEIDENTIFIERLOOSE');
-	src[t.XRANGEIDENTIFIERLOOSE] = src[t.NUMERICIDENTIFIERLOOSE] + '|x|X|\\*';
-	tok('XRANGEIDENTIFIER');
-	src[t.XRANGEIDENTIFIER] = src[t.NUMERICIDENTIFIER] + '|x|X|\\*';
-
-	tok('XRANGEPLAIN');
-	src[t.XRANGEPLAIN] = '[v=\\s]*(' + src[t.XRANGEIDENTIFIER] + ')' +
-	                   '(?:\\.(' + src[t.XRANGEIDENTIFIER] + ')' +
-	                   '(?:\\.(' + src[t.XRANGEIDENTIFIER] + ')' +
-	                   '(?:' + src[t.PRERELEASE] + ')?' +
-	                   src[t.BUILD] + '?' +
-	                   ')?)?';
-
-	tok('XRANGEPLAINLOOSE');
-	src[t.XRANGEPLAINLOOSE] = '[v=\\s]*(' + src[t.XRANGEIDENTIFIERLOOSE] + ')' +
-	                        '(?:\\.(' + src[t.XRANGEIDENTIFIERLOOSE] + ')' +
-	                        '(?:\\.(' + src[t.XRANGEIDENTIFIERLOOSE] + ')' +
-	                        '(?:' + src[t.PRERELEASELOOSE] + ')?' +
-	                        src[t.BUILD] + '?' +
-	                        ')?)?';
-
-	tok('XRANGE');
-	src[t.XRANGE] = '^' + src[t.GTLT] + '\\s*' + src[t.XRANGEPLAIN] + '$';
-	tok('XRANGELOOSE');
-	src[t.XRANGELOOSE] = '^' + src[t.GTLT] + '\\s*' + src[t.XRANGEPLAINLOOSE] + '$';
-
-	// Coercion.
-	// Extract anything that could conceivably be a part of a valid semver
-	tok('COERCE');
-	src[t.COERCE] = '(^|[^\\d])' +
-	              '(\\d{1,' + MAX_SAFE_COMPONENT_LENGTH + '})' +
-	              '(?:\\.(\\d{1,' + MAX_SAFE_COMPONENT_LENGTH + '}))?' +
-	              '(?:\\.(\\d{1,' + MAX_SAFE_COMPONENT_LENGTH + '}))?' +
-	              '(?:$|[^\\d])';
-	tok('COERCERTL');
-	re[t.COERCERTL] = new RegExp(src[t.COERCE], 'g');
-
-	// Tilde ranges.
-	// Meaning is "reasonably at or greater than"
-	tok('LONETILDE');
-	src[t.LONETILDE] = '(?:~>?)';
-
-	tok('TILDETRIM');
-	src[t.TILDETRIM] = '(\\s*)' + src[t.LONETILDE] + '\\s+';
-	re[t.TILDETRIM] = new RegExp(src[t.TILDETRIM], 'g');
-	var tildeTrimReplace = '$1~';
-
-	tok('TILDE');
-	src[t.TILDE] = '^' + src[t.LONETILDE] + src[t.XRANGEPLAIN] + '$';
-	tok('TILDELOOSE');
-	src[t.TILDELOOSE] = '^' + src[t.LONETILDE] + src[t.XRANGEPLAINLOOSE] + '$';
-
-	// Caret ranges.
-	// Meaning is "at least and backwards compatible with"
-	tok('LONECARET');
-	src[t.LONECARET] = '(?:\\^)';
-
-	tok('CARETTRIM');
-	src[t.CARETTRIM] = '(\\s*)' + src[t.LONECARET] + '\\s+';
-	re[t.CARETTRIM] = new RegExp(src[t.CARETTRIM], 'g');
-	var caretTrimReplace = '$1^';
-
-	tok('CARET');
-	src[t.CARET] = '^' + src[t.LONECARET] + src[t.XRANGEPLAIN] + '$';
-	tok('CARETLOOSE');
-	src[t.CARETLOOSE] = '^' + src[t.LONECARET] + src[t.XRANGEPLAINLOOSE] + '$';
-
-	// A simple gt/lt/eq thing, or just "" to indicate "any version"
-	tok('COMPARATORLOOSE');
-	src[t.COMPARATORLOOSE] = '^' + src[t.GTLT] + '\\s*(' + src[t.LOOSEPLAIN] + ')$|^$';
-	tok('COMPARATOR');
-	src[t.COMPARATOR] = '^' + src[t.GTLT] + '\\s*(' + src[t.FULLPLAIN] + ')$|^$';
-
-	// An expression to strip any whitespace between the gtlt and the thing
-	// it modifies, so that `> 1.2.3` ==> `>1.2.3`
-	tok('COMPARATORTRIM');
-	src[t.COMPARATORTRIM] = '(\\s*)' + src[t.GTLT] +
-	                      '\\s*(' + src[t.LOOSEPLAIN] + '|' + src[t.XRANGEPLAIN] + ')';
-
-	// this one has to use the /g flag
-	re[t.COMPARATORTRIM] = new RegExp(src[t.COMPARATORTRIM], 'g');
-	var comparatorTrimReplace = '$1$2$3';
-
-	// Something like `1.2.3 - 1.2.4`
-	// Note that these all use the loose form, because they'll be
-	// checked against either the strict or loose comparator form
-	// later.
-	tok('HYPHENRANGE');
-	src[t.HYPHENRANGE] = '^\\s*(' + src[t.XRANGEPLAIN] + ')' +
-	                   '\\s+-\\s+' +
-	                   '(' + src[t.XRANGEPLAIN] + ')' +
-	                   '\\s*$';
-
-	tok('HYPHENRANGELOOSE');
-	src[t.HYPHENRANGELOOSE] = '^\\s*(' + src[t.XRANGEPLAINLOOSE] + ')' +
-	                        '\\s+-\\s+' +
-	                        '(' + src[t.XRANGEPLAINLOOSE] + ')' +
-	                        '\\s*$';
-
-	// Star ranges basically just allow anything at all.
-	tok('STAR');
-	src[t.STAR] = '(<|>)?=?\\s*\\*';
-
-	// Compile to actual regexp objects.
-	// All are flag-free, unless they were created above with a flag.
-	for (var i = 0; i < R; i++) {
-	  debug(i, src[i]);
-	  if (!re[i]) {
-	    re[i] = new RegExp(src[i]);
-	  }
-	}
-
-	exports.parse = parse;
-	function parse (version, options) {
-	  if (!options || typeof options !== 'object') {
-	    options = {
-	      loose: !!options,
-	      includePrerelease: false
-	    };
-	  }
-
-	  if (version instanceof SemVer) {
-	    return version
-	  }
-
-	  if (typeof version !== 'string') {
-	    return null
-	  }
-
-	  if (version.length > MAX_LENGTH) {
-	    return null
-	  }
-
-	  var r = options.loose ? re[t.LOOSE] : re[t.FULL];
-	  if (!r.test(version)) {
-	    return null
-	  }
-
-	  try {
-	    return new SemVer(version, options)
-	  } catch (er) {
-	    return null
-	  }
-	}
-
-	exports.valid = valid;
-	function valid (version, options) {
-	  var v = parse(version, options);
-	  return v ? v.version : null
-	}
-
-	exports.clean = clean;
-	function clean (version, options) {
-	  var s = parse(version.trim().replace(/^[=v]+/, ''), options);
-	  return s ? s.version : null
-	}
-
-	exports.SemVer = SemVer;
-
-	function SemVer (version, options) {
-	  if (!options || typeof options !== 'object') {
-	    options = {
-	      loose: !!options,
-	      includePrerelease: false
-	    };
-	  }
-	  if (version instanceof SemVer) {
-	    if (version.loose === options.loose) {
-	      return version
-	    } else {
-	      version = version.version;
-	    }
-	  } else if (typeof version !== 'string') {
-	    throw new TypeError('Invalid Version: ' + version)
-	  }
-
-	  if (version.length > MAX_LENGTH) {
-	    throw new TypeError('version is longer than ' + MAX_LENGTH + ' characters')
-	  }
-
-	  if (!(this instanceof SemVer)) {
-	    return new SemVer(version, options)
-	  }
-
-	  debug('SemVer', version, options);
-	  this.options = options;
-	  this.loose = !!options.loose;
-
-	  var m = version.trim().match(options.loose ? re[t.LOOSE] : re[t.FULL]);
-
-	  if (!m) {
-	    throw new TypeError('Invalid Version: ' + version)
-	  }
-
-	  this.raw = version;
-
-	  // these are actually numbers
-	  this.major = +m[1];
-	  this.minor = +m[2];
-	  this.patch = +m[3];
-
-	  if (this.major > MAX_SAFE_INTEGER || this.major < 0) {
-	    throw new TypeError('Invalid major version')
-	  }
-
-	  if (this.minor > MAX_SAFE_INTEGER || this.minor < 0) {
-	    throw new TypeError('Invalid minor version')
-	  }
-
-	  if (this.patch > MAX_SAFE_INTEGER || this.patch < 0) {
-	    throw new TypeError('Invalid patch version')
-	  }
-
-	  // numberify any prerelease numeric ids
-	  if (!m[4]) {
-	    this.prerelease = [];
-	  } else {
-	    this.prerelease = m[4].split('.').map(function (id) {
-	      if (/^[0-9]+$/.test(id)) {
-	        var num = +id;
-	        if (num >= 0 && num < MAX_SAFE_INTEGER) {
-	          return num
-	        }
-	      }
-	      return id
-	    });
-	  }
-
-	  this.build = m[5] ? m[5].split('.') : [];
-	  this.format();
-	}
-
-	SemVer.prototype.format = function () {
-	  this.version = this.major + '.' + this.minor + '.' + this.patch;
-	  if (this.prerelease.length) {
-	    this.version += '-' + this.prerelease.join('.');
-	  }
-	  return this.version
-	};
-
-	SemVer.prototype.toString = function () {
-	  return this.version
-	};
-
-	SemVer.prototype.compare = function (other) {
-	  debug('SemVer.compare', this.version, this.options, other);
-	  if (!(other instanceof SemVer)) {
-	    other = new SemVer(other, this.options);
-	  }
-
-	  return this.compareMain(other) || this.comparePre(other)
-	};
-
-	SemVer.prototype.compareMain = function (other) {
-	  if (!(other instanceof SemVer)) {
-	    other = new SemVer(other, this.options);
-	  }
-
-	  return compareIdentifiers(this.major, other.major) ||
-	         compareIdentifiers(this.minor, other.minor) ||
-	         compareIdentifiers(this.patch, other.patch)
-	};
-
-	SemVer.prototype.comparePre = function (other) {
-	  if (!(other instanceof SemVer)) {
-	    other = new SemVer(other, this.options);
-	  }
-
-	  // NOT having a prerelease is > having one
-	  if (this.prerelease.length && !other.prerelease.length) {
-	    return -1
-	  } else if (!this.prerelease.length && other.prerelease.length) {
-	    return 1
-	  } else if (!this.prerelease.length && !other.prerelease.length) {
-	    return 0
-	  }
-
-	  var i = 0;
-	  do {
-	    var a = this.prerelease[i];
-	    var b = other.prerelease[i];
-	    debug('prerelease compare', i, a, b);
-	    if (a === undefined && b === undefined) {
-	      return 0
-	    } else if (b === undefined) {
-	      return 1
-	    } else if (a === undefined) {
-	      return -1
-	    } else if (a === b) {
-	      continue
-	    } else {
-	      return compareIdentifiers(a, b)
-	    }
-	  } while (++i)
-	};
-
-	SemVer.prototype.compareBuild = function (other) {
-	  if (!(other instanceof SemVer)) {
-	    other = new SemVer(other, this.options);
-	  }
-
-	  var i = 0;
-	  do {
-	    var a = this.build[i];
-	    var b = other.build[i];
-	    debug('prerelease compare', i, a, b);
-	    if (a === undefined && b === undefined) {
-	      return 0
-	    } else if (b === undefined) {
-	      return 1
-	    } else if (a === undefined) {
-	      return -1
-	    } else if (a === b) {
-	      continue
-	    } else {
-	      return compareIdentifiers(a, b)
-	    }
-	  } while (++i)
-	};
-
-	// preminor will bump the version up to the next minor release, and immediately
-	// down to pre-release. premajor and prepatch work the same way.
-	SemVer.prototype.inc = function (release, identifier) {
-	  switch (release) {
-	    case 'premajor':
-	      this.prerelease.length = 0;
-	      this.patch = 0;
-	      this.minor = 0;
-	      this.major++;
-	      this.inc('pre', identifier);
-	      break
-	    case 'preminor':
-	      this.prerelease.length = 0;
-	      this.patch = 0;
-	      this.minor++;
-	      this.inc('pre', identifier);
-	      break
-	    case 'prepatch':
-	      // If this is already a prerelease, it will bump to the next version
-	      // drop any prereleases that might already exist, since they are not
-	      // relevant at this point.
-	      this.prerelease.length = 0;
-	      this.inc('patch', identifier);
-	      this.inc('pre', identifier);
-	      break
-	    // If the input is a non-prerelease version, this acts the same as
-	    // prepatch.
-	    case 'prerelease':
-	      if (this.prerelease.length === 0) {
-	        this.inc('patch', identifier);
-	      }
-	      this.inc('pre', identifier);
-	      break
-
-	    case 'major':
-	      // If this is a pre-major version, bump up to the same major version.
-	      // Otherwise increment major.
-	      // 1.0.0-5 bumps to 1.0.0
-	      // 1.1.0 bumps to 2.0.0
-	      if (this.minor !== 0 ||
-	          this.patch !== 0 ||
-	          this.prerelease.length === 0) {
-	        this.major++;
-	      }
-	      this.minor = 0;
-	      this.patch = 0;
-	      this.prerelease = [];
-	      break
-	    case 'minor':
-	      // If this is a pre-minor version, bump up to the same minor version.
-	      // Otherwise increment minor.
-	      // 1.2.0-5 bumps to 1.2.0
-	      // 1.2.1 bumps to 1.3.0
-	      if (this.patch !== 0 || this.prerelease.length === 0) {
-	        this.minor++;
-	      }
-	      this.patch = 0;
-	      this.prerelease = [];
-	      break
-	    case 'patch':
-	      // If this is not a pre-release version, it will increment the patch.
-	      // If it is a pre-release it will bump up to the same patch version.
-	      // 1.2.0-5 patches to 1.2.0
-	      // 1.2.0 patches to 1.2.1
-	      if (this.prerelease.length === 0) {
-	        this.patch++;
-	      }
-	      this.prerelease = [];
-	      break
-	    // This probably shouldn't be used publicly.
-	    // 1.0.0 "pre" would become 1.0.0-0 which is the wrong direction.
-	    case 'pre':
-	      if (this.prerelease.length === 0) {
-	        this.prerelease = [0];
-	      } else {
-	        var i = this.prerelease.length;
-	        while (--i >= 0) {
-	          if (typeof this.prerelease[i] === 'number') {
-	            this.prerelease[i]++;
-	            i = -2;
-	          }
-	        }
-	        if (i === -1) {
-	          // didn't increment anything
-	          this.prerelease.push(0);
-	        }
-	      }
-	      if (identifier) {
-	        // 1.2.0-beta.1 bumps to 1.2.0-beta.2,
-	        // 1.2.0-beta.fooblz or 1.2.0-beta bumps to 1.2.0-beta.0
-	        if (this.prerelease[0] === identifier) {
-	          if (isNaN(this.prerelease[1])) {
-	            this.prerelease = [identifier, 0];
-	          }
-	        } else {
-	          this.prerelease = [identifier, 0];
-	        }
-	      }
-	      break
-
-	    default:
-	      throw new Error('invalid increment argument: ' + release)
-	  }
-	  this.format();
-	  this.raw = this.version;
-	  return this
-	};
-
-	exports.inc = inc;
-	function inc (version, release, loose, identifier) {
-	  if (typeof (loose) === 'string') {
-	    identifier = loose;
-	    loose = undefined;
-	  }
-
-	  try {
-	    return new SemVer(version, loose).inc(release, identifier).version
-	  } catch (er) {
-	    return null
-	  }
-	}
-
-	exports.diff = diff;
-	function diff (version1, version2) {
-	  if (eq(version1, version2)) {
-	    return null
-	  } else {
-	    var v1 = parse(version1);
-	    var v2 = parse(version2);
-	    var prefix = '';
-	    if (v1.prerelease.length || v2.prerelease.length) {
-	      prefix = 'pre';
-	      var defaultResult = 'prerelease';
-	    }
-	    for (var key in v1) {
-	      if (key === 'major' || key === 'minor' || key === 'patch') {
-	        if (v1[key] !== v2[key]) {
-	          return prefix + key
-	        }
-	      }
-	    }
-	    return defaultResult // may be undefined
-	  }
-	}
-
-	exports.compareIdentifiers = compareIdentifiers;
-
-	var numeric = /^[0-9]+$/;
-	function compareIdentifiers (a, b) {
-	  var anum = numeric.test(a);
-	  var bnum = numeric.test(b);
-
-	  if (anum && bnum) {
-	    a = +a;
-	    b = +b;
-	  }
-
-	  return a === b ? 0
-	    : (anum && !bnum) ? -1
-	    : (bnum && !anum) ? 1
-	    : a < b ? -1
-	    : 1
-	}
-
-	exports.rcompareIdentifiers = rcompareIdentifiers;
-	function rcompareIdentifiers (a, b) {
-	  return compareIdentifiers(b, a)
-	}
-
-	exports.major = major;
-	function major (a, loose) {
-	  return new SemVer(a, loose).major
-	}
-
-	exports.minor = minor;
-	function minor (a, loose) {
-	  return new SemVer(a, loose).minor
-	}
-
-	exports.patch = patch;
-	function patch (a, loose) {
-	  return new SemVer(a, loose).patch
-	}
-
-	exports.compare = compare;
-	function compare (a, b, loose) {
-	  return new SemVer(a, loose).compare(new SemVer(b, loose))
-	}
-
-	exports.compareLoose = compareLoose;
-	function compareLoose (a, b) {
-	  return compare(a, b, true)
-	}
-
-	exports.compareBuild = compareBuild;
-	function compareBuild (a, b, loose) {
-	  var versionA = new SemVer(a, loose);
-	  var versionB = new SemVer(b, loose);
-	  return versionA.compare(versionB) || versionA.compareBuild(versionB)
-	}
-
-	exports.rcompare = rcompare;
-	function rcompare (a, b, loose) {
-	  return compare(b, a, loose)
-	}
-
-	exports.sort = sort;
-	function sort (list, loose) {
-	  return list.sort(function (a, b) {
-	    return exports.compareBuild(a, b, loose)
-	  })
-	}
-
-	exports.rsort = rsort;
-	function rsort (list, loose) {
-	  return list.sort(function (a, b) {
-	    return exports.compareBuild(b, a, loose)
-	  })
-	}
-
-	exports.gt = gt;
-	function gt (a, b, loose) {
-	  return compare(a, b, loose) > 0
-	}
-
-	exports.lt = lt;
-	function lt (a, b, loose) {
-	  return compare(a, b, loose) < 0
-	}
-
-	exports.eq = eq;
-	function eq (a, b, loose) {
-	  return compare(a, b, loose) === 0
-	}
-
-	exports.neq = neq;
-	function neq (a, b, loose) {
-	  return compare(a, b, loose) !== 0
-	}
-
-	exports.gte = gte;
-	function gte (a, b, loose) {
-	  return compare(a, b, loose) >= 0
-	}
-
-	exports.lte = lte;
-	function lte (a, b, loose) {
-	  return compare(a, b, loose) <= 0
-	}
-
-	exports.cmp = cmp;
-	function cmp (a, op, b, loose) {
-	  switch (op) {
-	    case '===':
-	      if (typeof a === 'object')
-	        a = a.version;
-	      if (typeof b === 'object')
-	        b = b.version;
-	      return a === b
-
-	    case '!==':
-	      if (typeof a === 'object')
-	        a = a.version;
-	      if (typeof b === 'object')
-	        b = b.version;
-	      return a !== b
-
-	    case '':
-	    case '=':
-	    case '==':
-	      return eq(a, b, loose)
-
-	    case '!=':
-	      return neq(a, b, loose)
-
-	    case '>':
-	      return gt(a, b, loose)
-
-	    case '>=':
-	      return gte(a, b, loose)
-
-	    case '<':
-	      return lt(a, b, loose)
-
-	    case '<=':
-	      return lte(a, b, loose)
-
-	    default:
-	      throw new TypeError('Invalid operator: ' + op)
-	  }
-	}
-
-	exports.Comparator = Comparator;
-	function Comparator (comp, options) {
-	  if (!options || typeof options !== 'object') {
-	    options = {
-	      loose: !!options,
-	      includePrerelease: false
-	    };
-	  }
-
-	  if (comp instanceof Comparator) {
-	    if (comp.loose === !!options.loose) {
-	      return comp
-	    } else {
-	      comp = comp.value;
-	    }
-	  }
-
-	  if (!(this instanceof Comparator)) {
-	    return new Comparator(comp, options)
-	  }
-
-	  debug('comparator', comp, options);
-	  this.options = options;
-	  this.loose = !!options.loose;
-	  this.parse(comp);
-
-	  if (this.semver === ANY) {
-	    this.value = '';
-	  } else {
-	    this.value = this.operator + this.semver.version;
-	  }
-
-	  debug('comp', this);
-	}
-
-	var ANY = {};
-	Comparator.prototype.parse = function (comp) {
-	  var r = this.options.loose ? re[t.COMPARATORLOOSE] : re[t.COMPARATOR];
-	  var m = comp.match(r);
-
-	  if (!m) {
-	    throw new TypeError('Invalid comparator: ' + comp)
-	  }
-
-	  this.operator = m[1] !== undefined ? m[1] : '';
-	  if (this.operator === '=') {
-	    this.operator = '';
-	  }
-
-	  // if it literally is just '>' or '' then allow anything.
-	  if (!m[2]) {
-	    this.semver = ANY;
-	  } else {
-	    this.semver = new SemVer(m[2], this.options.loose);
-	  }
-	};
-
-	Comparator.prototype.toString = function () {
-	  return this.value
-	};
-
-	Comparator.prototype.test = function (version) {
-	  debug('Comparator.test', version, this.options.loose);
-
-	  if (this.semver === ANY || version === ANY) {
-	    return true
-	  }
-
-	  if (typeof version === 'string') {
-	    try {
-	      version = new SemVer(version, this.options);
-	    } catch (er) {
-	      return false
-	    }
-	  }
-
-	  return cmp(version, this.operator, this.semver, this.options)
-	};
-
-	Comparator.prototype.intersects = function (comp, options) {
-	  if (!(comp instanceof Comparator)) {
-	    throw new TypeError('a Comparator is required')
-	  }
-
-	  if (!options || typeof options !== 'object') {
-	    options = {
-	      loose: !!options,
-	      includePrerelease: false
-	    };
-	  }
-
-	  var rangeTmp;
-
-	  if (this.operator === '') {
-	    if (this.value === '') {
-	      return true
-	    }
-	    rangeTmp = new Range(comp.value, options);
-	    return satisfies(this.value, rangeTmp, options)
-	  } else if (comp.operator === '') {
-	    if (comp.value === '') {
-	      return true
-	    }
-	    rangeTmp = new Range(this.value, options);
-	    return satisfies(comp.semver, rangeTmp, options)
-	  }
-
-	  var sameDirectionIncreasing =
-	    (this.operator === '>=' || this.operator === '>') &&
-	    (comp.operator === '>=' || comp.operator === '>');
-	  var sameDirectionDecreasing =
-	    (this.operator === '<=' || this.operator === '<') &&
-	    (comp.operator === '<=' || comp.operator === '<');
-	  var sameSemVer = this.semver.version === comp.semver.version;
-	  var differentDirectionsInclusive =
-	    (this.operator === '>=' || this.operator === '<=') &&
-	    (comp.operator === '>=' || comp.operator === '<=');
-	  var oppositeDirectionsLessThan =
-	    cmp(this.semver, '<', comp.semver, options) &&
-	    ((this.operator === '>=' || this.operator === '>') &&
-	    (comp.operator === '<=' || comp.operator === '<'));
-	  var oppositeDirectionsGreaterThan =
-	    cmp(this.semver, '>', comp.semver, options) &&
-	    ((this.operator === '<=' || this.operator === '<') &&
-	    (comp.operator === '>=' || comp.operator === '>'));
-
-	  return sameDirectionIncreasing || sameDirectionDecreasing ||
-	    (sameSemVer && differentDirectionsInclusive) ||
-	    oppositeDirectionsLessThan || oppositeDirectionsGreaterThan
-	};
-
-	exports.Range = Range;
-	function Range (range, options) {
-	  if (!options || typeof options !== 'object') {
-	    options = {
-	      loose: !!options,
-	      includePrerelease: false
-	    };
-	  }
-
-	  if (range instanceof Range) {
-	    if (range.loose === !!options.loose &&
-	        range.includePrerelease === !!options.includePrerelease) {
-	      return range
-	    } else {
-	      return new Range(range.raw, options)
-	    }
-	  }
-
-	  if (range instanceof Comparator) {
-	    return new Range(range.value, options)
-	  }
-
-	  if (!(this instanceof Range)) {
-	    return new Range(range, options)
-	  }
-
-	  this.options = options;
-	  this.loose = !!options.loose;
-	  this.includePrerelease = !!options.includePrerelease;
-
-	  // First, split based on boolean or ||
-	  this.raw = range;
-	  this.set = range.split(/\s*\|\|\s*/).map(function (range) {
-	    return this.parseRange(range.trim())
-	  }, this).filter(function (c) {
-	    // throw out any that are not relevant for whatever reason
-	    return c.length
-	  });
-
-	  if (!this.set.length) {
-	    throw new TypeError('Invalid SemVer Range: ' + range)
-	  }
-
-	  this.format();
-	}
-
-	Range.prototype.format = function () {
-	  this.range = this.set.map(function (comps) {
-	    return comps.join(' ').trim()
-	  }).join('||').trim();
-	  return this.range
-	};
-
-	Range.prototype.toString = function () {
-	  return this.range
-	};
-
-	Range.prototype.parseRange = function (range) {
-	  var loose = this.options.loose;
-	  range = range.trim();
-	  // `1.2.3 - 1.2.4` => `>=1.2.3 <=1.2.4`
-	  var hr = loose ? re[t.HYPHENRANGELOOSE] : re[t.HYPHENRANGE];
-	  range = range.replace(hr, hyphenReplace);
-	  debug('hyphen replace', range);
-	  // `> 1.2.3 < 1.2.5` => `>1.2.3 <1.2.5`
-	  range = range.replace(re[t.COMPARATORTRIM], comparatorTrimReplace);
-	  debug('comparator trim', range, re[t.COMPARATORTRIM]);
-
-	  // `~ 1.2.3` => `~1.2.3`
-	  range = range.replace(re[t.TILDETRIM], tildeTrimReplace);
-
-	  // `^ 1.2.3` => `^1.2.3`
-	  range = range.replace(re[t.CARETTRIM], caretTrimReplace);
-
-	  // normalize spaces
-	  range = range.split(/\s+/).join(' ');
-
-	  // At this point, the range is completely trimmed and
-	  // ready to be split into comparators.
-
-	  var compRe = loose ? re[t.COMPARATORLOOSE] : re[t.COMPARATOR];
-	  var set = range.split(' ').map(function (comp) {
-	    return parseComparator(comp, this.options)
-	  }, this).join(' ').split(/\s+/);
-	  if (this.options.loose) {
-	    // in loose mode, throw out any that are not valid comparators
-	    set = set.filter(function (comp) {
-	      return !!comp.match(compRe)
-	    });
-	  }
-	  set = set.map(function (comp) {
-	    return new Comparator(comp, this.options)
-	  }, this);
-
-	  return set
-	};
-
-	Range.prototype.intersects = function (range, options) {
-	  if (!(range instanceof Range)) {
-	    throw new TypeError('a Range is required')
-	  }
-
-	  return this.set.some(function (thisComparators) {
-	    return (
-	      isSatisfiable(thisComparators, options) &&
-	      range.set.some(function (rangeComparators) {
-	        return (
-	          isSatisfiable(rangeComparators, options) &&
-	          thisComparators.every(function (thisComparator) {
-	            return rangeComparators.every(function (rangeComparator) {
-	              return thisComparator.intersects(rangeComparator, options)
-	            })
-	          })
-	        )
-	      })
-	    )
-	  })
-	};
-
-	// take a set of comparators and determine whether there
-	// exists a version which can satisfy it
-	function isSatisfiable (comparators, options) {
-	  var result = true;
-	  var remainingComparators = comparators.slice();
-	  var testComparator = remainingComparators.pop();
-
-	  while (result && remainingComparators.length) {
-	    result = remainingComparators.every(function (otherComparator) {
-	      return testComparator.intersects(otherComparator, options)
-	    });
-
-	    testComparator = remainingComparators.pop();
-	  }
-
-	  return result
-	}
-
-	// Mostly just for testing and legacy API reasons
-	exports.toComparators = toComparators;
-	function toComparators (range, options) {
-	  return new Range(range, options).set.map(function (comp) {
-	    return comp.map(function (c) {
-	      return c.value
-	    }).join(' ').trim().split(' ')
-	  })
-	}
-
-	// comprised of xranges, tildes, stars, and gtlt's at this point.
-	// already replaced the hyphen ranges
-	// turn into a set of JUST comparators.
-	function parseComparator (comp, options) {
-	  debug('comp', comp, options);
-	  comp = replaceCarets(comp, options);
-	  debug('caret', comp);
-	  comp = replaceTildes(comp, options);
-	  debug('tildes', comp);
-	  comp = replaceXRanges(comp, options);
-	  debug('xrange', comp);
-	  comp = replaceStars(comp, options);
-	  debug('stars', comp);
-	  return comp
-	}
-
-	function isX (id) {
-	  return !id || id.toLowerCase() === 'x' || id === '*'
-	}
-
-	// ~, ~> --> * (any, kinda silly)
-	// ~2, ~2.x, ~2.x.x, ~>2, ~>2.x ~>2.x.x --> >=2.0.0 <3.0.0
-	// ~2.0, ~2.0.x, ~>2.0, ~>2.0.x --> >=2.0.0 <2.1.0
-	// ~1.2, ~1.2.x, ~>1.2, ~>1.2.x --> >=1.2.0 <1.3.0
-	// ~1.2.3, ~>1.2.3 --> >=1.2.3 <1.3.0
-	// ~1.2.0, ~>1.2.0 --> >=1.2.0 <1.3.0
-	function replaceTildes (comp, options) {
-	  return comp.trim().split(/\s+/).map(function (comp) {
-	    return replaceTilde(comp, options)
-	  }).join(' ')
-	}
-
-	function replaceTilde (comp, options) {
-	  var r = options.loose ? re[t.TILDELOOSE] : re[t.TILDE];
-	  return comp.replace(r, function (_, M, m, p, pr) {
-	    debug('tilde', comp, _, M, m, p, pr);
-	    var ret;
-
-	    if (isX(M)) {
-	      ret = '';
-	    } else if (isX(m)) {
-	      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
-	    } else if (isX(p)) {
-	      // ~1.2 == >=1.2.0 <1.3.0
-	      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
-	    } else if (pr) {
-	      debug('replaceTilde pr', pr);
-	      ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
-	            ' <' + M + '.' + (+m + 1) + '.0';
-	    } else {
-	      // ~1.2.3 == >=1.2.3 <1.3.0
-	      ret = '>=' + M + '.' + m + '.' + p +
-	            ' <' + M + '.' + (+m + 1) + '.0';
-	    }
-
-	    debug('tilde return', ret);
-	    return ret
-	  })
-	}
-
-	// ^ --> * (any, kinda silly)
-	// ^2, ^2.x, ^2.x.x --> >=2.0.0 <3.0.0
-	// ^2.0, ^2.0.x --> >=2.0.0 <3.0.0
-	// ^1.2, ^1.2.x --> >=1.2.0 <2.0.0
-	// ^1.2.3 --> >=1.2.3 <2.0.0
-	// ^1.2.0 --> >=1.2.0 <2.0.0
-	function replaceCarets (comp, options) {
-	  return comp.trim().split(/\s+/).map(function (comp) {
-	    return replaceCaret(comp, options)
-	  }).join(' ')
-	}
-
-	function replaceCaret (comp, options) {
-	  debug('caret', comp, options);
-	  var r = options.loose ? re[t.CARETLOOSE] : re[t.CARET];
-	  return comp.replace(r, function (_, M, m, p, pr) {
-	    debug('caret', comp, _, M, m, p, pr);
-	    var ret;
-
-	    if (isX(M)) {
-	      ret = '';
-	    } else if (isX(m)) {
-	      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0';
-	    } else if (isX(p)) {
-	      if (M === '0') {
-	        ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0';
-	      } else {
-	        ret = '>=' + M + '.' + m + '.0 <' + (+M + 1) + '.0.0';
-	      }
-	    } else if (pr) {
-	      debug('replaceCaret pr', pr);
-	      if (M === '0') {
-	        if (m === '0') {
-	          ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
-	                ' <' + M + '.' + m + '.' + (+p + 1);
-	        } else {
-	          ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
-	                ' <' + M + '.' + (+m + 1) + '.0';
-	        }
-	      } else {
-	        ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
-	              ' <' + (+M + 1) + '.0.0';
-	      }
-	    } else {
-	      debug('no pr');
-	      if (M === '0') {
-	        if (m === '0') {
-	          ret = '>=' + M + '.' + m + '.' + p +
-	                ' <' + M + '.' + m + '.' + (+p + 1);
-	        } else {
-	          ret = '>=' + M + '.' + m + '.' + p +
-	                ' <' + M + '.' + (+m + 1) + '.0';
-	        }
-	      } else {
-	        ret = '>=' + M + '.' + m + '.' + p +
-	              ' <' + (+M + 1) + '.0.0';
-	      }
-	    }
-
-	    debug('caret return', ret);
-	    return ret
-	  })
-	}
-
-	function replaceXRanges (comp, options) {
-	  debug('replaceXRanges', comp, options);
-	  return comp.split(/\s+/).map(function (comp) {
-	    return replaceXRange(comp, options)
-	  }).join(' ')
-	}
-
-	function replaceXRange (comp, options) {
-	  comp = comp.trim();
-	  var r = options.loose ? re[t.XRANGELOOSE] : re[t.XRANGE];
-	  return comp.replace(r, function (ret, gtlt, M, m, p, pr) {
-	    debug('xRange', comp, ret, gtlt, M, m, p, pr);
-	    var xM = isX(M);
-	    var xm = xM || isX(m);
-	    var xp = xm || isX(p);
-	    var anyX = xp;
-
-	    if (gtlt === '=' && anyX) {
-	      gtlt = '';
-	    }
-
-	    // if we're including prereleases in the match, then we need
-	    // to fix this to -0, the lowest possible prerelease value
-	    pr = options.includePrerelease ? '-0' : '';
-
-	    if (xM) {
-	      if (gtlt === '>' || gtlt === '<') {
-	        // nothing is allowed
-	        ret = '<0.0.0-0';
-	      } else {
-	        // nothing is forbidden
-	        ret = '*';
-	      }
-	    } else if (gtlt && anyX) {
-	      // we know patch is an x, because we have any x at all.
-	      // replace X with 0
-	      if (xm) {
-	        m = 0;
-	      }
-	      p = 0;
-
-	      if (gtlt === '>') {
-	        // >1 => >=2.0.0
-	        // >1.2 => >=1.3.0
-	        // >1.2.3 => >= 1.2.4
-	        gtlt = '>=';
-	        if (xm) {
-	          M = +M + 1;
-	          m = 0;
-	          p = 0;
-	        } else {
-	          m = +m + 1;
-	          p = 0;
-	        }
-	      } else if (gtlt === '<=') {
-	        // <=0.7.x is actually <0.8.0, since any 0.7.x should
-	        // pass.  Similarly, <=7.x is actually <8.0.0, etc.
-	        gtlt = '<';
-	        if (xm) {
-	          M = +M + 1;
-	        } else {
-	          m = +m + 1;
-	        }
-	      }
-
-	      ret = gtlt + M + '.' + m + '.' + p + pr;
-	    } else if (xm) {
-	      ret = '>=' + M + '.0.0' + pr + ' <' + (+M + 1) + '.0.0' + pr;
-	    } else if (xp) {
-	      ret = '>=' + M + '.' + m + '.0' + pr +
-	        ' <' + M + '.' + (+m + 1) + '.0' + pr;
-	    }
-
-	    debug('xRange return', ret);
-
-	    return ret
-	  })
-	}
-
-	// Because * is AND-ed with everything else in the comparator,
-	// and '' means "any version", just remove the *s entirely.
-	function replaceStars (comp, options) {
-	  debug('replaceStars', comp, options);
-	  // Looseness is ignored here.  star is always as loose as it gets!
-	  return comp.trim().replace(re[t.STAR], '')
-	}
-
-	// This function is passed to string.replace(re[t.HYPHENRANGE])
-	// M, m, patch, prerelease, build
-	// 1.2 - 3.4.5 => >=1.2.0 <=3.4.5
-	// 1.2.3 - 3.4 => >=1.2.0 <3.5.0 Any 3.4.x will do
-	// 1.2 - 3.4 => >=1.2.0 <3.5.0
-	function hyphenReplace ($0,
-	  from, fM, fm, fp, fpr, fb,
-	  to, tM, tm, tp, tpr, tb) {
-	  if (isX(fM)) {
-	    from = '';
-	  } else if (isX(fm)) {
-	    from = '>=' + fM + '.0.0';
-	  } else if (isX(fp)) {
-	    from = '>=' + fM + '.' + fm + '.0';
-	  } else {
-	    from = '>=' + from;
-	  }
-
-	  if (isX(tM)) {
-	    to = '';
-	  } else if (isX(tm)) {
-	    to = '<' + (+tM + 1) + '.0.0';
-	  } else if (isX(tp)) {
-	    to = '<' + tM + '.' + (+tm + 1) + '.0';
-	  } else if (tpr) {
-	    to = '<=' + tM + '.' + tm + '.' + tp + '-' + tpr;
-	  } else {
-	    to = '<=' + to;
-	  }
-
-	  return (from + ' ' + to).trim()
-	}
-
-	// if ANY of the sets match ALL of its comparators, then pass
-	Range.prototype.test = function (version) {
-	  if (!version) {
-	    return false
-	  }
-
-	  if (typeof version === 'string') {
-	    try {
-	      version = new SemVer(version, this.options);
-	    } catch (er) {
-	      return false
-	    }
-	  }
-
-	  for (var i = 0; i < this.set.length; i++) {
-	    if (testSet(this.set[i], version, this.options)) {
-	      return true
-	    }
-	  }
-	  return false
-	};
-
-	function testSet (set, version, options) {
-	  for (var i = 0; i < set.length; i++) {
-	    if (!set[i].test(version)) {
-	      return false
-	    }
-	  }
-
-	  if (version.prerelease.length && !options.includePrerelease) {
-	    // Find the set of versions that are allowed to have prereleases
-	    // For example, ^1.2.3-pr.1 desugars to >=1.2.3-pr.1 <2.0.0
-	    // That should allow `1.2.3-pr.2` to pass.
-	    // However, `1.2.4-alpha.notready` should NOT be allowed,
-	    // even though it's within the range set by the comparators.
-	    for (i = 0; i < set.length; i++) {
-	      debug(set[i].semver);
-	      if (set[i].semver === ANY) {
-	        continue
-	      }
-
-	      if (set[i].semver.prerelease.length > 0) {
-	        var allowed = set[i].semver;
-	        if (allowed.major === version.major &&
-	            allowed.minor === version.minor &&
-	            allowed.patch === version.patch) {
-	          return true
-	        }
-	      }
-	    }
-
-	    // Version has a -pre, but it's not one of the ones we like.
-	    return false
-	  }
-
-	  return true
-	}
-
-	exports.satisfies = satisfies;
-	function satisfies (version, range, options) {
-	  try {
-	    range = new Range(range, options);
-	  } catch (er) {
-	    return false
-	  }
-	  return range.test(version)
-	}
-
-	exports.maxSatisfying = maxSatisfying;
-	function maxSatisfying (versions, range, options) {
-	  var max = null;
-	  var maxSV = null;
-	  try {
-	    var rangeObj = new Range(range, options);
-	  } catch (er) {
-	    return null
-	  }
-	  versions.forEach(function (v) {
-	    if (rangeObj.test(v)) {
-	      // satisfies(v, range, options)
-	      if (!max || maxSV.compare(v) === -1) {
-	        // compare(max, v, true)
-	        max = v;
-	        maxSV = new SemVer(max, options);
-	      }
-	    }
-	  });
-	  return max
-	}
-
-	exports.minSatisfying = minSatisfying;
-	function minSatisfying (versions, range, options) {
-	  var min = null;
-	  var minSV = null;
-	  try {
-	    var rangeObj = new Range(range, options);
-	  } catch (er) {
-	    return null
-	  }
-	  versions.forEach(function (v) {
-	    if (rangeObj.test(v)) {
-	      // satisfies(v, range, options)
-	      if (!min || minSV.compare(v) === 1) {
-	        // compare(min, v, true)
-	        min = v;
-	        minSV = new SemVer(min, options);
-	      }
-	    }
-	  });
-	  return min
-	}
-
-	exports.minVersion = minVersion;
-	function minVersion (range, loose) {
-	  range = new Range(range, loose);
-
-	  var minver = new SemVer('0.0.0');
-	  if (range.test(minver)) {
-	    return minver
-	  }
-
-	  minver = new SemVer('0.0.0-0');
-	  if (range.test(minver)) {
-	    return minver
-	  }
-
-	  minver = null;
-	  for (var i = 0; i < range.set.length; ++i) {
-	    var comparators = range.set[i];
-
-	    comparators.forEach(function (comparator) {
-	      // Clone to avoid manipulating the comparator's semver object.
-	      var compver = new SemVer(comparator.semver.version);
-	      switch (comparator.operator) {
-	        case '>':
-	          if (compver.prerelease.length === 0) {
-	            compver.patch++;
-	          } else {
-	            compver.prerelease.push(0);
-	          }
-	          compver.raw = compver.format();
-	          /* fallthrough */
-	        case '':
-	        case '>=':
-	          if (!minver || gt(minver, compver)) {
-	            minver = compver;
-	          }
-	          break
-	        case '<':
-	        case '<=':
-	          /* Ignore maximum versions */
-	          break
-	        /* istanbul ignore next */
-	        default:
-	          throw new Error('Unexpected operation: ' + comparator.operator)
-	      }
-	    });
-	  }
-
-	  if (minver && range.test(minver)) {
-	    return minver
-	  }
-
-	  return null
-	}
-
-	exports.validRange = validRange;
-	function validRange (range, options) {
-	  try {
-	    // Return '*' instead of '' so that truthiness works.
-	    // This will throw if it's invalid anyway
-	    return new Range(range, options).range || '*'
-	  } catch (er) {
-	    return null
-	  }
-	}
-
-	// Determine if version is less than all the versions possible in the range
-	exports.ltr = ltr;
-	function ltr (version, range, options) {
-	  return outside(version, range, '<', options)
-	}
-
-	// Determine if version is greater than all the versions possible in the range.
-	exports.gtr = gtr;
-	function gtr (version, range, options) {
-	  return outside(version, range, '>', options)
-	}
-
-	exports.outside = outside;
-	function outside (version, range, hilo, options) {
-	  version = new SemVer(version, options);
-	  range = new Range(range, options);
-
-	  var gtfn, ltefn, ltfn, comp, ecomp;
-	  switch (hilo) {
-	    case '>':
-	      gtfn = gt;
-	      ltefn = lte;
-	      ltfn = lt;
-	      comp = '>';
-	      ecomp = '>=';
-	      break
-	    case '<':
-	      gtfn = lt;
-	      ltefn = gte;
-	      ltfn = gt;
-	      comp = '<';
-	      ecomp = '<=';
-	      break
-	    default:
-	      throw new TypeError('Must provide a hilo val of "<" or ">"')
-	  }
-
-	  // If it satisifes the range it is not outside
-	  if (satisfies(version, range, options)) {
-	    return false
-	  }
-
-	  // From now on, variable terms are as if we're in "gtr" mode.
-	  // but note that everything is flipped for the "ltr" function.
-
-	  for (var i = 0; i < range.set.length; ++i) {
-	    var comparators = range.set[i];
-
-	    var high = null;
-	    var low = null;
-
-	    comparators.forEach(function (comparator) {
-	      if (comparator.semver === ANY) {
-	        comparator = new Comparator('>=0.0.0');
-	      }
-	      high = high || comparator;
-	      low = low || comparator;
-	      if (gtfn(comparator.semver, high.semver, options)) {
-	        high = comparator;
-	      } else if (ltfn(comparator.semver, low.semver, options)) {
-	        low = comparator;
-	      }
-	    });
-
-	    // If the edge version comparator has a operator then our version
-	    // isn't outside it
-	    if (high.operator === comp || high.operator === ecomp) {
-	      return false
-	    }
-
-	    // If the lowest version comparator has an operator and our version
-	    // is less than it then it isn't higher than the range
-	    if ((!low.operator || low.operator === comp) &&
-	        ltefn(version, low.semver)) {
-	      return false
-	    } else if (low.operator === ecomp && ltfn(version, low.semver)) {
-	      return false
-	    }
-	  }
-	  return true
-	}
-
-	exports.prerelease = prerelease;
-	function prerelease (version, options) {
-	  var parsed = parse(version, options);
-	  return (parsed && parsed.prerelease.length) ? parsed.prerelease : null
-	}
-
-	exports.intersects = intersects;
-	function intersects (r1, r2, options) {
-	  r1 = new Range(r1, options);
-	  r2 = new Range(r2, options);
-	  return r1.intersects(r2)
-	}
-
-	exports.coerce = coerce;
-	function coerce (version, options) {
-	  if (version instanceof SemVer) {
-	    return version
-	  }
-
-	  if (typeof version === 'number') {
-	    version = String(version);
-	  }
-
-	  if (typeof version !== 'string') {
-	    return null
-	  }
-
-	  options = options || {};
-
-	  var match = null;
-	  if (!options.rtl) {
-	    match = version.match(re[t.COERCE]);
-	  } else {
-	    // Find the right-most coercible string that does not share
-	    // a terminus with a more left-ward coercible string.
-	    // Eg, '1.2.3.4' wants to coerce '2.3.4', not '3.4' or '4'
-	    //
-	    // Walk through the string checking with a /g regexp
-	    // Manually set the index so as to pick up overlapping matches.
-	    // Stop when we get a match that ends at the string end, since no
-	    // coercible string can be more right-ward without the same terminus.
-	    var next;
-	    while ((next = re[t.COERCERTL].exec(version)) &&
-	      (!match || match.index + match[0].length !== version.length)
-	    ) {
-	      if (!match ||
-	          next.index + next[0].length !== match.index + match[0].length) {
-	        match = next;
-	      }
-	      re[t.COERCERTL].lastIndex = next.index + next[1].length + next[2].length;
-	    }
-	    // leave it in a clean state
-	    re[t.COERCERTL].lastIndex = -1;
-	  }
-
-	  if (match === null) {
-	    return null
-	  }
-
-	  return parse(match[2] +
-	    '.' + (match[3] || '0') +
-	    '.' + (match[4] || '0'), options)
-	}
-} (semver$3, semver$3.exports));
-
-const fs$5 = require$$0__default$1["default"];
-const path$a = require$$1__default$2["default"];
-const {promisify: promisify$1} = require$$4__default["default"];
-const semver$2 = semver$3.exports;
-
-const useNativeRecursiveOption = semver$2.satisfies(process.version, '>=10.12.0');
-
-// https://github.com/nodejs/node/issues/8987
-// https://github.com/libuv/libuv/pull/1088
-const checkPath = pth => {
-	if (process.platform === 'win32') {
-		const pathHasInvalidWinCharacters = /[<>:"|?*]/.test(pth.replace(path$a.parse(pth).root, ''));
-
-		if (pathHasInvalidWinCharacters) {
-			const error = new Error(`Path contains invalid characters: ${pth}`);
-			error.code = 'EINVAL';
-			throw error;
-		}
-	}
-};
-
-const processOptions = options => {
-	// https://github.com/sindresorhus/make-dir/issues/18
-	const defaults = {
-		mode: 0o777,
-		fs: fs$5
-	};
-
-	return {
-		...defaults,
-		...options
-	};
-};
-
-const permissionError$1 = pth => {
-	// This replicates the exception of `fs.mkdir` with native the
-	// `recusive` option when run on an invalid drive under Windows.
-	const error = new Error(`operation not permitted, mkdir '${pth}'`);
-	error.code = 'EPERM';
-	error.errno = -4048;
-	error.path = pth;
-	error.syscall = 'mkdir';
-	return error;
-};
-
-const makeDir$1 = async (input, options) => {
-	checkPath(input);
-	options = processOptions(options);
-
-	const mkdir = promisify$1(options.fs.mkdir);
-	const stat = promisify$1(options.fs.stat);
-
-	if (useNativeRecursiveOption && options.fs.mkdir === fs$5.mkdir) {
-		const pth = path$a.resolve(input);
-
-		await mkdir(pth, {
-			mode: options.mode,
-			recursive: true
-		});
-
-		return pth;
-	}
-
-	const make = async pth => {
-		try {
-			await mkdir(pth, options.mode);
-
-			return pth;
-		} catch (error) {
-			if (error.code === 'EPERM') {
-				throw error;
-			}
-
-			if (error.code === 'ENOENT') {
-				if (path$a.dirname(pth) === pth) {
-					throw permissionError$1(pth);
-				}
-
-				if (error.message.includes('null bytes')) {
-					throw error;
-				}
-
-				await make(path$a.dirname(pth));
-
-				return make(pth);
-			}
-
-			try {
-				const stats = await stat(pth);
-				if (!stats.isDirectory()) {
-					throw new Error('The path is not a directory');
-				}
-			} catch (_) {
-				throw error;
-			}
-
-			return pth;
-		}
-	};
-
-	return make(path$a.resolve(input));
-};
-
-makeDir$2.exports = makeDir$1;
-
-makeDir$2.exports.sync = (input, options) => {
-	checkPath(input);
-	options = processOptions(options);
-
-	if (useNativeRecursiveOption && options.fs.mkdirSync === fs$5.mkdirSync) {
-		const pth = path$a.resolve(input);
-
-		fs$5.mkdirSync(pth, {
-			mode: options.mode,
-			recursive: true
-		});
-
-		return pth;
-	}
-
-	const make = pth => {
-		try {
-			options.fs.mkdirSync(pth, options.mode);
-		} catch (error) {
-			if (error.code === 'EPERM') {
-				throw error;
-			}
-
-			if (error.code === 'ENOENT') {
-				if (path$a.dirname(pth) === pth) {
-					throw permissionError$1(pth);
-				}
-
-				if (error.message.includes('null bytes')) {
-					throw error;
-				}
-
-				make(path$a.dirname(pth));
-				return make(pth);
-			}
-
-			try {
-				if (!options.fs.statSync(pth).isDirectory()) {
-					throw new Error('The path is not a directory');
-				}
-			} catch (_) {
-				throw error;
-			}
-		}
-
-		return pth;
-	};
-
-	return make(path$a.resolve(input));
-};
-
-var xdgBasedir$1 = {};
-
-(function (exports) {
-	const os = require$$0__default["default"];
-	const path = require$$1__default$2["default"];
-
-	const homeDirectory = os.homedir();
-	const {env} = process;
-
-	exports.data = env.XDG_DATA_HOME ||
-		(homeDirectory ? path.join(homeDirectory, '.local', 'share') : undefined);
-
-	exports.config = env.XDG_CONFIG_HOME ||
-		(homeDirectory ? path.join(homeDirectory, '.config') : undefined);
-
-	exports.cache = env.XDG_CACHE_HOME || (homeDirectory ? path.join(homeDirectory, '.cache') : undefined);
-
-	exports.runtime = env.XDG_RUNTIME_DIR || undefined;
-
-	exports.dataDirs = (env.XDG_DATA_DIRS || '/usr/local/share/:/usr/share/').split(':');
-
-	if (exports.data) {
-		exports.dataDirs.unshift(exports.data);
-	}
-
-	exports.configDirs = (env.XDG_CONFIG_DIRS || '/etc/xdg').split(':');
-
-	if (exports.config) {
-		exports.configDirs.unshift(exports.config);
-	}
-} (xdgBasedir$1));
-
-var writeFileAtomic$1 = {exports: {}};
-
-var imurmurhash = {exports: {}};
-
-/**
- * @preserve
- * JS Implementation of incremental MurmurHash3 (r150) (as of May 10, 2013)
- *
- * @author <a href="mailto:jensyt@gmail.com">Jens Taylor</a>
- * @see http://github.com/homebrewing/brauhaus-diff
- * @author <a href="mailto:gary.court@gmail.com">Gary Court</a>
- * @see http://github.com/garycourt/murmurhash-js
- * @author <a href="mailto:aappleby@gmail.com">Austin Appleby</a>
- * @see http://sites.google.com/site/murmurhash/
- */
-
-(function (module) {
-	(function(){
-	    var cache;
-
-	    // Call this function without `new` to use the cached object (good for
-	    // single-threaded environments), or with `new` to create a new object.
-	    //
-	    // @param {string} key A UTF-16 or ASCII string
-	    // @param {number} seed An optional positive integer
-	    // @return {object} A MurmurHash3 object for incremental hashing
-	    function MurmurHash3(key, seed) {
-	        var m = this instanceof MurmurHash3 ? this : cache;
-	        m.reset(seed);
-	        if (typeof key === 'string' && key.length > 0) {
-	            m.hash(key);
-	        }
-
-	        if (m !== this) {
-	            return m;
-	        }
-	    }
-	    // Incrementally add a string to this hash
-	    //
-	    // @param {string} key A UTF-16 or ASCII string
-	    // @return {object} this
-	    MurmurHash3.prototype.hash = function(key) {
-	        var h1, k1, i, top, len;
-
-	        len = key.length;
-	        this.len += len;
-
-	        k1 = this.k1;
-	        i = 0;
-	        switch (this.rem) {
-	            case 0: k1 ^= len > i ? (key.charCodeAt(i++) & 0xffff) : 0;
-	            case 1: k1 ^= len > i ? (key.charCodeAt(i++) & 0xffff) << 8 : 0;
-	            case 2: k1 ^= len > i ? (key.charCodeAt(i++) & 0xffff) << 16 : 0;
-	            case 3:
-	                k1 ^= len > i ? (key.charCodeAt(i) & 0xff) << 24 : 0;
-	                k1 ^= len > i ? (key.charCodeAt(i++) & 0xff00) >> 8 : 0;
-	        }
-
-	        this.rem = (len + this.rem) & 3; // & 3 is same as % 4
-	        len -= this.rem;
-	        if (len > 0) {
-	            h1 = this.h1;
-	            while (1) {
-	                k1 = (k1 * 0x2d51 + (k1 & 0xffff) * 0xcc9e0000) & 0xffffffff;
-	                k1 = (k1 << 15) | (k1 >>> 17);
-	                k1 = (k1 * 0x3593 + (k1 & 0xffff) * 0x1b870000) & 0xffffffff;
-
-	                h1 ^= k1;
-	                h1 = (h1 << 13) | (h1 >>> 19);
-	                h1 = (h1 * 5 + 0xe6546b64) & 0xffffffff;
-
-	                if (i >= len) {
-	                    break;
-	                }
-
-	                k1 = ((key.charCodeAt(i++) & 0xffff)) ^
-	                     ((key.charCodeAt(i++) & 0xffff) << 8) ^
-	                     ((key.charCodeAt(i++) & 0xffff) << 16);
-	                top = key.charCodeAt(i++);
-	                k1 ^= ((top & 0xff) << 24) ^
-	                      ((top & 0xff00) >> 8);
-	            }
-
-	            k1 = 0;
-	            switch (this.rem) {
-	                case 3: k1 ^= (key.charCodeAt(i + 2) & 0xffff) << 16;
-	                case 2: k1 ^= (key.charCodeAt(i + 1) & 0xffff) << 8;
-	                case 1: k1 ^= (key.charCodeAt(i) & 0xffff);
-	            }
-
-	            this.h1 = h1;
-	        }
-
-	        this.k1 = k1;
-	        return this;
-	    };
-
-	    // Get the result of this hash
-	    //
-	    // @return {number} The 32-bit hash
-	    MurmurHash3.prototype.result = function() {
-	        var k1, h1;
-	        
-	        k1 = this.k1;
-	        h1 = this.h1;
-
-	        if (k1 > 0) {
-	            k1 = (k1 * 0x2d51 + (k1 & 0xffff) * 0xcc9e0000) & 0xffffffff;
-	            k1 = (k1 << 15) | (k1 >>> 17);
-	            k1 = (k1 * 0x3593 + (k1 & 0xffff) * 0x1b870000) & 0xffffffff;
-	            h1 ^= k1;
-	        }
-
-	        h1 ^= this.len;
-
-	        h1 ^= h1 >>> 16;
-	        h1 = (h1 * 0xca6b + (h1 & 0xffff) * 0x85eb0000) & 0xffffffff;
-	        h1 ^= h1 >>> 13;
-	        h1 = (h1 * 0xae35 + (h1 & 0xffff) * 0xc2b20000) & 0xffffffff;
-	        h1 ^= h1 >>> 16;
-
-	        return h1 >>> 0;
-	    };
-
-	    // Reset the hash object for reuse
-	    //
-	    // @param {number} seed An optional positive integer
-	    MurmurHash3.prototype.reset = function(seed) {
-	        this.h1 = typeof seed === 'number' ? seed : 0;
-	        this.rem = this.k1 = this.len = 0;
-	        return this;
-	    };
-
-	    // A cached object to use. This can be safely used if you're in a single-
-	    // threaded environment, otherwise you need to create new hashes to use.
-	    cache = new MurmurHash3();
-
-	    {
-	        module.exports = MurmurHash3;
-	    }
-	}());
-} (imurmurhash));
-
-var signalExit = {exports: {}};
-
-var signals$1 = {exports: {}};
-
-var hasRequiredSignals;
-
-function requireSignals () {
-	if (hasRequiredSignals) return signals$1.exports;
-	hasRequiredSignals = 1;
-	(function (module) {
-		// This is not the set of all possible signals.
-		//
-		// It IS, however, the set of all signals that trigger
-		// an exit on either Linux or BSD systems.  Linux is a
-		// superset of the signal names supported on BSD, and
-		// the unknown signals just fail to register, so we can
-		// catch that easily enough.
-		//
-		// Don't bother with SIGKILL.  It's uncatchable, which
-		// means that we can't fire any callbacks anyway.
-		//
-		// If a user does happen to register a handler on a non-
-		// fatal signal like SIGWINCH or something, and then
-		// exit, it'll end up firing `process.emit('exit')`, so
-		// the handler will be fired anyway.
-		//
-		// SIGBUS, SIGFPE, SIGSEGV and SIGILL, when not raised
-		// artificially, inherently leave the process in a
-		// state from which it is not safe to try and enter JS
-		// listeners.
-		module.exports = [
-		  'SIGABRT',
-		  'SIGALRM',
-		  'SIGHUP',
-		  'SIGINT',
-		  'SIGTERM'
-		];
-
-		if (process.platform !== 'win32') {
-		  module.exports.push(
-		    'SIGVTALRM',
-		    'SIGXCPU',
-		    'SIGXFSZ',
-		    'SIGUSR2',
-		    'SIGTRAP',
-		    'SIGSYS',
-		    'SIGQUIT',
-		    'SIGIOT'
-		    // should detect profiler and enable/disable accordingly.
-		    // see #21
-		    // 'SIGPROF'
-		  );
-		}
-
-		if (process.platform === 'linux') {
-		  module.exports.push(
-		    'SIGIO',
-		    'SIGPOLL',
-		    'SIGPWR',
-		    'SIGSTKFLT',
-		    'SIGUNUSED'
-		  );
-		}
-} (signals$1));
-	return signals$1.exports;
-}
-
-// Note: since nyc uses this module to output coverage, any lines
-// that are in the direct sync flow of nyc's outputCoverage are
-// ignored, since we can never get coverage for them.
-// grab a reference to node's real process object right away
-var process$1 = commonjsGlobal.process;
-
-const processOk = function (process) {
-  return process &&
-    typeof process === 'object' &&
-    typeof process.removeListener === 'function' &&
-    typeof process.emit === 'function' &&
-    typeof process.reallyExit === 'function' &&
-    typeof process.listeners === 'function' &&
-    typeof process.kill === 'function' &&
-    typeof process.pid === 'number' &&
-    typeof process.on === 'function'
-};
-
-// some kind of non-node environment, just no-op
-/* istanbul ignore if */
-if (!processOk(process$1)) {
-  signalExit.exports = function () {
-    return function () {}
-  };
-} else {
-  var assert$1 = require$$0__default$7["default"];
-  var signals = requireSignals();
-  var isWin = /^win/i.test(process$1.platform);
-
-  var EE = require$$0__default$3["default"];
-  /* istanbul ignore if */
-  if (typeof EE !== 'function') {
-    EE = EE.EventEmitter;
-  }
-
-  var emitter;
-  if (process$1.__signal_exit_emitter__) {
-    emitter = process$1.__signal_exit_emitter__;
-  } else {
-    emitter = process$1.__signal_exit_emitter__ = new EE();
-    emitter.count = 0;
-    emitter.emitted = {};
-  }
-
-  // Because this emitter is a global, we have to check to see if a
-  // previous version of this library failed to enable infinite listeners.
-  // I know what you're about to say.  But literally everything about
-  // signal-exit is a compromise with evil.  Get used to it.
-  if (!emitter.infinite) {
-    emitter.setMaxListeners(Infinity);
-    emitter.infinite = true;
-  }
-
-  signalExit.exports = function (cb, opts) {
-    /* istanbul ignore if */
-    if (!processOk(commonjsGlobal.process)) {
-      return function () {}
-    }
-    assert$1.equal(typeof cb, 'function', 'a callback must be provided for exit handler');
-
-    if (loaded === false) {
-      load();
-    }
-
-    var ev = 'exit';
-    if (opts && opts.alwaysLast) {
-      ev = 'afterexit';
-    }
-
-    var remove = function () {
-      emitter.removeListener(ev, cb);
-      if (emitter.listeners('exit').length === 0 &&
-          emitter.listeners('afterexit').length === 0) {
-        unload();
-      }
-    };
-    emitter.on(ev, cb);
-
-    return remove
-  };
-
-  var unload = function unload () {
-    if (!loaded || !processOk(commonjsGlobal.process)) {
-      return
-    }
-    loaded = false;
-
-    signals.forEach(function (sig) {
-      try {
-        process$1.removeListener(sig, sigListeners[sig]);
-      } catch (er) {}
-    });
-    process$1.emit = originalProcessEmit;
-    process$1.reallyExit = originalProcessReallyExit;
-    emitter.count -= 1;
-  };
-  signalExit.exports.unload = unload;
-
-  var emit = function emit (event, code, signal) {
-    /* istanbul ignore if */
-    if (emitter.emitted[event]) {
-      return
-    }
-    emitter.emitted[event] = true;
-    emitter.emit(event, code, signal);
-  };
-
-  // { <signal>: <listener fn>, ... }
-  var sigListeners = {};
-  signals.forEach(function (sig) {
-    sigListeners[sig] = function listener () {
-      /* istanbul ignore if */
-      if (!processOk(commonjsGlobal.process)) {
-        return
-      }
-      // If there are no other listeners, an exit is coming!
-      // Simplest way: remove us and then re-send the signal.
-      // We know that this will kill the process, so we can
-      // safely emit now.
-      var listeners = process$1.listeners(sig);
-      if (listeners.length === emitter.count) {
-        unload();
-        emit('exit', null, sig);
-        /* istanbul ignore next */
-        emit('afterexit', null, sig);
-        /* istanbul ignore next */
-        if (isWin && sig === 'SIGHUP') {
-          // "SIGHUP" throws an `ENOSYS` error on Windows,
-          // so use a supported signal instead
-          sig = 'SIGINT';
-        }
-        /* istanbul ignore next */
-        process$1.kill(process$1.pid, sig);
-      }
-    };
-  });
-
-  signalExit.exports.signals = function () {
-    return signals
-  };
-
-  var loaded = false;
-
-  var load = function load () {
-    if (loaded || !processOk(commonjsGlobal.process)) {
-      return
-    }
-    loaded = true;
-
-    // This is the number of onSignalExit's that are in play.
-    // It's important so that we can count the correct number of
-    // listeners on signals, and don't wait for the other one to
-    // handle it instead of us.
-    emitter.count += 1;
-
-    signals = signals.filter(function (sig) {
-      try {
-        process$1.on(sig, sigListeners[sig]);
-        return true
-      } catch (er) {
-        return false
-      }
-    });
-
-    process$1.emit = processEmit;
-    process$1.reallyExit = processReallyExit;
-  };
-  signalExit.exports.load = load;
-
-  var originalProcessReallyExit = process$1.reallyExit;
-  var processReallyExit = function processReallyExit (code) {
-    /* istanbul ignore if */
-    if (!processOk(commonjsGlobal.process)) {
-      return
-    }
-    process$1.exitCode = code || /* istanbul ignore next */ 0;
-    emit('exit', process$1.exitCode, null);
-    /* istanbul ignore next */
-    emit('afterexit', process$1.exitCode, null);
-    /* istanbul ignore next */
-    originalProcessReallyExit.call(process$1, process$1.exitCode);
-  };
-
-  var originalProcessEmit = process$1.emit;
-  var processEmit = function processEmit (ev, arg) {
-    if (ev === 'exit' && processOk(commonjsGlobal.process)) {
-      /* istanbul ignore else */
-      if (arg !== undefined) {
-        process$1.exitCode = arg;
-      }
-      var ret = originalProcessEmit.apply(this, arguments);
-      /* istanbul ignore next */
-      emit('exit', process$1.exitCode, null);
-      /* istanbul ignore next */
-      emit('afterexit', process$1.exitCode, null);
-      /* istanbul ignore next */
-      return ret
-    } else {
-      return originalProcessEmit.apply(this, arguments)
-    }
-  };
-}
-
-var isTypedarray      = isTypedArray$2;
-isTypedArray$2.strict = isStrictTypedArray;
-isTypedArray$2.loose  = isLooseTypedArray;
-
-var toString = Object.prototype.toString;
-var names = {
-    '[object Int8Array]': true
-  , '[object Int16Array]': true
-  , '[object Int32Array]': true
-  , '[object Uint8Array]': true
-  , '[object Uint8ClampedArray]': true
-  , '[object Uint16Array]': true
-  , '[object Uint32Array]': true
-  , '[object Float32Array]': true
-  , '[object Float64Array]': true
-};
-
-function isTypedArray$2(arr) {
-  return (
-       isStrictTypedArray(arr)
-    || isLooseTypedArray(arr)
-  )
-}
-
-function isStrictTypedArray(arr) {
-  return (
-       arr instanceof Int8Array
-    || arr instanceof Int16Array
-    || arr instanceof Int32Array
-    || arr instanceof Uint8Array
-    || arr instanceof Uint8ClampedArray
-    || arr instanceof Uint16Array
-    || arr instanceof Uint32Array
-    || arr instanceof Float32Array
-    || arr instanceof Float64Array
-  )
-}
-
-function isLooseTypedArray(arr) {
-  return names[toString.call(arr)]
-}
-
-/**
- * Convert a typed array to a Buffer without a copy
- *
- * Author:   Feross Aboukhadijeh <https://feross.org>
- * License:  MIT
- *
- * `npm install typedarray-to-buffer`
- */
-
-var isTypedArray$1 = isTypedarray.strict;
-
-var typedarrayToBuffer = function typedarrayToBuffer (arr) {
-  if (isTypedArray$1(arr)) {
-    // To avoid a copy, use the typed array's underlying ArrayBuffer to back new Buffer
-    var buf = Buffer.from(arr.buffer);
-    if (arr.byteLength !== arr.buffer.byteLength) {
-      // Respect the "view", i.e. byteOffset and byteLength, without doing a copy
-      buf = buf.slice(arr.byteOffset, arr.byteOffset + arr.byteLength);
-    }
-    return buf
-  } else {
-    // Pass through all other types to `Buffer.from`
-    return Buffer.from(arr)
-  }
-};
-
-writeFileAtomic$1.exports = writeFile;
-writeFileAtomic$1.exports.sync = writeFileSync;
-writeFileAtomic$1.exports._getTmpname = getTmpname; // for testing
-writeFileAtomic$1.exports._cleanupOnExit = cleanupOnExit;
-
-const fs$4 = require$$0__default$1["default"];
-const MurmurHash3 = imurmurhash.exports;
-const onExit = signalExit.exports;
-const path$9 = require$$1__default$2["default"];
-const isTypedArray = isTypedarray;
-const typedArrayToBuffer = typedarrayToBuffer;
-const { promisify } = require$$4__default["default"];
-const activeFiles = {};
-
-// if we run inside of a worker_thread, `process.pid` is not unique
-/* istanbul ignore next */
-const threadId = (function getId () {
-  try {
-    const workerThreads = require('worker_threads');
-
-    /// if we are in main thread, this is set to `0`
-    return workerThreads.threadId
-  } catch (e) {
-    // worker_threads are not available, fallback to 0
-    return 0
-  }
-})();
-
-let invocations = 0;
-function getTmpname (filename) {
-  return filename + '.' +
-    MurmurHash3(__filename)
-      .hash(String(process.pid))
-      .hash(String(threadId))
-      .hash(String(++invocations))
-      .result()
-}
-
-function cleanupOnExit (tmpfile) {
-  return () => {
-    try {
-      fs$4.unlinkSync(typeof tmpfile === 'function' ? tmpfile() : tmpfile);
-    } catch (_) {}
-  }
-}
-
-function serializeActiveFile (absoluteName) {
-  return new Promise(resolve => {
-    // make a queue if it doesn't already exist
-    if (!activeFiles[absoluteName]) activeFiles[absoluteName] = [];
-
-    activeFiles[absoluteName].push(resolve); // add this job to the queue
-    if (activeFiles[absoluteName].length === 1) resolve(); // kick off the first one
-  })
-}
-
-// https://github.com/isaacs/node-graceful-fs/blob/master/polyfills.js#L315-L342
-function isChownErrOk (err) {
-  if (err.code === 'ENOSYS') {
-    return true
-  }
-
-  const nonroot = !process.getuid || process.getuid() !== 0;
-  if (nonroot) {
-    if (err.code === 'EINVAL' || err.code === 'EPERM') {
-      return true
-    }
-  }
-
-  return false
-}
-
-async function writeFileAsync (filename, data, options = {}) {
-  if (typeof options === 'string') {
-    options = { encoding: options };
-  }
-
-  let fd;
-  let tmpfile;
-  /* istanbul ignore next -- The closure only gets called when onExit triggers */
-  const removeOnExitHandler = onExit(cleanupOnExit(() => tmpfile));
-  const absoluteName = path$9.resolve(filename);
-
-  try {
-    await serializeActiveFile(absoluteName);
-    const truename = await promisify(fs$4.realpath)(filename).catch(() => filename);
-    tmpfile = getTmpname(truename);
-
-    if (!options.mode || !options.chown) {
-      // Either mode or chown is not explicitly set
-      // Default behavior is to copy it from original file
-      const stats = await promisify(fs$4.stat)(truename).catch(() => {});
-      if (stats) {
-        if (options.mode == null) {
-          options.mode = stats.mode;
-        }
-
-        if (options.chown == null && process.getuid) {
-          options.chown = { uid: stats.uid, gid: stats.gid };
-        }
-      }
-    }
-
-    fd = await promisify(fs$4.open)(tmpfile, 'w', options.mode);
-    if (options.tmpfileCreated) {
-      await options.tmpfileCreated(tmpfile);
-    }
-    if (isTypedArray(data)) {
-      data = typedArrayToBuffer(data);
-    }
-    if (Buffer.isBuffer(data)) {
-      await promisify(fs$4.write)(fd, data, 0, data.length, 0);
-    } else if (data != null) {
-      await promisify(fs$4.write)(fd, String(data), 0, String(options.encoding || 'utf8'));
-    }
-
-    if (options.fsync !== false) {
-      await promisify(fs$4.fsync)(fd);
-    }
-
-    await promisify(fs$4.close)(fd);
-    fd = null;
-
-    if (options.chown) {
-      await promisify(fs$4.chown)(tmpfile, options.chown.uid, options.chown.gid).catch(err => {
-        if (!isChownErrOk(err)) {
-          throw err
-        }
-      });
-    }
-
-    if (options.mode) {
-      await promisify(fs$4.chmod)(tmpfile, options.mode).catch(err => {
-        if (!isChownErrOk(err)) {
-          throw err
-        }
-      });
-    }
-
-    await promisify(fs$4.rename)(tmpfile, truename);
-  } finally {
-    if (fd) {
-      await promisify(fs$4.close)(fd).catch(
-        /* istanbul ignore next */
-        () => {}
-      );
-    }
-    removeOnExitHandler();
-    await promisify(fs$4.unlink)(tmpfile).catch(() => {});
-    activeFiles[absoluteName].shift(); // remove the element added by serializeSameFile
-    if (activeFiles[absoluteName].length > 0) {
-      activeFiles[absoluteName][0](); // start next job if one is pending
-    } else delete activeFiles[absoluteName];
-  }
-}
-
-function writeFile (filename, data, options, callback) {
-  if (options instanceof Function) {
-    callback = options;
-    options = {};
-  }
-
-  const promise = writeFileAsync(filename, data, options);
-  if (callback) {
-    promise.then(callback, callback);
-  }
-
-  return promise
-}
-
-function writeFileSync (filename, data, options) {
-  if (typeof options === 'string') options = { encoding: options };
-  else if (!options) options = {};
-  try {
-    filename = fs$4.realpathSync(filename);
-  } catch (ex) {
-    // it's ok, it'll happen on a not yet existing file
-  }
-  const tmpfile = getTmpname(filename);
-
-  if (!options.mode || !options.chown) {
-    // Either mode or chown is not explicitly set
-    // Default behavior is to copy it from original file
-    try {
-      const stats = fs$4.statSync(filename);
-      options = Object.assign({}, options);
-      if (!options.mode) {
-        options.mode = stats.mode;
-      }
-      if (!options.chown && process.getuid) {
-        options.chown = { uid: stats.uid, gid: stats.gid };
-      }
-    } catch (ex) {
-      // ignore stat errors
-    }
-  }
-
-  let fd;
-  const cleanup = cleanupOnExit(tmpfile);
-  const removeOnExitHandler = onExit(cleanup);
-
-  let threw = true;
-  try {
-    fd = fs$4.openSync(tmpfile, 'w', options.mode || 0o666);
-    if (options.tmpfileCreated) {
-      options.tmpfileCreated(tmpfile);
-    }
-    if (isTypedArray(data)) {
-      data = typedArrayToBuffer(data);
-    }
-    if (Buffer.isBuffer(data)) {
-      fs$4.writeSync(fd, data, 0, data.length, 0);
-    } else if (data != null) {
-      fs$4.writeSync(fd, String(data), 0, String(options.encoding || 'utf8'));
-    }
-    if (options.fsync !== false) {
-      fs$4.fsyncSync(fd);
-    }
-
-    fs$4.closeSync(fd);
-    fd = null;
-
-    if (options.chown) {
-      try {
-        fs$4.chownSync(tmpfile, options.chown.uid, options.chown.gid);
-      } catch (err) {
-        if (!isChownErrOk(err)) {
-          throw err
-        }
-      }
-    }
-
-    if (options.mode) {
-      try {
-        fs$4.chmodSync(tmpfile, options.mode);
-      } catch (err) {
-        if (!isChownErrOk(err)) {
-          throw err
-        }
-      }
-    }
-
-    fs$4.renameSync(tmpfile, filename);
-    threw = false;
-  } finally {
-    if (fd) {
-      try {
-        fs$4.closeSync(fd);
-      } catch (ex) {
-        // ignore close errors at this stage, error may have closed fd already.
-      }
-    }
-    removeOnExitHandler();
-    if (threw) {
-      cleanup();
-    }
-  }
-}
-
-var isObj$1 = value => {
-	const type = typeof value;
-	return value !== null && (type === 'object' || type === 'function');
-};
-
-const isObj = isObj$1;
-
-const disallowedKeys = [
-	'__proto__',
-	'prototype',
-	'constructor'
-];
-
-const isValidPath = pathSegments => !pathSegments.some(segment => disallowedKeys.includes(segment));
-
-function getPathSegments(path) {
-	const pathArray = path.split('.');
-	const parts = [];
-
-	for (let i = 0; i < pathArray.length; i++) {
-		let p = pathArray[i];
-
-		while (p[p.length - 1] === '\\' && pathArray[i + 1] !== undefined) {
-			p = p.slice(0, -1) + '.';
-			p += pathArray[++i];
-		}
-
-		parts.push(p);
-	}
-
-	if (!isValidPath(parts)) {
-		return [];
-	}
-
-	return parts;
-}
-
-var dotProp$1 = {
-	get(object, path, value) {
-		if (!isObj(object) || typeof path !== 'string') {
-			return value === undefined ? object : value;
-		}
-
-		const pathArray = getPathSegments(path);
-		if (pathArray.length === 0) {
-			return;
-		}
-
-		for (let i = 0; i < pathArray.length; i++) {
-			if (!Object.prototype.propertyIsEnumerable.call(object, pathArray[i])) {
-				return value;
-			}
-
-			object = object[pathArray[i]];
-
-			if (object === undefined || object === null) {
-				// `object` is either `undefined` or `null` so we want to stop the loop, and
-				// if this is not the last bit of the path, and
-				// if it did't return `undefined`
-				// it would return `null` if `object` is `null`
-				// but we want `get({foo: null}, 'foo.bar')` to equal `undefined`, or the supplied value, not `null`
-				if (i !== pathArray.length - 1) {
-					return value;
-				}
-
-				break;
-			}
-		}
-
-		return object;
-	},
-
-	set(object, path, value) {
-		if (!isObj(object) || typeof path !== 'string') {
-			return object;
-		}
-
-		const root = object;
-		const pathArray = getPathSegments(path);
-
-		for (let i = 0; i < pathArray.length; i++) {
-			const p = pathArray[i];
-
-			if (!isObj(object[p])) {
-				object[p] = {};
-			}
-
-			if (i === pathArray.length - 1) {
-				object[p] = value;
-			}
-
-			object = object[p];
-		}
-
-		return root;
-	},
-
-	delete(object, path) {
-		if (!isObj(object) || typeof path !== 'string') {
-			return false;
-		}
-
-		const pathArray = getPathSegments(path);
-
-		for (let i = 0; i < pathArray.length; i++) {
-			const p = pathArray[i];
-
-			if (i === pathArray.length - 1) {
-				delete object[p];
-				return true;
-			}
-
-			object = object[p];
-
-			if (!isObj(object)) {
-				return false;
-			}
-		}
-	},
-
-	has(object, path) {
-		if (!isObj(object) || typeof path !== 'string') {
-			return false;
-		}
-
-		const pathArray = getPathSegments(path);
-		if (pathArray.length === 0) {
-			return false;
-		}
-
-		// eslint-disable-next-line unicorn/no-for-loop
-		for (let i = 0; i < pathArray.length; i++) {
-			if (isObj(object)) {
-				if (!(pathArray[i] in object)) {
-					return false;
-				}
-
-				object = object[pathArray[i]];
-			} else {
-				return false;
-			}
-		}
-
-		return true;
-	}
-};
-
-const crypto$2 = require$$0__default$9["default"];
-
-var cryptoRandomString$1 = length => {
-	if (!Number.isFinite(length)) {
-		throw new TypeError('Expected a finite number');
-	}
-
-	return crypto$2.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
-};
-
-const cryptoRandomString = cryptoRandomString$1;
-
-var uniqueString$1 = () => cryptoRandomString(32);
-
-const path$8 = require$$1__default$2["default"];
-const os$2 = require$$0__default["default"];
-const fs$3 = gracefulFs;
-const makeDir = makeDir$2.exports;
-const xdgBasedir = xdgBasedir$1;
-const writeFileAtomic = writeFileAtomic$1.exports;
-const dotProp = dotProp$1;
-const uniqueString = uniqueString$1;
-
-const configDirectory = xdgBasedir.config || path$8.join(os$2.tmpdir(), uniqueString());
-const permissionError = 'You don\'t have access to this file.';
-const makeDirOptions = {mode: 0o0700};
-const writeFileOptions = {mode: 0o0600};
-
-class Configstore {
-	constructor(id, defaults, options = {}) {
-		const pathPrefix = options.globalConfigPath ?
-			path$8.join(id, 'config.json') :
-			path$8.join('configstore', `${id}.json`);
-
-		this.path = options.configPath || path$8.join(configDirectory, pathPrefix);
-
-		if (defaults) {
-			this.all = {
-				...defaults,
-				...this.all
-			};
-		}
-	}
-
-	get all() {
-		try {
-			return JSON.parse(fs$3.readFileSync(this.path, 'utf8'));
-		} catch (error) {
-			// Create directory if it doesn't exist
-			if (error.code === 'ENOENT') {
-				return {};
-			}
-
-			// Improve the message of permission errors
-			if (error.code === 'EACCES') {
-				error.message = `${error.message}\n${permissionError}\n`;
-			}
-
-			// Empty the file if it encounters invalid JSON
-			if (error.name === 'SyntaxError') {
-				writeFileAtomic.sync(this.path, '', writeFileOptions);
-				return {};
-			}
-
-			throw error;
-		}
-	}
-
-	set all(value) {
-		try {
-			// Make sure the folder exists as it could have been deleted in the meantime
-			makeDir.sync(path$8.dirname(this.path), makeDirOptions);
-
-			writeFileAtomic.sync(this.path, JSON.stringify(value, undefined, '\t'), writeFileOptions);
-		} catch (error) {
-			// Improve the message of permission errors
-			if (error.code === 'EACCES') {
-				error.message = `${error.message}\n${permissionError}\n`;
-			}
-
-			throw error;
-		}
-	}
-
-	get size() {
-		return Object.keys(this.all || {}).length;
-	}
-
-	get(key) {
-		return dotProp.get(this.all, key);
-	}
-
-	set(key, value) {
-		const config = this.all;
-
-		if (arguments.length === 1) {
-			for (const k of Object.keys(key)) {
-				dotProp.set(config, k, key[k]);
-			}
-		} else {
-			dotProp.set(config, key, value);
-		}
-
-		this.all = config;
-	}
-
-	has(key) {
-		return dotProp.has(this.all, key);
-	}
-
-	delete(key) {
-		const config = this.all;
-		dotProp.delete(config, key);
-		this.all = config;
-	}
-
-	clear() {
-		this.all = {};
-	}
-}
-
-var configstore = Configstore;
-
 (function (exports) {
 	// Copyright 2022 Google LLC
 	//
@@ -165925,25 +162396,28 @@ var configstore = Configstore;
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.createURI = exports.upload = exports.Upload = exports.PROTOCOL_REGEX = void 0;
 	const abort_controller_1 = require$$0;
-	const ConfigStore = configstore;
-	const crypto_1 = require$$0__default$9["default"];
-	const extend = extend$4;
-	const gaxios = src$6;
-	const google_auth_library_1 = src$8;
-	const Pumpify = pumpify.exports;
-	const stream_1 = require$$0__default$4["default"];
-	const streamEvents = streamEvents$1;
+	const crypto_1 = require$$0__default$5["default"];
+	const extend = extend$2;
+	const gaxios = src$8;
+	const google_auth_library_1 = src$a;
+	const stream_1 = require$$0__default$6["default"];
 	const retry = lib;
+	const uuid = dist$3;
 	const NOT_FOUND_STATUS_CODE = 404;
-	const TERMINATED_UPLOAD_STATUS_CODE = 410;
 	const RESUMABLE_INCOMPLETE_STATUS_CODE = 308;
 	const DEFAULT_API_ENDPOINT_REGEX = /.*\.googleapis\.com/;
+	const packageJson = require$$11;
 	exports.PROTOCOL_REGEX = /^(\w*):\/\//;
-	class Upload extends Pumpify {
+	class Upload extends stream_1.Writable {
 	    constructor(cfg) {
 	        super();
 	        this.numBytesWritten = 0;
 	        this.numRetries = 0;
+	        this.currentInvocationId = {
+	            chunk: uuid.v4(),
+	            uri: uuid.v4(),
+	            offset: uuid.v4(),
+	        };
 	        this.upstreamChunkBuffer = Buffer.alloc(0);
 	        this.chunkBufferEncoding = undefined;
 	        this.numChunksReadInRequest = 0;
@@ -165954,17 +162428,6 @@ var configstore = Configstore;
 	         */
 	        this.lastChunkSent = Buffer.alloc(0);
 	        this.upstreamEnded = false;
-	        /** A stream representing the incoming data to upload */
-	        this.upstream = new stream_1.Duplex({
-	            read: async () => {
-	                this.once('prepareFinish', () => {
-	                    // Allows this (`Upload`) to finish/end once the upload has succeeded.
-	                    this.upstream.push(null);
-	                });
-	            },
-	            write: this.writeToChunkBuffer.bind(this),
-	        });
-	        streamEvents(this);
 	        cfg = cfg || {};
 	        if (!cfg.bucket || !cfg.file) {
 	            throw new Error('A bucket and file name are required');
@@ -166000,15 +162463,10 @@ var configstore = Configstore;
 	        this.chunkSize = cfg.chunkSize;
 	        this.retryOptions = cfg.retryOptions;
 	        if (cfg.key) {
-	            /**
-	             * NOTE: This is `as string` because there appears to be some weird kind
-	             * of TypeScript bug as 2.8. Tracking the issue here:
-	             * https://github.com/Microsoft/TypeScript/issues/23155
-	             */
 	            const base64Key = Buffer.from(cfg.key).toString('base64');
 	            this.encryption = {
 	                key: base64Key,
-	                hash: crypto_1.createHash('sha256').update(cfg.key).digest('base64'),
+	                hash: (0, crypto_1.createHash)('sha256').update(cfg.key).digest('base64'),
 	            };
 	        }
 	        this.predefinedAcl = cfg.predefinedAcl;
@@ -166016,15 +162474,11 @@ var configstore = Configstore;
 	            this.predefinedAcl = 'private';
 	        if (cfg.public)
 	            this.predefinedAcl = 'publicRead';
-	        const configPath = cfg.configPath;
-	        this.configStore = new ConfigStore('gcs-resumable-upload', null, {
-	            configPath,
-	        });
 	        const autoRetry = cfg.retryOptions.autoRetry;
 	        this.uriProvidedManually = !!cfg.uri;
-	        this.uri = cfg.uri || this.get('uri');
+	        this.uri = cfg.uri;
 	        this.numBytesWritten = 0;
-	        this.numRetries = 0; //counter for number of retries currently executed
+	        this.numRetries = 0; // counter for number of retries currently executed
 	        if (!autoRetry) {
 	            cfg.retryOptions.maxRetries = 0;
 	        }
@@ -166033,29 +162487,15 @@ var configstore = Configstore;
 	            ? Number(cfg.metadata.contentLength)
 	            : NaN;
 	        this.contentLength = isNaN(contentLength) ? '*' : contentLength;
-	        this.upstream.on('end', () => {
-	            this.upstreamEnded = true;
-	        });
-	        this.on('prefinish', () => {
-	            this.upstreamEnded = true;
-	        });
 	        this.once('writing', () => {
-	            // Now that someone is writing to this object, let's attach
-	            // some duplexes. These duplexes enable this object to be
-	            // better managed in terms of 'end'/'finish' control and
-	            // buffering writes downstream if someone enables multi-
-	            // chunk upload support (`chunkSize`) w/o adding too much into
-	            // memory.
-	            this.setPipeline(this.upstream, new stream_1.PassThrough());
 	            if (this.uri) {
 	                this.continueUploading();
 	            }
 	            else {
-	                this.createURI((err, uri) => {
+	                this.createURI(err => {
 	                    if (err) {
 	                        return this.destroy(err);
 	                    }
-	                    this.set({ uri });
 	                    this.startUploading();
 	                    return;
 	                });
@@ -166063,13 +162503,29 @@ var configstore = Configstore;
 	        });
 	    }
 	    /**
-	     * A handler for `upstream` to write and buffer its data.
+	     * Prevent 'finish' event until the upload has succeeded.
+	     *
+	     * @param fireFinishEvent The finish callback
+	     */
+	    _final(fireFinishEvent = () => { }) {
+	        this.upstreamEnded = true;
+	        this.once('uploadFinished', fireFinishEvent);
+	        process.nextTick(() => {
+	            this.emit('upstreamFinished');
+	            // it's possible `_write` may not be called - namely for empty object uploads
+	            this.emit('writing');
+	        });
+	    }
+	    /**
+	     * Handles incoming data from upstream
 	     *
 	     * @param chunk The chunk to append to the buffer
 	     * @param encoding The encoding of the chunk
 	     * @param readCallback A callback for when the buffer has been read downstream
 	     */
-	    writeToChunkBuffer(chunk, encoding, readCallback) {
+	    _write(chunk, encoding, readCallback = () => { }) {
+	        // Backwards-compatible event
+	        this.emit('writing');
 	        this.upstreamChunkBuffer = Buffer.concat([
 	            this.upstreamChunkBuffer,
 	            typeof chunk === 'string' ? Buffer.from(chunk, encoding) : chunk,
@@ -166129,20 +162585,14 @@ var configstore = Configstore;
 	                return resolve(false);
 	            };
 	            // Remove listeners when we're ready to callback.
-	            // It's important to clean-up listeners as Node has a default max number of
-	            // event listeners. Notably, The number of requests can be greater than the
-	            // number of potential listeners.
-	            // - https://nodejs.org/api/events.html#eventsdefaultmaxlisteners
 	            const removeListeners = () => {
 	                this.removeListener('wroteToChunkBuffer', wroteToChunkBufferCallback);
-	                this.upstream.removeListener('finish', upstreamFinishedCallback);
-	                this.removeListener('prefinish', upstreamFinishedCallback);
+	                this.removeListener('upstreamFinished', upstreamFinishedCallback);
 	            };
 	            // If there's data recently written it should be digested
 	            this.once('wroteToChunkBuffer', wroteToChunkBufferCallback);
 	            // If the upstream finishes let's see if there's anything to grab
-	            this.upstream.once('finish', upstreamFinishedCallback);
-	            this.once('prefinish', upstreamFinishedCallback);
+	            this.once('upstreamFinished', upstreamFinishedCallback);
 	        });
 	        return willBeMoreChunks;
 	    }
@@ -166187,6 +162637,7 @@ var configstore = Configstore;
 	    }
 	    async createURIAsync() {
 	        const metadata = this.metadata;
+	        // Check if headers already exist before creating new ones
 	        const reqOpts = {
 	            method: 'POST',
 	            url: [this.baseURI, this.bucket, 'o'].join('/'),
@@ -166195,7 +162646,9 @@ var configstore = Configstore;
 	                uploadType: 'resumable',
 	            }, this.params),
 	            data: metadata,
-	            headers: {},
+	            headers: {
+	                'x-goog-api-client': `gl-node/${process.versions.node} gccl/${packageJson.version} gccl-invocation-id/${this.currentInvocationId.uri}`,
+	            },
 	        };
 	        if (metadata.contentLength) {
 	            reqOpts.headers['X-Upload-Content-Length'] =
@@ -166220,6 +162673,8 @@ var configstore = Configstore;
 	            var _a, _b, _c;
 	            try {
 	                const res = await this.makeRequest(reqOpts);
+	                // We have successfully got a URI we can now create a new invocation id
+	                this.currentInvocationId.uri = uuid.v4();
 	                return res.headers.location;
 	            }
 	            catch (err) {
@@ -166246,7 +162701,7 @@ var configstore = Configstore;
 	            retries: this.retryOptions.maxRetries,
 	            factor: this.retryOptions.retryDelayMultiplier,
 	            maxTimeout: this.retryOptions.maxRetryDelay * 1000,
-	            maxRetryTime: this.retryOptions.totalTimeout * 1000,
+	            maxRetryTime: this.retryOptions.totalTimeout * 1000, //convert to milliseconds
 	        });
 	        this.uri = uri;
 	        this.offset = 0;
@@ -166267,18 +162722,10 @@ var configstore = Configstore;
 	        if (!this.offset) {
 	            this.offset = 0;
 	        }
-	        // Check if we're uploading the expected object
-	        if (this.numBytesWritten === 0) {
-	            const isSameObject = await this.ensureUploadingSameObject();
-	            if (!isSameObject) {
-	                // `ensureUploadingSameObject` will restart the upload.
-	                return;
-	            }
-	        }
 	        // Check if the offset (server) is too far behind the current stream
 	        if (this.offset < this.numBytesWritten) {
 	            const delta = this.numBytesWritten - this.offset;
-	            const message = `The offset is lower than the number of bytes written. The server has ${this.offset} bytes and while  ${this.numBytesWritten} bytes has been uploaded - thus ${delta} bytes are missing. Stopping as this could result in data loss. Initiate a new upload to continue.`;
+	            const message = `The offset is lower than the number of bytes written. The server has ${this.offset} bytes and while ${this.numBytesWritten} bytes has been uploaded - thus ${delta} bytes are missing. Stopping as this could result in data loss. Initiate a new upload to continue.`;
 	            this.emit('error', new RangeError(message));
 	            return;
 	        }
@@ -166330,20 +162777,18 @@ var configstore = Configstore;
 	                }
 	            },
 	        });
-	        let headers = {};
+	        const headers = {
+	            'x-goog-api-client': `gl-node/${process.versions.node} gccl/${packageJson.version} gccl-invocation-id/${this.currentInvocationId.chunk}`,
+	        };
 	        // If using multiple chunk upload, set appropriate header
 	        if (multiChunkMode && expectedUploadSize) {
 	            // The '-1' is because the ending byte is inclusive in the request.
 	            const endingByte = expectedUploadSize + this.numBytesWritten - 1;
-	            headers = {
-	                'Content-Length': expectedUploadSize,
-	                'Content-Range': `bytes ${this.offset}-${endingByte}/${this.contentLength}`,
-	            };
+	            headers['Content-Length'] = expectedUploadSize;
+	            headers['Content-Range'] = `bytes ${this.offset}-${endingByte}/${this.contentLength}`;
 	        }
 	        else {
-	            headers = {
-	                'Content-Range': `bytes ${this.offset}-*/${this.contentLength}`,
-	            };
+	            headers['Content-Range'] = `bytes ${this.offset}-*/${this.contentLength}`;
 	        }
 	        const reqOpts = {
 	            method: 'PUT',
@@ -166370,6 +162815,8 @@ var configstore = Configstore;
 	            this.destroy(resp.data.error);
 	            return;
 	        }
+	        // At this point we can safely create a new id for the chunk
+	        this.currentInvocationId.chunk = uuid.v4();
 	        const shouldContinueWithNextMultiChunkRequest = this.chunkSize &&
 	            resp.status === RESUMABLE_INCOMPLETE_STATUS_CODE &&
 	            resp.headers.range;
@@ -166403,62 +162850,31 @@ var configstore = Configstore;
 	            this.destroy(err);
 	        }
 	        else {
-	            // remove the last chunk sent
+	            // remove the last chunk sent to free memory
 	            this.lastChunkSent = Buffer.alloc(0);
 	            if (resp && resp.data) {
 	                resp.data.size = Number(resp.data.size);
 	            }
 	            this.emit('metadata', resp.data);
-	            this.deleteConfig();
 	            // Allow the object (Upload) to continue naturally so the user's
 	            // "finish" event fires.
-	            this.emit('prepareFinish');
+	            this.emit('uploadFinished');
 	        }
-	    }
-	    /**
-	     * Check if this is the same content uploaded previously. This caches a
-	     * slice of the first chunk, then compares it with the first byte of
-	     * incoming data.
-	     *
-	     * @returns if the request is ok to continue as-is
-	     */
-	    async ensureUploadingSameObject() {
-	        // A queue for the upstream data
-	        const upstreamQueue = this.upstreamIterator(16, true // we just want one chunk for this validation
-	        );
-	        const upstreamChunk = await upstreamQueue.next();
-	        const chunk = upstreamChunk.value
-	            ? upstreamChunk.value.chunk
-	            : Buffer.alloc(0);
-	        // Put the original chunk back into the buffer as we just wanted to 'peek'
-	        // at the stream for validation.
-	        this.unshiftChunkBuffer(chunk);
-	        let cachedFirstChunk = this.get('firstChunk');
-	        const firstChunk = chunk.valueOf();
-	        if (!cachedFirstChunk) {
-	            // This is a new upload. Cache the first chunk.
-	            this.set({ uri: this.uri, firstChunk });
-	        }
-	        else {
-	            // this continues an upload in progress. check if the bytes are the same
-	            cachedFirstChunk = Buffer.from(cachedFirstChunk);
-	            const nextChunk = Buffer.from(firstChunk);
-	            if (Buffer.compare(cachedFirstChunk, nextChunk) !== 0) {
-	                // this data is not the same. start a new upload
-	                this.restart();
-	                return false;
-	            }
-	        }
-	        return true;
 	    }
 	    async getAndSetOffset() {
 	        const opts = {
 	            method: 'PUT',
 	            url: this.uri,
-	            headers: { 'Content-Length': 0, 'Content-Range': 'bytes */*' },
+	            headers: {
+	                'Content-Length': 0,
+	                'Content-Range': 'bytes */*',
+	                'x-goog-api-client': `gl-node/${process.versions.node} gccl/${packageJson.version} gccl-invocation-id/${this.currentInvocationId.offset}`,
+	            },
 	        };
 	        try {
 	            const resp = await this.makeRequest(opts);
+	            // Successfully got the offset we can now create a new offset invocation id
+	            this.currentInvocationId.offset = uuid.v4();
 	            if (resp.status === RESUMABLE_INCOMPLETE_STATUS_CODE) {
 	                if (resp.headers.range) {
 	                    const range = resp.headers.range;
@@ -166470,26 +162886,6 @@ var configstore = Configstore;
 	        }
 	        catch (e) {
 	            const err = e;
-	            const resp = err.response;
-	            // we don't return a 404 to the user if they provided the resumable
-	            // URI. if we're just using the configstore file to tell us that this
-	            // file exists, and it turns out that it doesn't (the 404), that's
-	            // probably stale config data.
-	            if (resp &&
-	                resp.status === NOT_FOUND_STATUS_CODE &&
-	                !this.uriProvidedManually) {
-	                this.restart();
-	                return;
-	            }
-	            // this resumable upload is unrecoverable (bad data or service error).
-	            //  -
-	            //  https://github.com/googleapis/gcs-resumable-upload/issues/15
-	            //  -
-	            //  https://github.com/googleapis/gcs-resumable-upload/pull/16#discussion_r80363774
-	            if (resp && resp.status === TERMINATED_UPLOAD_STATUS_CODE) {
-	                this.restart();
-	                return;
-	            }
 	            this.destroy(err);
 	        }
 	    }
@@ -166540,26 +162936,13 @@ var configstore = Configstore;
 	            return;
 	        }
 	        this.lastChunkSent = Buffer.alloc(0);
-	        this.deleteConfig();
-	        this.createURI((err, uri) => {
+	        this.createURI(err => {
 	            if (err) {
 	                return this.destroy(err);
 	            }
-	            this.set({ uri });
 	            this.startUploading();
 	            return;
 	        });
-	    }
-	    get(prop) {
-	        const store = this.configStore.get(this.cacheKey);
-	        return store && store[prop];
-	    }
-	    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	    set(props) {
-	        this.configStore.set(this.cacheKey, props);
-	    }
-	    deleteConfig() {
-	        this.configStore.delete(this.cacheKey);
 	    }
 	    /**
 	     * @return {bool} is the request good?
@@ -166658,7 +163041,7 @@ var configstore = Configstore;
 	}
 	exports.createURI = createURI;
 	
-} (gcsResumableUpload));
+} (resumableUpload));
 
 var storage = {};
 
@@ -166680,7 +163063,7 @@ var channel = {};
 Object.defineProperty(channel, "__esModule", { value: true });
 channel.Channel = void 0;
 const nodejs_common_1$2 = nodejsCommon;
-const promisify_1$1 = src$a;
+const promisify_1$1 = src$1;
 /**
  * Create a channel object to interact with a Cloud Storage channel.
  *
@@ -166712,11 +163095,8 @@ class Channel extends nodejs_common_1$2.ServiceObject {
             },
         };
         super(config);
-        // TODO: remove type cast to any once ServiceObject's type declaration has
-        // been fixed. https://github.com/googleapis/nodejs-common/issues/176
-        const metadata = this.metadata;
-        metadata.id = id;
-        metadata.resourceId = resourceId;
+        this.metadata.id = id;
+        this.metadata.resourceId = resourceId;
     }
     /**
      * @typedef {array} StopResponse
@@ -166769,102 +163149,7 @@ channel.Channel = Channel;
  * All async methods (except for streams) will return a Promise in the event
  * that a callback is omitted.
  */
-promisify_1$1.promisifyAll(Channel);
-
-var util$1 = {};
-
-// Copyright 2019 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-Object.defineProperty(util$1, "__esModule", { value: true });
-util$1.unicodeJSONStringify = util$1.objectKeyToLowercase = util$1.qsStringify = util$1.encodeURI = util$1.fixedEncodeURIComponent = util$1.objectEntries = util$1.normalize = void 0;
-const querystring = require$$0__default$8["default"];
-function normalize(optionsOrCallback, cb) {
-    const options = (typeof optionsOrCallback === 'object' ? optionsOrCallback : {});
-    const callback = (typeof optionsOrCallback === 'function' ? optionsOrCallback : cb);
-    return { options, callback };
-}
-util$1.normalize = normalize;
-/**
- * Flatten an object into an Array of arrays, [[key, value], ..].
- * Implements Object.entries() for Node.js <8
- * @internal
- */
-function objectEntries(obj) {
-    return Object.keys(obj).map(key => [key, obj[key]]);
-}
-util$1.objectEntries = objectEntries;
-/**
- * Encode `str` with encodeURIComponent, plus these
- * reserved characters: `! * ' ( )`.
- *
- * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent| MDN: fixedEncodeURIComponent}
- *
- * @param {string} str The URI component to encode.
- * @return {string} The encoded string.
- */
-function fixedEncodeURIComponent(str) {
-    return encodeURIComponent(str).replace(/[!'()*]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase());
-}
-util$1.fixedEncodeURIComponent = fixedEncodeURIComponent;
-/**
- * URI encode `uri` for generating signed URLs, using fixedEncodeURIComponent.
- *
- * Encode every byte except `A-Z a-Z 0-9 ~ - . _`.
- *
- * @param {string} uri The URI to encode.
- * @param [boolean=false] encodeSlash If `true`, the "/" character is not encoded.
- * @return {string} The encoded string.
- */
-function encodeURI(uri, encodeSlash) {
-    // Split the string by `/`, and conditionally rejoin them with either
-    // %2F if encodeSlash is `true`, or '/' if `false`.
-    return uri
-        .split('/')
-        .map(fixedEncodeURIComponent)
-        .join(encodeSlash ? '%2F' : '/');
-}
-util$1.encodeURI = encodeURI;
-/**
- * Serialize an object to a URL query string using util.encodeURI(uri, true).
- * @param {string} url The object to serialize.
- * @return {string} Serialized string.
- */
-function qsStringify(qs) {
-    return querystring.stringify(qs, '&', '=', {
-        encodeURIComponent: (component) => encodeURI(component, true),
-    });
-}
-util$1.qsStringify = qsStringify;
-function objectKeyToLowercase(object) {
-    const newObj = {};
-    for (let key of Object.keys(object)) {
-        const value = object[key];
-        key = key.toLowerCase();
-        newObj[key] = value;
-    }
-    return newObj;
-}
-util$1.objectKeyToLowercase = objectKeyToLowercase;
-/**
- * JSON encode str, with unicode \u+ representation.
- * @param {object} obj The object to encode.
- * @return {string} Serialized string.
- */
-function unicodeJSONStringify(obj) {
-    return JSON.stringify(obj).replace(/[\u0080-\uFFFF]/g, (char) => '\\u' + ('0000' + char.charCodeAt(0).toString(16)).slice(-4));
-}
-util$1.unicodeJSONStringify = unicodeJSONStringify;
+(0, promisify_1$1.promisifyAll)(Channel);
 
 var hmacKey = {};
 
@@ -167175,140 +163460,249 @@ class HmacKey extends nodejs_common_1$1.ServiceObject {
 }
 hmacKey.HmacKey = HmacKey;
 
-var name = "@google-cloud/storage";
-var description = "Cloud Storage Client Library for Node.js";
-var version = "5.19.4";
-var license = "Apache-2.0";
-var author = "Google Inc.";
-var engines = {
-	node: ">=10"
+var crc32c = {};
+
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+var __classPrivateFieldSet$1 = (commonjsGlobal && commonjsGlobal.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var repository = "googleapis/nodejs-storage";
-var main$1 = "./build/src/index.js";
-var types = "./build/src/index.d.ts";
-var files = [
-	"build/src",
-	"!build/src/**/*.map"
+var __classPrivateFieldGet$1 = (commonjsGlobal && commonjsGlobal.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _CRC32C_crc32c;
+Object.defineProperty(crc32c, "__esModule", { value: true });
+crc32c.CRC32C_EXTENSION_TABLE = crc32c.CRC32C_EXTENSIONS = crc32c.CRC32C_EXCEPTION_MESSAGES = crc32c.CRC32C_DEFAULT_VALIDATOR_GENERATOR = crc32c.CRC32C = void 0;
+/**
+ * Ported from {@link https://github.com/google/crc32c/blob/21fc8ef30415a635e7351ffa0e5d5367943d4a94/src/crc32c_portable.cc#L16-L59 github.com/google/crc32c}
+ */
+const CRC32C_EXTENSIONS = [
+    0x00000000, 0xf26b8303, 0xe13b70f7, 0x1350f3f4, 0xc79a971f, 0x35f1141c,
+    0x26a1e7e8, 0xd4ca64eb, 0x8ad958cf, 0x78b2dbcc, 0x6be22838, 0x9989ab3b,
+    0x4d43cfd0, 0xbf284cd3, 0xac78bf27, 0x5e133c24, 0x105ec76f, 0xe235446c,
+    0xf165b798, 0x030e349b, 0xd7c45070, 0x25afd373, 0x36ff2087, 0xc494a384,
+    0x9a879fa0, 0x68ec1ca3, 0x7bbcef57, 0x89d76c54, 0x5d1d08bf, 0xaf768bbc,
+    0xbc267848, 0x4e4dfb4b, 0x20bd8ede, 0xd2d60ddd, 0xc186fe29, 0x33ed7d2a,
+    0xe72719c1, 0x154c9ac2, 0x061c6936, 0xf477ea35, 0xaa64d611, 0x580f5512,
+    0x4b5fa6e6, 0xb93425e5, 0x6dfe410e, 0x9f95c20d, 0x8cc531f9, 0x7eaeb2fa,
+    0x30e349b1, 0xc288cab2, 0xd1d83946, 0x23b3ba45, 0xf779deae, 0x05125dad,
+    0x1642ae59, 0xe4292d5a, 0xba3a117e, 0x4851927d, 0x5b016189, 0xa96ae28a,
+    0x7da08661, 0x8fcb0562, 0x9c9bf696, 0x6ef07595, 0x417b1dbc, 0xb3109ebf,
+    0xa0406d4b, 0x522bee48, 0x86e18aa3, 0x748a09a0, 0x67dafa54, 0x95b17957,
+    0xcba24573, 0x39c9c670, 0x2a993584, 0xd8f2b687, 0x0c38d26c, 0xfe53516f,
+    0xed03a29b, 0x1f682198, 0x5125dad3, 0xa34e59d0, 0xb01eaa24, 0x42752927,
+    0x96bf4dcc, 0x64d4cecf, 0x77843d3b, 0x85efbe38, 0xdbfc821c, 0x2997011f,
+    0x3ac7f2eb, 0xc8ac71e8, 0x1c661503, 0xee0d9600, 0xfd5d65f4, 0x0f36e6f7,
+    0x61c69362, 0x93ad1061, 0x80fde395, 0x72966096, 0xa65c047d, 0x5437877e,
+    0x4767748a, 0xb50cf789, 0xeb1fcbad, 0x197448ae, 0x0a24bb5a, 0xf84f3859,
+    0x2c855cb2, 0xdeeedfb1, 0xcdbe2c45, 0x3fd5af46, 0x7198540d, 0x83f3d70e,
+    0x90a324fa, 0x62c8a7f9, 0xb602c312, 0x44694011, 0x5739b3e5, 0xa55230e6,
+    0xfb410cc2, 0x092a8fc1, 0x1a7a7c35, 0xe811ff36, 0x3cdb9bdd, 0xceb018de,
+    0xdde0eb2a, 0x2f8b6829, 0x82f63b78, 0x709db87b, 0x63cd4b8f, 0x91a6c88c,
+    0x456cac67, 0xb7072f64, 0xa457dc90, 0x563c5f93, 0x082f63b7, 0xfa44e0b4,
+    0xe9141340, 0x1b7f9043, 0xcfb5f4a8, 0x3dde77ab, 0x2e8e845f, 0xdce5075c,
+    0x92a8fc17, 0x60c37f14, 0x73938ce0, 0x81f80fe3, 0x55326b08, 0xa759e80b,
+    0xb4091bff, 0x466298fc, 0x1871a4d8, 0xea1a27db, 0xf94ad42f, 0x0b21572c,
+    0xdfeb33c7, 0x2d80b0c4, 0x3ed04330, 0xccbbc033, 0xa24bb5a6, 0x502036a5,
+    0x4370c551, 0xb11b4652, 0x65d122b9, 0x97baa1ba, 0x84ea524e, 0x7681d14d,
+    0x2892ed69, 0xdaf96e6a, 0xc9a99d9e, 0x3bc21e9d, 0xef087a76, 0x1d63f975,
+    0x0e330a81, 0xfc588982, 0xb21572c9, 0x407ef1ca, 0x532e023e, 0xa145813d,
+    0x758fe5d6, 0x87e466d5, 0x94b49521, 0x66df1622, 0x38cc2a06, 0xcaa7a905,
+    0xd9f75af1, 0x2b9cd9f2, 0xff56bd19, 0x0d3d3e1a, 0x1e6dcdee, 0xec064eed,
+    0xc38d26c4, 0x31e6a5c7, 0x22b65633, 0xd0ddd530, 0x0417b1db, 0xf67c32d8,
+    0xe52cc12c, 0x1747422f, 0x49547e0b, 0xbb3ffd08, 0xa86f0efc, 0x5a048dff,
+    0x8ecee914, 0x7ca56a17, 0x6ff599e3, 0x9d9e1ae0, 0xd3d3e1ab, 0x21b862a8,
+    0x32e8915c, 0xc083125f, 0x144976b4, 0xe622f5b7, 0xf5720643, 0x07198540,
+    0x590ab964, 0xab613a67, 0xb831c993, 0x4a5a4a90, 0x9e902e7b, 0x6cfbad78,
+    0x7fab5e8c, 0x8dc0dd8f, 0xe330a81a, 0x115b2b19, 0x020bd8ed, 0xf0605bee,
+    0x24aa3f05, 0xd6c1bc06, 0xc5914ff2, 0x37faccf1, 0x69e9f0d5, 0x9b8273d6,
+    0x88d28022, 0x7ab90321, 0xae7367ca, 0x5c18e4c9, 0x4f48173d, 0xbd23943e,
+    0xf36e6f75, 0x0105ec76, 0x12551f82, 0xe03e9c81, 0x34f4f86a, 0xc69f7b69,
+    0xd5cf889d, 0x27a40b9e, 0x79b737ba, 0x8bdcb4b9, 0x988c474d, 0x6ae7c44e,
+    0xbe2da0a5, 0x4c4623a6, 0x5f16d052, 0xad7d5351,
 ];
-var keywords = [
-	"google apis client",
-	"google api client",
-	"google apis",
-	"google api",
-	"google",
-	"google cloud platform",
-	"google cloud",
-	"cloud",
-	"google storage",
-	"storage"
-];
-var scripts = {
-	predocs: "npm run compile",
-	docs: "jsdoc -c .jsdoc.js",
-	"system-test": "mocha build/system-test --timeout 600000 --exit",
-	"conformance-test": "mocha --parallel build/conformance-test/ --require build/conformance-test/globalHooks.js",
-	"preconformance-test": "npm run compile",
-	"presystem-test": "npm run compile",
-	test: "c8 mocha build/test",
-	pretest: "npm run compile",
-	lint: "gts check",
-	"samples-test": "npm link && cd samples/ && npm link ../ && npm test && cd ../",
-	"all-test": "npm test && npm run system-test && npm run samples-test",
-	check: "gts check",
-	clean: "gts clean",
-	compile: "tsc -p .",
-	fix: "gts fix",
-	prepare: "npm run compile",
-	"docs-test": "linkinator docs",
-	"predocs-test": "npm run docs",
-	benchwrapper: "node bin/benchwrapper.js",
-	prelint: "cd samples; npm link ../; npm install",
-	precompile: "gts clean"
+crc32c.CRC32C_EXTENSIONS = CRC32C_EXTENSIONS;
+const CRC32C_EXTENSION_TABLE = new Int32Array(CRC32C_EXTENSIONS);
+crc32c.CRC32C_EXTENSION_TABLE = CRC32C_EXTENSION_TABLE;
+const CRC32C_DEFAULT_VALIDATOR_GENERATOR = () => new CRC32C();
+crc32c.CRC32C_DEFAULT_VALIDATOR_GENERATOR = CRC32C_DEFAULT_VALIDATOR_GENERATOR;
+const CRC32C_EXCEPTION_MESSAGES = {
+    INVALID_INIT_BASE64_RANGE: (l) => `base64-encoded data expected to equal 4 bytes, not ${l}`,
+    INVALID_INIT_BUFFER_LENGTH: (l) => `Buffer expected to equal 4 bytes, not ${l}`,
+    INVALID_INIT_INTEGER: (l) => `Number expected to be a safe, unsigned 32-bit integer, not ${l}`,
 };
-var dependencies = {
-	"@google-cloud/paginator": "^3.0.7",
-	"@google-cloud/projectify": "^2.0.0",
-	"@google-cloud/promisify": "^2.0.0",
-	"abort-controller": "^3.0.0",
-	arrify: "^2.0.0",
-	"async-retry": "^1.3.3",
-	compressible: "^2.0.12",
-	configstore: "^5.0.0",
-	"date-and-time": "^2.0.0",
-	duplexify: "^4.0.0",
-	ent: "^2.2.0",
-	extend: "^3.0.2",
-	gaxios: "^4.0.0",
-	"get-stream": "^6.0.0",
-	"google-auth-library": "^7.14.1",
-	"hash-stream-validation": "^0.2.2",
-	mime: "^3.0.0",
-	"mime-types": "^2.0.8",
-	"p-limit": "^3.0.1",
-	pumpify: "^2.0.0",
-	"retry-request": "^4.2.2",
-	snakeize: "^0.1.0",
-	"stream-events": "^1.0.4",
-	"teeny-request": "^7.1.3",
-	"xdg-basedir": "^4.0.0"
-};
-var devDependencies = {
-	"@google-cloud/pubsub": "^2.0.0",
-	"@grpc/grpc-js": "^1.0.3",
-	"@grpc/proto-loader": "^0.6.0",
-	"@types/async-retry": "^1.4.3",
-	"@types/compressible": "^2.0.0",
-	"@types/configstore": "^5.0.0",
-	"@types/date-and-time": "^0.13.0",
-	"@types/ent": "^2.2.1",
-	"@types/extend": "^3.0.0",
-	"@types/mime": "^2.0.0",
-	"@types/mime-types": "^2.1.0",
-	"@types/mocha": "^8.0.0",
-	"@types/mockery": "^1.4.29",
-	"@types/node": "^16.0.0",
-	"@types/node-fetch": "^2.1.3",
-	"@types/proxyquire": "^1.3.28",
-	"@types/pumpify": "^1.4.1",
-	"@types/request": "^2.48.4",
-	"@types/sinon": "^10.0.0",
-	"@types/tmp": "0.2.3",
-	"@types/uuid": "^8.0.0",
-	"@types/xdg-basedir": "^2.0.0",
-	c8: "^7.0.0",
-	"form-data": "^4.0.0",
-	gts: "^3.1.0",
-	jsdoc: "^3.6.2",
-	"jsdoc-fresh": "^1.0.1",
-	"jsdoc-region-tag": "^1.0.2",
-	linkinator: "^2.0.0",
-	mocha: "^8.4.0",
-	mockery: "^2.1.0",
-	nock: "~13.2.0",
-	"node-fetch": "^2.6.7",
-	proxyquire: "^2.1.3",
-	sinon: "^13.0.0",
-	tmp: "^0.2.0",
-	typescript: "~3.9.10",
-	uuid: "^8.0.0",
-	yargs: "^16.0.0"
-};
-var require$$10 = {
-	name: name,
-	description: description,
-	version: version,
-	license: license,
-	author: author,
-	engines: engines,
-	repository: repository,
-	main: main$1,
-	types: types,
-	files: files,
-	keywords: keywords,
-	scripts: scripts,
-	dependencies: dependencies,
-	devDependencies: devDependencies
-};
+crc32c.CRC32C_EXCEPTION_MESSAGES = CRC32C_EXCEPTION_MESSAGES;
+class CRC32C {
+    /**
+     * Constructs a new `CRC32C` object.
+     *
+     * Reconstruction is recommended via the `CRC32C.from` static method.
+     *
+     * @param initialValue An initial CRC32C value - a signed 32-bit integer.
+     */
+    constructor(initialValue = 0) {
+        /** Current CRC32C value */
+        _CRC32C_crc32c.set(this, 0);
+        __classPrivateFieldSet$1(this, _CRC32C_crc32c, initialValue, "f");
+    }
+    /**
+     * Calculates a CRC32C from a provided buffer.
+     *
+     * Implementation inspired from:
+     * - {@link https://github.com/google/crc32c/blob/21fc8ef30415a635e7351ffa0e5d5367943d4a94/src/crc32c_portable.cc github.com/google/crc32c}
+     * - {@link https://github.com/googleapis/python-crc32c/blob/a595e758c08df445a99c3bf132ee8e80a3ec4308/src/google_crc32c/python.py github.com/googleapis/python-crc32c}
+     * - {@link https://github.com/googleapis/java-storage/pull/1376/files github.com/googleapis/java-storage}
+     *
+     * @param data The `Buffer` to generate the CRC32C from
+     */
+    update(data) {
+        let current = __classPrivateFieldGet$1(this, _CRC32C_crc32c, "f") ^ 0xffffffff;
+        for (const d of data) {
+            const tablePoly = CRC32C.CRC32C_EXTENSION_TABLE[(d ^ current) & 0xff];
+            current = tablePoly ^ (current >>> 8);
+        }
+        __classPrivateFieldSet$1(this, _CRC32C_crc32c, current ^ 0xffffffff, "f");
+    }
+    /**
+     * Validates a provided input to the current CRC32C value.
+     *
+     * @param input A Buffer, `CRC32C`-compatible object, base64-encoded data (string), or signed 32-bit integer
+     */
+    validate(input) {
+        if (typeof input === 'number') {
+            return input === __classPrivateFieldGet$1(this, _CRC32C_crc32c, "f");
+        }
+        else if (typeof input === 'string') {
+            return input === this.toString();
+        }
+        else if (Buffer.isBuffer(input)) {
+            return Buffer.compare(input, this.toBuffer()) === 0;
+        }
+        else {
+            // `CRC32C`-like object
+            return input.toString() === this.toString();
+        }
+    }
+    /**
+     * Returns a `Buffer` representation of the CRC32C value
+     */
+    toBuffer() {
+        const buffer = Buffer.alloc(4);
+        buffer.writeInt32BE(__classPrivateFieldGet$1(this, _CRC32C_crc32c, "f"));
+        return buffer;
+    }
+    /**
+     * Returns a JSON-compatible, base64-encoded representation of the CRC32C value.
+     *
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify `JSON#stringify`}
+     */
+    toJSON() {
+        return this.toString();
+    }
+    /**
+     * Returns a base64-encoded representation of the CRC32C value.
+     *
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString `Object#toString`}
+     */
+    toString() {
+        return this.toBuffer().toString('base64');
+    }
+    /**
+     * Returns the `number` representation of the CRC32C value as a signed 32-bit integer
+     *
+     * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf `Object#valueOf`}
+     */
+    valueOf() {
+        return __classPrivateFieldGet$1(this, _CRC32C_crc32c, "f");
+    }
+    /**
+     * Generates a `CRC32C` from a compatible buffer format.
+     *
+     * @param value 4-byte `ArrayBufferView`/`Buffer`/`TypedArray`
+     */
+    static fromBuffer(value) {
+        let buffer;
+        if (Buffer.isBuffer(value)) {
+            buffer = value;
+        }
+        else if ('buffer' in value) {
+            // `ArrayBufferView`
+            buffer = Buffer.from(value.buffer);
+        }
+        else {
+            // `ArrayBuffer`
+            buffer = Buffer.from(value);
+        }
+        if (buffer.byteLength !== 4) {
+            throw new RangeError(CRC32C_EXCEPTION_MESSAGES.INVALID_INIT_BUFFER_LENGTH(buffer.byteLength));
+        }
+        return new CRC32C(buffer.readInt32BE());
+    }
+    /**
+     * Generates a `CRC32C` from 4-byte base64-encoded data (string).
+     *
+     * @param value 4-byte base64-encoded data (string)
+     */
+    static fromString(value) {
+        const buffer = Buffer.from(value, 'base64');
+        if (buffer.byteLength !== 4) {
+            throw new RangeError(CRC32C_EXCEPTION_MESSAGES.INVALID_INIT_BASE64_RANGE(buffer.byteLength));
+        }
+        return this.fromBuffer(buffer);
+    }
+    /**
+     * Generates a `CRC32C` from a safe, unsigned 32-bit integer.
+     *
+     * @param value an unsigned 32-bit integer
+     */
+    static fromNumber(value) {
+        if (!Number.isSafeInteger(value) || value > 2 ** 32 || value < -(2 ** 32)) {
+            throw new RangeError(CRC32C_EXCEPTION_MESSAGES.INVALID_INIT_INTEGER(value));
+        }
+        return new CRC32C(value);
+    }
+    /**
+     * Generates a `CRC32C` from a variety of compatable types.
+     *
+     * @param value A number, 4-byte `ArrayBufferView`/`Buffer`/`TypedArray`, or 4-byte base64-encoded data (string)
+     */
+    static from(value) {
+        if (typeof value === 'number') {
+            return this.fromNumber(value);
+        }
+        else if (typeof value === 'string') {
+            return this.fromString(value);
+        }
+        else if ('byteLength' in value) {
+            // `ArrayBuffer` | `Buffer` | `ArrayBufferView`
+            return this.fromBuffer(value);
+        }
+        else {
+            // `CRC32CValidator`/`CRC32C`-like
+            return this.fromString(value.toString());
+        }
+    }
+}
+crc32c.CRC32C = CRC32C;
+_CRC32C_crc32c = new WeakMap();
+CRC32C.CRC32C_EXTENSIONS = CRC32C_EXTENSIONS;
+CRC32C.CRC32C_EXTENSION_TABLE = CRC32C_EXTENSION_TABLE;
 
 var hasRequiredStorage;
 
@@ -167333,14 +163727,15 @@ function requireStorage () {
 		exports.Storage = exports.RETRYABLE_ERR_FN_DEFAULT = exports.MAX_RETRY_DELAY_DEFAULT = exports.TOTAL_TIMEOUT_DEFAULT = exports.RETRY_DELAY_MULTIPLIER_DEFAULT = exports.MAX_RETRY_DEFAULT = exports.AUTO_RETRY_DEFAULT = exports.PROTOCOL_REGEX = exports.StorageExceptionMessages = exports.ExceptionMessages = exports.IdempotencyStrategy = void 0;
 		const nodejs_common_1 = nodejsCommon;
 		const paginator_1 = src;
-		const promisify_1 = src$a;
+		const promisify_1 = src$1;
 		const arrify = arrify_1;
-		const stream_1 = require$$0__default$4["default"];
+		const stream_1 = require$$0__default$6["default"];
 		const bucket_1 = requireBucket();
 		const channel_1 = channel;
 		const file_1 = requireFile();
 		const util_1 = util$1;
 		const hmacKey_1 = hmacKey;
+		const crc32c_1 = crc32c;
 		var IdempotencyStrategy;
 		(function (IdempotencyStrategy) {
 		    IdempotencyStrategy[IdempotencyStrategy["RetryAlways"] = 0] = "RetryAlways";
@@ -167354,8 +163749,6 @@ function requireStorage () {
 		})(exports.ExceptionMessages || (exports.ExceptionMessages = {}));
 		var StorageExceptionMessages;
 		(function (StorageExceptionMessages) {
-		    StorageExceptionMessages["AUTO_RETRY_DEPRECATED"] = "autoRetry is deprecated. Use retryOptions.autoRetry instead.";
-		    StorageExceptionMessages["MAX_RETRIES_DEPRECATED"] = "maxRetries is deprecated. Use retryOptions.maxRetries instead.";
 		    StorageExceptionMessages["BUCKET_NAME_REQUIRED"] = "A bucket name is needed to use Cloud Storage.";
 		    StorageExceptionMessages["BUCKET_NAME_REQUIRED_CREATE"] = "A name is required to create a bucket.";
 		    StorageExceptionMessages["HMAC_SERVICE_ACCOUNT"] = "The first argument must be a service account email to create an HMAC key.";
@@ -167407,7 +163800,7 @@ function requireStorage () {
 		 * @param {error} err - The API error to check if it is appropriate to retry.
 		 * @return {boolean} True if the API request should be retried, false otherwise.
 		 */
-		exports.RETRYABLE_ERR_FN_DEFAULT = function (err) {
+		const RETRYABLE_ERR_FN_DEFAULT = function (err) {
 		    var _a;
 		    if (err) {
 		        if ([408, 429, 500, 502, 503, 504].indexOf(err.code) !== -1) {
@@ -167426,6 +163819,7 @@ function requireStorage () {
 		    }
 		    return false;
 		};
+		exports.RETRYABLE_ERR_FN_DEFAULT = RETRYABLE_ERR_FN_DEFAULT;
 		/*! Developer Documentation
 		 *
 		 * Invoke this method to create a new Storage object bound with pre-determined
@@ -167669,38 +164063,30 @@ function requireStorage () {
 		        options = Object.assign({}, options, { apiEndpoint });
 		        // Note: EMULATOR_HOST is an experimental configuration variable. Use apiEndpoint instead.
 		        const baseUrl = EMULATOR_HOST || `${options.apiEndpoint}/storage/v1`;
-		        let autoRetryValue = exports.AUTO_RETRY_DEFAULT;
-		        if (options.autoRetry !== undefined &&
-		            ((_a = options.retryOptions) === null || _a === void 0 ? void 0 : _a.autoRetry) !== undefined) {
-		            throw new nodejs_common_1.ApiError(StorageExceptionMessages.AUTO_RETRY_DEPRECATED);
-		        }
-		        else if (options.autoRetry !== undefined) {
-		            autoRetryValue = options.autoRetry;
-		        }
-		        else if (((_b = options.retryOptions) === null || _b === void 0 ? void 0 : _b.autoRetry) !== undefined) {
-		            autoRetryValue = options.retryOptions.autoRetry;
-		        }
-		        let maxRetryValue = exports.MAX_RETRY_DEFAULT;
-		        if (options.maxRetries && ((_c = options.retryOptions) === null || _c === void 0 ? void 0 : _c.maxRetries)) {
-		            throw new nodejs_common_1.ApiError(StorageExceptionMessages.MAX_RETRIES_DEPRECATED);
-		        }
-		        else if (options.maxRetries) {
-		            maxRetryValue = options.maxRetries;
-		        }
-		        else if ((_d = options.retryOptions) === null || _d === void 0 ? void 0 : _d.maxRetries) {
-		            maxRetryValue = options.retryOptions.maxRetries;
-		        }
 		        const config = {
 		            apiEndpoint: options.apiEndpoint,
 		            retryOptions: {
-		                autoRetry: autoRetryValue,
-		                maxRetries: maxRetryValue,
-		                retryDelayMultiplier: ((_e = options.retryOptions) === null || _e === void 0 ? void 0 : _e.retryDelayMultiplier) ? (_f = options.retryOptions) === null || _f === void 0 ? void 0 : _f.retryDelayMultiplier : exports.RETRY_DELAY_MULTIPLIER_DEFAULT,
-		                totalTimeout: ((_g = options.retryOptions) === null || _g === void 0 ? void 0 : _g.totalTimeout) ? (_h = options.retryOptions) === null || _h === void 0 ? void 0 : _h.totalTimeout : exports.TOTAL_TIMEOUT_DEFAULT,
-		                maxRetryDelay: ((_j = options.retryOptions) === null || _j === void 0 ? void 0 : _j.maxRetryDelay) ? (_k = options.retryOptions) === null || _k === void 0 ? void 0 : _k.maxRetryDelay : exports.MAX_RETRY_DELAY_DEFAULT,
-		                retryableErrorFn: ((_l = options.retryOptions) === null || _l === void 0 ? void 0 : _l.retryableErrorFn) ? (_m = options.retryOptions) === null || _m === void 0 ? void 0 : _m.retryableErrorFn : exports.RETRYABLE_ERR_FN_DEFAULT,
+		                autoRetry: ((_a = options.retryOptions) === null || _a === void 0 ? void 0 : _a.autoRetry) !== undefined
+		                    ? (_b = options.retryOptions) === null || _b === void 0 ? void 0 : _b.autoRetry
+		                    : exports.AUTO_RETRY_DEFAULT,
+		                maxRetries: ((_c = options.retryOptions) === null || _c === void 0 ? void 0 : _c.maxRetries)
+		                    ? (_d = options.retryOptions) === null || _d === void 0 ? void 0 : _d.maxRetries
+		                    : exports.MAX_RETRY_DEFAULT,
+		                retryDelayMultiplier: ((_e = options.retryOptions) === null || _e === void 0 ? void 0 : _e.retryDelayMultiplier)
+		                    ? (_f = options.retryOptions) === null || _f === void 0 ? void 0 : _f.retryDelayMultiplier
+		                    : exports.RETRY_DELAY_MULTIPLIER_DEFAULT,
+		                totalTimeout: ((_g = options.retryOptions) === null || _g === void 0 ? void 0 : _g.totalTimeout)
+		                    ? (_h = options.retryOptions) === null || _h === void 0 ? void 0 : _h.totalTimeout
+		                    : exports.TOTAL_TIMEOUT_DEFAULT,
+		                maxRetryDelay: ((_j = options.retryOptions) === null || _j === void 0 ? void 0 : _j.maxRetryDelay)
+		                    ? (_k = options.retryOptions) === null || _k === void 0 ? void 0 : _k.maxRetryDelay
+		                    : exports.MAX_RETRY_DELAY_DEFAULT,
+		                retryableErrorFn: ((_l = options.retryOptions) === null || _l === void 0 ? void 0 : _l.retryableErrorFn)
+		                    ? (_m = options.retryOptions) === null || _m === void 0 ? void 0 : _m.retryableErrorFn
+		                    : exports.RETRYABLE_ERR_FN_DEFAULT,
 		                idempotencyStrategy: ((_o = options.retryOptions) === null || _o === void 0 ? void 0 : _o.idempotencyStrategy) !== undefined
-		                    ? (_p = options.retryOptions) === null || _p === void 0 ? void 0 : _p.idempotencyStrategy : IDEMPOTENCY_STRATEGY_DEFAULT,
+		                    ? (_p = options.retryOptions) === null || _p === void 0 ? void 0 : _p.idempotencyStrategy
+		                    : IDEMPOTENCY_STRATEGY_DEFAULT,
 		            },
 		            baseUrl,
 		            customEndpoint,
@@ -167711,7 +164097,7 @@ function requireStorage () {
 		                'https://www.googleapis.com/auth/cloud-platform',
 		                'https://www.googleapis.com/auth/devstorage.full_control',
 		            ],
-		            packageJson: require$$10,
+		            packageJson: require$$11,
 		        };
 		        super(config, options);
 		        /**
@@ -167721,6 +164107,8 @@ function requireStorage () {
 		         * @see Storage.acl
 		         */
 		        this.acl = Storage.acl;
+		        this.crc32cGenerator =
+		            options.crc32cGenerator || crc32c_1.CRC32C_DEFAULT_VALIDATOR_GENERATOR;
 		        this.retryOptions = config.retryOptions;
 		        this.getBucketsStream = paginator_1.paginator.streamify('getBuckets');
 		        this.getHmacKeysStream = paginator_1.paginator.streamify('getHmacKeys');
@@ -168038,7 +164426,7 @@ function requireStorage () {
 		        if (typeof serviceAccountEmail !== 'string') {
 		            throw new Error(StorageExceptionMessages.HMAC_SERVICE_ACCOUNT);
 		        }
-		        const { options, callback } = util_1.normalize(optionsOrCb, cb);
+		        const { options, callback } = (0, util_1.normalize)(optionsOrCb, cb);
 		        const query = Object.assign({}, options, { serviceAccountEmail });
 		        const projectId = query.projectId || this.projectId;
 		        delete query.projectId;
@@ -168046,7 +164434,7 @@ function requireStorage () {
 		            method: 'POST',
 		            uri: `/projects/${projectId}/hmacKeys`,
 		            qs: query,
-		            maxRetries: 0,
+		            maxRetries: 0, //explicitly set this value since this is a non-idempotent function
 		        }, (err, resp) => {
 		            if (err) {
 		                callback(err, null, null, resp);
@@ -168146,7 +164534,7 @@ function requireStorage () {
 		     * Another example:
 		     */
 		    getBuckets(optionsOrCallback, cb) {
-		        const { options, callback } = util_1.normalize(optionsOrCallback, cb);
+		        const { options, callback } = (0, util_1.normalize)(optionsOrCallback, cb);
 		        options.project = options.project || this.projectId;
 		        this.request({
 		            uri: '/b',
@@ -168168,7 +164556,7 @@ function requireStorage () {
 		        });
 		    }
 		    getHmacKeys(optionsOrCb, cb) {
-		        const { options, callback } = util_1.normalize(optionsOrCb, cb);
+		        const { options, callback } = (0, util_1.normalize)(optionsOrCb, cb);
 		        const query = Object.assign({}, options);
 		        const projectId = query.projectId || this.projectId;
 		        delete query.projectId;
@@ -168242,7 +164630,7 @@ function requireStorage () {
 		     * ```
 		     */
 		    getServiceAccount(optionsOrCallback, cb) {
-		        const { options, callback } = util_1.normalize(optionsOrCallback, cb);
+		        const { options, callback } = (0, util_1.normalize)(optionsOrCallback, cb);
 		        this.request({
 		            uri: `/projects/${this.projectId}/serviceAccount`,
 		            qs: options,
@@ -168338,7 +164726,7 @@ function requireStorage () {
 		 * All async methods (except for streams) will return a Promise in the event
 		 * that a callback is omitted.
 		 */
-		promisify_1.promisifyAll(Storage, {
+		(0, promisify_1.promisifyAll)(Storage, {
 		    exclude: ['bucket', 'channel', 'hmacKey'],
 		});
 		
@@ -168369,8 +164757,7 @@ function requireSigner () {
 		// limitations under the License.
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.SigningError = exports.URLSigner = exports.PATH_STYLED_HOST = exports.SignerExceptionMessages = void 0;
-		const crypto = require$$0__default$9["default"];
-		const dateFormat = dateAndTime.exports;
+		const crypto = require$$0__default$5["default"];
 		const url = require$$2__default["default"];
 		const storage_1 = requireStorage();
 		const util_1 = util$1;
@@ -168418,7 +164805,7 @@ function requireSigner () {
 		            expiration: expiresInSeconds,
 		            accessibleAt: new Date(secondsToMilliseconds * accessibleAtInSeconds),
 		            bucket: this.bucket.name,
-		            file: this.file ? util_1.encodeURI(this.file.name, false) : undefined,
+		            file: this.file ? (0, util_1.encodeURI)(this.file.name, false) : undefined,
 		        });
 		        if (customHost) {
 		            config.cname = customHost;
@@ -168439,7 +164826,7 @@ function requireSigner () {
 		            const signedUrl = new url.URL(config.cname || exports.PATH_STYLED_HOST);
 		            signedUrl.pathname = this.getResourcePath(!!config.cname, this.bucket.name, config.file);
 		            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-		            signedUrl.search = util_1.qsStringify(query);
+		            signedUrl.search = (0, util_1.qsStringify)(query);
 		            return signedUrl.href;
 		        });
 		    }
@@ -168465,8 +164852,9 @@ function requireSigner () {
 		                };
 		            }
 		            catch (err) {
-		                const signingErr = new SigningError(err.message);
-		                signingErr.stack = err.stack;
+		                const error = err;
+		                const signingErr = new SigningError(error.message);
+		                signingErr.stack = error.stack;
 		                throw signingErr;
 		            }
 		        };
@@ -168505,12 +164893,12 @@ function requireSigner () {
 		            .sort()
 		            .join(';');
 		        const extensionHeadersString = this.getCanonicalHeaders(extensionHeaders);
-		        const datestamp = dateFormat.format(config.accessibleAt, 'YYYYMMDD', true);
+		        const datestamp = (0, util_1.formatAsUTCISO)(config.accessibleAt);
 		        const credentialScope = `${datestamp}/auto/storage/goog4_request`;
 		        const sign = async () => {
 		            const credentials = await this.authClient.getCredentials();
 		            const credential = `${credentials.client_email}/${credentialScope}`;
-		            const dateISO = dateFormat.format(config.accessibleAt ? config.accessibleAt : new Date(), 'YYYYMMDD[T]HHmmss[Z]', true);
+		            const dateISO = (0, util_1.formatAsUTCISO)(config.accessibleAt ? config.accessibleAt : new Date(), true);
 		            const queryParams = {
 		                'X-Goog-Algorithm': 'GOOG4-RSA-SHA256',
 		                'X-Goog-Credential': credential,
@@ -168541,8 +164929,9 @@ function requireSigner () {
 		                return signedQuery;
 		            }
 		            catch (err) {
-		                const signingErr = new SigningError(err.message);
-		                signingErr.stack = err.stack;
+		                const error = err;
+		                const signingErr = new SigningError(error.message);
+		                signingErr.stack = error.stack;
 		                throw signingErr;
 		            }
 		        };
@@ -168563,7 +164952,7 @@ function requireSigner () {
 		     */
 		    getCanonicalHeaders(headers) {
 		        // Sort headers by their lowercased names
-		        const sortedHeaders = util_1.objectEntries(headers)
+		        const sortedHeaders = (0, util_1.objectEntries)(headers)
 		            // Convert header names to lowercase
 		            .map(([headerName, value]) => [
 		            headerName.toLowerCase(),
@@ -168593,8 +164982,8 @@ function requireSigner () {
 		        ].join('\n');
 		    }
 		    getCanonicalQueryParams(query) {
-		        return util_1.objectEntries(query)
-		            .map(([key, value]) => [util_1.encodeURI(key, true), util_1.encodeURI(value, true)])
+		        return (0, util_1.objectEntries)(query)
+		            .map(([key, value]) => [(0, util_1.encodeURI)(key, true), (0, util_1.encodeURI)(value, true)])
 		            .sort((a, b) => (a[0] < b[0] ? -1 : 1))
 		            .map(([key, value]) => `${key}=${value}`)
 		            .join('&');
@@ -168646,6 +165035,87 @@ function requireSigner () {
 	return signer;
 }
 
+var hashStreamValidator = {};
+
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+var __classPrivateFieldSet = (commonjsGlobal && commonjsGlobal.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (commonjsGlobal && commonjsGlobal.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _HashStreamValidator_crc32cHash, _HashStreamValidator_md5Hash, _HashStreamValidator_md5Digest;
+Object.defineProperty(hashStreamValidator, "__esModule", { value: true });
+hashStreamValidator.HashStreamValidator = void 0;
+const crypto_1 = require$$0__default$5["default"];
+const stream_1 = require$$0__default$6["default"];
+const crc32c_1 = crc32c;
+class HashStreamValidator extends stream_1.Transform {
+    constructor(options = {}) {
+        super();
+        _HashStreamValidator_crc32cHash.set(this, undefined);
+        _HashStreamValidator_md5Hash.set(this, undefined);
+        _HashStreamValidator_md5Digest.set(this, '');
+        this.crc32cEnabled = !!options.crc32c;
+        this.md5Enabled = !!options.md5;
+        if (this.crc32cEnabled) {
+            const crc32cGenerator = options.crc32cGenerator || crc32c_1.CRC32C_DEFAULT_VALIDATOR_GENERATOR;
+            __classPrivateFieldSet(this, _HashStreamValidator_crc32cHash, crc32cGenerator(), "f");
+        }
+        if (this.md5Enabled) {
+            __classPrivateFieldSet(this, _HashStreamValidator_md5Hash, (0, crypto_1.createHash)('md5'), "f");
+        }
+    }
+    _flush(callback) {
+        if (__classPrivateFieldGet(this, _HashStreamValidator_md5Hash, "f")) {
+            __classPrivateFieldSet(this, _HashStreamValidator_md5Digest, __classPrivateFieldGet(this, _HashStreamValidator_md5Hash, "f").digest('base64'), "f");
+        }
+        callback();
+    }
+    _transform(chunk, encoding, callback) {
+        this.push(chunk, encoding);
+        try {
+            if (__classPrivateFieldGet(this, _HashStreamValidator_crc32cHash, "f"))
+                __classPrivateFieldGet(this, _HashStreamValidator_crc32cHash, "f").update(chunk);
+            if (__classPrivateFieldGet(this, _HashStreamValidator_md5Hash, "f"))
+                __classPrivateFieldGet(this, _HashStreamValidator_md5Hash, "f").update(chunk);
+            callback();
+        }
+        catch (e) {
+            callback(e);
+        }
+    }
+    test(hash, sum) {
+        const check = Buffer.isBuffer(sum) ? sum.toString('base64') : sum;
+        if (hash === 'crc32c' && __classPrivateFieldGet(this, _HashStreamValidator_crc32cHash, "f")) {
+            return __classPrivateFieldGet(this, _HashStreamValidator_crc32cHash, "f").validate(check);
+        }
+        if (hash === 'md5' && __classPrivateFieldGet(this, _HashStreamValidator_md5Hash, "f")) {
+            return __classPrivateFieldGet(this, _HashStreamValidator_md5Digest, "f") === check;
+        }
+        return false;
+    }
+}
+hashStreamValidator.HashStreamValidator = HashStreamValidator;
+_HashStreamValidator_crc32cHash = new WeakMap(), _HashStreamValidator_md5Hash = new WeakMap(), _HashStreamValidator_md5Digest = new WeakMap();
+
 var hasRequiredFile;
 
 function requireFile () {
@@ -168668,31 +165138,26 @@ function requireFile () {
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.File = exports.FileExceptionMessages = exports.STORAGE_POST_POLICY_BASE_URL = exports.ActionToHTTPMethod = void 0;
 		const nodejs_common_1 = nodejsCommon;
-		const promisify_1 = src$a;
+		const promisify_1 = src$1;
 		const compressible = compressible_1;
-		const getStream = getStream$1.exports;
-		const crypto = require$$0__default$9["default"];
-		const dateFormat = dateAndTime.exports;
-		const extend = extend$4;
+		const crypto = require$$0__default$5["default"];
+		const extend = extend$2;
 		const fs = require$$0__default$1["default"];
-		// eslint-disable-next-line @typescript-eslint/no-var-requires
-		const hashStreamValidation$1 = hashStreamValidation;
 		const mime$1 = mime;
-		const os = require$$0__default["default"];
 		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		const pumpify$1 = pumpify.exports;
-		const resumableUpload = gcsResumableUpload;
-		const stream_1 = require$$0__default$4["default"];
+		const resumableUpload$1 = resumableUpload;
+		const stream_1 = require$$0__default$6["default"];
 		const streamEvents = streamEvents$1;
-		const xdgBasedir = xdgBasedir$1;
 		const zlib = require$$5__default["default"];
 		const storage_1 = requireStorage();
 		const bucket_1 = requireBucket();
 		const acl_1 = acl;
 		const signer_1 = requireSigner();
 		// eslint-disable-next-line @typescript-eslint/no-var-requires
-		const duplexify = duplexify$1;
+		const duplexify$1 = duplexify;
 		const util_1 = util$1;
+		const hash_stream_validator_1 = hashStreamValidator;
 		const retry = lib;
 		var ActionToHTTPMethod;
 		(function (ActionToHTTPMethod) {
@@ -168701,17 +165166,6 @@ function requireFile () {
 		    ActionToHTTPMethod["delete"] = "DELETE";
 		    ActionToHTTPMethod["resumable"] = "POST";
 		})(ActionToHTTPMethod = exports.ActionToHTTPMethod || (exports.ActionToHTTPMethod = {}));
-		/**
-		 * Custom error type for errors related to creating a resumable upload.
-		 *
-		 * @private
-		 */
-		class ResumableUploadError extends Error {
-		    constructor() {
-		        super(...arguments);
-		        this.name = 'ResumableUploadError';
-		    }
-		}
 		/**
 		 * @const {string}
 		 * @private
@@ -168735,8 +165189,8 @@ function requireFile () {
 		    FileExceptionMessages["STARTS_WITH_TWO_ELEMENTS"] = "StartsWith condition must be an array of 2 elements.";
 		    FileExceptionMessages["CONTENT_LENGTH_RANGE_MIN_MAX"] = "ContentLengthRange must have numeric min & max fields.";
 		    FileExceptionMessages["DOWNLOAD_MISMATCH"] = "The downloaded data did not match the data from the server. To be sure the content is the same, you should download the file again.";
-		    FileExceptionMessages["UPLOAD_MISMATCH_DELETE_FAIL"] = "The uploaded data did not match the data from the server. \n    As a precaution, we attempted to delete the file, but it was not successful. \n    To be sure the content is the same, you should try removing the file manually, \n    then uploading the file again. \n    \n\nThe delete attempt failed with this message:\n\n  ";
-		    FileExceptionMessages["UPLOAD_MISMATCH"] = "The uploaded data did not match the data from the server. \n    As a precaution, the file has been deleted. \n    To be sure the content is the same, you should try uploading the file again.";
+		    FileExceptionMessages["UPLOAD_MISMATCH_DELETE_FAIL"] = "The uploaded data did not match the data from the server.\n    As a precaution, we attempted to delete the file, but it was not successful.\n    To be sure the content is the same, you should try removing the file manually,\n    then uploading the file again.\n    \n\nThe delete attempt failed with this message:\n\n  ";
+		    FileExceptionMessages["UPLOAD_MISMATCH"] = "The uploaded data did not match the data from the server.\n    As a precaution, the file has been deleted.\n    To be sure the content is the same, you should try uploading the file again.";
 		})(FileExceptionMessages = exports.FileExceptionMessages || (exports.FileExceptionMessages = {}));
 		/**
 		 * A File object is created from your {@link Bucket} object using
@@ -169166,8 +165620,29 @@ function requireFile () {
 		            request: this.request.bind(this),
 		            pathPrefix: '/acl',
 		        });
+		        this.crc32cGenerator =
+		            options.crc32cGenerator || this.bucket.crc32cGenerator;
 		        this.instanceRetryValue = (_b = (_a = this.storage) === null || _a === void 0 ? void 0 : _a.retryOptions) === null || _b === void 0 ? void 0 : _b.autoRetry;
 		        this.instancePreconditionOpts = options === null || options === void 0 ? void 0 : options.preconditionOpts;
+		    }
+		    /**
+		     * The object's Cloud Storage URI (`gs://`)
+		     *
+		     * @example
+		     * ```ts
+		     * const {Storage} = require('@google-cloud/storage');
+		     * const storage = new Storage();
+		     * const bucket = storage.bucket('my-bucket');
+		     * const file = bucket.file('image.png');
+		     *
+		     * // `gs://my-bucket/image.png`
+		     * const href = file.cloudStorageURI.href;
+		     * ```
+		     */
+		    get cloudStorageURI() {
+		        const uri = this.bucket.cloudStorageURI;
+		        uri.pathname = this.name;
+		        return uri;
 		    }
 		    /**
 		     * A helper method for determining if a request should be retried based on preconditions.
@@ -169461,11 +165936,6 @@ function requireFile () {
 		     * code "CONTENT_DOWNLOAD_MISMATCH". If you receive this error, the best
 		     * recourse is to try downloading the file again.
 		     *
-		     * For faster crc32c computation, you must manually install
-		     * {@link https://www.npmjs.com/package/fast-crc32c| `fast-crc32c`}:
-		     *
-		     *     $ npm install --save fast-crc32c
-		     *
 		     * NOTE: Readable streams will emit the `end` event when the file is fully
 		     * downloaded.
 		     *
@@ -169527,17 +165997,15 @@ function requireFile () {
 		        options = Object.assign({ decompress: true }, options);
 		        const rangeRequest = typeof options.start === 'number' || typeof options.end === 'number';
 		        const tailRequest = options.end < 0;
-		        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-		        let validateStream; // Created later, if necessary.
+		        let validateStream = undefined;
 		        const throughStream = streamEvents(new stream_1.PassThrough());
 		        let isServedCompressed = true;
 		        let crc32c = true;
 		        let md5 = false;
 		        if (typeof options.validation === 'string') {
-		            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-		            options.validation = options.validation.toLowerCase();
-		            crc32c = options.validation === 'crc32c';
-		            md5 = options.validation === 'md5';
+		            const value = options.validation.toLowerCase().trim();
+		            crc32c = value === 'crc32c';
+		            md5 = value === 'md5';
 		        }
 		        else if (options.validation === false) {
 		            crc32c = false;
@@ -169602,8 +166070,8 @@ function requireFile () {
 		            const onResponse = (err, _body, rawResponseStream) => {
 		                if (err) {
 		                    // Get error message from the body.
-		                    getStream(rawResponseStream).then(body => {
-		                        err.message = body;
+		                    this.getBufferFromReadable(rawResponseStream).then(body => {
+		                        err.message = body.toString('utf8');
 		                        throughStream.destroy(err);
 		                    });
 		                    return;
@@ -169625,7 +166093,11 @@ function requireFile () {
 		                            hashes[hashType] = hashValue;
 		                        });
 		                    }
-		                    validateStream = hashStreamValidation$1({ crc32c, md5 });
+		                    validateStream = new hash_stream_validator_1.HashStreamValidator({
+		                        crc32c,
+		                        md5,
+		                        crc32cGenerator: this.crc32cGenerator,
+		                    });
 		                    throughStreams.push(validateStream);
 		                }
 		                if (isServedCompressed && options.decompress) {
@@ -169684,14 +166156,13 @@ function requireFile () {
 		                // mismatch. If not, these tests won't be performed, and we can assume
 		                // the best.
 		                let failed = crc32c || md5;
-		                if (crc32c && hashes.crc32c) {
-		                    // We must remove the first four bytes from the returned checksum.
-		                    // http://stackoverflow.com/questions/25096737/
-		                    //   base64-encoding-of-crc32c-long-value
-		                    failed = !validateStream.test('crc32c', hashes.crc32c.substr(4));
-		                }
-		                if (md5 && hashes.md5) {
-		                    failed = !validateStream.test('md5', hashes.md5);
+		                if (validateStream) {
+		                    if (crc32c && hashes.crc32c) {
+		                        failed = !validateStream.test('crc32c', hashes.crc32c);
+		                    }
+		                    if (md5 && hashes.md5) {
+		                        failed = !validateStream.test('md5', hashes.md5);
+		                    }
 		                }
 		                if (md5 && !hashes.md5) {
 		                    const hashError = new RequestError(FileExceptionMessages.MD5_NOT_AVAILABLE);
@@ -169722,8 +166193,6 @@ function requireFile () {
 		     */
 		    /**
 		     * @typedef {object} CreateResumableUploadOptions
-		     * @property {string} [configPath] A full JSON file path to use with
-		     *     `gcs-resumable-upload`. This maps to the {@link https://github.com/yeoman/configstore/tree/0df1ec950d952b1f0dfb39ce22af8e505dffc71a#configpath| configstore option by the same name}.
 		     * @property {object} [metadata] Metadata to set on the file.
 		     * @property {number} [offset] The starting byte of the upload stream for resuming an interrupted upload.
 		     * @property {string} [origin] Origin header to set for the upload.
@@ -169753,8 +166222,8 @@ function requireFile () {
 		     *     `options.predefinedAcl = 'publicRead'`)
 		     * @property {string} [userProject] The ID of the project which will be
 		     *     billed for the request.
-		     * @property {string} [chunkSize] Create a separate request per chunk. Should
-		     *     be a multiple of 256 KiB (2^18).
+		     * @property {string} [chunkSize] Create a separate request per chunk. This
+		     *     value is in bytes and should be a multiple of 256 KiB (2^18).
 		     *     {@link https://cloud.google.com/storage/docs/performing-resumable-uploads#chunked-upload| We recommend using at least 8 MiB for the chunk size.}
 		     */
 		    /**
@@ -169811,11 +166280,10 @@ function requireFile () {
 		                storage_1.IdempotencyStrategy.RetryNever) {
 		            retryOptions.autoRetry = false;
 		        }
-		        resumableUpload.createURI({
+		        resumableUpload$1.createURI({
 		            authClient: this.storage.authClient,
 		            apiEndpoint: this.storage.apiEndpoint,
 		            bucket: this.bucket.name,
-		            configPath: options.configPath,
 		            customRequestOptions: this.getRequestInterceptors().reduce((reqOpts, interceptorFn) => interceptorFn(reqOpts), {}),
 		            file: this.name,
 		            generation: this.generation,
@@ -169835,9 +166303,6 @@ function requireFile () {
 		    }
 		    /**
 		     * @typedef {object} CreateWriteStreamOptions Configuration options for File#createWriteStream().
-		     * @property {string} [configPath] **This only applies to resumable
-		     *     uploads.** A full JSON file path to use with `gcs-resumable-upload`.
-		     *     This maps to the {@link https://github.com/yeoman/configstore/tree/0df1ec950d952b1f0dfb39ce22af8e505dffc71a#configpath| configstore option by the same name}.
 		     * @property {string} [contentType] Alias for
 		     *     `options.metadata.contentType`. If set to `auto`, the file name is used
 		     *     to determine the contentType.
@@ -169905,12 +166370,6 @@ function requireFile () {
 		     * Resumable uploads are automatically enabled and must be shut off explicitly
 		     * by setting `options.resumable` to `false`.
 		     *
-		     * Resumable uploads require write access to the $HOME directory. Through
-		     * {@link https://www.npmjs.com/package/configstore| `config-store`}, some metadata
-		     * is stored. By default, if the directory is not writable, we will fall back
-		     * to a simple upload. However, if you explicitly request a resumable upload,
-		     * and we cannot write to the config directory, we will return a
-		     * `ResumableUploadError`.
 		     *
 		     * <p class="notice">
 		     *   There is some overhead when using a resumable upload that can cause
@@ -169918,11 +166377,6 @@ function requireFile () {
 		     *   files. When uploading files less than 10MB, it is recommended that the
 		     *   resumable feature is disabled.
 		     * </p>
-		     *
-		     * For faster crc32c computation, you must manually install
-		     * {@link https://www.npmjs.com/package/fast-crc32c| `fast-crc32c`}:
-		     *
-		     *     $ npm install --save fast-crc32c
 		     *
 		     * NOTE: Writable streams will emit the `finish` event when the file is fully
 		     * uploaded.
@@ -170026,11 +166480,12 @@ function requireFile () {
 		        }
 		        // Collect data as it comes in to store in a hash. This is compared to the
 		        // checksum value on the returned metadata from the API.
-		        const validateStream = hashStreamValidation$1({
+		        const validateStream = new hash_stream_validator_1.HashStreamValidator({
 		            crc32c,
 		            md5,
+		            crc32cGenerator: this.crc32cGenerator,
 		        });
-		        const fileWriteStream = duplexify();
+		        const fileWriteStream = duplexify$1();
 		        fileWriteStream.on('progress', evt => {
 		            stream.emit('progress', evt);
 		        });
@@ -170045,64 +166500,7 @@ function requireFile () {
 		                this.startSimpleUpload_(fileWriteStream, options);
 		                return;
 		            }
-		            if (options.configPath) {
-		                this.startResumableUpload_(fileWriteStream, options);
-		                return;
-		            }
-		            // The logic below attempts to mimic the resumable upload library,
-		            // gcs-resumable-upload. That library requires a writable configuration
-		            // directory in order to work. If we wait for that library to discover any
-		            // issues, we've already started a resumable upload which is difficult to back
-		            // out of. We want to catch any errors first, so we can choose a simple, non-
-		            // resumable upload instead.
-		            // Same as configstore (used by gcs-resumable-upload):
-		            // https://github.com/yeoman/configstore/blob/f09f067e50e6a636cfc648a6fc36a522062bd49d/index.js#L11
-		            const configDir = xdgBasedir.config || os.tmpdir();
-		            fs.access(configDir, fs.constants.W_OK, accessErr => {
-		                if (!accessErr) {
-		                    // A configuration directory exists, and it's writable. gcs-resumable-upload
-		                    // should have everything it needs to work.
-		                    this.startResumableUpload_(fileWriteStream, options);
-		                    return;
-		                }
-		                // The configuration directory is either not writable, or it doesn't exist.
-		                // gcs-resumable-upload will attempt to create it for the user, but we'll try
-		                // it now to confirm that it won't have any issues. That way, if we catch the
-		                // issue before we start the resumable upload, we can instead start a simple
-		                // upload.
-		                fs.mkdir(configDir, { mode: 0o0700 }, err => {
-		                    if (!err) {
-		                        // We successfully created a configuration directory that
-		                        // gcs-resumable-upload will use.
-		                        this.startResumableUpload_(fileWriteStream, options);
-		                        return;
-		                    }
-		                    if (options.resumable) {
-		                        // The user wanted a resumable upload, but we couldn't create a
-		                        // configuration directory, which means gcs-resumable-upload will fail.
-		                        // Determine if the issue is that the directory does not exist or
-		                        // if the directory exists, but is not writable.
-		                        const error = new ResumableUploadError([
-		                            'A resumable upload could not be performed. The directory,',
-		                            `${configDir}, is not writable. You may try another upload,`,
-		                            'this time setting `options.resumable` to `false`.',
-		                        ].join(' '));
-		                        fs.access(configDir, fs.constants.R_OK, noReadErr => {
-		                            if (noReadErr) {
-		                                error.additionalInfo = 'The directory does not exist.';
-		                            }
-		                            else {
-		                                error.additionalInfo = 'The directory is read-only.';
-		                            }
-		                            stream.destroy(error);
-		                        });
-		                    }
-		                    else {
-		                        // The user didn't care, resumable or not. Fall back to simple upload.
-		                        this.startSimpleUpload_(fileWriteStream, options);
-		                    }
-		                });
-		            });
+		            this.startResumableUpload_(fileWriteStream, options);
 		        });
 		        fileWriteStream.on('response', stream.emit.bind(stream, 'response'));
 		        // This is to preserve the `finish` event. We wait until the request stream
@@ -170122,10 +166520,7 @@ function requireFile () {
 		            // best.
 		            let failed = crc32c || md5;
 		            if (crc32c && metadata.crc32c) {
-		                // We must remove the first four bytes from the returned checksum.
-		                // http://stackoverflow.com/questions/25096737/
-		                //   base64-encoding-of-crc32c-long-value
-		                failed = !validateStream.test('crc32c', metadata.crc32c.substr(4));
+		                failed = !validateStream.test('crc32c', metadata.crc32c);
 		            }
 		            if (md5 && metadata.md5Hash) {
 		                failed = !validateStream.test('md5', metadata.md5Hash);
@@ -170156,49 +166551,6 @@ function requireFile () {
 		            stream.uncork();
 		        });
 		        return stream;
-		    }
-		    /**
-		     * Delete failed resumable upload file cache.
-		     *
-		     * Resumable file upload cache the config file to restart upload in case of
-		     * failure. In certain scenarios, the resumable upload will not works and
-		     * upload file cache needs to be deleted to upload the same file.
-		     *
-		     * Following are some of the scenarios.
-		     *
-		     * Resumable file upload failed even though the file is successfully saved
-		     * on the google storage and need to clean up a resumable file cache to
-		     * update the same file.
-		     *
-		     * Resumable file upload failed due to pre-condition
-		     * (i.e generation number is not matched) and want to upload a same
-		     * file with the new generation number.
-		     *
-		     * @example
-		     * ```
-		     * const {Storage} = require('@google-cloud/storage');
-		     * const storage = new Storage();
-		     * const myBucket = storage.bucket('my-bucket');
-		     *
-		     * const file = myBucket.file('my-file', { generation: 0 });
-		     * const contents = 'This is the contents of the file.';
-		     *
-		     * file.save(contents, function(err) {
-		     *   if (err) {
-		     *     file.deleteResumableCache();
-		     *   }
-		     * });
-		     *
-		     * ```
-		     */
-		    deleteResumableCache() {
-		        const uploadStream = resumableUpload.upload({
-		            bucket: this.bucket.name,
-		            file: this.name,
-		            generation: this.generation,
-		            retryOptions: this.storage.retryOptions,
-		        });
-		        uploadStream.deleteConfig();
 		    }
 		    /**
 		     * @typedef {array} DownloadResponse
@@ -170282,17 +166634,30 @@ function requireFile () {
 		        const destination = options.destination;
 		        delete options.destination;
 		        const fileStream = this.createReadStream(options);
+		        let receivedData = false;
 		        if (destination) {
-		            fileStream.on('error', callback).once('data', data => {
-		                // We know that the file exists the server
+		            fileStream
+		                .on('error', callback)
+		                .once('data', data => {
+		                // We know that the file exists the server - now we can truncate/write to a file
+		                receivedData = true;
 		                const writable = fs.createWriteStream(destination);
 		                writable.write(data);
-		                fileStream.pipe(writable).on('error', callback).on('finish', callback);
+		                fileStream
+		                    .pipe(writable)
+		                    .on('error', callback)
+		                    .on('finish', callback);
+		            })
+		                .on('end', () => {
+		                // In the case of an empty file no data will be received before the end event fires
+		                if (!receivedData) {
+		                    fs.openSync(destination, 'w');
+		                    callback(null, Buffer.alloc(0));
+		                }
 		            });
 		        }
 		        else {
-		            getStream
-		                .buffer(fileStream)
+		            this.getBufferFromReadable(fileStream)
 		                .then(contents => callback === null || callback === void 0 ? void 0 : callback(null, contents))
 		                .catch(callback);
 		        }
@@ -170408,108 +166773,6 @@ function requireFile () {
 		        });
 		    }
 		    /**
-		     * @typedef {array} GetSignedPolicyResponse
-		     * @property {object} 0 The document policy.
-		     */
-		    /**
-		     * @callback GetSignedPolicyCallback
-		     * @param {?Error} err Request error, if any.
-		     * @param {object} policy The document policy.
-		     */
-		    /**
-		     * Get a v2 signed policy document to allow a user to upload data with a POST
-		     * request.
-		     *
-		     * In Google Cloud Platform environments, such as Cloud Functions and App
-		     * Engine, you usually don't provide a `keyFilename` or `credentials` during
-		     * instantiation. In those environments, we call the
-		     * {@link https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/signBlob| signBlob API}
-		     * to create a signed policy. That API requires either the
-		     * `https://www.googleapis.com/auth/iam` or
-		     * `https://www.googleapis.com/auth/cloud-platform` scope, so be sure they are
-		     * enabled.
-		     *
-		     * See {@link https://cloud.google.com/storage/docs/xml-api/post-object#policydocument| Policy Document Reference}
-		     *
-		     * @deprecated `getSignedPolicy()` is deprecated in favor of
-		     *     `generateSignedPostPolicyV2()` and `generateSignedPostPolicyV4()`.
-		     *     Currently, this method is an alias to `getSignedPolicyV2()`,
-		     *     and will be removed in a future major release.
-		     *     We recommend signing new policies using v4.
-		     * @internal
-		     *
-		     * @throws {Error} If an expiration timestamp from the past is given.
-		     * @throws {Error} If options.equals has an array with less or more than two
-		     *     members.
-		     * @throws {Error} If options.startsWith has an array with less or more than two
-		     *     members.
-		     *
-		     * @param {object} options Configuration options.
-		     * @param {array|array[]} [options.equals] Array of request parameters and
-		     *     their expected value (e.g. [['$<field>', '<value>']]). Values are
-		     *     translated into equality constraints in the conditions field of the
-		     *     policy document (e.g. ['eq', '$<field>', '<value>']). If only one
-		     *     equality condition is to be specified, options.equals can be a one-
-		     *     dimensional array (e.g. ['$<field>', '<value>']).
-		     * @param {*} options.expires - A timestamp when this policy will expire. Any
-		     *     value given is passed to `new Date()`.
-		     * @param {array|array[]} [options.startsWith] Array of request parameters and
-		     *     their expected prefixes (e.g. [['$<field>', '<value>']). Values are
-		     *     translated into starts-with constraints in the conditions field of the
-		     *     policy document (e.g. ['starts-with', '$<field>', '<value>']). If only
-		     *     one prefix condition is to be specified, options.startsWith can be a
-		     * one- dimensional array (e.g. ['$<field>', '<value>']).
-		     * @param {string} [options.acl] ACL for the object from possibly predefined
-		     *     ACLs.
-		     * @param {string} [options.successRedirect] The URL to which the user client
-		     *     is redirected if the upload is successful.
-		     * @param {string} [options.successStatus] - The status of the Google Storage
-		     *     response if the upload is successful (must be string).
-		     * @param {object} [options.contentLengthRange]
-		     * @param {number} [options.contentLengthRange.min] Minimum value for the
-		     *     request's content length.
-		     * @param {number} [options.contentLengthRange.max] Maximum value for the
-		     *     request's content length.
-		     * @param {GetSignedPolicyCallback} [callback] Callback function.
-		     * @returns {Promise<GetSignedPolicyResponse>}
-		     *
-		     * @example
-		     * ```
-		     * const {Storage} = require('@google-cloud/storage');
-		     * const storage = new Storage();
-		     * const myBucket = storage.bucket('my-bucket');
-		     *
-		     * const file = myBucket.file('my-file');
-		     * const options = {
-		     *   equals: ['$Content-Type', 'image/jpeg'],
-		     *   expires: '10-25-2022',
-		     *   contentLengthRange: {
-		     *     min: 0,
-		     *     max: 1024
-		     *   }
-		     * };
-		     *
-		     * file.getSignedPolicy(options, function(err, policy) {
-		     *   // policy.string: the policy document in plain text.
-		     *   // policy.base64: the policy document in base64.
-		     *   // policy.signature: the policy signature in base64.
-		     * });
-		     *
-		     * //-
-		     * // If the callback is omitted, we'll return a Promise.
-		     * //-
-		     * file.getSignedPolicy(options).then(function(data) {
-		     *   const policy = data[0];
-		     * });
-		     * ```
-		     */
-		    getSignedPolicy(optionsOrCallback, cb) {
-		        const args = util_1.normalize(optionsOrCallback, cb);
-		        const options = args.options;
-		        const callback = args.callback;
-		        this.generateSignedPostPolicyV2(options, callback);
-		    }
-		    /**
 		     * @typedef {array} GenerateSignedPostPolicyV2Response
 		     * @property {object} 0 The document policy.
 		     */
@@ -170599,7 +166862,7 @@ function requireFile () {
 		     * ```
 		     */
 		    generateSignedPostPolicyV2(optionsOrCallback, cb) {
-		        const args = util_1.normalize(optionsOrCallback, cb);
+		        const args = (0, util_1.normalize)(optionsOrCallback, cb);
 		        let options = args.options;
 		        const callback = args.callback;
 		        const expires = new Date(options.expires);
@@ -170712,7 +166975,7 @@ function requireFile () {
 		     * @param {boolean} [config.virtualHostedStyle=false] Use virtual hosted-style
 		     *     URLs ('https://mybucket.storage.googleapis.com/...') instead of path-style
 		     *     ('https://storage.googleapis.com/mybucket/...'). Virtual hosted-style URLs
-		     *     should generally be preferred instaed of path-style URL.
+		     *     should generally be preferred instead of path-style URL.
 		     *     Currently defaults to `false` for path-style, although this may change in a
 		     *     future major-version release.
 		     * @param {string} [config.bucketBoundHostname] The bucket-bound hostname to return in
@@ -170766,7 +167029,7 @@ function requireFile () {
 		     * ```
 		     */
 		    generateSignedPostPolicyV4(optionsOrCallback, cb) {
-		        const args = util_1.normalize(optionsOrCallback, cb);
+		        const args = (0, util_1.normalize)(optionsOrCallback, cb);
 		        let options = args.options;
 		        const callback = args.callback;
 		        const expires = new Date(options.expires);
@@ -170782,8 +167045,8 @@ function requireFile () {
 		        options = Object.assign({}, options);
 		        let fields = Object.assign({}, options.fields);
 		        const now = new Date();
-		        const nowISO = dateFormat.format(now, 'YYYYMMDD[T]HHmmss[Z]', true);
-		        const todayISO = dateFormat.format(now, 'YYYYMMDD', true);
+		        const nowISO = (0, util_1.formatAsUTCISO)(now, true);
+		        const todayISO = (0, util_1.formatAsUTCISO)(now);
 		        const sign = async () => {
 		            const { client_email } = await this.storage.authClient.getCredentials();
 		            const credential = `${client_email}/${todayISO}/auto/storage/goog4_request`;
@@ -170802,12 +167065,12 @@ function requireFile () {
 		                }
 		            });
 		            delete fields.bucket;
-		            const expiration = dateFormat.format(expires, 'YYYY-MM-DD[T]HH:mm:ss[Z]', true);
+		            const expiration = (0, util_1.formatAsUTCISO)(expires, true, '-', ':');
 		            const policy = {
 		                conditions,
 		                expiration,
 		            };
-		            const policyString = util_1.unicodeJSONStringify(policy);
+		            const policyString = (0, util_1.unicodeJSONStringify)(policy);
 		            const policyBase64 = Buffer.from(policyString).toString('base64');
 		            try {
 		                const signature = await this.storage.authClient.sign(policyBase64);
@@ -171013,7 +167276,7 @@ function requireFile () {
 		        if (!method) {
 		            throw new Error(storage_1.ExceptionMessages.INVALID_ACTION);
 		        }
-		        const extensionHeaders = util_1.objectKeyToLowercase(cfg.extensionHeaders || {});
+		        const extensionHeaders = (0, util_1.objectKeyToLowercase)(cfg.extensionHeaders || {});
 		        if (cfg.action === 'resumable') {
 		            extensionHeaders['x-goog-resumable'] = 'start';
 		        }
@@ -171198,6 +167461,7 @@ function requireFile () {
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
 		        const query = {
 		            predefinedAcl: options.strict ? 'private' : 'projectPrivate',
+		            // eslint-disable-next-line @typescript-eslint/no-explicit-any
 		        };
 		        if (options.userProject) {
 		            query.userProject = options.userProject;
@@ -171207,8 +167471,12 @@ function requireFile () {
 		        // so acl must explicitly be nullified, destroying all previous acls on the
 		        // file.
 		        const metadata = extend({}, options.metadata, { acl: null });
-		        this.setMetadata(metadata, query, callback);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        this.setMetadata(metadata, query)
+		            .then(resp => callback(null, ...resp))
+		            .catch(callback)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     * @typedef {array} MakeFilePublicResponse
@@ -171674,7 +167942,7 @@ function requireFile () {
 		            retries: maxRetries,
 		            factor: this.storage.retryOptions.retryDelayMultiplier,
 		            maxTimeout: this.storage.retryOptions.maxRetryDelay * 1000,
-		            maxRetryTime: this.storage.retryOptions.totalTimeout * 1000,
+		            maxRetryTime: this.storage.retryOptions.totalTimeout * 1000, //convert to milliseconds
 		        });
 		        if (!callback) {
 		            return returnValue;
@@ -171776,9 +168044,7 @@ function requireFile () {
 		        this.bucket.setUserProject.call(this, userProject);
 		    }
 		    /**
-		     * This creates a gcs-resumable-upload upload stream.
-		     *
-		     * See {@link https://github.com/googleapis/gcs-resumable-upload| gcs-resumable-upload}
+		     * This creates a resumable-upload upload stream.
 		     *
 		     * @param {Duplexify} stream - Duplexify stream of data to pipe to the file.
 		     * @param {object=} options - Configuration object.
@@ -171793,11 +168059,10 @@ function requireFile () {
 		        if (!this.shouldRetryBasedOnPreconditionAndIdempotencyStrat(options === null || options === void 0 ? void 0 : options.preconditionOpts)) {
 		            retryOptions.autoRetry = false;
 		        }
-		        const uploadStream = resumableUpload.upload({
+		        const uploadStream = resumableUpload$1.upload({
 		            authClient: this.storage.authClient,
 		            apiEndpoint: this.storage.apiEndpoint,
 		            bucket: this.bucket.name,
-		            configPath: options.configPath,
 		            customRequestOptions: this.getRequestInterceptors().reduce((reqOpts, interceptorFn) => interceptorFn(reqOpts), {}),
 		            file: this.name,
 		            generation: this.generation,
@@ -171903,6 +168168,13 @@ function requireFile () {
 		            this.storage.retryOptions.autoRetry = false;
 		        }
 		    }
+		    async getBufferFromReadable(readable) {
+		        const buf = [];
+		        for await (const chunk of readable) {
+		            buf.push(chunk);
+		        }
+		        return Buffer.concat(buf);
+		    }
 		}
 		exports.File = File;
 		/*! Developer Documentation
@@ -171910,13 +168182,15 @@ function requireFile () {
 		 * All async methods (except for streams) will return a Promise in the event
 		 * that a callback is omitted.
 		 */
-		promisify_1.promisifyAll(File, {
+		(0, promisify_1.promisifyAll)(File, {
 		    exclude: [
+		        'cloudStorageURI',
 		        'publicUrl',
 		        'request',
 		        'save',
 		        'setEncryptionKey',
 		        'shouldRetryBasedOnPreconditionAndIdempotencyStrat',
+		        'getBufferFromReadable',
 		    ],
 		});
 		
@@ -171942,7 +168216,7 @@ var iam = {};
 	// limitations under the License.
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.Iam = exports.IAMExceptionMessages = void 0;
-	const promisify_1 = src$a;
+	const promisify_1 = src$1;
 	const arrify = arrify_1;
 	const util_1 = util$1;
 	var IAMExceptionMessages;
@@ -172059,7 +168333,7 @@ var iam = {};
 	     * Example of retrieving a bucket's IAM policy:
 	     */
 	    getPolicy(optionsOrCallback, callback) {
-	        const { options, callback: cb } = util_1.normalize(optionsOrCallback, callback);
+	        const { options, callback: cb } = (0, util_1.normalize)(optionsOrCallback, callback);
 	        const qs = {};
 	        if (options.userProject) {
 	            qs.userProject = options.userProject;
@@ -172125,7 +168399,7 @@ var iam = {};
 	        if (policy === null || typeof policy !== 'object') {
 	            throw new Error(IAMExceptionMessages.POLICY_OBJECT_REQUIRED);
 	        }
-	        const { options, callback: cb } = util_1.normalize(optionsOrCallback, callback);
+	        const { options, callback: cb } = (0, util_1.normalize)(optionsOrCallback, callback);
 	        this.request_({
 	            method: 'PUT',
 	            uri: '/iam',
@@ -172194,7 +168468,7 @@ var iam = {};
 	        if (!Array.isArray(permissions) && typeof permissions !== 'string') {
 	            throw new Error(IAMExceptionMessages.PERMISSIONS_REQUIRED);
 	        }
-	        const { options, callback: cb } = util_1.normalize(optionsOrCallback, callback);
+	        const { options, callback: cb } = (0, util_1.normalize)(optionsOrCallback, callback);
 	        const permissionsArray = arrify(permissions);
 	        const req = Object.assign({
 	            permissions: permissionsArray,
@@ -172223,7 +168497,7 @@ var iam = {};
 	 * All async methods (except for streams) will return a Promise in the event
 	 * that a callback is omitted.
 	 */
-	promisify_1.promisifyAll(Iam);
+	(0, promisify_1.promisifyAll)(Iam);
 	
 } (iam));
 
@@ -172245,7 +168519,7 @@ var notification = {};
 Object.defineProperty(notification, "__esModule", { value: true });
 notification.Notification = void 0;
 const nodejs_common_1 = nodejsCommon;
-const promisify_1 = src$a;
+const promisify_1 = src$1;
 /**
  * The API-formatted resource description of the notification.
  *
@@ -172537,7 +168811,7 @@ notification.Notification = Notification;
  * All async methods (except for streams) will return a Promise in the event
  * that a callback is omitted.
  */
-promisify_1.promisifyAll(Notification);
+(0, promisify_1.promisifyAll)(Notification);
 
 var hasRequiredBucket;
 
@@ -172562,24 +168836,24 @@ function requireBucket () {
 		exports.Bucket = exports.BucketExceptionMessages = exports.AvailableServiceObjectMethods = exports.BucketActionToHTTPMethod = void 0;
 		const nodejs_common_1 = nodejsCommon;
 		const paginator_1 = src;
-		const promisify_1 = src$a;
+		const promisify_1 = src$1;
 		const arrify = arrify_1;
-		const extend = extend$4;
+		const extend = extend$2;
 		const fs = require$$0__default$1["default"];
 		const mime = mimeTypes;
-		const path = require$$1__default$2["default"];
+		const path = require$$0__default$4["default"];
 		const pLimit = pLimit_1;
 		const util_1 = require$$4__default["default"];
 		const retry = lib;
-		// eslint-disable-next-line @typescript-eslint/no-var-requires
-		const snakeize$1 = snakeize;
+		const util_2 = util$1;
 		const acl_1 = acl;
 		const file_1 = requireFile();
 		const iam_1 = iam;
 		const notification_1 = notification;
 		const storage_1 = requireStorage();
 		const signer_1 = requireSigner();
-		const stream_1 = require$$0__default$4["default"];
+		const stream_1 = require$$0__default$6["default"];
+		const url_1 = require$$2__default["default"];
 		var BucketActionToHTTPMethod;
 		(function (BucketActionToHTTPMethod) {
 		    BucketActionToHTTPMethod["list"] = "GET";
@@ -172601,14 +168875,6 @@ function requireBucket () {
 		    BucketExceptionMessages["METAGENERATION_NOT_PROVIDED"] = "A metageneration must be provided.";
 		    BucketExceptionMessages["SUPPLY_NOTIFICATION_ID"] = "You must supply a notification ID.";
 		})(BucketExceptionMessages = exports.BucketExceptionMessages || (exports.BucketExceptionMessages = {}));
-		/**
-		 * The size of a file (in bytes) must be greater than this number to
-		 * automatically trigger a resumable upload.
-		 *
-		 * @const {number}
-		 * @private
-		 */
-		const RESUMABLE_THRESHOLD = 5000000;
 		/**
 		 * Get and set IAM policies for your bucket.
 		 *
@@ -173207,6 +169473,8 @@ function requireBucket () {
 		            request: this.request.bind(this),
 		            pathPrefix: '/defaultObjectAcl',
 		        });
+		        this.crc32cGenerator =
+		            options.crc32cGenerator || this.storage.crc32cGenerator;
 		        this.iam = new iam_1.Iam(this);
 		        this.getFilesStream = paginator_1.paginator.streamify('getFiles');
 		        this.instanceRetryValue = storage.retryOptions.autoRetry;
@@ -173218,6 +169486,24 @@ function requireBucket () {
 		        return new stream_1.Readable();
 		    }
 		    /**
+		     * The bucket's Cloud Storage URI (`gs://`)
+		     *
+		     * @example
+		     * ```ts
+		     * const {Storage} = require('@google-cloud/storage');
+		     * const storage = new Storage();
+		     * const bucket = storage.bucket('my-bucket');
+		     *
+		     * // `gs://my-bucket`
+		     * const href = bucket.cloudStorageURI.href;
+		     * ```
+		     */
+		    get cloudStorageURI() {
+		        const uri = new url_1.URL('gs://');
+		        uri.host = this.name;
+		        return uri;
+		    }
+		    /**
 		     * @typedef {object} AddLifecycleRuleOptions Configuration options for Bucket#addLifecycleRule().
 		     * @property {boolean} [append=true] The new rules will be appended to any
 		     *     pre-existing rules.
@@ -173227,7 +169513,7 @@ function requireBucket () {
 		     * @typedef {object} LifecycleRule The new lifecycle rule to be added to objects
 		     *     in this bucket.
 		     * @property {string|object} action The action to be taken upon matching of
-		     *     all the conditions 'delete' or 'setStorageClass'.
+		     *     all the conditions 'delete', 'setStorageClass', or 'AbortIncompleteMultipartUpload'.
 		     *     **Note**: For configuring a raw-formatted rule object to be passed as `action`
 		     *               please refer to the [examples]{@link https://cloud.google.com/storage/docs/managing-lifecycles#configexamples}.
 		     * @property {object} condition Condition a bucket must meet before the
@@ -173250,7 +169536,7 @@ function requireBucket () {
 		     * @param {LifecycleRule} rule The new lifecycle rule to be added to objects
 		     *     in this bucket.
 		     * @param {string|object} rule.action The action to be taken upon matching of
-		     *     all the conditions 'delete' or 'setStorageClass'.
+		     *     all the conditions 'delete', 'setStorageClass', or 'AbortIncompleteMultipartUpload'.
 		     *     **Note**: For configuring a raw-formatted rule object to be passed as `action`
 		     *               please refer to the [examples]{@link https://cloud.google.com/storage/docs/managing-lifecycles#configexamples}.
 		     * @param {object} rule.condition Condition a bucket must meet before the
@@ -173418,8 +169704,12 @@ function requireBucket () {
 		        });
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        if (options.append === false) {
-		            this.setMetadata({ lifecycle: { rule: newLifecycleRules } }, callback);
-		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		            this.setMetadata({ lifecycle: { rule: newLifecycleRules } })
+		                .then(resp => callback(null, ...resp))
+		                .catch(callback)
+		                .finally(() => {
+		                this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		            });
 		            return;
 		        }
 		        // The default behavior appends the previously-defined lifecycle rules with
@@ -173434,9 +169724,13 @@ function requireBucket () {
 		                lifecycle: {
 		                    rule: currentLifecycleRules.concat(newLifecycleRules),
 		                },
-		            }, callback);
+		            })
+		                .then(resp => callback(null, ...resp))
+		                .catch(callback)
+		                .finally(() => {
+		                this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		            });
 		        });
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
 		    }
 		    /**
 		     * @typedef {object} CombineOptions
@@ -173564,9 +169858,11 @@ function requireBucket () {
 		                    const sourceObject = {
 		                        name: source.name,
 		                    };
-		                    if (((_a = source === null || source === void 0 ? void 0 : source.metadata) === null || _a === void 0 ? void 0 : _a.generation) || ((_b = source === null || source === void 0 ? void 0 : source.instancePreconditionOpts) === null || _b === void 0 ? void 0 : _b.ifGenerationMatch)) {
+		                    if (((_a = source === null || source === void 0 ? void 0 : source.metadata) === null || _a === void 0 ? void 0 : _a.generation) ||
+		                        ((_b = source === null || source === void 0 ? void 0 : source.instancePreconditionOpts) === null || _b === void 0 ? void 0 : _b.ifGenerationMatch)) {
 		                        sourceObject.generation =
-		                            ((_c = source === null || source === void 0 ? void 0 : source.metadata) === null || _c === void 0 ? void 0 : _c.generation) || ((_d = source === null || source === void 0 ? void 0 : source.instancePreconditionOpts) === null || _d === void 0 ? void 0 : _d.ifGenerationMatch);
+		                            ((_c = source === null || source === void 0 ? void 0 : source.metadata) === null || _c === void 0 ? void 0 : _c.generation) ||
+		                                ((_d = source === null || source === void 0 ? void 0 : source.instancePreconditionOpts) === null || _d === void 0 ? void 0 : _d.ifGenerationMatch);
 		                    }
 		                    return sourceObject;
 		                }),
@@ -173840,9 +170136,9 @@ function requireBucket () {
 		        this.request({
 		            method: 'POST',
 		            uri: '/notificationConfigs',
-		            json: snakeize$1(body),
+		            json: (0, util_2.convertObjKeysToSnakeCase)(body),
 		            qs: query,
-		            maxRetries: 0,
+		            maxRetries: 0, //explicitly set this value since this is a non-idempotent function
 		        }, (err, apiResponse) => {
 		            if (err) {
 		                callback(err, null, apiResponse);
@@ -174082,13 +170378,18 @@ function requireBucket () {
 		     * Example of disabling requester pays:
 		     */
 		    disableRequesterPays(callback) {
+		        const cb = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        this.setMetadata({
 		            billing: {
 		                requesterPays: false,
 		            },
-		        }, callback || nodejs_common_1.util.noop);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        })
+		            .then(resp => cb(null, ...resp))
+		            .catch(cb)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     * Configuration object for enabling logging.
@@ -174231,13 +170532,18 @@ function requireBucket () {
 		     * Example of enabling requester pays:
 		     */
 		    enableRequesterPays(callback) {
+		        const cb = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        this.setMetadata({
 		            billing: {
 		                requesterPays: true,
 		            },
-		        }, callback || nodejs_common_1.util.noop);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        })
+		            .then(resp => cb(null, ...resp))
+		            .catch(cb)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     * Create a {@link File} object. See {@link File} to see how to handle
@@ -174295,8 +170601,6 @@ function requireBucket () {
 		     *     names, aside from the prefix, contain delimiter will have their name
 		     *     truncated after the delimiter, returned in `apiResponse.prefixes`.
 		     *     Duplicate prefixes are omitted.
-		     * @deprecated @property {string} [directory] Filter results based on a directory name, or
-		     *     more technically, a "prefix". Assumes delimeter to be '/'. Deprecated. Use prefix instead.
 		     * @property {string} [endOffset] Filter results to objects whose names are
 		     * lexicographically before endOffset. If startOffset is also set, the objects
 		     * listed have names between startOffset (inclusive) and endOffset (exclusive).
@@ -174335,8 +170639,6 @@ function requireBucket () {
 		     *     names, aside from the prefix, contain delimiter will have their name
 		     *     truncated after the delimiter, returned in `apiResponse.prefixes`.
 		     *     Duplicate prefixes are omitted.
-		     * @deprecated @param {string} [query.directory] Filter results based on a directory name, or
-		     *     more technically, a "prefix". Assumes delimeter to be '/'. Deprecated. Use query.prefix instead.
 		     * @param {string} [query.endOffset] Filter results to objects whose names are
 		     * lexicographically before endOffset. If startOffset is also set, the objects
 		     * listed have names between startOffset (inclusive) and endOffset (exclusive).
@@ -174468,10 +170770,6 @@ function requireBucket () {
 		            callback = queryOrCallback;
 		        }
 		        query = Object.assign({}, query);
-		        if (query.directory) {
-		            query.prefix = `${query.directory}/`.replace(/\/*$/, '/');
-		            delete query.directory;
-		        }
 		        this.request({
 		            uri: '/o',
 		            qs: query,
@@ -174955,11 +171253,12 @@ function requireBucket () {
 		        this.setMetadata(metadata, query)
 		            .then(() => {
 		            if (options.includeFiles) {
-		                return util_1.promisify(this.makeAllFilesPublicPrivate_).call(this, options);
+		                return (0, util_1.promisify)(this.makeAllFilesPublicPrivate_).call(this, options);
 		            }
 		            return [];
 		        })
-		            .then(files => callback(null, files), callback)
+		            .then(files => callback(null, files))
+		            .catch(callback)
 		            .finally(() => {
 		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
 		        });
@@ -175075,7 +171374,7 @@ function requireBucket () {
 		        })
 		            .then(() => {
 		            if (req.includeFiles) {
-		                return util_1.promisify(this.makeAllFilesPublicPrivate_).call(this, req);
+		                return (0, util_1.promisify)(this.makeAllFilesPublicPrivate_).call(this, req);
 		            }
 		            return [];
 		        })
@@ -175125,11 +171424,16 @@ function requireBucket () {
 		     * ```
 		     */
 		    removeRetentionPeriod(callback) {
+		        const cb = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        this.setMetadata({
 		            retentionPolicy: null,
-		        }, callback);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        })
+		            .then(resp => cb(null, ...resp))
+		            .catch(cb)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     * Makes request and applies userProject query parameter if necessary.
@@ -175204,8 +171508,12 @@ function requireBucket () {
 		            typeof optionsOrCallback === 'function' ? optionsOrCallback : callback;
 		        callback = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
-		        this.setMetadata({ labels }, options, callback);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        this.setMetadata({ labels }, options)
+		            .then(resp => callback(null, ...resp))
+		            .catch(callback)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     * Lock all objects contained in the bucket, based on their creation time. Any
@@ -175245,13 +171553,18 @@ function requireBucket () {
 		     * ```
 		     */
 		    setRetentionPeriod(duration, callback) {
+		        const cb = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        this.setMetadata({
 		            retentionPolicy: {
 		                retentionPeriod: duration,
 		            },
-		        }, callback);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        })
+		            .then(resp => cb(null, ...resp))
+		            .catch(cb)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     *
@@ -175299,11 +171612,16 @@ function requireBucket () {
 		     * ```
 		     */
 		    setCorsConfiguration(corsConfiguration, callback) {
+		        const cb = callback || nodejs_common_1.util.noop;
 		        this.disableAutoRetryConditionallyIdempotent_(this.methods.setMetadata, AvailableServiceObjectMethods.setMetadata);
 		        this.setMetadata({
 		            cors: corsConfiguration,
-		        }, callback);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        })
+		            .then(resp => cb(null, ...resp))
+		            .catch(cb)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     * @typedef {object} SetBucketStorageClassOptions
@@ -175362,8 +171680,12 @@ function requireBucket () {
 		            return low + '_' + up;
 		        })
 		            .toUpperCase();
-		        this.setMetadata({ storageClass }, options, callback);
-		        this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        this.setMetadata({ storageClass }, options)
+		            .then(() => callback())
+		            .catch(callback)
+		            .finally(() => {
+		            this.storage.retryOptions.autoRetry = this.instanceRetryValue;
+		        });
 		    }
 		    /**
 		     * Set a user project to be billed for all requests made from this Bucket
@@ -175447,8 +171769,8 @@ function requireBucket () {
 		     *     `options.predefinedAcl = 'private'`)
 		     * @property {boolean} [public] Make the uploaded file public. (Alias for
 		     *     `options.predefinedAcl = 'publicRead'`)
-		     * @property {boolean} [resumable] Force a resumable upload. (default:
-		     *     true for files larger than 5 MB).
+		     * @property {boolean} [resumable=true] Resumable uploads are automatically
+		     *     enabled and must be shut off explicitly by setting to false.
 		     * @property {number} [timeout=60000] Set the HTTP request timeout in
 		     *     milliseconds. This option is not available for resumable uploads.
 		     *     Default: `60000`
@@ -175477,14 +171799,7 @@ function requireBucket () {
 		     * Upload a file to the bucket. This is a convenience method that wraps
 		     * {@link File#createWriteStream}.
 		     *
-		     * You can specify whether or not an upload is resumable by setting
-		     * `options.resumable`. *Resumable uploads are enabled by default if your
-		     * input file is larger than 5 MB.*
-		     *
-		     * For faster crc32c computation, you must manually install
-		     * {@link https://www.npmjs.com/package/fast-crc32c| `fast-crc32c`}:
-		     *
-		     *     $ npm install --save fast-crc32c
+		     * Resumable uploads are enabled by default
 		     *
 		     * See {@link https://cloud.google.com/storage/docs/json_api/v1/how-tos/upload#uploads| Upload Options (Simple or Resumable)}
 		     * See {@link https://cloud.google.com/storage/docs/json_api/v1/objects/insert| Objects: insert API Documentation}
@@ -175532,8 +171847,8 @@ function requireBucket () {
 		     *     `options.predefinedAcl = 'private'`)
 		     * @param {boolean} [options.public] Make the uploaded file public. (Alias for
 		     *     `options.predefinedAcl = 'publicRead'`)
-		     * @param {boolean} [options.resumable] Force a resumable upload. (default:
-		     *     true for files larger than 5 MB).
+		     * @param {boolean} [options.resumable=true] Resumable uploads are automatically
+		     *     enabled and must be shut off explicitly by setting to false.
 		     * @param {number} [options.timeout=60000] Set the HTTP request timeout in
 		     *     milliseconds. This option is not available for resumable uploads.
 		     *     Default: `60000`
@@ -175574,7 +171889,6 @@ function requireBucket () {
 		     * //-
 		     * const options = {
 		     *   destination: 'new-image.png',
-		     *   resumable: true,
 		     *   validation: 'crc32c',
 		     *   metadata: {
 		     *     metadata: {
@@ -175672,7 +171986,8 @@ function requireBucket () {
 		            const returnValue = retry(async (bail) => {
 		                await new Promise((resolve, reject) => {
 		                    var _a, _b;
-		                    if (numberOfRetries === 0 && ((_b = (_a = newFile === null || newFile === void 0 ? void 0 : newFile.storage) === null || _a === void 0 ? void 0 : _a.retryOptions) === null || _b === void 0 ? void 0 : _b.autoRetry)) {
+		                    if (numberOfRetries === 0 &&
+		                        ((_b = (_a = newFile === null || newFile === void 0 ? void 0 : newFile.storage) === null || _a === void 0 ? void 0 : _a.retryOptions) === null || _b === void 0 ? void 0 : _b.autoRetry)) {
 		                        newFile.storage.retryOptions.autoRetry = false;
 		                    }
 		                    const writable = newFile.createWriteStream(options);
@@ -175680,6 +171995,7 @@ function requireBucket () {
 		                        writable.on('progress', options.onUploadProgress);
 		                    }
 		                    fs.createReadStream(pathString)
+		                        .on('error', bail)
 		                        .pipe(writable)
 		                        .on('error', err => {
 		                        if (this.storage.retryOptions.autoRetry &&
@@ -175698,7 +172014,7 @@ function requireBucket () {
 		                retries: numberOfRetries,
 		                factor: this.storage.retryOptions.retryDelayMultiplier,
 		                maxTimeout: this.storage.retryOptions.maxRetryDelay * 1000,
-		                maxRetryTime: this.storage.retryOptions.totalTimeout * 1000,
+		                maxRetryTime: this.storage.retryOptions.totalTimeout * 1000, //convert to milliseconds
 		            });
 		            if (!callback) {
 		                return returnValue;
@@ -175756,23 +172072,7 @@ function requireBucket () {
 		                preconditionOpts: this.instancePreconditionOpts,
 		            });
 		        }
-		        if (options.resumable !== null && typeof options.resumable === 'boolean') {
-		            upload(maxRetries);
-		        }
-		        else {
-		            // Determine if the upload should be resumable if it's over the threshold.
-		            fs.stat(pathString, (err, fd) => {
-		                if (err) {
-		                    callback(err);
-		                    return;
-		                }
-		                if (fd.size <= RESUMABLE_THRESHOLD) {
-		                    // Only disable resumable uploads so createWriteStream still attempts them and falls back to simple upload.
-		                    options.resumable = false;
-		                }
-		                upload(maxRetries);
-		            });
-		        }
+		        upload(maxRetries);
 		    }
 		    /**
 		     * @private
@@ -175879,8 +172179,8 @@ function requireBucket () {
 		 * All async methods (except for streams) will return a Promise in the event
 		 * that a callback is omitted.
 		 */
-		promisify_1.promisifyAll(Bucket, {
-		    exclude: ['request', 'file', 'notification'],
+		(0, promisify_1.promisifyAll)(Bucket, {
+		    exclude: ['cloudStorageURI', 'request', 'file', 'notification'],
 		});
 		
 } (bucket));
@@ -175901,13 +172201,30 @@ function requireBucket () {
 	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	// See the License for the specific language governing permissions and
 	// limitations under the License.
+	var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    var desc = Object.getOwnPropertyDescriptor(m, k);
+	    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+	      desc = { enumerable: true, get: function() { return m[k]; } };
+	    }
+	    Object.defineProperty(o, k2, desc);
+	}) : (function(o, m, k, k2) {
+	    if (k2 === undefined) k2 = k;
+	    o[k2] = m[k];
+	}));
+	var __exportStar = (commonjsGlobal && commonjsGlobal.__exportStar) || function(m, exports) {
+	    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+	};
 	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.Storage = exports.IdempotencyStrategy = exports.Notification = exports.Iam = exports.HmacKey = exports.File = exports.Channel = exports.Bucket = void 0;
 	var bucket_1 = requireBucket();
 	Object.defineProperty(exports, "Bucket", { enumerable: true, get: function () { return bucket_1.Bucket; } });
+	__exportStar(crc32c, exports);
 	var channel_1 = channel;
 	Object.defineProperty(exports, "Channel", { enumerable: true, get: function () { return channel_1.Channel; } });
 	var file_1 = requireFile();
 	Object.defineProperty(exports, "File", { enumerable: true, get: function () { return file_1.File; } });
+	__exportStar(hashStreamValidator, exports);
 	var hmacKey_1 = hmacKey;
 	Object.defineProperty(exports, "HmacKey", { enumerable: true, get: function () { return hmacKey_1.HmacKey; } });
 	var iam_1 = iam;
@@ -175918,7 +172235,7 @@ function requireBucket () {
 	Object.defineProperty(exports, "IdempotencyStrategy", { enumerable: true, get: function () { return storage_1.IdempotencyStrategy; } });
 	Object.defineProperty(exports, "Storage", { enumerable: true, get: function () { return storage_1.Storage; } });
 	
-} (src$b));
+} (src$c));
 
 var tmpPromise = {exports: {}};
 
@@ -175952,7 +172269,7 @@ function requireOld () {
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-	var pathModule = require$$1__default$2["default"];
+	var pathModule = require$$0__default$4["default"];
 	var isWindows = process.platform === 'win32';
 	var fs = require$$0__default$1["default"];
 
@@ -177613,7 +173930,7 @@ function requireCommon () {
 	  return Object.prototype.hasOwnProperty.call(obj, field)
 	}
 
-	var path = require$$1__default$2["default"];
+	var path = require$$0__default$4["default"];
 	var minimatch = requireMinimatch();
 	var isAbsolute = requirePathIsAbsolute();
 	var Minimatch = minimatch.Minimatch;
@@ -177852,8 +174169,8 @@ function requireSync () {
 	var minimatch = requireMinimatch();
 	minimatch.Minimatch;
 	requireGlob().Glob;
-	var path = require$$1__default$2["default"];
-	var assert = require$$0__default$7["default"];
+	var path = require$$0__default$4["default"];
+	var assert = require$$6__default["default"];
 	var isAbsolute = requirePathIsAbsolute();
 	var common = requireCommon();
 	var setopts = common.setopts;
@@ -178442,9 +174759,9 @@ function requireGlob () {
 	var minimatch = requireMinimatch();
 	minimatch.Minimatch;
 	var inherits = requireInherits();
-	var EE = require$$0__default$3["default"].EventEmitter;
-	var path = require$$1__default$2["default"];
-	var assert = require$$0__default$7["default"];
+	var EE = require$$0__default$2["default"].EventEmitter;
+	var path = require$$0__default$4["default"];
+	var assert = require$$6__default["default"];
 	var isAbsolute = requirePathIsAbsolute();
 	var globSync = requireSync();
 	var common = requireCommon();
@@ -179180,8 +175497,8 @@ function requireGlob () {
 	return glob_1;
 }
 
-const assert = require$$0__default$7["default"];
-const path$7 = require$$1__default$2["default"];
+const assert = require$$6__default["default"];
+const path$7 = require$$0__default$4["default"];
 const fs$2 = require$$0__default$1["default"];
 let glob$1 = undefined;
 try {
@@ -179555,8 +175872,8 @@ rimraf.sync = rimrafSync;
 	 */
 	const fs = require$$0__default$1["default"];
 	const os = require$$0__default["default"];
-	const path = require$$1__default$2["default"];
-	const crypto = require$$0__default$9["default"];
+	const path = require$$0__default$4["default"];
+	const crypto = require$$0__default$5["default"];
 	const _c = { fs: fs.constants, os: os.constants };
 	const rimraf = rimraf_1;
 
@@ -180417,7 +176734,7 @@ var ioUtil$2 = {};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getCmdPath = exports.tryGetExecutablePath = exports.isRooted = exports.isDirectory = exports.exists = exports.IS_WINDOWS = exports.unlink = exports.symlink = exports.stat = exports.rmdir = exports.rename = exports.readlink = exports.readdir = exports.mkdir = exports.lstat = exports.copyFile = exports.chmod = void 0;
 	const fs = __importStar(require$$0__default$1["default"]);
-	const path = __importStar(require$$1__default$2["default"]);
+	const path = __importStar(require$$0__default$4["default"]);
 	_a = fs.promises, exports.chmod = _a.chmod, exports.copyFile = _a.copyFile, exports.lstat = _a.lstat, exports.mkdir = _a.mkdir, exports.readdir = _a.readdir, exports.readlink = _a.readlink, exports.rename = _a.rename, exports.rmdir = _a.rmdir, exports.stat = _a.stat, exports.symlink = _a.symlink, exports.unlink = _a.unlink;
 	exports.IS_WINDOWS = process.platform === 'win32';
 	function exists(fsPath) {
@@ -180593,9 +176910,9 @@ var __awaiter$5 = (commonjsGlobal && commonjsGlobal.__awaiter) || function (this
 };
 Object.defineProperty(io$1, "__esModule", { value: true });
 io$1.findInPath = io$1.which = io$1.mkdirP = io$1.rmRF = io$1.mv = io$1.cp = void 0;
-const assert_1$3 = require$$0__default$7["default"];
+const assert_1$3 = require$$6__default["default"];
 const childProcess = __importStar$9(require$$0__default$a["default"]);
-const path$6 = __importStar$9(require$$1__default$2["default"]);
+const path$6 = __importStar$9(require$$0__default$4["default"]);
 const util_1 = require$$4__default["default"];
 const ioUtil$1 = __importStar$9(ioUtil$2);
 const exec$1 = util_1.promisify(childProcess.exec);
@@ -180934,12 +177251,12 @@ var __awaiter$4 = (commonjsGlobal && commonjsGlobal.__awaiter) || function (this
 Object.defineProperty(toolrunner, "__esModule", { value: true });
 toolrunner.argStringToArray = toolrunner.ToolRunner = void 0;
 const os$1 = __importStar$8(require$$0__default["default"]);
-const events = __importStar$8(require$$0__default$3["default"]);
+const events = __importStar$8(require$$0__default$2["default"]);
 const child = __importStar$8(require$$0__default$a["default"]);
-const path$5 = __importStar$8(require$$1__default$2["default"]);
+const path$5 = __importStar$8(require$$0__default$4["default"]);
 const io = __importStar$8(io$1);
 const ioUtil = __importStar$8(ioUtil$2);
-const timers_1 = require$$6__default["default"];
+const timers_1 = require$$6__default$1["default"];
 /* eslint-disable @typescript-eslint/unbound-method */
 const IS_WINDOWS$5 = process.platform === 'win32';
 /*
@@ -181630,7 +177947,7 @@ const SEMVER_SPEC_VERSION = '2.0.0';
 
 const MAX_LENGTH$2 = 256;
 const MAX_SAFE_INTEGER$1 = Number.MAX_SAFE_INTEGER ||
-  /* istanbul ignore next */ 9007199254740991;
+/* istanbul ignore next */ 9007199254740991;
 
 // Max safe segment length for coercion.
 const MAX_SAFE_COMPONENT_LENGTH = 16;
@@ -181639,7 +177956,7 @@ var constants = {
   SEMVER_SPEC_VERSION,
   MAX_LENGTH: MAX_LENGTH$2,
   MAX_SAFE_INTEGER: MAX_SAFE_INTEGER$1,
-  MAX_SAFE_COMPONENT_LENGTH
+  MAX_SAFE_COMPONENT_LENGTH,
 };
 
 const debug$1 = (
@@ -181665,7 +177982,7 @@ var debug_1 = debug$1;
 
 	const createToken = (name, value, isGlobal) => {
 	  const index = R++;
-	  debug(index, value);
+	  debug(name, index, value);
 	  t[name] = index;
 	  src[index] = value;
 	  re[index] = new RegExp(value, isGlobal ? 'g' : undefined);
@@ -181833,8 +178150,8 @@ var debug_1 = debug$1;
 	// Star ranges basically just allow anything at all.
 	createToken('STAR', '(<|>)?=?\\s*\\*');
 	// >=0.0.0 is like a star
-	createToken('GTE0', '^\\s*>=\\s*0\.0\.0\\s*$');
-	createToken('GTE0PRE', '^\\s*>=\\s*0\.0\.0-0\\s*$');
+	createToken('GTE0', '^\\s*>=\\s*0\\.0\\.0\\s*$');
+	createToken('GTE0PRE', '^\\s*>=\\s*0\\.0\\.0-0\\s*$');
 } (re$3, re$3.exports));
 
 // parse out just the options we care about so we always get a consistent
@@ -181843,9 +178160,9 @@ const opts = ['includePrerelease', 'loose', 'rtl'];
 const parseOptions$2 = options =>
   !options ? {}
   : typeof options !== 'object' ? { loose: true }
-  : opts.filter(k => options[k]).reduce((options, k) => {
-    options[k] = true;
-    return options
+  : opts.filter(k => options[k]).reduce((o, k) => {
+    o[k] = true;
+    return o
   }, {});
 var parseOptions_1 = parseOptions$2;
 
@@ -181870,7 +178187,7 @@ const rcompareIdentifiers = (a, b) => compareIdentifiers$1(b, a);
 
 var identifiers = {
   compareIdentifiers: compareIdentifiers$1,
-  rcompareIdentifiers
+  rcompareIdentifiers,
 };
 
 const debug = debug_1;
@@ -182140,7 +178457,7 @@ class SemVer$c {
         if (identifier) {
           // 1.2.0-beta.1 bumps to 1.2.0-beta.2,
           // 1.2.0-beta.fooblz or 1.2.0-beta bumps to 1.2.0-beta.0
-          if (this.prerelease[0] === identifier) {
+          if (compareIdentifiers(this.prerelease[0], identifier) === 0) {
             if (isNaN(this.prerelease[1])) {
               this.prerelease = [identifier, 0];
             }
@@ -182161,7 +178478,7 @@ class SemVer$c {
 
 var semver$1 = SemVer$c;
 
-const {MAX_LENGTH} = constants;
+const { MAX_LENGTH } = constants;
 const { re: re$1, t: t$1 } = re$3.exports;
 const SemVer$b = semver$1;
 
@@ -182218,7 +178535,10 @@ const inc = (version, release, options, identifier) => {
   }
 
   try {
-    return new SemVer$a(version, options).inc(release, identifier).version
+    return new SemVer$a(
+      version instanceof SemVer$a ? version.version : version,
+      options
+    ).inc(release, identifier).version
   } catch (er) {
     return null
   }
@@ -182332,17 +178652,21 @@ const lte$1 = lte_1;
 const cmp = (a, op, b, loose) => {
   switch (op) {
     case '===':
-      if (typeof a === 'object')
+      if (typeof a === 'object') {
         a = a.version;
-      if (typeof b === 'object')
+      }
+      if (typeof b === 'object') {
         b = b.version;
+      }
       return a === b
 
     case '!==':
-      if (typeof a === 'object')
+      if (typeof a === 'object') {
         a = a.version;
-      if (typeof b === 'object')
+      }
+      if (typeof b === 'object') {
         b = b.version;
+      }
       return a !== b
 
     case '':
@@ -182373,7 +178697,7 @@ var cmp_1 = cmp;
 
 const SemVer$4 = semver$1;
 const parse = parse_1;
-const {re, t} = re$3.exports;
+const { re, t } = re$3.exports;
 
 const coerce = (version, options) => {
   if (version instanceof SemVer$4) {
@@ -182416,8 +178740,9 @@ const coerce = (version, options) => {
     re[t.COERCERTL].lastIndex = -1;
   }
 
-  if (match === null)
+  if (match === null) {
     return null
+  }
 
   return parse(`${match[2]}.${match[3] || '0'}.${match[4] || '0'}`, options)
 };
@@ -182460,9 +178785,9 @@ function requireRange () {
 	    // First, split based on boolean or ||
 	    this.raw = range;
 	    this.set = range
-	      .split(/\s*\|\|\s*/)
+	      .split('||')
 	      // map the range to a 2d array of comparators
-	      .map(range => this.parseRange(range.trim()))
+	      .map(r => this.parseRange(r.trim()))
 	      // throw out any comparator lists that are empty
 	      // this generally means that it was not a valid range, which is allowed
 	      // in loose mode, but will still throw if the WHOLE range is invalid.
@@ -182477,9 +178802,9 @@ function requireRange () {
 	      // keep the first one, in case they're all null sets
 	      const first = this.set[0];
 	      this.set = this.set.filter(c => !isNullSet(c[0]));
-	      if (this.set.length === 0)
+	      if (this.set.length === 0) {
 	        this.set = [first];
-	      else if (this.set.length > 1) {
+	      } else if (this.set.length > 1) {
 	        // if we have any that are *, then the range is just *
 	        for (const c of this.set) {
 	          if (c.length === 1 && isAny(c[0])) {
@@ -182515,8 +178840,9 @@ function requireRange () {
 	    const memoOpts = Object.keys(this.options).join(',');
 	    const memoKey = `parseRange:${memoOpts}:${range}`;
 	    const cached = cache.get(memoKey);
-	    if (cached)
+	    if (cached) {
 	      return cached
+	    }
 
 	    const loose = this.options.loose;
 	    // `1.2.3 - 1.2.4` => `>=1.2.3 <=1.2.4`
@@ -182525,7 +178851,7 @@ function requireRange () {
 	    debug('hyphen replace', range);
 	    // `> 1.2.3 < 1.2.5` => `>1.2.3 <1.2.5`
 	    range = range.replace(re[t.COMPARATORTRIM], comparatorTrimReplace);
-	    debug('comparator trim', range, re[t.COMPARATORTRIM]);
+	    debug('comparator trim', range);
 
 	    // `~ 1.2.3` => `~1.2.3`
 	    range = range.replace(re[t.TILDETRIM], tildeTrimReplace);
@@ -182539,30 +178865,37 @@ function requireRange () {
 	    // At this point, the range is completely trimmed and
 	    // ready to be split into comparators.
 
-	    const compRe = loose ? re[t.COMPARATORLOOSE] : re[t.COMPARATOR];
-	    const rangeList = range
+	    let rangeList = range
 	      .split(' ')
 	      .map(comp => parseComparator(comp, this.options))
 	      .join(' ')
 	      .split(/\s+/)
 	      // >=0.0.0 is equivalent to *
-	      .map(comp => replaceGTE0(comp, this.options))
+	      .map(comp => replaceGTE0(comp, this.options));
+
+	    if (loose) {
 	      // in loose mode, throw out any that are not valid comparators
-	      .filter(this.options.loose ? comp => !!comp.match(compRe) : () => true)
-	      .map(comp => new Comparator(comp, this.options));
+	      rangeList = rangeList.filter(comp => {
+	        debug('loose invalid filter', comp, this.options);
+	        return !!comp.match(re[t.COMPARATORLOOSE])
+	      });
+	    }
+	    debug('range list', rangeList);
 
 	    // if any comparators are the null set, then replace with JUST null set
 	    // if more than one comparator, remove any * comparators
 	    // also, don't include the same comparator more than once
-	    rangeList.length;
 	    const rangeMap = new Map();
-	    for (const comp of rangeList) {
-	      if (isNullSet(comp))
+	    const comparators = rangeList.map(comp => new Comparator(comp, this.options));
+	    for (const comp of comparators) {
+	      if (isNullSet(comp)) {
 	        return [comp]
+	      }
 	      rangeMap.set(comp.value, comp);
 	    }
-	    if (rangeMap.size > 1 && rangeMap.has(''))
+	    if (rangeMap.size > 1 && rangeMap.has('')) {
 	      rangeMap.delete('');
+	    }
 
 	    const result = [...rangeMap.values()];
 	    cache.set(memoKey, result);
@@ -182627,7 +178960,7 @@ function requireRange () {
 	  t,
 	  comparatorTrimReplace,
 	  tildeTrimReplace,
-	  caretTrimReplace
+	  caretTrimReplace,
 	} = re$3.exports;
 
 	const isNullSet = c => c.value === '<0.0.0-0';
@@ -182676,8 +179009,8 @@ function requireRange () {
 	// ~1.2.3, ~>1.2.3 --> >=1.2.3 <1.3.0-0
 	// ~1.2.0, ~>1.2.0 --> >=1.2.0 <1.3.0-0
 	const replaceTildes = (comp, options) =>
-	  comp.trim().split(/\s+/).map((comp) => {
-	    return replaceTilde(comp, options)
+	  comp.trim().split(/\s+/).map((c) => {
+	    return replaceTilde(c, options)
 	  }).join(' ');
 
 	const replaceTilde = (comp, options) => {
@@ -182715,8 +179048,8 @@ function requireRange () {
 	// ^1.2.3 --> >=1.2.3 <2.0.0-0
 	// ^1.2.0 --> >=1.2.0 <2.0.0-0
 	const replaceCarets = (comp, options) =>
-	  comp.trim().split(/\s+/).map((comp) => {
-	    return replaceCaret(comp, options)
+	  comp.trim().split(/\s+/).map((c) => {
+	    return replaceCaret(c, options)
 	  }).join(' ');
 
 	const replaceCaret = (comp, options) => {
@@ -182774,8 +179107,8 @@ function requireRange () {
 
 	const replaceXRanges = (comp, options) => {
 	  debug('replaceXRanges', comp, options);
-	  return comp.split(/\s+/).map((comp) => {
-	    return replaceXRange(comp, options)
+	  return comp.split(/\s+/).map((c) => {
+	    return replaceXRange(c, options)
 	  }).join(' ')
 	};
 
@@ -182836,8 +179169,9 @@ function requireRange () {
 	        }
 	      }
 
-	      if (gtlt === '<')
+	      if (gtlt === '<') {
 	        pr = '-0';
+	      }
 
 	      ret = `${gtlt + M}.${m}.${p}${pr}`;
 	    } else if (xm) {
@@ -182954,6 +179288,7 @@ function requireComparator () {
 	  static get ANY () {
 	    return ANY
 	  }
+
 	  constructor (comp, options) {
 	    options = parseOptions(options);
 
@@ -183030,7 +179365,7 @@ function requireComparator () {
 	    if (!options || typeof options !== 'object') {
 	      options = {
 	        loose: !!options,
-	        includePrerelease: false
+	        includePrerelease: false,
 	      };
 	    }
 
@@ -183078,7 +179413,7 @@ function requireComparator () {
 	comparator = Comparator;
 
 	const parseOptions = parseOptions_1;
-	const {re, t} = re$3.exports;
+	const { re, t } = re$3.exports;
 	const cmp = cmp_1;
 	const debug = debug_1;
 	const SemVer = semver$1;
@@ -183206,8 +179541,9 @@ const minVersion = (range, loose) => {
           throw new Error(`Unexpected operation: ${comparator.operator}`)
       }
     });
-    if (setMin && (!minver || gt$1(minver, setMin)))
+    if (setMin && (!minver || gt$1(minver, setMin))) {
       minver = setMin;
+    }
   }
 
   if (minver && range.test(minver)) {
@@ -183232,7 +179568,7 @@ var valid = validRange;
 
 const SemVer = semver$1;
 const Comparator$1 = requireComparator();
-const {ANY: ANY$1} = Comparator$1;
+const { ANY: ANY$1 } = Comparator$1;
 const Range$2 = requireRange();
 const satisfies$2 = satisfies_1;
 const gt = gt_1;
@@ -183336,38 +179672,41 @@ const satisfies$1 = satisfies_1;
 const compare$1 = compare_1;
 var simplify = (versions, range, options) => {
   const set = [];
-  let min = null;
+  let first = null;
   let prev = null;
   const v = versions.sort((a, b) => compare$1(a, b, options));
   for (const version of v) {
     const included = satisfies$1(version, range, options);
     if (included) {
       prev = version;
-      if (!min)
-        min = version;
+      if (!first) {
+        first = version;
+      }
     } else {
       if (prev) {
-        set.push([min, prev]);
+        set.push([first, prev]);
       }
       prev = null;
-      min = null;
+      first = null;
     }
   }
-  if (min)
-    set.push([min, null]);
+  if (first) {
+    set.push([first, null]);
+  }
 
   const ranges = [];
   for (const [min, max] of set) {
-    if (min === max)
+    if (min === max) {
       ranges.push(min);
-    else if (!max && min === v[0])
+    } else if (!max && min === v[0]) {
       ranges.push('*');
-    else if (!max)
+    } else if (!max) {
       ranges.push(`>=${min}`);
-    else if (min === v[0])
+    } else if (min === v[0]) {
       ranges.push(`<=${max}`);
-    else
+    } else {
       ranges.push(`${min} - ${max}`);
+    }
   }
   const simplified = ranges.join(' || ');
   const original = typeof range.raw === 'string' ? range.raw : String(range);
@@ -183417,8 +179756,9 @@ const compare = compare_1;
 // - Else return true
 
 const subset = (sub, dom, options = {}) => {
-  if (sub === dom)
+  if (sub === dom) {
     return true
+  }
 
   sub = new Range(sub, options);
   dom = new Range(dom, options);
@@ -183428,73 +179768,84 @@ const subset = (sub, dom, options = {}) => {
     for (const simpleDom of dom.set) {
       const isSub = simpleSubset(simpleSub, simpleDom, options);
       sawNonNull = sawNonNull || isSub !== null;
-      if (isSub)
+      if (isSub) {
         continue OUTER
+      }
     }
     // the null set is a subset of everything, but null simple ranges in
     // a complex range should be ignored.  so if we saw a non-null range,
     // then we know this isn't a subset, but if EVERY simple range was null,
     // then it is a subset.
-    if (sawNonNull)
+    if (sawNonNull) {
       return false
+    }
   }
   return true
 };
 
 const simpleSubset = (sub, dom, options) => {
-  if (sub === dom)
+  if (sub === dom) {
     return true
+  }
 
   if (sub.length === 1 && sub[0].semver === ANY) {
-    if (dom.length === 1 && dom[0].semver === ANY)
+    if (dom.length === 1 && dom[0].semver === ANY) {
       return true
-    else if (options.includePrerelease)
-      sub = [ new Comparator('>=0.0.0-0') ];
-    else
-      sub = [ new Comparator('>=0.0.0') ];
+    } else if (options.includePrerelease) {
+      sub = [new Comparator('>=0.0.0-0')];
+    } else {
+      sub = [new Comparator('>=0.0.0')];
+    }
   }
 
   if (dom.length === 1 && dom[0].semver === ANY) {
-    if (options.includePrerelease)
+    if (options.includePrerelease) {
       return true
-    else
-      dom = [ new Comparator('>=0.0.0') ];
+    } else {
+      dom = [new Comparator('>=0.0.0')];
+    }
   }
 
   const eqSet = new Set();
   let gt, lt;
   for (const c of sub) {
-    if (c.operator === '>' || c.operator === '>=')
+    if (c.operator === '>' || c.operator === '>=') {
       gt = higherGT(gt, c, options);
-    else if (c.operator === '<' || c.operator === '<=')
+    } else if (c.operator === '<' || c.operator === '<=') {
       lt = lowerLT(lt, c, options);
-    else
+    } else {
       eqSet.add(c.semver);
+    }
   }
 
-  if (eqSet.size > 1)
+  if (eqSet.size > 1) {
     return null
+  }
 
   let gtltComp;
   if (gt && lt) {
     gtltComp = compare(gt.semver, lt.semver, options);
-    if (gtltComp > 0)
+    if (gtltComp > 0) {
       return null
-    else if (gtltComp === 0 && (gt.operator !== '>=' || lt.operator !== '<='))
+    } else if (gtltComp === 0 && (gt.operator !== '>=' || lt.operator !== '<=')) {
       return null
+    }
   }
 
   // will iterate one or zero times
   for (const eq of eqSet) {
-    if (gt && !satisfies(eq, String(gt), options))
+    if (gt && !satisfies(eq, String(gt), options)) {
       return null
+    }
 
-    if (lt && !satisfies(eq, String(lt), options))
+    if (lt && !satisfies(eq, String(lt), options)) {
       return null
+    }
 
     for (const c of dom) {
-      if (!satisfies(eq, String(c), options))
+      if (!satisfies(eq, String(c), options)) {
         return false
+      }
     }
 
     return true
@@ -183530,10 +179881,12 @@ const simpleSubset = (sub, dom, options) => {
       }
       if (c.operator === '>' || c.operator === '>=') {
         higher = higherGT(gt, c, options);
-        if (higher === c && higher !== gt)
+        if (higher === c && higher !== gt) {
           return false
-      } else if (gt.operator === '>=' && !satisfies(gt.semver, String(c), options))
+        }
+      } else if (gt.operator === '>=' && !satisfies(gt.semver, String(c), options)) {
         return false
+      }
     }
     if (lt) {
       if (needDomLTPre) {
@@ -183546,37 +179899,44 @@ const simpleSubset = (sub, dom, options) => {
       }
       if (c.operator === '<' || c.operator === '<=') {
         lower = lowerLT(lt, c, options);
-        if (lower === c && lower !== lt)
+        if (lower === c && lower !== lt) {
           return false
-      } else if (lt.operator === '<=' && !satisfies(lt.semver, String(c), options))
+        }
+      } else if (lt.operator === '<=' && !satisfies(lt.semver, String(c), options)) {
         return false
+      }
     }
-    if (!c.operator && (lt || gt) && gtltComp !== 0)
+    if (!c.operator && (lt || gt) && gtltComp !== 0) {
       return false
+    }
   }
 
   // if there was a < or >, and nothing in the dom, then must be false
   // UNLESS it was limited by another range in the other direction.
   // Eg, >1.0.0 <1.0.1 is still a subset of <2.0.0
-  if (gt && hasDomLT && !lt && gtltComp !== 0)
+  if (gt && hasDomLT && !lt && gtltComp !== 0) {
     return false
+  }
 
-  if (lt && hasDomGT && !gt && gtltComp !== 0)
+  if (lt && hasDomGT && !gt && gtltComp !== 0) {
     return false
+  }
 
   // we needed a prerelease range in a specific tuple, but didn't get one
   // then this isn't a subset.  eg >=1.2.3-pre is not a subset of >=1.0.0,
   // because it includes prereleases in the 1.2.3 tuple
-  if (needDomGTPre || needDomLTPre)
+  if (needDomGTPre || needDomLTPre) {
     return false
+  }
 
   return true
 };
 
 // >=1.2.3 is lower than >1.2.3
 const higherGT = (a, b, options) => {
-  if (!a)
+  if (!a) {
     return b
+  }
   const comp = compare(a.semver, b.semver, options);
   return comp > 0 ? a
     : comp < 0 ? b
@@ -183586,8 +179946,9 @@ const higherGT = (a, b, options) => {
 
 // <=1.2.3 is higher than <1.2.3
 const lowerLT = (a, b, options) => {
-  if (!a)
+  if (!a) {
     return b
+  }
   const comp = compare(a.semver, b.semver, options);
   return comp < 0 ? a
     : comp > 0 ? b
@@ -183799,8 +180160,8 @@ var __importDefault$2 = (commonjsGlobal && commonjsGlobal.__importDefault) || fu
 };
 Object.defineProperty(internalPathHelper, "__esModule", { value: true });
 internalPathHelper.safeTrimTrailingSeparator = internalPathHelper.normalizeSeparators = internalPathHelper.hasRoot = internalPathHelper.hasAbsoluteRoot = internalPathHelper.ensureAbsoluteRoot = internalPathHelper.dirname = void 0;
-const path$4 = __importStar$5(require$$1__default$2["default"]);
-const assert_1$2 = __importDefault$2(require$$0__default$7["default"]);
+const path$4 = __importStar$5(require$$0__default$4["default"]);
+const assert_1$2 = __importDefault$2(require$$6__default["default"]);
 const IS_WINDOWS$4 = process.platform === 'win32';
 /**
  * Similar to path.dirname except normalizes the path separators and slightly better handling for Windows UNC paths.
@@ -184109,9 +180470,9 @@ var __importDefault$1 = (commonjsGlobal && commonjsGlobal.__importDefault) || fu
 };
 Object.defineProperty(internalPath, "__esModule", { value: true });
 internalPath.Path = void 0;
-const path$3 = __importStar$3(require$$1__default$2["default"]);
+const path$3 = __importStar$3(require$$0__default$4["default"]);
 const pathHelper$1 = __importStar$3(internalPathHelper);
-const assert_1$1 = __importDefault$1(require$$0__default$7["default"]);
+const assert_1$1 = __importDefault$1(require$$6__default["default"]);
 const IS_WINDOWS$2 = process.platform === 'win32';
 /**
  * Helper class for parsing paths into segments
@@ -184222,9 +180583,9 @@ var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || func
 Object.defineProperty(internalPattern, "__esModule", { value: true });
 internalPattern.Pattern = void 0;
 const os = __importStar$2(require$$0__default["default"]);
-const path$2 = __importStar$2(require$$1__default$2["default"]);
+const path$2 = __importStar$2(require$$0__default$4["default"]);
 const pathHelper = __importStar$2(internalPathHelper);
-const assert_1 = __importDefault(require$$0__default$7["default"]);
+const assert_1 = __importDefault(require$$6__default["default"]);
 const minimatch_1 = requireMinimatch();
 const internal_match_kind_1$1 = internalMatchKind;
 const internal_path_1 = internalPath;
@@ -184515,7 +180876,7 @@ internalGlobber.DefaultGlobber = void 0;
 const core$1 = __importStar$1(requireCore());
 const fs$1 = __importStar$1(require$$0__default$1["default"]);
 const globOptionsHelper = __importStar$1(internalGlobOptionsHelper);
-const path$1 = __importStar$1(require$$1__default$2["default"]);
+const path$1 = __importStar$1(require$$0__default$4["default"]);
 const patternHelper = __importStar$1(internalPatternHelper);
 const internal_match_kind_1 = internalMatchKind;
 const internal_pattern_1 = internalPattern;
@@ -184736,12 +181097,12 @@ var __asyncValues = (commonjsGlobal && commonjsGlobal.__asyncValues) || function
 };
 Object.defineProperty(internalHashFiles, "__esModule", { value: true });
 internalHashFiles.hashFiles = void 0;
-const crypto$1 = __importStar(require$$0__default$9["default"]);
+const crypto$1 = __importStar(require$$0__default$5["default"]);
 const core = __importStar(requireCore());
 const fs = __importStar(require$$0__default$1["default"]);
-const stream = __importStar(require$$0__default$4["default"]);
+const stream = __importStar(require$$0__default$6["default"]);
 const util = __importStar(require$$4__default["default"]);
-const path = __importStar(require$$1__default$2["default"]);
+const path = __importStar(require$$0__default$4["default"]);
 function hashFiles$1(globber, verbose = false) {
     var e_1, _a;
     var _b;
@@ -184875,7 +181236,7 @@ const main = async () => {
         console.log('🌀 Skipping uploading cache as the cache was hit by exact match.');
         return;
     }
-    const bucket = new src$b.Storage().bucket(state.bucket);
+    const bucket = new src$c.Storage().bucket(state.bucket);
     const targetFileName = state.targetFileName;
     const [targetFileExists,] = await bucket
         .file(targetFileName)

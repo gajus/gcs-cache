@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
-import type {
-  State,
-  CacheHitKindState,
+import {
+  type State,
+  type CacheHitKindState,
 } from './types';
 
 export const getState = (): State => {

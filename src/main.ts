@@ -18,8 +18,8 @@ import {
 import {
   saveState,
 } from './saveState';
-import type {
-  ObjectMetadata,
+import {
+  type ObjectMetadata,
 } from './types';
 
 const main = async () => {
@@ -66,10 +66,11 @@ const main = async () => {
 
   core.debug(`Best match metadata: ${JSON.stringify(bestMatchMetadata)}.`);
 
-  const compressionMethod = bestMatchMetadata?.metadata?.['cache-action-compression-method'];
+  const compressionMethod = bestMatchMetadata.metadata['cache-action-compression-method'];
 
   core.debug(`Best match compression method: ${compressionMethod}.`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!bestMatchMetadata || !compressionMethod) {
     saveState({
       bucket: inputs.bucket,

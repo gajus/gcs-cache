@@ -1,11 +1,10 @@
 import * as exec from '@actions/exec';
-import type {
-  TestFn,
+import anyTest, {
+  type TestFn,
 } from 'ava';
-import anyTest from 'ava';
 import * as sinon from 'sinon';
-import type {
-  SinonSandbox,
+import {
+  type SinonSandbox,
 } from 'sinon';
 import {
   getZstdVersion,
